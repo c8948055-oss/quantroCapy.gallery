@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quán Trọ Capy</title>
+    <title>Quán Trọ Capy 🍊🦫</title>
     
     <!-- Fonts: Comfortaa (Tròn xoe đáng yêu) & Nunito (Mềm mại, chữa lành) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,15 @@
 
     <style>
         /* ============================================================
-           BẢNG MÀU & FONT (HEALING INN / COZY STYLE)
+           FONT TH SOPHIA MELANIE (Hoặc fallback sang script tự nhiên)
+           ============================================================ */
+        @font-face {
+            font-family: 'TH Sophia Melanie';
+            src: local('TH Sophia Melanie'); 
+        }
+
+        /* ============================================================
+           BẢNG MÀU & VIBE (HEALING INN / COZY STYLE)
            ============================================================ */
         :root {
             --bg-main: #FFF9F5; /* Nền kem sữa ấm */
@@ -66,66 +74,118 @@
 
         /* Hiệu ứng nhún nhảy đáng yêu */
         .bounce { animation: bounce 2s infinite ease-in-out; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-8px) rotate(5deg); } }
+        @keyframes bounce { 
+            0%, 100% { transform: translateY(0) rotate(-3deg); } 
+            50% { transform: translateY(-8px) rotate(3deg); } 
+        }
 
         /* ============================================================
-           HEADER & BẢNG HIỆU NHÀ TRỌ
+           HEADER & BẢNG HIỆU GỖ NHÀ TRỌ ĐỈNH CAO
            ============================================================ */
         .header-section {
-            max-width: 800px; margin: 50px auto 30px auto; text-align: center; padding: 0 20px;
+            max-width: 850px; margin: 30px auto 30px auto; text-align: center; padding: 0 20px;
         }
         
-        /* CHỮ STICKER SIÊU TO NỔI BẬT KHỎI NỀN */
+        .signboard-wrapper {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            padding-top: 60px; /* Chừa không gian cho dây thừng */
+        }
+
+        /* Capybara thò đầu ra từ sau bảng */
+        .peeking-capy {
+            position: absolute;
+            top: -5px; right: -40px;
+            width: 150px;
+            z-index: 0; /* Nằm sau bảng hiệu */
+        }
+
+        /* Dây thừng treo bảng */
+        .ropes {
+            position: absolute;
+            top: 0; left: 15%; right: 15%;
+            display: flex; justify-content: space-between;
+            z-index: 1;
+        }
+        .rope {
+            width: 6px; height: 80px;
+            background: repeating-linear-gradient(to bottom, #d2a679, #d2a679 6px, #a67c52 6px, #a67c52 12px);
+            position: relative;
+            box-shadow: 2px 2px 5px rgba(92, 64, 51, 0.3);
+            border-radius: 3px;
+        }
+        .rope .bow {
+            position: absolute;
+            top: -20px; left: 50%; transform: translateX(-50%);
+            width: 70px; height: 70px;
+            filter: drop-shadow(0 5px 8px rgba(92, 64, 51, 0.25));
+        }
+
+        /* Tấm bảng gỗ óc chó */
+        .wooden-board {
+            background: #6B442A;
+            background-image: 
+                linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.03) 75%, transparent 75%, transparent);
+            background-size: 15px 15px;
+            border: 8px solid #432818;
+            border-radius: 35px;
+            padding: 45px 20px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 20px 40px rgba(92, 64, 51, 0.3), inset 0 0 25px rgba(0,0,0,0.4);
+            cursor: pointer; /* Cho biết có thể click */
+            user-select: none; /* KHÔNG THỂ BÔI ĐEN, BẢO ĐẢM DBLCLICK MƯỢT */
+            transition: 0.2s;
+        }
+        .wooden-board:active { transform: scale(0.98); }
+
+        /* Chữ Tem Dán 3D (Double Stroke) */
         .station-title {
-            font-family: var(--font-heading); 
-            font-size: 4rem; /* To gấp 2.5 lần */
+            font-family: 'TH Sophia Melanie', 'Comfortaa', cursive; 
+            font-size: 4.8rem; /* Kích thước siêu to 2.5x */
             font-weight: 900;
-            color: var(--text-dark); 
-            margin-bottom: 30px; 
-            cursor: pointer; 
-            display: flex; align-items: center; justify-content: center; gap: 20px;
-            user-select: none; /* Tránh bôi đen khi click đúp */
-            position: relative; z-index: 10;
-            
-            /* Hiệu ứng Tem Dán - Lớp 1 Trắng, Lớp 2 Cam Đào */
+            color: #FFF; /* Gỗ sơn trắng rực rỡ */
+            margin: 0;
+            line-height: 1;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 3px;
             text-shadow: 
-                /* Viền Trắng Tinh (4px) */
-                -4px -4px 0 #FFF, 4px -4px 0 #FFF, -4px 4px 0 #FFF, 4px 4px 0 #FFF,
-                 0px -4px 0 #FFF, 0px 4px 0 #FFF, -4px 0px 0 #FFF, 4px 0px 0 #FFF,
-                /* Viền Cam Đào Phủ Ngoài (8px) */
-                -8px -8px 0 var(--accent-peach), 8px -8px 0 var(--accent-peach),
-                -8px 8px 0 var(--accent-peach), 8px 8px 0 var(--accent-peach),
-                 0px -8px 0 var(--accent-peach), 0px 8px 0 var(--accent-peach),
-                -8px 0px 0 var(--accent-peach), 8px 0px 0 var(--accent-peach),
-                /* Bóng đổ 3D để nhô hẳn lên */
-                0 15px 25px rgba(92, 64, 51, 0.2);
+                /* Viền Nâu Ca Cao ôm sát chữ */
+                -2px -2px 0 var(--text-dark), 2px -2px 0 var(--text-dark), -2px 2px 0 var(--text-dark), 2px 2px 0 var(--text-dark),
+                0px -2px 0 var(--text-dark), 0px 2px 0 var(--text-dark), -2px 0px 0 var(--text-dark), 2px 0px 0 var(--text-dark),
+                /* Viền Trắng Tuyết lớp 1 */
+                -7px -7px 0 #FFF, 7px -7px 0 #FFF, -7px 7px 0 #FFF, 7px 7px 0 #FFF,
+                0px -7px 0 #FFF, 0px 7px 0 #FFF, -7px 0px 0 #FFF, 7px 0px 0 #FFF,
+                /* Viền Cam Đào lớp ngoài cùng */
+                -11px -11px 0 var(--accent-peach), 11px -11px 0 var(--accent-peach), -11px 11px 0 var(--accent-peach), 11px 11px 0 var(--accent-peach),
+                0px -11px 0 var(--accent-peach), 0px 11px 0 var(--accent-peach), -11px 0px 0 var(--accent-peach), 11px 0px 0 var(--accent-peach),
+                /* Bóng đổ nổi bần bật lên màn hình */
+                0 25px 30px rgba(0,0,0,0.5);
         }
 
-        .station-title .svg-icon {
-            width: 65px; height: 65px;
-            filter: drop-shadow(0 8px 10px rgba(92, 64, 51, 0.2));
-        }
-
-        /* Bảng Hiệu Ghi Giới Thiệu (Nhà trọ vibe) */
-        .signboard {
+        /* Khung giấy Note Giới thiệu */
+        .signboard-note {
             background: #FFF;
             border: 3.5px dashed var(--accent-mocha);
-            border-radius: 30px;
-            padding: 35px 25px 25px 25px;
+            border-radius: 25px;
+            padding: 30px 20px 20px 20px;
             position: relative;
             box-shadow: var(--shadow-soft);
-            margin-bottom: 35px;
+            margin: 0 auto 35px auto;
+            max-width: 600px;
         }
-        /* Miếng băng keo dán bảng */
-        .signboard::before {
-            content: ''; position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-2deg);
-            width: 60px; height: 24px; background: var(--accent-pink); border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05); border: 2px solid var(--text-dark);
+        .signboard-note::before {
+            content: ''; position: absolute; top: -10px; left: 50%; transform: translateX(-50%) rotate(-3deg);
+            width: 70px; height: 26px; background: var(--accent-pink); border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08); border: 2px solid var(--text-dark);
         }
         .station-desc {
             font-size: 1.15rem; color: var(--text-dark); white-space: pre-wrap; font-weight: 700; line-height: 1.7;
         }
 
+        /* Các Nút Trung Tâm (2 Ô hình viên thuốc) */
         .top-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .btn-top {
             padding: 14px 28px; border-radius: 50px; font-weight: 800; font-size: 1rem;
@@ -142,7 +202,7 @@
             display: flex; flex-direction: column; align-items: center; gap: 20px;
         }
 
-        /* Thanh Search có Icon lúp (Theo ảnh 2) */
+        /* Thanh Search có Icon lúp */
         .search-wrapper { 
             width: 100%; max-width: 600px; position: relative; 
             display: flex; align-items: center;
@@ -158,7 +218,7 @@
         .search-input:focus { border-color: var(--accent-peach); }
         .search-input::placeholder { color: #C4B5A9; font-weight: 600; }
 
-        /* Tag Viên thuốc (Ảnh 1) */
+        /* Tag Viên thuốc */
         .pill-tags-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 900px; }
         .pill-tag {
             padding: 10px 24px; border-radius: 50px; font-size: 0.95rem; font-weight: 800;
@@ -211,7 +271,7 @@
         }
         .b-header-info { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
         .b-avatar-mini { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-peach); }
-        .b-name { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--text-dark); }
+        .b-name { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--text-dark); line-height: 1.2;}
         
         .b-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
         .b-tag { font-size: 0.75rem; padding: 6px 14px; background: var(--bg-main); border-radius: 50px; color: var(--text-dark); font-weight: 800; border: 2px solid var(--border-soft); }
@@ -337,7 +397,7 @@
             box-shadow: var(--shadow-soft);
         }
         .up-avatar-wrap { position:relative; margin-bottom: 25px; }
-        .up-avatar { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; filter: blur(3px); border: 5px solid #FFF; box-shadow: 0 10px 25px rgba(92, 64, 51, 0.15);}
+        .up-avatar { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; filter: blur(3px) grayscale(0.2); border: 5px solid #FFF; box-shadow: 0 10px 25px rgba(92, 64, 51, 0.15);}
         
         /* Chỉnh nơ cho thẻ sắp ra mắt */
         .up-bow { position: absolute; top: -15px; right: -15px; filter: drop-shadow(0 6px 10px rgba(92, 64, 51, 0.15)); }
@@ -395,6 +455,21 @@
                 <circle cx="12" cy="12" r="2.5" fill="#FFF" class="icon-stroke"/>
             </g>
             
+            <!-- Hộp quà Múp Mím (Sắp ra mắt) -->
+            <g id="icon-gift">
+                <!-- Thân hộp -->
+                <rect x="4" y="10" width="16" height="12" rx="2" fill="var(--bg-card)" class="icon-stroke"/>
+                <!-- Nắp hộp -->
+                <rect x="2" y="6" width="20" height="4" rx="2" fill="var(--accent-peach)" class="icon-stroke"/>
+                <!-- Dây ruy băng dọc -->
+                <line x1="12" y1="6" x2="12" y2="22" class="icon-stroke"/>
+                <!-- Dây ruy băng ngang -->
+                <line x1="4" y1="16" x2="20" y2="16" class="icon-stroke"/>
+                <!-- Nơ nhỏ xíu ở trên nắp -->
+                <path d="M12 6 C12 6 6 -2 3 2 C0 6 12 6 12 6 Z" fill="var(--accent-pink)" class="icon-stroke"/>
+                <path d="M12 6 C12 6 18 -2 21 2 C24 6 12 6 12 6 Z" fill="var(--accent-pink)" class="icon-stroke"/>
+            </g>
+
             <!-- Dấu chân Capy béo -->
             <g id="icon-paw">
                 <path d="M12 21c-4.5 0-6.5-3-6.5-6.5s2.5-5.5 6.5-5.5 6.5 2 6.5 5.5-2 6.5-6.5 6.5zM7 7a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm5-1.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm5 1.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="var(--accent-mocha)"/>
@@ -443,20 +518,31 @@
 
     <!-- HEADER: TÊN QUÁN & BẢNG HIỆU -->
     <header class="header-section">
-        <!-- Chữ sticker to đùng, dùng user-select:none để click đúp mượt mà -->
-        <h1 class="station-title" id="trigger-admin" title="Nhấp đúp vào đây để vào Admin">
-            <svg class="svg-icon bounce"><use href="#icon-ribbon"></use></svg> 
-            QUÁN TRỌ CAPY 
-            <svg class="svg-icon bounce"><use href="#icon-ribbon"></use></svg>
-        </h1>
+        <div class="signboard-wrapper">
+            <!-- Bé Capy thò đầu lấp ló phía sau bảng hiệu -->
+            <img src="ChatGPT_Image_18_04_35_30_thg_7__2026-removebg-preview.png" alt="Peeking Capy" class="peeking-capy bounce">
+            
+            <!-- Dây thừng treo bảng -->
+            <div class="ropes">
+                <div class="rope"><svg class="bow svg-icon" viewBox="0 0 24 24"><use href="#icon-ribbon"></use></svg></div>
+                <div class="rope"><svg class="bow svg-icon" viewBox="0 0 24 24"><use href="#icon-ribbon"></use></svg></div>
+            </div>
+            
+            <!-- Bảng gỗ Óc Chó có ID gắn sẵn cho việc Click Mở Mật Khẩu Admin -->
+            <div class="wooden-board" id="trigger-admin" title="Nhấp đúp vào Bảng Hiệu để vào Admin">
+                <h1 class="station-title">
+                    QUÁN TRỌ CAPY 
+                </h1>
+            </div>
+        </div>
         
-        <div class="signboard">
+        <div class="signboard-note">
             <div class="station-desc" id="station-bio">Đang pha trà sữa đào...</div>
         </div>
 
         <div class="top-buttons">
-            <button class="btn-top" onclick="openSMModal()"><svg class="svg-icon"><use href="#icon-cute-orange"></use></svg> Chủ Quán Capy</button>
-            <button class="btn-top" onclick="openUpcomingModal()"><svg class="svg-icon"><use href="#icon-paw"></use></svg> Sắp Ra Mắt</button>
+            <button class="btn-top" onclick="openSMModal()"><img src="ChatGPT_Image_18_01_27_30_thg_7__2026-removebg-preview.png" style="width:28px;height:28px;object-fit:cover;border-radius:50%;"> Thông tin chủ quán</button>
+            <button class="btn-top" onclick="openUpcomingModal()"><svg class="svg-icon bounce"><use href="#icon-gift"></use></svg> Sắp Ra Mắt</button>
         </div>
     </header>
 
@@ -518,7 +604,7 @@
            CƠ SỞ DỮ LIỆU & TRẠNG THÁI (CAPY STATION V2)
            ============================================================ */
         let CONFIG = {
-            stationMaster: { bio: "Nơi đàn Capybara ngâm mình ven suối, cùng lữ khách bước vào những thế giới mở rộng lớn...", rules: "Hãy lịch sự và yêu thương động vật nhé!", avatar: "" },
+            stationMaster: { bio: "Nơi đàn Capybara ngâm mình ven suối, cùng lữ khách bước vào những thế giới mở rộng lớn...", rules: "Hãy lịch sự và yêu thương động vật nhé!", avatar: "ChatGPT_Image_18_01_27_30_thg_7__2026-removebg-preview.png" },
             staff: [], // {id, name, avatar, hook, tags, link, feedbacks: [{id, name, stars, text, imgs, date, replies:[]}], isHidden, createdAt}
             upcomingBots: [] // {id, name, avatar, idea, train, progress, note, votes, isHidden}
         };
@@ -673,7 +759,7 @@
             });
 
             if(displayBots.length === 0) {
-                grid.innerHTML = "<p style='color:var(--text-muted); width:100%; text-align:center; padding: 40px; font-weight:800; font-size:1.2rem;'><svg class='svg-icon'><use href='#icon-paw'></use></svg> Không tìm thấy phòng nào phù hợp.</p>"; return;
+                grid.innerHTML = "<p style='color:var(--text-muted); width:100%; text-align:center; padding: 40px; font-weight:800; font-size:1.2rem;'><svg class='svg-icon'><use href='#icon-paw'></use></svg> Hiện không có phòng nào phù hợp.</p>"; return;
             }
 
             displayBots.forEach(bot => {
@@ -701,7 +787,7 @@
                     <div class="b-img-wrap">
                         <img src="${bot.avatar || ''}" loading="lazy">
                         <div class="b-rating">
-                            <svg class="svg-icon" style="width:20px;height:20px;"><use href="#icon-star-filled"></use></svg> 
+                            <svg class="svg-icon star-icon" style="width:20px;height:20px;"><use href="#icon-star-filled"></use></svg> 
                             ${rating}
                         </div>
                     </div>
@@ -719,7 +805,7 @@
                             ${bot.link ? `<a href="${bot.link}" target="_blank" class="b-btn b-btn-link" onclick="event.stopPropagation();"><svg class="svg-icon" style="width:20px;height:20px;color:#FFF"><use href="#icon-key"></use></svg> Ghé Thăm Phòng</a>` : `<button class="b-btn b-btn-link" style="opacity:0.5; cursor:not-allowed;" onclick="event.stopPropagation();">ĐANG DỌN PHÒNG</button>`}
                         </div>
 
-                        <!-- Con dấu Capy -->
+                        <!-- Con dấu Capy (Góc dưới phải) -->
                         <svg class="b-seal svg-icon" style="position:absolute; bottom:15px; right:15px; width:45px; height:45px; color:var(--accent-peach); opacity:0.8;" viewBox="0 0 24 24"><use href="#icon-paw"></use></svg>
                     </div>
                 `;
@@ -915,7 +1001,7 @@
             
             document.getElementById("modal-body").innerHTML = `
                 <div style="text-align:center; margin-bottom:30px;">
-                    ${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="width:160px; height:160px; border-radius:50%; object-fit:cover; margin:0 auto; border:5px solid var(--accent-peach); box-shadow:var(--shadow-soft);">` : `<svg class="svg-icon" style="width:120px; height:120px; color:var(--accent-mocha);"><use href="#icon-capy-head"></use></svg>`}
+                    ${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="width:160px; height:160px; border-radius:50%; object-fit:cover; margin:0 auto; border:4px solid var(--accent-peach); box-shadow:var(--shadow-soft);">` : `<svg class="svg-icon" style="width:120px; height:120px; color:var(--accent-mocha);"><use href="#icon-cute-orange"></use></svg>`}
                 </div>
                 <div style="white-space:pre-wrap; color:var(--text-dark); font-size:1.15rem; font-weight:700; text-align:center; background:#FFF; padding:30px; border-radius:30px; border:3.5px dashed var(--accent-mocha); margin-bottom:25px; box-shadow:var(--shadow-soft);">${CONFIG.stationMaster.bio}</div>
                 
@@ -928,7 +1014,7 @@
         };
 
         window.openUpcomingModal = function() {
-            document.getElementById("modal-title").innerHTML = `<svg class="svg-icon"><use href="#icon-paw"></use></svg> PHÒNG SẮP RA MẮT`;
+            document.getElementById("modal-title").innerHTML = `<svg class="svg-icon"><use href="#icon-gift"></use></svg> PHÒNG SẮP RA MẮT`;
             const body = document.getElementById("modal-body");
             
             let displayBots = CONFIG.upcomingBots.filter(b => !b.isHidden || isAdminMode);
@@ -962,7 +1048,7 @@
                             </div>
                             
                             <button class="up-vote-btn ${hasVoted?'voted':''}" onclick="voteUp('${bot.id}')">
-                                ${hasVoted ? '❤️ Đã gửi tình yêu' : '🤍 Hóng hớt'} (${bot.votes || 0})
+                                ${hasVoted ? '❤️ Đã gửi tình yêu' : '🤍 Chấm hóng'} (${bot.votes || 0})
                             </button>
                         </div>
                     `;
@@ -1004,7 +1090,7 @@
 
         let tempAdminImg = "";
         window.openAdminForm = function(type, action, id) {
-            document.getElementById("admin-form-title").innerHTML = `<svg class="svg-icon" style="width:30px;height:30px;"><use href="#icon-capy-head"></use></svg> BẢNG ĐIỀU KHIỂN`;
+            document.getElementById("admin-form-title").innerHTML = `<svg class="svg-icon" style="width:30px;height:30px;"><use href="#icon-cute-orange"></use></svg> BẢNG ĐIỀU KHIỂN`;
             const body = document.getElementById("admin-form-body");
             tempAdminImg = "";
 
@@ -1031,7 +1117,7 @@
                     </div>
                     <button class="fb-btn-submit" id="ad-save">LƯU LẠI THÔNG TIN</button>
                 `;
-                tempAdminImg = CONFIG.stationMaster.avatar || "";
+                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_01_27_30_thg_7__2026-removebg-preview.png";
                 document.getElementById("ad-sm-img").onchange = async (e) => {
                     if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:120px; border-radius:50%; border:4px solid var(--accent-peach);">`; }
                 };
