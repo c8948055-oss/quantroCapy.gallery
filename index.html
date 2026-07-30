@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nhà Ga Meown - Tối Giản</title>
-
-    <link rel="icon" href="ChatGPT_Image_02_56_58_7_thg_7__2026-removebg-preview-removebg-preview.png" type="image/png">
+    <title>Nhà Ga Meown - Reborn</title>
+    
+    <!-- Fonts: Playfair Display (Serif sang trọng) & Inter (Sans-serif hiện đại) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&display=swap" rel="stylesheet">
     
     <!-- Supabase & LocalForage -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -16,577 +16,349 @@
 
     <style>
         /* ============================================================
-           BIẾN MÀU SẮC & FONT CHỮ (MINIMALIST)
+           BIẾN MÀU SẮC & FONT CHỮ (DARK CINEMATIC)
            ============================================================ */
         :root {
-            --bg-main: #fcfafb; /* Nền trắng hồng pastel rất nhẹ */
-            --text-dark: #2a2a2a;
-            --text-light: #7a7a7a;
-            --accent: #d4a373; /* Nâu vàng nhạt */
-            --accent-hover: #b5835a;
-            --card-bg: #111418; /* Tối thẫm cho thẻ */
+            --bg-deep: #0B112C; /* Xanh đêm thẫm */
+            --bg-card: #0F0F14; /* Xám đen than củi */
+            --bg-surface: #1A1F3A;
+            --accent-cyan: #99F2F8; /* Xanh lơ nhạt */
+            --accent-purple: #C4B5FD; /* Tím mờ */
+            --accent-amber: #FDE68A; /* Vàng hổ phách nhạt */
+            --text-main: #E2E8F0;
+            --text-muted: #94A3B8;
             
             --font-heading: 'Playfair Display', serif;
-            --font-body: 'Be Vietnam Pro', sans-serif;
-
-            --modal-bg: #0b0f19; /* Nền xanh đen sâu thẳm của modal detail */
-            --modal-border: #1e293b;
+            --font-body: 'Inter', sans-serif;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
-            background: linear-gradient(135deg, #fff5f5 0%, #fdfbfb 100%);
-            color: var(--text-dark); 
+            background-color: var(--bg-deep);
+            color: var(--text-main); 
             font-family: var(--font-body); 
             min-height: 100vh;
             overflow-x: hidden;
             line-height: 1.6;
+            background-image: radial-gradient(circle at 50% 0%, rgba(25, 30, 70, 0.6) 0%, transparent 70%);
         }
-        button { cursor: pointer; border: none; background: none; font-family: inherit; }
+        button { cursor: pointer; border: none; background: none; font-family: inherit; outline: none;}
         input, select, textarea { font-family: inherit; outline: none; }
         img { max-width: 100%; display: block; }
-        
+        a { text-decoration: none; color: inherit; }
         .hidden { display: none !important; }
 
         /* ============================================================
-           HEADER (GIỚI THIỆU NHÀ GA)
+           HEADER (TÊN GA & 2 NÚT TRUNG TÂM)
            ============================================================ */
-        .station-header {
-            max-width: 800px;
-            margin: 60px auto 40px auto;
-            text-align: center;
-            padding: 0 20px;
-            position: relative;
+        .header-section {
+            max-width: 800px; margin: 80px auto 40px auto; text-align: center; padding: 0 20px;
         }
         .station-title {
-            font-family: var(--font-heading);
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            cursor: pointer; /* Cho dblclick Admin */
+            font-family: var(--font-heading); font-size: 3.5rem; font-weight: 900;
+            background: linear-gradient(to right, #FFF, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 20px; cursor: pointer; letter-spacing: 2px;
         }
         .station-desc {
-            font-size: 1rem;
-            color: var(--text-light);
-            font-weight: 400;
-            white-space: pre-wrap;
+            font-size: 1rem; color: var(--text-muted); white-space: pre-wrap; margin-bottom: 30px; font-weight: 300;
         }
+        .top-buttons {
+            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
+        }
+        .btn-top {
+            padding: 10px 24px; border-radius: 50px; font-weight: 600; font-size: 0.9rem;
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-main); transition: 0.3s; backdrop-filter: blur(5px);
+        }
+        .btn-top:hover { background: rgba(255,255,255,0.1); border-color: var(--accent-purple); color: var(--accent-purple); }
 
         /* ============================================================
-           THANH TÌM KIẾM & TAG ĐỘNG
+           BỘ LỌC (TAG ĐỘNG & TÌM KIẾM)
            ============================================================ */
-        .controls-section {
-            max-width: 1200px;
-            margin: 0 auto 50px auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            padding: 0 20px;
+        .filter-section {
+            max-width: 1200px; margin: 0 auto 50px auto; padding: 0 20px;
+            display: flex; flex-direction: column; align-items: center; gap: 25px;
         }
-        .search-wrapper {
-            width: 100%;
-            max-width: 600px;
-            position: relative;
-        }
-        .search-input {
-            width: 100%;
-            padding: 16px 24px;
-            border-radius: 50px;
-            border: 1px solid #e2e8f0;
-            background: #fff;
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
-        }
-        .search-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 4px 20px rgba(212, 163, 115, 0.15);
-        }
-
         .pill-tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            max-width: 900px;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 900px;
         }
         .pill-tag {
-            padding: 8px 18px;
-            border-radius: 50px;
-            border: 1px solid #e2e8f0;
-            background: #fff;
-            color: var(--text-light);
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
+            padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 500;
+            background: transparent; border: 1px solid rgba(255,255,255,0.15); color: var(--text-muted);
+            transition: 0.3s;
         }
-        .pill-tag:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
+        .pill-tag:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
         .pill-tag.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: #fff;
-            box-shadow: 0 4px 10px rgba(212, 163, 115, 0.3);
+            background: rgba(56, 189, 248, 0.1); border-color: var(--accent-cyan); color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
         }
+
+        .search-wrapper { width: 100%; max-width: 500px; position: relative; }
+        .search-input {
+            width: 100%; padding: 14px 24px; border-radius: 50px; background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 0.95rem; transition: 0.3s;
+        }
+        .search-input:focus { border-color: var(--accent-purple); box-shadow: 0 0 15px rgba(167, 139, 250, 0.2); }
 
         /* ============================================================
            GRID THẺ NHÂN VIÊN
            ============================================================ */
-        .main-content {
-            max-width: 1400px;
-            margin: 0 auto 80px auto;
-            padding: 0 20px;
-        }
-        .grid-header {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
-        }
+        .main-container { max-width: 1400px; margin: 0 auto 80px auto; padding: 0 20px; }
+        .grid-header { display: flex; justify-content: flex-end; margin-bottom: 25px; }
         .sort-select {
-            padding: 8px 16px;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-            background: #fff;
-            font-size: 0.85rem;
-            color: var(--text-dark);
-            font-weight: 500;
-            cursor: pointer;
+            padding: 8px 16px; border-radius: 8px; background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-main); font-size: 0.85rem; font-weight: 500; cursor: pointer;
         }
 
         .bot-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px;
         }
 
-        /* THIẾT KẾ THẺ MỚI (TỐI THẪM, 9:16) */
+        /* THIẾT KẾ THẺ NHÂN VIÊN (DARK THEME) */
         .bot-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
+            background: var(--bg-card); border-radius: 16px; overflow: hidden; position: relative;
+            display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; height: 100%;
         }
-        .bot-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
+        .bot-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.15); box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
         
-        .bot-image-wrap {
-            width: 100%;
-            aspect-ratio: 9/16;
-            position: relative;
-            background: #222;
-        }
-        .bot-image-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.9);
-            transition: 0.3s;
-        }
-        .bot-card:hover .bot-image-wrap img {
-            filter: brightness(1.05);
-            transform: scale(1.03);
+        .b-img-wrap { width: 100%; aspect-ratio: 9/16; position: relative; background: #000; overflow: hidden;}
+        .b-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.85); transition: 0.4s; }
+        .bot-card:hover .b-img-wrap img { filter: brightness(1.05); transform: scale(1.03); }
+
+        .b-rating {
+            position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+            color: var(--accent-amber); padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
+            border: 1px solid rgba(253, 230, 138, 0.3); z-index: 2; display: flex; align-items: center; gap: 4px;
         }
 
-        .bot-rating-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(4px);
-            color: #000;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 2;
+        .b-info {
+            position: absolute; bottom: 0; left: 0; right: 0; padding: 40px 20px 20px 20px;
+            background: linear-gradient(to top, rgba(15,15,20,1) 0%, rgba(15,15,20,0.95) 40%, rgba(15,15,20,0) 100%);
+            display: flex; flex-direction: column; z-index: 2;
         }
-
-        .bot-info-area {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 40px 20px 20px 20px;
-            background: linear-gradient(to top, rgba(10,12,16,1) 0%, rgba(10,12,16,0.9) 40%, rgba(10,12,16,0) 100%);
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            z-index: 2;
+        .b-name { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: #FFF; margin-bottom: 8px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); letter-spacing: 1px;}
+        .b-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+        .b-tag { font-size: 0.65rem; padding: 4px 8px; background: rgba(255,255,255,0.1); border-radius: 4px; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px;}
+        .b-hook { font-size: 0.85rem; color: var(--text-main); font-style: italic; margin-bottom: 20px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-shadow: 0 1px 5px #000;}
+        
+        .b-actions { display: flex; gap: 10px; }
+        .b-btn { 
+            flex: 1; padding: 12px 0; border-radius: 8px; font-size: 0.75rem; font-weight: 700; text-align: center; 
+            letter-spacing: 0.5px; transition: 0.2s; text-transform: uppercase;
         }
-        .bot-name {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            text-shadow: 0 0 15px rgba(255,255,255,0.4);
-        }
-        .bot-mini-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 12px;
-        }
-        .bot-mini-tag {
-            font-size: 0.7rem;
-            padding: 3px 8px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 4px;
-            color: #e2e8f0;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .bot-hook {
-            font-size: 0.85rem;
-            color: #cbd5e1;
-            font-style: italic;
-            margin-bottom: 15px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .bot-action-btn {
-            width: 100%;
-            padding: 12px;
-            background: transparent;
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-        .bot-card:hover .bot-action-btn {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-        }
+        .b-btn-detail { background: var(--text-main); color: var(--bg-deep); }
+        .b-btn-detail:hover { background: #FFF; box-shadow: 0 0 15px rgba(255,255,255,0.5); }
+        .b-btn-fb { background: rgba(255,255,255,0.1); color: #FFF; border: 1px solid rgba(255,255,255,0.2); }
+        .b-btn-fb:hover { background: rgba(255,255,255,0.2); border-color: #FFF; }
 
         /* ============================================================
-           MODAL CHI TIẾT (DARK BLUE THEME NHƯ ẢNH REFERENCE)
+           MODAL CHUNG & GÓC FEEDBACK
            ============================================================ */
-        .detail-modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            z-index: 1000; display: none; justify-content: center; align-items: center; padding: 20px;
         }
-        .detail-modal-overlay.show {
-            opacity: 1;
-            pointer-events: auto;
+        .modal-overlay.show { display: flex; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+        
+        .modal-content {
+            background: var(--bg-surface); width: 100%; max-width: 800px; border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1); overflow: hidden; display: flex; flex-direction: column;
+            max-height: 90vh; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
-        .detail-modal-content {
-            background: var(--modal-bg);
-            width: 100%;
-            max-width: 900px;
-            max-height: 90vh;
-            border-radius: 16px;
-            border: 1px solid var(--modal-border);
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            color: #e2e8f0;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
+        .m-header {
+            padding: 20px 30px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.2);
         }
-        .detail-modal-overlay.show .detail-modal-content {
-            transform: translateY(0);
-        }
-        .detail-modal-content::-webkit-scrollbar { width: 6px; }
-        .detail-modal-content::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        .m-title { font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent-amber); margin: 0; }
+        .m-close { font-size: 1.5rem; color: var(--text-muted); transition: 0.2s; }
+        .m-close:hover { color: #EF4444; }
+        .m-body { padding: 30px; overflow-y: auto; flex: 1; }
+        .m-body::-webkit-scrollbar { width: 6px; }
+        .m-body::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
 
-        .dm-close {
-            position: fixed; /* Giữ cố định nút close khi cuộn */
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            z-index: 10;
-            transition: 0.2s;
-        }
-        .dm-close:hover { background: #ef4444; }
+        /* CỤM FEEDBACK FORM */
+        .fb-form { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 30px; }
+        .stars-select { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; font-size: 2rem; color: #334155; cursor: pointer; }
+        .star-item.active { color: var(--accent-amber); text-shadow: 0 0 15px rgba(253, 230, 138, 0.5); }
+        .fb-input { width: 100%; padding: 12px 16px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #FFF; margin-bottom: 15px; font-size: 0.9rem;}
+        .fb-input:focus { border-color: var(--accent-cyan); }
+        .fb-btn-submit { width: 100%; padding: 12px; background: var(--accent-purple); color: #000; font-weight: bold; border-radius: 8px; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;}
+        .fb-btn-submit:hover { background: #FFF; box-shadow: 0 0 15px rgba(196, 181, 253, 0.5); }
+        .file-upload-label { display: inline-block; padding: 10px 15px; background: rgba(255,255,255,0.1); border-radius: 8px; font-size: 0.8rem; color: var(--text-main); cursor: pointer; margin-bottom: 15px; transition: 0.2s;}
+        .file-upload-label:hover { background: rgba(255,255,255,0.2); }
+        .img-preview { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;}
+        .img-preview img { width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); }
 
-        .dm-header {
-            padding: 40px;
-            background: linear-gradient(180deg, #1e293b 0%, #0b0f19 100%);
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            border-bottom: 1px solid #1e293b;
-        }
-        .dm-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid #334155;
-            object-fit: cover;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
-        .dm-title-area { flex: 1; }
-        .dm-name {
-            font-family: var(--font-heading);
-            font-size: 2.2rem;
-            color: #fff;
-            margin-bottom: 15px;
-        }
-        .dm-tags-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .dm-tag {
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: 1px solid #334155;
-            color: #94a3b8;
-            font-size: 0.8rem;
-            background: rgba(0,0,0,0.2);
-        }
-
-        .dm-body {
-            padding: 40px;
-        }
-        /* Style cho nội dung rich text bên trong Modal */
-        .dm-body h1, .dm-body h2, .dm-body h3 {
-            font-family: var(--font-heading);
-            color: #fff;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #1e293b;
-            padding-bottom: 8px;
-            font-weight: 600;
-        }
-        .dm-body p { margin-bottom: 15px; color: #cbd5e1; line-height: 1.8; }
-        .dm-body ul { padding-left: 20px; margin-bottom: 15px; color: #cbd5e1; }
-        .dm-body li { margin-bottom: 8px; }
-
-        .dm-action-bar {
-            padding: 20px 40px;
-            background: #0f172a;
-            border-top: 1px solid #1e293b;
-            display: flex;
-            justify-content: flex-end;
-            position: sticky;
-            bottom: 0;
-        }
-        .dm-chat-btn {
-            background: #fff;
-            color: #000;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: 0.2s;
-        }
-        .dm-chat-btn:hover { background: var(--accent); color: #fff; }
+        /* DANH SÁCH FEEDBACK */
+        .fb-list { display: flex; flex-direction: column; gap: 20px; }
+        .fb-item { background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; border-left: 3px solid var(--accent-cyan); position: relative;}
+        .fb-item-header { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center;}
+        .fb-item-name { font-weight: 700; color: #FFF; font-size: 1.1rem; }
+        .fb-item-stars { color: var(--accent-amber); font-size: 0.9rem; }
+        .fb-item-text { color: var(--text-main); font-size: 0.95rem; line-height: 1.6; white-space: pre-wrap; margin-bottom: 15px;}
+        .fb-item-imgs { display: flex; gap: 10px; flex-wrap: wrap; }
+        .fb-item-imgs img { width: 100px; height: 100px; object-fit: cover; border-radius: 8px; cursor: zoom-in; }
+        .fb-del-btn { background: #7F1D1D; color: #FFF; padding: 4px 10px; font-size: 0.7rem; border-radius: 4px; margin-top: 10px;}
 
         /* ============================================================
-           CHẾ ĐỘ ADMIN (TỐI GIẢN)
+           ADMIN PANEL (THÔNG BÁO & CÔNG CỤ)
            ============================================================ */
-        .admin-controls { display: none; }
-        body.is-admin .admin-controls { display: flex; }
-        body.is-admin .bot-card { border: 2px solid #334155; }
-        
-        .admin-bar-global {
-            position: fixed; top: 0; left: 0; right: 0; background: #000; color: #fff;
-            padding: 10px 20px; z-index: 9999; display: none; justify-content: space-between; align-items: center;
+        .admin-bar {
+            position: fixed; top: 0; left: 0; right: 0; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 20px; z-index: 9999;
+            display: none; justify-content: space-between; align-items: center;
         }
-        body.is-admin .admin-bar-global { display: flex; }
+        body.is-admin .admin-bar { display: flex; }
+        .admin-controls { display: flex; gap: 10px; align-items: center;}
+        .btn-ad { padding: 6px 12px; background: #334155; color: #FFF; border-radius: 6px; font-size: 0.8rem; font-weight: 600; transition: 0.2s;}
+        .btn-ad:hover { background: var(--accent-cyan); color: #000; }
+        .btn-ad.danger { background: transparent; border: 1px solid #EF4444; color: #EF4444; }
+        .btn-ad.danger:hover { background: #EF4444; color: #FFF; }
         
-        .admin-btn {
-            background: #334155; color: #fff; border-radius: 4px; padding: 6px 12px; font-size: 0.8rem; transition: 0.2s;
-        }
-        .admin-btn:hover { background: var(--accent); }
-        .admin-btn.danger { background: #7f1d1d; }
+        /* Nút Notification */
+        .noti-btn { position: relative; cursor: pointer; color: var(--accent-amber); font-size: 1.2rem; margin-right: 15px;}
+        .noti-badge { position: absolute; top: -5px; right: -8px; background: #EF4444; color: #FFF; font-size: 0.65rem; padding: 2px 5px; border-radius: 10px; font-weight: bold; }
 
-        .card-admin-overlay {
-            position: absolute; top: 10px; left: 10px; z-index: 10;
-            display: none; gap: 5px;
-        }
+        /* Khung Admin gắn trên thẻ */
+        .card-admin-overlay { position: absolute; top: 10px; left: 10px; z-index: 10; display: none; gap: 5px; flex-direction: column;}
         body.is-admin .card-admin-overlay { display: flex; }
+        .btn-card-ad { background: rgba(0,0,0,0.8); color: #FFF; border: 1px solid #FFF; padding: 4px 8px; font-size: 0.7rem; border-radius: 4px; }
+        .btn-card-ad:hover { background: #FFF; color: #000; }
 
-        /* Form Admin Popup Cơ Bản */
-        .admin-modal {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 10000;
-            display: none; justify-content: center; align-items: center; padding: 20px;
+        /* ============================================================
+           THIẾT KẾ THẺ SẮP RA MẮT (UPCOMING BOTS)
+           ============================================================ */
+        .up-card {
+            background: #111; border: 1px dashed rgba(255,255,255,0.2); border-radius: 16px; padding: 20px;
+            display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;
         }
-        .admin-modal.show { display: flex; }
-        .admin-modal-box {
-            background: #fff; width: 100%; max-width: 700px; padding: 30px; border-radius: 12px;
-            max-height: 90vh; overflow-y: auto; color: #000;
-        }
-        .admin-form-group { margin-bottom: 15px; }
-        .admin-form-group label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.9rem; }
-        .admin-form-group input, .admin-form-group select, .admin-form-group textarea {
-            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; background: #fafafa; color:#000;
-        }
-        .rt-toolbar { display: flex; gap: 5px; margin-bottom: 5px; background: #eee; padding: 5px; border-radius: 6px;}
-        .rt-toolbar button { padding: 4px 8px; background: #fff; border: 1px solid #ccc; border-radius: 4px; font-size: 12px;}
-        .rt-editor-box { border: 1px solid #ccc; min-height: 200px; padding: 10px; border-radius: 6px; overflow-y: auto; background: #fff;}
+        .up-avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; filter: grayscale(1); margin-bottom: 15px; border: 2px solid #334155;}
+        .up-name { font-family: var(--font-heading); font-size: 1.4rem; color: var(--accent-purple); margin-bottom: 10px;}
+        .up-route { font-size: 0.75rem; color: #FFF; background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 20px; margin-bottom: 15px;}
+        .up-idea { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5;}
+        
+        .up-progress-wrap { width: 100%; margin-bottom: 20px; text-align: left; }
+        .up-p-header { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-main); margin-bottom: 5px; font-weight:bold;}
+        .up-p-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;}
+        .up-p-fill { height: 100%; background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan)); }
+        .up-p-note { font-size: 0.75rem; color: var(--accent-amber); margin-top: 8px; font-style: italic;}
+        
+        .up-vote-btn { width: 100%; padding: 10px; border-radius: 8px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #FFF; font-weight: bold; transition: 0.2s;}
+        .up-vote-btn.voted { border-color: #EF4444; color: #EF4444; }
+        .up-vote-btn:hover { background: rgba(255,255,255,0.1); }
 
-        /* Responsive */
+        /* Lightbox (Zoom ảnh) */
+        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 10000; display: none; justify-content: center; align-items: center; cursor: zoom-out;}
+        .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 8px; }
+
         @media (max-width: 600px) {
-            .station-title { font-size: 2rem; }
-            .dm-header { flex-direction: column; text-align: center; padding: 30px 20px; }
-            .dm-tags-row { justify-content: center; }
+            .station-title { font-size: 2.2rem; }
             .bot-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+            .m-body { padding: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- THANH ADMIN TRÊN CÙNG -->
-    <div class="admin-bar-global">
-        <div style="font-weight: bold; color: var(--accent);">🛠 TRẠM ĐIỀU KHIỂN (ADMIN)</div>
-        <div style="display: flex; gap: 10px;">
-            <button class="admin-btn" onclick="openAdminModal('sm')">Sửa Lời Giới Thiệu</button>
-            <button class="admin-btn" onclick="openAdminModal('bot', 'add')">➕ Thêm Nhân Viên</button>
-            <button class="admin-btn danger" onclick="exitAdmin()">Thoát Admin</button>
+    <!-- THANH ADMIN -->
+    <div class="admin-bar">
+        <div style="font-weight: 700; color: var(--accent-amber);">🛠 TRẠM ĐIỀU KHIỂN</div>
+        <div class="admin-controls">
+            <div class="noti-btn" onclick="openNotiModal()">🔔<span class="noti-badge" id="noti-badge" style="display:none;">0</span></div>
+            <button class="btn-ad" onclick="openAdminForm('sm')">Giới thiệu Ga</button>
+            <button class="btn-ad" onclick="openAdminForm('bot', 'add')">+ Thêm OC</button>
+            <button class="btn-ad" onclick="openAdminForm('up', 'add')">+ Thêm Dự Bị</button>
+            <button class="btn-ad danger" onclick="exitAdmin()">Thoát</button>
         </div>
     </div>
 
-    <!-- HEADER -->
-    <header class="station-header">
+    <!-- HEADER: TÊN GA & 2 NÚT TRUNG TÂM -->
+    <header class="header-section">
         <h1 class="station-title" id="trigger-admin" title="Nhấp đúp để vào Admin">Nhà Ga Meown</h1>
-        <div class="station-desc" id="station-bio">
-            <!-- Đổ dữ liệu bio từ DB -->
+        <div class="station-desc" id="station-bio">Đang tải thông tin...</div>
+        <div class="top-buttons">
+            <button class="btn-top" onclick="openSMModal()">Thông tin trưởng ga</button>
+            <button class="btn-top" onclick="openUpcomingModal()">Sắp ra mắt</button>
         </div>
     </header>
 
-    <!-- TÌM KIẾM & LỌC -->
-    <section class="controls-section">
-        <div class="search-wrapper">
-            <input type="text" id="search-inp" class="search-input" placeholder="✨ Tìm nhân viên theo tên hoặc từ khóa...">
-        </div>
-        
+    <!-- BỘ LỌC & TÌM KIẾM -->
+    <section class="filter-section">
         <div class="pill-tags-container" id="route-tags-container">
-            <!-- Tag động chèn bằng JS -->
+            <!-- Tags động -->
+        </div>
+        <div class="search-wrapper">
+            <input type="text" id="search-inp" class="search-input" placeholder="🔍 Tìm nhân viên theo tên hoặc từ khóa...">
         </div>
     </section>
 
-    <!-- GRID NHÂN VIÊN -->
-    <main class="main-content">
+    <!-- MAIN GRID -->
+    <main class="main-container">
         <div class="grid-header">
             <select id="sort-select" class="sort-select">
                 <option value="newest">Mới nhất</option>
                 <option value="rating">Yêu thích nhất</option>
             </select>
         </div>
-
         <div class="bot-grid" id="bot-grid">
-            <!-- Thẻ card chèn bằng JS -->
+            <!-- Thẻ bài -->
         </div>
     </main>
 
-    <!-- ==========================================
-         MODAL CHI TIẾT NHÂN VIÊN (DARK THEME)
-         ========================================== -->
-    <div class="detail-modal-overlay" id="detail-modal" onclick="closeDetailModal(event)">
-        <div class="detail-modal-content" onclick="event.stopPropagation()">
-            <button class="dm-close" onclick="closeDetailModal(event)">✕</button>
-            
-            <div class="dm-header">
-                <img src="" id="dm-avatar" class="dm-avatar" alt="Avatar">
-                <div class="dm-title-area">
-                    <h2 class="dm-name" id="dm-name">Tên Nhân Viên</h2>
-                    <div class="dm-tags-row" id="dm-tags">
-                        <!-- Tags -->
-                    </div>
-                </div>
+    <!-- MODAL CHUNG (Hiển thị Thông tin trưởng ga, Trạm dự bị, Góc Feedback, Admin Forms...) -->
+    <div class="modal-overlay" id="main-modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="m-header">
+                <h2 class="m-title" id="modal-title">Tiêu Đề</h2>
+                <button class="m-close" onclick="closeModal(true)">✕</button>
             </div>
-            
-            <div class="dm-body" id="dm-scenario">
-                <!-- Nội dung Rich text từ Admin -->
-            </div>
-
-            <div class="dm-action-bar">
-                <a href="#" target="_blank" id="dm-chat-link" class="dm-chat-btn">Trò Chuyện Ngay</a>
+            <div class="m-body" id="modal-body">
+                <!-- Nội dung động -->
             </div>
         </div>
     </div>
 
-    <!-- ==========================================
-         MODAL ADMIN (TẠO/SỬA DATA)
-         ========================================== -->
-    <div class="admin-modal" id="admin-modal">
-        <div class="admin-modal-box">
-            <div style="display:flex; justify-content:space-between; margin-bottom: 20px;">
-                <h2 id="admin-form-title">Tiêu Đề Form</h2>
-                <button onclick="document.getElementById('admin-modal').classList.remove('show')" style="font-size:20px; font-weight:bold;">✕</button>
-            </div>
-            <div id="admin-form-body"></div>
-        </div>
+    <!-- LIGHTBOX (Zoom ảnh) -->
+    <div class="lightbox" id="lightbox" onclick="this.style.display='none'">
+        <img src="" id="lightbox-img">
     </div>
 
-
-    <!-- ==========================================
-         JAVASCRIPT LOGIC
-         ========================================== -->
     <script>
-        /* --- KHỞI TẠO DỮ LIỆU --- */
-        let CONFIG = { stationMaster: { bio: "Ở rìa của thực tại, nơi sương mù không bao giờ tan..." }, staff: [] };
+        /* ============================================================
+           CƠ SỞ DỮ LIỆU & TRẠNG THÁI (MỚI TINH)
+           ============================================================ */
+        let CONFIG = {
+            stationMaster: { bio: "Ở rìa của thực tại, nơi sương mù không bao giờ tan, có một nhà ga nhỏ mang tên Meown...", facebook: {name: "", url: ""} },
+            staff: [], // {id, name, avatar, hook, tags, link, route, feedbacks: [{name, stars, text, imgs, date}], isHidden, createdAt}
+            upcomingBots: [] // {id, name, avatar, idea, train, progress, note, votes, isHidden}
+        };
+        
         let isAdminMode = false;
         let activeRouteFilter = "all";
         let searchQuery = "";
 
-        // Danh sách Tuyến Cố Định
-        const ROUTES = [
-            "Tuyến 09 (Hiện đại)",
-            "Tuyến 03 (Cổ trang)",
-            "Tuyến 07 (Dị giới)",
-            "Tuyến 44 (Kinh dị)",
-            "Tuyến 77 (Gameshow)"
-        ];
+        // Các tuyến cố định theo yêu cầu
+        const ROUTES = ["Tuyến 09 (Hiện đại)", "Tuyến 03 (Cổ trang)", "Tuyến 07 (Dị giới)", "Tuyến 44 (Kinh dị)", "Tuyến 77 (Gameshow)"];
 
-        /* --- SUPABASE SETUP --- */
+        // Kết nối Supabase
         const SUPABASE_URL = "https://gmejjxvahnqqrhihahid.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdtZWpqeHZhaG5xcXJoaWhhaGlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3NTM5OTQsImV4cCI6MjA5OTMyOTk5NH0.Q1uit-9R_Lrs0uM_Azgbn9GGKMoyFl-cFfl3M7IeSMU";
         const supa = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        /* --- TIỆN ÍCH CHUNG --- */
-        function removeAccents(str) { 
-            return str ? str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() : ''; 
+        /* ============================================================
+           TIỆN ÍCH CHUNG
+           ============================================================ */
+        function removeAccents(str) { return str ? str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() : ''; }
+        function openLightbox(src, e) { e.stopPropagation(); document.getElementById("lightbox-img").src = src; document.getElementById("lightbox").style.display="flex"; }
+        function closeModal(force = false) { 
+            if(force || event.target.id === 'main-modal') {
+                document.getElementById("main-modal").classList.remove("show"); 
+                document.body.style.overflow = "auto";
+            }
         }
-
-        function resizeImage(file, maxSize = 1200) { 
+        
+        async function resizeImage(file, maxSize = 1200) { 
             return new Promise((resolve) => { 
                 const reader = new FileReader(); 
                 reader.onload = (e) => { 
@@ -594,405 +366,491 @@
                     img.onload = () => { 
                         const canvas = document.createElement('canvas'); let w = img.width, h = img.height; 
                         if(w > maxSize || h > maxSize) { if(w > h) { h = Math.round((h * maxSize) / w); w = maxSize; } else { w = Math.round((w * maxSize) / h); h = maxSize; } } 
-                        canvas.width = w; canvas.height = h; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, w, h); resolve(canvas.toDataURL('image/jpeg', 0.85)); 
-                    }; 
-                    img.src = e.target.result; 
-                }; 
-                reader.readAsDataURL(file); 
+                        canvas.width = w; canvas.height = h; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, w, h); resolve(canvas.toDataURL('image/jpeg', 0.8)); 
+                    }; img.src = e.target.result; 
+                }; reader.readAsDataURL(file); 
             }); 
         }
 
-        /* --- ĐỒNG BỘ DỮ LIỆU --- */
+        // Tính sao trung bình
+        function getAvgRating(bot) {
+            if(!bot.feedbacks || bot.feedbacks.length === 0) return 5.0; // Mặc định 5 sao nếu chưa ai chấm
+            let sum = bot.feedbacks.reduce((acc, curr) => acc + curr.stars, 0);
+            return (sum / bot.feedbacks.length).toFixed(1);
+        }
+
+        /* ============================================================
+           ĐỒNG BỘ DỮ LIỆU
+           ============================================================ */
         async function fetchConfig() {
             try {
-                const { data } = await supa.from('station_config').select('data').eq('id', 1).single();
+                // Ép hệ thống dùng LocalForage làm nguồn duy nhất để "Tẩy trắng" theo yêu cầu "xóa hết" của bạn lúc trước.
+                // Lưu ý: Tôi vẫn hook vào Supabase id=999 để tạo bảng database mới sạch sẽ, không đụng chạm data cũ bị kẹt.
+                const { data } = await supa.from('station_config').select('data').eq('id', 999).single();
                 if (data && data.data) {
-                    let parsed = typeof data.data === 'string' ? JSON.parse(data.data) : data.data;
-                    CONFIG = { ...CONFIG, ...parsed };
-                } else {
-                    // Backup từ localforage nếu cloud lỗi
-                    let localBackup = await localforage.getItem("meown_config_backup");
-                    if (localBackup) CONFIG = { ...CONFIG, ...localBackup };
+                    CONFIG = typeof data.data === 'string' ? JSON.parse(data.data) : data.data;
                 }
-
-                // Tiền xử lý dữ liệu cũ để tương thích giao diện mới
-                if (!Array.isArray(CONFIG.staff)) CONFIG.staff = [];
-                CONFIG.staff.forEach(bot => {
-                    // Nếu bot chưa có field rating do đổi logic, tạo mới
-                    if (typeof bot.staticRating !== 'number') {
-                        // Tính từ đánh giá cũ nếu có
-                        if (bot.rating && bot.rating.count > 0) {
-                            bot.staticRating = parseFloat((bot.rating.sum / bot.rating.count).toFixed(1));
-                        } else {
-                            bot.staticRating = 5.0; // Mặc định 5 sao
-                        }
-                    }
-                    // Nếu bot chưa gán tuyến, gán tạm tuyến đầu tiên để không bị ẩn
-                    if (!bot.route) bot.route = ROUTES[0]; 
-                });
+                
+                // Đảm bảo cấu trúc mảng
+                if(!Array.isArray(CONFIG.staff)) CONFIG.staff = [];
+                if(!Array.isArray(CONFIG.upcomingBots)) CONFIG.upcomingBots = [];
+                CONFIG.staff.forEach(s => { if(!Array.isArray(s.feedbacks)) s.feedbacks = []; });
 
                 renderUI();
-            } catch (e) {
-                console.error("Lỗi tải dữ liệu", e);
-            }
+                checkNotifications();
+            } catch(e) { console.error("Lỗi lấy dữ liệu:", e); renderUI(); }
         }
 
         async function saveConfig() {
             try {
-                await localforage.setItem("meown_config_backup", CONFIG);
-                await supa.from('station_config').upsert([{ id: 1, data: JSON.stringify(CONFIG) }]);
-            } catch(e) { console.error("Lỗi lưu", e); }
+                await supa.from('station_config').upsert([{ id: 999, data: JSON.stringify(CONFIG) }]);
+            } catch(e) { console.error("Lỗi lưu DB:", e); }
         }
 
-        /* --- RENDER GIAO DIỆN --- */
+        /* ============================================================
+           RENDER GIAO DIỆN CHÍNH
+           ============================================================ */
         function renderUI() {
-            // 1. Render Giới thiệu
-            document.getElementById("station-bio").innerHTML = CONFIG.stationMaster.bio || "Chào mừng đến với nhà ga Meown.";
+            document.getElementById("station-bio").innerHTML = CONFIG.stationMaster.bio;
+            renderTags();
+            renderGrid();
+        }
 
-            // 2. Render Thanh Lọc Tag Động
-            const tagsContainer = document.getElementById("route-tags-container");
-            tagsContainer.innerHTML = "";
-            
-            // Tìm các tuyến đang có bot thực sự (không bị ẩn nếu không phải admin)
+        function renderTags() {
+            const container = document.getElementById("route-tags-container");
+            container.innerHTML = "";
+
             let activeRoutes = new Set();
-            CONFIG.staff.forEach(bot => {
-                if (!bot.isHidden || isAdminMode) {
-                    if (bot.route) activeRoutes.add(bot.route);
-                }
-            });
+            CONFIG.staff.forEach(b => { if(!b.isHidden || isAdminMode) activeRoutes.add(b.route); });
 
-            // Tag "Tất cả"
             const allBtn = document.createElement("button");
             allBtn.className = `pill-tag ${activeRouteFilter === 'all' ? 'active' : ''}`;
-            allBtn.textContent = "Tất cả tuyến";
-            allBtn.onclick = () => { activeRouteFilter = 'all'; renderGrid(); renderUI(); };
-            tagsContainer.appendChild(allBtn);
+            allBtn.textContent = "Tất cả";
+            allBtn.onclick = () => { activeRouteFilter = 'all'; renderUI(); };
+            container.appendChild(allBtn);
 
-            // Render các tag có dữ liệu
             ROUTES.forEach(route => {
-                if (activeRoutes.has(route)) {
+                if (activeRoutes.has(route) || isAdminMode) {
                     const btn = document.createElement("button");
-                    // Rút gọn tên tuyến để hiển thị đẹp (VD: "Tuyến 09 (Hiện đại)" -> "Hiện đại")
                     const displayName = route.includes("(") ? route.split("(")[1].replace(")","").trim() : route;
                     btn.className = `pill-tag ${activeRouteFilter === route ? 'active' : ''}`;
                     btn.textContent = displayName;
-                    btn.onclick = () => { activeRouteFilter = route; renderGrid(); renderUI(); };
-                    tagsContainer.appendChild(btn);
+                    btn.onclick = () => { activeRouteFilter = route; renderUI(); };
+                    container.appendChild(btn);
                 }
             });
-
-            // 3. Render Grid Thẻ
-            renderGrid();
         }
 
         function renderGrid() {
             const grid = document.getElementById("bot-grid");
             grid.innerHTML = "";
-            
             const sortMode = document.getElementById("sort-select").value;
             const q = removeAccents(searchQuery);
 
-            let displayBots = CONFIG.staff.filter(bot => {
-                // Lọc ẩn/hiện
-                if (bot.isHidden && !isAdminMode) return false;
-                // Lọc theo tag tuyến
-                if (activeRouteFilter !== 'all' && bot.route !== activeRouteFilter) return false;
-                // Lọc theo thanh tìm kiếm (Tên hoặc Tags)
-                if (q !== "") {
-                    const matchName = removeAccents(bot.name).includes(q);
-                    const matchTags = (bot.tags || []).some(t => removeAccents(t).includes(q));
-                    if (!matchName && !matchTags) return false;
+            let displayBots = CONFIG.staff.filter(b => {
+                if(b.isHidden && !isAdminMode) return false;
+                if(activeRouteFilter !== 'all' && b.route !== activeRouteFilter) return false;
+                if(q !== "") {
+                    const matchName = removeAccents(b.name).includes(q);
+                    const matchTags = (b.tags||[]).some(t => removeAccents(t).includes(q));
+                    if(!matchName && !matchTags) return false;
                 }
                 return true;
             });
 
-            // Sắp xếp
-            displayBots.sort((a, b) => {
-                if (sortMode === 'rating') {
-                    return (b.staticRating || 0) - (a.staticRating || 0);
-                } else {
-                    return (b.createdAt || 0) - (a.createdAt || 0);
-                }
+            displayBots.sort((a,b) => {
+                if(sortMode === 'rating') return getAvgRating(b) - getAvgRating(a);
+                return (b.createdAt || 0) - (a.createdAt || 0);
             });
 
-            if (displayBots.length === 0) {
-                grid.innerHTML = "<p style='color:var(--text-light); width:100%; text-align:center; padding: 40px;'>Không tìm thấy hồ sơ phù hợp.</p>";
-                return;
+            if(displayBots.length === 0) {
+                grid.innerHTML = "<p style='color:var(--text-muted); width:100%; text-align:center; padding: 40px;'>Chưa có hồ sơ nào ở khu vực này.</p>"; return;
             }
 
             displayBots.forEach(bot => {
                 const card = document.createElement("div");
                 card.className = "bot-card";
                 
-                // Khối Admin trên thẻ
                 let adminOver = isAdminMode ? `
                     <div class="card-admin-overlay">
-                        <button class="admin-btn" onclick="openAdminModal('bot', 'edit', '${bot.id}'); event.stopPropagation();">Sửa</button>
-                        <button class="admin-btn ${bot.isHidden ? 'danger' : ''}" onclick="toggleBotHide('${bot.id}', event)">${bot.isHidden ? 'Đang Ẩn' : 'Hiện'}</button>
-                        <button class="admin-btn danger" onclick="deleteBot('${bot.id}', event)">Xóa</button>
+                        <button class="btn-card-ad" onclick="openAdminForm('bot', 'edit', '${bot.id}'); event.stopPropagation();">Sửa</button>
+                        <button class="btn-card-ad" onclick="toggleHideBot('${bot.id}', event)">${bot.isHidden ? 'Đang Ẩn' : 'Hiện'}</button>
+                        <button class="btn-card-ad" style="color:#EF4444; border-color:#EF4444;" onclick="deleteBot('${bot.id}', event)">Xóa</button>
                     </div>
                 ` : "";
 
-                // Tags HTML
-                let tagsHtml = (bot.tags || []).slice(0,3).map(t => `<span class="bot-mini-tag">${t.startsWith('#')?t:'#'+t}</span>`).join('');
-                
+                let tagsHtml = (bot.tags||[]).slice(0,3).map(t => `<span class="b-tag">${t.startsWith('#')?t:'#'+t}</span>`).join('');
+                let rating = getAvgRating(bot);
+
                 card.innerHTML = `
                     ${adminOver}
-                    <div class="bot-image-wrap">
-                        <img src="${bot.avatar || ''}" loading="lazy" alt="${bot.name}">
-                        <div class="bot-rating-badge">⭐ ${(bot.staticRating || 5.0).toFixed(1)}</div>
-                    </div>
-                    <div class="bot-info-area">
-                        <div class="bot-name">${bot.name}</div>
-                        <div class="bot-mini-tags">${tagsHtml}</div>
-                        <div class="bot-hook">"${bot.hook || '...'}"</div>
-                        <button class="bot-action-btn">THÔNG TIN CHI TIẾT</button>
+                    <div class="b-img-wrap"><img src="${bot.avatar || ''}" loading="lazy"><div class="b-rating">⭐ ${rating}</div></div>
+                    <div class="b-info">
+                        <div class="b-name">${bot.name}</div>
+                        <div class="b-tags"><span class="b-tag" style="color:var(--accent-amber); border:1px solid var(--accent-amber);">${bot.route.split(' ')[0]}</span>${tagsHtml}</div>
+                        <div class="b-hook">"${bot.hook || '...'}"</div>
+                        <div class="b-actions">
+                            <a href="${bot.link || '#'}" target="_blank" class="b-btn b-btn-detail" onclick="event.stopPropagation();">THÔNG TIN CHI TIẾT</a>
+                            <button class="b-btn b-btn-fb" onclick="openFeedbackModal('${bot.id}'); event.stopPropagation();">GÓC FEEDBACK</button>
+                        </div>
                     </div>
                 `;
-                
-                // Click toàn bộ thẻ mở Modal Detail
-                card.addEventListener("click", () => openDetailModal(bot.id));
                 grid.appendChild(card);
             });
         }
 
-        /* --- XỬ LÝ SỰ KIỆN SEARCH & SORT --- */
-        document.getElementById("search-inp").addEventListener("input", (e) => {
-            searchQuery = e.target.value.trim();
-            renderGrid();
-        });
-        document.getElementById("sort-select").addEventListener("change", () => {
-            renderGrid();
-        });
+        document.getElementById("search-inp").addEventListener("input", e => { searchQuery = e.target.value.trim(); renderGrid(); });
+        document.getElementById("sort-select").addEventListener("change", renderGrid);
 
+        /* ============================================================
+           MỞ MODAL: GÓC FEEDBACK (CHO TỪNG NHÂN VIÊN)
+           ============================================================ */
+        let tempFbImgs = [];
+        let currentStars = 0;
 
-        /* --- MODAL CHI TIẾT --- */
-        function openDetailModal(botId) {
+        window.openFeedbackModal = function(botId) {
             const bot = CONFIG.staff.find(b => b.id === botId);
             if(!bot) return;
-
-            document.getElementById("dm-avatar").src = bot.avatar || "";
-            document.getElementById("dm-name").textContent = bot.name;
+            tempFbImgs = []; currentStars = 0;
             
-            // Xếp tag: Route trước, Tags sau
-            let allTagsHtml = `<span class="dm-tag" style="border-color: var(--accent); color: var(--accent);">${bot.route}</span>`;
-            allTagsHtml += (bot.tags || []).map(t => `<span class="dm-tag">${t.startsWith('#')?t:'#'+t}</span>`).join('');
-            document.getElementById("dm-tags").innerHTML = allTagsHtml;
-
-            // Scenario (Rich text)
-            document.getElementById("dm-scenario").innerHTML = bot.scenario || "<p style='text-align:center; font-style:italic;'>Chưa có thông tin chi tiết.</p>";
-
-            // Link chat
-            const chatBtn = document.getElementById("dm-chat-link");
-            if (bot.chatLink) {
-                chatBtn.href = bot.chatLink;
-                chatBtn.style.display = "inline-block";
+            document.getElementById("modal-title").textContent = `GÓC FEEDBACK: ${bot.name.toUpperCase()}`;
+            const body = document.getElementById("modal-body");
+            
+            // Render Danh sách Feedbacks
+            let fbListHtml = "";
+            if(!bot.feedbacks || bot.feedbacks.length === 0) {
+                fbListHtml = "<p style='color:var(--text-muted); font-style:italic;'>Chưa có đánh giá nào. Hãy là người đầu tiên!</p>";
             } else {
-                chatBtn.style.display = "none";
+                // Sắp xếp feedback mới nhất lên đầu
+                let sortedFb = [...bot.feedbacks].sort((a,b) => b.date - a.date);
+                fbListHtml = sortedFb.map((fb, idx) => {
+                    let imgsHtml = (fb.imgs||[]).map(src => `<img src="${src}" onclick="openLightbox(this.src, event)">`).join('');
+                    let delBtn = isAdminMode ? `<button class="fb-del-btn" onclick="deleteFeedback('${botId}', ${idx})">Xóa</button>` : '';
+                    return `
+                        <div class="fb-item">
+                            <div class="fb-item-header">
+                                <span class="fb-item-name">${fb.name} <span class="fb-item-stars">${'★'.repeat(fb.stars)}${'☆'.repeat(5-fb.stars)}</span></span>
+                                ${delBtn}
+                            </div>
+                            <div class="fb-item-text">${fb.text}</div>
+                            <div class="fb-item-imgs">${imgsHtml}</div>
+                        </div>
+                    `;
+                }).join('');
             }
 
-            document.getElementById("detail-modal").classList.add("show");
-            document.body.style.overflow = "hidden"; // Khóa cuộn trang nền
-        }
+            body.innerHTML = `
+                <!-- Form Đánh Giá -->
+                <div class="fb-form">
+                    <div style="text-align:center; margin-bottom:10px; color:var(--text-muted); font-size:0.9rem;">Chấm điểm trải nghiệm của bạn</div>
+                    <div class="stars-select" id="star-wrap">
+                        <span class="star-item" data-val="1">☆</span><span class="star-item" data-val="2">☆</span>
+                        <span class="star-item" data-val="3">☆</span><span class="star-item" data-val="4">☆</span><span class="star-item" data-val="5">☆</span>
+                    </div>
+                    <input type="text" id="fb-name" class="fb-input" placeholder="Tên của bạn (Tùy chọn, mặc định: Khách)...">
+                    <textarea id="fb-text" class="fb-input" placeholder="Viết cảm nhận của bạn về nhân viên này..." style="height:100px;" required></textarea>
+                    
+                    <label class="file-upload-label"><input type="file" accept="image/*" multiple id="fb-file" style="display:none;"> 📎 Đính kèm ảnh (Tối đa 3 ảnh)</label>
+                    <div class="img-preview" id="fb-preview"></div>
+                    
+                    <button class="fb-btn-submit" id="fb-submit-btn">GỬI FEEDBACK LÊN HỆ THỐNG</button>
+                </div>
+                <!-- Danh sách Đánh Giá -->
+                <div style="font-family:var(--font-heading); font-size:1.2rem; color:var(--accent-cyan); margin-bottom:15px;">HÀNH KHÁCH NÓI GÌ?</div>
+                <div class="fb-list" id="fb-list-wrap">${fbListHtml}</div>
+            `;
 
-        function closeDetailModal(e) {
-            if(e) {
-                // Chỉ đóng nếu click vào nền ngoài hoặc nút X
-                if (e.target.classList.contains('detail-modal-overlay') || e.target.classList.contains('dm-close')) {
-                    document.getElementById("detail-modal").classList.remove("show");
-                    document.body.style.overflow = "auto";
-                }
-            } else {
-                document.getElementById("detail-modal").classList.remove("show");
-                document.body.style.overflow = "auto";
+            // Logic chọn Sao
+            const starItems = body.querySelectorAll('.star-item');
+            starItems.forEach(s => {
+                s.onclick = () => {
+                    currentStars = parseInt(s.dataset.val);
+                    starItems.forEach(st => {
+                        if(parseInt(st.dataset.val) <= currentStars) { st.textContent = '★'; st.classList.add('active'); }
+                        else { st.textContent = '☆'; st.classList.remove('active'); }
+                    });
+                };
+            });
+
+            // Logic tải ảnh
+            document.getElementById("fb-file").onchange = async (e) => {
+                const prev = document.getElementById("fb-preview");
+                if(e.target.files.length + tempFbImgs.length > 3) return alert("Chỉ được gửi tối đa 3 ảnh!");
+                prev.innerHTML = "<span style='color:var(--accent-amber); font-size:12px;'>Đang xử lý ảnh...</span>";
+                for(let f of e.target.files) { tempFbImgs.push(await resizeImage(f, 1000)); }
+                prev.innerHTML = tempFbImgs.map((src, i) => `<div style="position:relative;"><img src="${src}"><button style="position:absolute;top:-5px;right:-5px;background:red;color:#fff;border-radius:50%;width:20px;height:20px;font-size:10px;" onclick="removeFbImg(${i}, '${botId}')">✕</button></div>`).join('');
+            };
+
+            // Logic Submit
+            document.getElementById("fb-submit-btn").onclick = async () => {
+                if(currentStars === 0) return alert("Vui lòng chấm điểm (Sao) cho nhân viên!");
+                const text = document.getElementById("fb-text").value.trim();
+                if(!text) return alert("Vui lòng viết vài dòng cảm nhận!");
+                
+                const name = document.getElementById("fb-name").value.trim() || "Lữ Khách";
+                
+                bot.feedbacks.push({ name: name, stars: currentStars, text: text, imgs: [...tempFbImgs], date: Date.now() });
+                
+                document.getElementById("fb-submit-btn").textContent = "ĐANG GỬI...";
+                await saveConfig();
+                renderUI(); // Render lại lưới để cập nhật sao TB ngoài thẻ
+                openFeedbackModal(botId); // Reload lại modal feedback
+            };
+
+            document.getElementById("main-modal").classList.add("show");
+            document.body.style.overflow = "hidden";
+        };
+
+        window.removeFbImg = function(idx, botId) { tempFbImgs.splice(idx, 1); const prev = document.getElementById("fb-preview"); prev.innerHTML = tempFbImgs.map((src, i) => `<div style="position:relative;"><img src="${src}"><button style="position:absolute;top:-5px;right:-5px;background:red;color:#fff;border-radius:50%;width:20px;height:20px;font-size:10px;" onclick="removeFbImg(${i}, '${botId}')">✕</button></div>`).join(''); }
+
+        window.deleteFeedback = async function(botId, fbIndex) {
+            if(!confirm("Xóa feedback này?")) return;
+            const bot = CONFIG.staff.find(b => b.id === botId);
+            // Do mảng render bị reverse, ta cần tìm index thực tế
+            let sortedFb = [...bot.feedbacks].sort((a,b) => b.date - a.date);
+            let realTarget = sortedFb[fbIndex];
+            let realIndex = bot.feedbacks.findIndex(f => f.date === realTarget.date);
+            
+            if(realIndex > -1) {
+                bot.feedbacks.splice(realIndex, 1);
+                await saveConfig();
+                renderUI(); openFeedbackModal(botId);
             }
-        }
+        };
 
+        /* ============================================================
+           MỞ MODAL: SẮP RA MẮT & TRƯỞNG GA
+           ============================================================ */
+        window.openSMModal = function() {
+            document.getElementById("modal-title").textContent = "THÔNG TIN TRƯỞNG GA";
+            let fbHtml = CONFIG.stationMaster.facebook.url ? `<div style="margin-top:30px; text-align:center;"><a href="${CONFIG.stationMaster.facebook.url}" target="_blank" style="display:inline-block; padding:10px 20px; background:var(--accent-purple); color:#000; font-weight:bold; border-radius:50px;">Liên hệ Facebook: ${CONFIG.stationMaster.facebook.name}</a></div>` : '';
+            document.getElementById("modal-body").innerHTML = `<div style="white-space:pre-wrap; line-height:1.8; color:var(--text-main); font-size:1.05rem;">${CONFIG.stationMaster.bio}</div>${fbHtml}`;
+            document.getElementById("main-modal").classList.add("show");
+            document.body.style.overflow = "hidden";
+        };
 
-        /* --- QUẢN LÝ ADMIN --- */
-        // Xác thực Admin bằng Double Click
+        window.openUpcomingModal = function() {
+            document.getElementById("modal-title").textContent = "SẢNH TUYỂN DỤNG (SẮP RA MẮT)";
+            const body = document.getElementById("modal-body");
+            
+            let displayBots = CONFIG.upcomingBots.filter(b => !b.isHidden || isAdminMode);
+            displayBots.sort((a,b) => (b.progress - a.progress) || (b.votes - a.votes));
+
+            if(displayBots.length === 0) {
+                body.innerHTML = "<p style='text-align:center; color:var(--text-muted); padding:40px;'>Sảnh tuyển dụng hiện đang im lìm...</p>";
+            } else {
+                let html = `<div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:20px;">`;
+                displayBots.forEach(bot => {
+                    let adminOver = isAdminMode ? `<div class="card-admin-overlay"><button class="btn-card-ad" onclick="openAdminForm('up', 'edit', '${bot.id}')">Sửa</button><button class="btn-card-ad" onclick="toggleHideUp('${bot.id}')">${bot.isHidden?'Đang Ẩn':'Hiện'}</button><button class="btn-card-ad" style="color:#EF4444; border-color:#EF4444;" onclick="deleteUp('${bot.id}')">Xóa</button></div>` : '';
+                    let hasVoted = localStorage.getItem('vote_' + bot.id) === 'true';
+                    
+                    html += `
+                        <div class="up-card">
+                            ${adminOver}
+                            <img src="${bot.avatar}" class="up-avatar">
+                            <div class="up-name">${bot.name}</div>
+                            <div class="up-route">${bot.train}</div>
+                            <div class="up-idea">"${bot.idea}"</div>
+                            <div class="up-progress-wrap">
+                                <div class="up-p-header"><span>Tiến độ:</span><span>${bot.progress}%</span></div>
+                                <div class="up-p-bar"><div class="up-p-fill" style="width:${bot.progress}%"></div></div>
+                                ${bot.progressNote ? `<div class="up-p-note">➤ ${bot.progressNote}</div>` : ''}
+                            </div>
+                            <button class="up-vote-btn ${hasVoted?'voted':''}" onclick="voteUp('${bot.id}')">
+                                ${hasVoted ? '❤️ Đã thả tim' : '🤍 Hóng'} (${bot.votes || 0})
+                            </button>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+                body.innerHTML = html;
+            }
+
+            document.getElementById("main-modal").classList.add("show");
+            document.body.style.overflow = "hidden";
+        };
+
+        window.voteUp = async function(id) {
+            if(localStorage.getItem('vote_' + id) === 'true') return;
+            let bot = CONFIG.upcomingBots.find(b => b.id === id);
+            if(bot) {
+                bot.votes = (bot.votes || 0) + 1;
+                localStorage.setItem('vote_' + id, 'true');
+                await saveConfig(); openUpcomingModal();
+            }
+        };
+
+        /* ============================================================
+           QUẢN LÝ ADMIN
+           ============================================================ */
         document.getElementById("trigger-admin").addEventListener("dblclick", () => {
-            if(!isAdminMode) {
-                if(prompt("Mật mã Trưởng Ga:") === "bhnt2006") {
-                    isAdminMode = true;
-                    document.body.classList.add("is-admin");
-                    renderUI();
-                }
-            }
+            if(!isAdminMode) { if(prompt("Mật mã Trưởng Ga:") === "bhnt2006") { isAdminMode = true; document.body.classList.add("is-admin"); renderUI(); checkNotifications(); } }
         });
-        function exitAdmin() {
-            isAdminMode = false;
-            document.body.classList.remove("is-admin");
-            renderUI();
-        }
+        function exitAdmin() { isAdminMode = false; document.body.classList.remove("is-admin"); renderUI(); document.getElementById("noti-badge").style.display="none"; }
 
-        // --- CÁC HÀM XÓA/ẨN CHO ADMIN ---
-        window.toggleBotHide = async function(botId, e) {
-            e.stopPropagation();
-            let b = CONFIG.staff.find(x => x.id === botId);
-            if(b) {
-                b.isHidden = !b.isHidden;
-                await saveConfig();
-                renderUI();
-            }
-        };
-        window.deleteBot = async function(botId, e) {
-            e.stopPropagation();
-            if(confirm("Xóa vĩnh viễn nhân viên này?")) {
-                CONFIG.staff = CONFIG.staff.filter(x => x.id !== botId);
-                await saveConfig();
-                renderUI();
-            }
-        };
+        window.toggleHideBot = async function(id, e) { e.stopPropagation(); let b = CONFIG.staff.find(x => x.id === id); if(b) { b.isHidden = !b.isHidden; await saveConfig(); renderUI(); } };
+        window.deleteBot = async function(id, e) { e.stopPropagation(); if(confirm("Xóa thẻ này?")) { CONFIG.staff = CONFIG.staff.filter(x => x.id !== id); await saveConfig(); renderUI(); } };
+        window.toggleHideUp = async function(id) { let b = CONFIG.upcomingBots.find(x => x.id === id); if(b) { b.isHidden = !b.isHidden; await saveConfig(); openUpcomingModal(); } };
+        window.deleteUp = async function(id) { if(confirm("Xóa thẻ dự bị này?")) { CONFIG.upcomingBots = CONFIG.upcomingBots.filter(x => x.id !== id); await saveConfig(); openUpcomingModal(); } };
 
-        // Biến tạm lưu ảnh
-        let tempAvatarB64 = "";
-
-        window.openAdminModal = function(type, action, id) {
-            const modal = document.getElementById("admin-modal");
-            const title = document.getElementById("admin-form-title");
-            const body = document.getElementById("admin-form-body");
-            tempAvatarB64 = "";
+        let tempAdminImg = "";
+        window.openAdminForm = function(type, action, id) {
+            document.getElementById("modal-title").textContent = "BẢNG ĐIỀU KHIỂN";
+            const body = document.getElementById("modal-body");
+            tempAdminImg = "";
 
             if (type === 'sm') {
-                title.textContent = "SỬA GIỚI THIỆU NHÀ GA";
                 body.innerHTML = `
-                    <div class="admin-form-group">
-                        <label>Đoạn văn giới thiệu (Hỗ trợ HTML cơ bản `<br>` để xuống dòng)</label>
-                        <textarea id="ad-bio" style="height: 150px;">${CONFIG.stationMaster.bio || ''}</textarea>
-                    </div>
-                    <button class="admin-btn" id="ad-save-sm" style="width:100%; padding:15px; font-size:1rem;">LƯU LẠI</button>
+                    <label style="display:block; margin-bottom:5px; color:var(--accent-cyan);">Lời giới thiệu Nhà Ga</label>
+                    <textarea id="ad-bio" style="width:100%; height:150px; background:rgba(0,0,0,0.5); color:#fff; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); margin-bottom:15px;">${CONFIG.stationMaster.bio}</textarea>
+                    <label style="display:block; margin-bottom:5px; color:var(--accent-cyan);">Tên hiển thị FB</label>
+                    <input type="text" id="ad-fbname" value="${CONFIG.stationMaster.facebook.name}" style="width:100%; padding:10px; background:rgba(0,0,0,0.5); color:#fff; border-radius:8px; border:1px solid rgba(255,255,255,0.2); margin-bottom:15px;">
+                    <label style="display:block; margin-bottom:5px; color:var(--accent-cyan);">Link FB</label>
+                    <input type="text" id="ad-fburl" value="${CONFIG.stationMaster.facebook.url}" style="width:100%; padding:10px; background:rgba(0,0,0,0.5); color:#fff; border-radius:8px; border:1px solid rgba(255,255,255,0.2); margin-bottom:20px;">
+                    <button class="fb-btn-submit" id="ad-save">LƯU THÔNG TIN</button>
                 `;
-                document.getElementById("ad-save-sm").onclick = async () => {
+                document.getElementById("ad-save").onclick = async () => {
                     CONFIG.stationMaster.bio = document.getElementById("ad-bio").value;
-                    await saveConfig();
-                    renderUI();
-                    modal.classList.remove("show");
+                    CONFIG.stationMaster.facebook = { name: document.getElementById("ad-fbname").value, url: document.getElementById("ad-fburl").value };
+                    await saveConfig(); renderUI(); closeModal(true);
                 };
             }
             else if (type === 'bot') {
-                let botData = { name: "", avatar: "", hook: "", tags: [], scenario: "", chatLink: "", route: ROUTES[0], staticRating: 5.0, isHidden: false };
-                if (action === 'edit') {
-                    const b = CONFIG.staff.find(x => x.id === id);
-                    if (b) { botData = b; tempAvatarB64 = b.avatar || ""; }
-                }
-
-                let routeOptions = ROUTES.map(r => `<option value="${r}" ${botData.route === r ? 'selected' : ''}>${r}</option>`).join('');
-
-                title.textContent = action === 'add' ? "THÊM NHÂN VIÊN MỚI" : "SỬA NHÂN VIÊN";
+                let d = { name: "", route: ROUTES[0], hook: "", link: "", tags: [] };
+                if (action === 'edit') { const b = CONFIG.staff.find(x => x.id === id); if(b) { d = b; tempAdminImg = b.avatar; } }
+                
+                let routeOpts = ROUTES.map(r => `<option value="${r}" ${d.route === r ? 'selected' : ''} style="color:#000;">${r}</option>`).join('');
+                
                 body.innerHTML = `
-                    <div style="display:flex; gap: 15px;">
-                        <div class="admin-form-group" style="flex:1;">
-                            <label>Tên nhân viên</label>
-                            <input type="text" id="ad-b-name" value="${botData.name}">
-                        </div>
-                        <div class="admin-form-group" style="width:150px;">
-                            <label>Đánh giá (⭐)</label>
-                            <input type="number" step="0.1" min="1" max="5" id="ad-b-rating" value="${botData.staticRating}">
-                        </div>
+                    <div style="display:flex; gap:10px; margin-bottom:15px;">
+                        <div style="flex:1;"><label style="display:block; color:var(--accent-cyan);">Tên Nhân Viên</label><input type="text" id="ad-name" value="${d.name}" class="fb-input"></div>
+                        <div style="flex:1;"><label style="display:block; color:var(--accent-cyan);">Tuyến Tuyển Dụng</label><select id="ad-route" class="fb-input">${routeOpts}</select></div>
                     </div>
+                    <label class="file-upload-label" style="width:100%; text-align:center;"><input type="file" accept="image/*" id="ad-img" style="display:none;"> 📸 TẢI ẢNH (CHÂN DUNG DỌC)</label>
+                    <div id="ad-prev" style="text-align:center; margin-bottom:15px;">${tempAdminImg ? `<img src="${tempAdminImg}" style="height:100px; border-radius:8px;">` : ''}</div>
                     
-                    <div style="display:flex; gap: 15px;">
-                        <div class="admin-form-group" style="flex:1;">
-                            <label>Tuyến (Phân loại)</label>
-                            <select id="ad-b-route">${routeOptions}</select>
-                        </div>
-                        <div class="admin-form-group" style="flex:1;">
-                            <label>Tải ảnh dọc (9:16)</label>
-                            <input type="file" accept="image/*" id="ad-b-file">
-                        </div>
-                    </div>
-                    <div id="ad-b-prev" style="margin-bottom:15px;">
-                        ${tempAvatarB64 ? `<img src="${tempAvatarB64}" style="height:100px; border-radius:8px;">` : ''}
-                    </div>
-
-                    <div class="admin-form-group">
-                        <label>Tags (Cách nhau dấu phẩy, VD: Cổ trang, Chiếm hữu)</label>
-                        <input type="text" id="ad-b-tags" value="${(botData.tags || []).join(', ')}">
-                    </div>
-                    <div class="admin-form-group">
-                        <label>Đoạn thoại đặc trưng (Hook - Ngắn gọn)</label>
-                        <input type="text" id="ad-b-hook" value="${botData.hook || ''}">
-                    </div>
-                    <div class="admin-form-group">
-                        <label>Nội dung chi tiết (Hiển thị khi bấm vào thẻ)</label>
-                        <!-- Thanh công cụ Rich Text Đơn giản -->
-                        <div class="rt-toolbar">
-                            <button type="button" onclick="document.execCommand('bold',false,null)"><b>B</b></button>
-                            <button type="button" onclick="document.execCommand('italic',false,null)"><i>I</i></button>
-                            <button type="button" onclick="document.execCommand('underline',false,null)"><u>U</u></button>
-                            <button type="button" onclick="document.execCommand('insertUnorderedList',false,null)">Bullet List</button>
-                            <button type="button" onclick="document.execCommand('formatBlock', false, 'H3')">Tiêu Đề (H3)</button>
-                            <button type="button" onclick="insertLineBreakAdmin()">↵ Xuống dòng</button>
-                        </div>
-                        <div id="ad-b-scenario" class="rt-editor-box" contenteditable="true">${botData.scenario || ''}</div>
-                    </div>
-                    <div class="admin-form-group">
-                        <label>Link Trò Chuyện (Đường dẫn gốc của Bot)</label>
-                        <input type="text" id="ad-b-chat" value="${botData.chatLink || ''}" placeholder="https://...">
-                    </div>
+                    <label style="display:block; color:var(--accent-cyan);">Tags (Cách nhau dấu phẩy)</label><input type="text" id="ad-tags" value="${(d.tags||[]).join(', ')}" class="fb-input">
+                    <label style="display:block; color:var(--accent-cyan);">Câu thoại đặc trưng (Hook)</label><textarea id="ad-hook" class="fb-input" style="height:60px;">${d.hook}</textarea>
+                    <label style="display:block; color:var(--accent-amber);">Link Web Chi Tiết (URL Docs/Notion...)</label><input type="text" id="ad-link" value="${d.link || ''}" class="fb-input" placeholder="https://...">
                     
-                    <button class="admin-btn" id="ad-save-bot" style="width:100%; padding:15px; font-size:1rem; background: var(--accent); color:#fff; border:none; border-radius:8px;">LƯU HỒ SƠ</button>
+                    <button class="fb-btn-submit" id="ad-save">LƯU NHÂN VIÊN</button>
                 `;
 
-                // Xử lý nạp ảnh
-                document.getElementById("ad-b-file").addEventListener("change", async (e) => {
-                    if (e.target.files.length > 0) {
-                        document.getElementById("ad-b-prev").innerHTML = "Đang nén ảnh...";
-                        tempAvatarB64 = await resizeImage(e.target.files[0], 1200);
-                        document.getElementById("ad-b-prev").innerHTML = `<img src="${tempAvatarB64}" style="height:100px; border-radius:8px;">`;
+                document.getElementById("ad-img").onchange = async (e) => {
+                    if(e.target.files.length > 0) {
+                        document.getElementById("ad-prev").innerHTML = "<span style='color:var(--accent-amber);'>Đang nén ảnh...</span>";
+                        tempAdminImg = await resizeImage(e.target.files[0], 1200);
+                        document.getElementById("ad-prev").innerHTML = `<img src="${tempAdminImg}" style="height:100px; border-radius:8px;">`;
                     }
-                });
+                };
 
-                // Ép xuống dòng an toàn cho Rich Text
-                window.insertLineBreakAdmin = function() {
-                    const ed = document.getElementById('ad-b-scenario');
-                    if(ed) {
-                        const div = document.createElement('div'); div.innerHTML = '<br>'; ed.appendChild(div);
-                        const range = document.createRange(); const sel = window.getSelection();
-                        range.setStart(div, 0); range.collapse(true); sel.removeAllRanges(); sel.addRange(range); ed.focus();
-                    }
-                }
-
-                // Xử lý Lưu
-                document.getElementById("ad-save-bot").onclick = async () => {
-                    if(!tempAvatarB64) return alert("Vui lòng tải ảnh nhân viên lên!");
-                    
-                    let tags = document.getElementById("ad-b-tags").value.split(',').map(t=>t.trim()).filter(t=>t);
+                document.getElementById("ad-save").onclick = async () => {
+                    if(!tempAdminImg) return alert("Vui lòng tải ảnh lên!");
                     let finalData = {
-                        name: document.getElementById("ad-b-name").value.trim(),
-                        staticRating: parseFloat(document.getElementById("ad-b-rating").value) || 5.0,
-                        route: document.getElementById("ad-b-route").value,
-                        avatar: tempAvatarB64,
-                        tags: tags,
-                        hook: document.getElementById("ad-b-hook").value.trim(),
-                        scenario: document.getElementById("ad-b-scenario").innerHTML,
-                        chatLink: document.getElementById("ad-b-chat").value.trim(),
+                        name: document.getElementById("ad-name").value.trim(), route: document.getElementById("ad-route").value,
+                        avatar: tempAdminImg, tags: document.getElementById("ad-tags").value.split(',').map(t=>t.trim()).filter(t=>t),
+                        hook: document.getElementById("ad-hook").value.trim(), link: document.getElementById("ad-link").value.trim()
                     };
-
-                    if (action === 'add') {
-                        finalData.id = "b_" + Date.now();
-                        finalData.createdAt = Date.now();
-                        finalData.isHidden = false;
-                        CONFIG.staff.push(finalData);
-                    } else {
-                        let bot = CONFIG.staff.find(x => x.id === id);
-                        Object.assign(bot, finalData);
-                    }
-
-                    document.getElementById("ad-save-bot").textContent = "Đang lưu lên đám mây...";
-                    await saveConfig();
-                    renderUI();
-                    modal.classList.remove("show");
+                    if(action === 'add') { finalData.id = "b_"+Date.now(); finalData.createdAt = Date.now(); finalData.feedbacks = []; finalData.isHidden = false; CONFIG.staff.push(finalData); }
+                    else { Object.assign(CONFIG.staff.find(x => x.id === id), finalData); }
+                    document.getElementById("ad-save").textContent = "Đang lưu..."; await saveConfig(); renderUI(); closeModal(true);
                 };
             }
-            modal.classList.add("show");
+            else if (type === 'up') {
+                let d = { name: "", train: ROUTES[0], idea: "", progressNote: "", progress: 10 };
+                if (action === 'edit') { const b = CONFIG.upcomingBots.find(x => x.id === id); if(b) { d = b; tempAdminImg = b.avatar; } }
+                
+                body.innerHTML = `
+                    <div style="display:flex; gap:10px; margin-bottom:15px;">
+                        <div style="flex:1;"><label style="display:block; color:var(--accent-cyan);">Tên Bot Dự Kiến</label><input type="text" id="ad-name" value="${d.name}" class="fb-input"></div>
+                        <div style="flex:1;"><label style="display:block; color:var(--accent-cyan);">Chuyến Tàu</label><input type="text" id="ad-route" value="${d.train}" class="fb-input"></div>
+                    </div>
+                    <label class="file-upload-label" style="width:100%; text-align:center;"><input type="file" accept="image/*" id="ad-img" style="display:none;"> 📸 TẢI ẢNH (VUÔNG)</label>
+                    <div id="ad-prev" style="text-align:center; margin-bottom:15px;">${tempAdminImg ? `<img src="${tempAdminImg}" style="height:100px; border-radius:50%;">` : ''}</div>
+                    
+                    <label style="display:block; color:var(--accent-cyan);">Ý Tưởng / Giới thiệu</label><textarea id="ad-idea" class="fb-input" style="height:80px;">${d.idea}</textarea>
+                    
+                    <div style="display:flex; gap:10px; margin-bottom:15px;">
+                        <div style="flex:1;"><label style="display:block; color:var(--accent-amber);">Tiến độ (%)</label><input type="number" id="ad-prog" value="${d.progress}" min="0" max="100" class="fb-input"></div>
+                        <div style="flex:2;"><label style="display:block; color:var(--accent-amber);">Ghi chú tiến độ</label><input type="text" id="ad-note" value="${d.progressNote}" class="fb-input" placeholder="VD: Đang sửa prompt..."></div>
+                    </div>
+                    
+                    <button class="fb-btn-submit" id="ad-save">LƯU HỒ SƠ DỰ BỊ</button>
+                `;
+
+                document.getElementById("ad-img").onchange = async (e) => {
+                    if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-prev").innerHTML = `<img src="${tempAdminImg}" style="height:100px; border-radius:50%;">`; }
+                };
+
+                document.getElementById("ad-save").onclick = async () => {
+                    let finalData = {
+                        name: document.getElementById("ad-name").value.trim(), train: document.getElementById("ad-route").value, avatar: tempAdminImg,
+                        idea: document.getElementById("ad-idea").value.trim(), progressNote: document.getElementById("ad-note").value, progress: parseInt(document.getElementById("ad-prog").value) || 0
+                    };
+                    if(action === 'add') { finalData.id = "u_"+Date.now(); finalData.votes = 0; finalData.isHidden = false; CONFIG.upcomingBots.push(finalData); }
+                    else { Object.assign(CONFIG.upcomingBots.find(x => x.id === id), finalData); }
+                    await saveConfig(); closeModal(true); openUpcomingModal();
+                };
+            }
+            
+            document.getElementById("main-modal").classList.add("show");
+            document.body.style.overflow = "hidden";
+        };
+
+        /* ============================================================
+           BẢNG THÔNG BÁO (ADMIN ONLY)
+           ============================================================ */
+        function checkNotifications() {
+            if(!isAdminMode) return;
+            let lastRead = parseInt(localStorage.getItem("meown_admin_read") || "0");
+            let unreadCount = 0;
+            CONFIG.staff.forEach(bot => {
+                (bot.feedbacks||[]).forEach(fb => { if(fb.date > lastRead) unreadCount++; });
+            });
+            const badge = document.getElementById("noti-badge");
+            if(unreadCount > 0) { badge.textContent = unreadCount; badge.style.display = "block"; }
+            else { badge.style.display = "none"; }
         }
 
-        /* --- KHỞI CHẠY LÚC LOAD TRANG --- */
+        window.openNotiModal = function() {
+            document.getElementById("modal-title").textContent = "BẢNG THÔNG BÁO FEEDBACK";
+            let lastRead = parseInt(localStorage.getItem("meown_admin_read") || "0");
+            let html = "";
+            let allFbs = [];
+            
+            CONFIG.staff.forEach(bot => {
+                (bot.feedbacks||[]).forEach(fb => {
+                    allFbs.push({ botId: bot.id, botName: bot.name, fbName: fb.name, date: fb.date, text: fb.text });
+                });
+            });
+            
+            allFbs.sort((a,b) => b.date - a.date); // Mới nhất lên đầu
+
+            if(allFbs.length === 0) { html = "<p style='color:var(--text-muted); text-align:center;'>Chưa có ai gửi feedback.</p>"; }
+            else {
+                html = allFbs.map(item => {
+                    let isNew = item.date > lastRead ? `<span style="color:#EF4444; font-weight:bold; font-size:0.7rem; border:1px solid #EF4444; padding:2px 6px; border-radius:10px; margin-left:10px;">MỚI</span>` : "";
+                    return `
+                    <div style="background:rgba(0,0,0,0.3); padding:15px; border-radius:8px; border-left:3px solid var(--accent-amber); margin-bottom:15px; cursor:pointer;" onclick="openFeedbackModal('${item.botId}')">
+                        <div style="font-size:0.95rem; color:#FFF;">Khách hàng <b style="color:var(--accent-cyan);">${item.fbName}</b> vừa bình luận về <b style="color:var(--accent-purple);">${item.botName}</b> ${isNew}</div>
+                        <div style="font-size:0.8rem; color:var(--text-muted); margin-top:5px; font-style:italic;">"${item.text.substring(0, 50)}..."</div>
+                        <div style="font-size:0.7rem; color:#666; margin-top:5px;">${new Date(item.date).toLocaleString('vi-VN')}</div>
+                    </div>`;
+                }).join('');
+            }
+            
+            document.getElementById("modal-body").innerHTML = html;
+            document.getElementById("main-modal").classList.add("show");
+            
+            // Đánh dấu đã đọc
+            localStorage.setItem("meown_admin_read", Date.now());
+            document.getElementById("noti-badge").style.display = "none";
+        };
+
+        /* Chạy lần đầu */
         document.addEventListener("DOMContentLoaded", () => {
-            localforage.config({ name: 'MeownStationV2' });
-            fetchConfig(); // Kéo data cũ về
+            localforage.config({ name: 'MeownV3' });
+            fetchConfig();
         });
 
     </script>
