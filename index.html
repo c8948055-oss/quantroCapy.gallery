@@ -22,7 +22,7 @@
            BẢNG MÀU & VIBE (HEALING INN / COZY STYLE)
            ============================================================ */
         :root {
-            --bg-main: #FFF9F5; /* Nền kem sữa ấm */
+            --bg-main: #F9F5EE; /* Nền kem trắng sữa / giấy cổ ấm áp */
             --bg-card: #FFFFFF; 
             --text-dark: #3D2314; /* Nâu ca cao đậm đặc */
             --text-muted: #A38A7A; /* Nâu nhạt */
@@ -41,8 +41,8 @@
         
         body { 
             background-color: var(--bg-main);
-            /* Background Pattern: Cỏ 4 lá & Cam pastel rải rác lơ đãng */
-            background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.15'%3E%3Cpath d='M25 25 C25 20, 30 20, 30 25 C35 20, 40 20, 40 25 C40 30, 35 30, 32 30 C35 35, 30 40, 25 40 C20 40, 15 35, 18 30 C15 30, 10 30, 10 25 C10 20, 15 20, 15 25 C15 30, 20 30, 25 30 Z' fill='%23A7D129' transform='scale(0.5) translate(20, 20)'/%3E%3Ccircle cx='80' cy='80' r='6' fill='%23FF9F7C'/%3E%3Cpath d='M80 74 Q83 70 85 72' stroke='%23A7D129' stroke-width='2' fill='none'/%3E%3C/g%3E%3C/svg%3E");
+            /* Background Pattern: Cỏ 4 lá, Quả cam mini & Mầm non rải rác lơ đãng (Opacity 14%) */
+            background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.14'%3E%3Cg transform='translate(30, 40)'%3E%3Ccircle cx='-3' cy='-3' r='3.5' fill='%23A3B18A'/%3E%3Ccircle cx='3' cy='-3' r='3.5' fill='%23A3B18A'/%3E%3Ccircle cx='-3' cy='3' r='3.5' fill='%23A3B18A'/%3E%3Ccircle cx='3' cy='3' r='3.5' fill='%23A3B18A'/%3E%3Cpath d='M0 0 Q -2 6 -4 8' stroke='%23A3B18A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3Cg transform='translate(120, 60)'%3E%3Ccircle cx='0' cy='0' r='7' fill='%23F4C389'/%3E%3Cpath d='M0 -7 C 2 -12 6 -10 6 -7 C 4 -5 2 -5 0 -7' fill='%23A3B18A'/%3E%3Ccircle cx='-2' cy='-2' r='1' fill='%23FFFFFF' opacity='0.8'/%3E%3C/g%3E%3Cg transform='translate(70, 130)'%3E%3Cpath d='M 0 5 C 0 5 0 0 0 -2' stroke='%23A3B18A' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M 0 -1 C -4 -1 -6 -5 -6 -5 C -2 -7 0 -1 0 -1 Z' fill='%23A3B18A'/%3E%3Cpath d='M 0 -2 C 4 -2 6 -6 6 -6 C 2 -8 0 -2 0 -2 Z' fill='%23A3B18A'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             color: var(--text-dark); 
             font-family: var(--font-body); 
             min-height: 100vh; overflow-x: hidden; line-height: 1.6;
@@ -130,7 +130,6 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             white-space: nowrap;
-            /* Hiệu ứng 3D khối: Lớp 1 (Viền trắng 3px) - Lớp 2 (Bóng đổ cứng 4px màu hồng) */
             text-shadow: 
                 -3px -3px 0 #FFF, 3px -3px 0 #FFF, -3px 3px 0 #FFF, 3px 3px 0 #FFF,
                  0px -3px 0 #FFF, 0px 3px 0 #FFF, -3px 0px 0 #FFF, 3px 0px 0 #FFF,
@@ -145,7 +144,7 @@
                  3px 7px 0px var(--accent-pink);
         }
 
-        /* Lời tựa giới thiệu tự do (Click to Edit cho Admin) */
+        /* Lời tựa giới thiệu tự do */
         .intro-text-wrap {
             display: flex; align-items: center; justify-content: center; gap: 8px;
             margin: 0 auto 35px auto; max-width: 650px;
@@ -183,7 +182,6 @@
             display: flex; flex-direction: column; align-items: center; gap: 20px;
         }
 
-        /* Thanh Search có Icon lúp pixel */
         .search-wrapper { 
             width: 100%; max-width: 600px; position: relative; display: flex; align-items: center;
         }
@@ -198,7 +196,6 @@
         .search-input:focus { border-color: var(--accent-peach); }
         .search-input::placeholder { color: #C4B5A9; font-weight: 600; }
 
-        /* Tag Viên thuốc */
         .pill-tags-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 900px; }
         .pill-tag {
             padding: 10px 24px; border-radius: 50px; font-size: 0.95rem; font-weight: 800;
@@ -225,7 +222,6 @@
 
         .bot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px; }
 
-        /* THIẾT KẾ THẺ PHÒNG TRỌ (HEALING THEME) */
         .bot-card {
             background: var(--bg-card); border-radius: 35px; overflow: hidden; position: relative;
             display: flex; flex-direction: column; box-shadow: var(--shadow-soft);
@@ -237,7 +233,6 @@
         .b-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; border-radius: 30px 30px 0 0; }
         .bot-card:hover .b-img-wrap img { transform: scale(1.06); }
 
-        /* Đánh giá sao Múp mím */
         .b-rating {
             position: absolute; top: 18px; right: 18px; background: #FFF;
             color: var(--text-dark); padding: 8px 16px; border-radius: 50px; font-size: 1rem; font-weight: 900;
@@ -245,7 +240,6 @@
             border: 3px solid var(--border-soft); font-family: var(--font-heading);
         }
 
-        /* Chân thẻ */
         .b-info {
             padding: 25px; display: flex; flex-direction: column; flex: 1; position: relative; background: #FFF;
         }
@@ -382,14 +376,13 @@
         .rt-editor:focus { border-color: var(--accent-peach); }
 
         /* Tag Input UI */
-        .tag-input-box { display: flex; gap: 10px; margin-bottom: 15px; }
-        .tag-input-box input { flex: 1; padding: 14px 20px; border-radius: 50px; border: 3px solid var(--border-soft); font-size: 1rem; font-weight: 700;}
+        .tag-input-box { display: flex; gap: 10px; margin-bottom: 10px; }
+        .tag-input-box input { flex: 1; padding: 14px 20px; border-radius: 50px; border: 3px solid var(--border-soft); font-size: 0.95rem; font-weight: 600;}
         .tag-input-box input:focus { border-color: var(--accent-mocha); }
-        .tag-input-box button { padding: 0 28px; background: var(--text-dark); color: #FFF; font-weight: 900; border-radius: 50px; font-size: 0.95rem; transition: 0.2s;}
-        .tag-input-box button:hover { background: var(--accent-peach); }
-        #ad-tags-wrapper { display: flex; flex-wrap: wrap; gap: 10px; }
-        .ad-mini-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-main); color: var(--text-dark); border: 2.5px solid var(--border-soft); padding: 8px 16px; border-radius: 50px; font-size: 0.9rem; font-weight: 800;}
-        .ad-mini-tag span { cursor: pointer; color: #EF4444; font-weight: 900; font-size: 1.1rem; transition: 0.2s;}
+        .tag-input-box button { padding: 0 24px; background: var(--text-dark); color: #FFF; font-weight: 800; border-radius: 50px; font-size: 0.9rem;}
+        #ad-tags-wrapper { display: flex; flex-wrap: wrap; gap: 8px; }
+        .ad-mini-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-peach); color: #FFF; padding: 6px 14px; border-radius: 50px; font-size: 0.85rem; font-weight: 700;}
+        .ad-mini-tag span { cursor: pointer; color: #FFF; font-weight: 900; font-size: 1.1rem; transition: 0.2s;}
         .ad-mini-tag span:hover { transform: scale(1.2); }
 
         /* ============================================================
@@ -536,7 +529,7 @@
             <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-paw"></use></svg> TRẠM ĐIỀU KHIỂN
         </div>
         <div class="admin-controls">
-            <div class="noti-btn" onclick="openNotiModal()" title="Bảng Thông Báo">
+            <div class="noti-btn" onclick="openNotiModal()" title="BẢNG THÔNG BÁO">
                 <svg class="svg-icon" viewBox="0 0 16 16" style="width:20px; height:20px;"><use href="#px-bell"></use></svg>
                 <span class="noti-badge" id="noti-badge" style="display:none;">0</span>
             </div>
@@ -551,7 +544,7 @@
     <header class="header-section">
         <div class="signboard-wrapper">
             <!-- Bé Capy thò đầu lấp ló (Ảnh đeo kính) -->
-            <img src="ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" alt="Peeking Capy" class="peeking-capy bounce">
+            <img src="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" alt="Peeking Capy" class="peeking-capy bounce">
             
             <!-- Bảng kem sữa viền nâu (click đúp vào để mở admin) -->
             <div class="cream-board" id="trigger-admin" title="Nhấp đúp vào Bảng để vào Admin">
@@ -571,7 +564,7 @@
         </div>
 
         <div class="top-buttons">
-            <button class="btn-top" onclick="openSMModal()"><img src="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" style="width:28px;height:28px;object-fit:contain;"> Thông tin chủ trọ</button>
+            <button class="btn-top" onclick="openSMModal()"><img src="ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" style="width:28px;height:28px;object-fit:contain;"> Thông tin chủ trọ</button>
             <button class="btn-top" onclick="openUpcomingModal()"><svg class="svg-icon bounce" viewBox="0 0 16 16"><use href="#px-gift"></use></svg> Sắp Ra Mắt</button>
         </div>
     </header>
@@ -637,7 +630,7 @@
             stationMaster: { 
                 shortDesc: "Nơi đàn Capybara ngâm mình ven suối, cùng lữ khách bước vào những thế giới mở rộng lớn...",
                 bio: "Khu vực ghi tiểu sử dài của chủ trọ...", 
-                avatar: "ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png",
+                avatar: "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png",
                 facebook: {name: "", url: ""}
             },
             staff: [], // {id, name, avatar, hook, tags, link, feedbacks: [{id, name, stars, text, imgs, date, replies:[]}], isHidden, createdAt}
@@ -1009,13 +1002,12 @@
         };
 
         /* ============================================================
-           MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN (CÓ RICH TEXT)
+           MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN
            ============================================================ */
         window.openSMModal = function() {
-            document.getElementById("modal-title").innerHTML = `<img src="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" style="width:30px;height:30px;"> THÔNG TIN CHỦ TRỌ`;
+            document.getElementById("modal-title").innerHTML = `<img src="ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" style="width:30px;height:30px;"> THÔNG TIN CHỦ TRỌ`;
             let fbHtml = CONFIG.stationMaster.facebook && CONFIG.stationMaster.facebook.url ? `<div style="margin-top:25px; text-align:center;"><a href="${CONFIG.stationMaster.facebook.url}" target="_blank" style="display:inline-block; padding:16px 32px; background:var(--text-dark); color:#FFF; font-weight:900; border-radius:50px; box-shadow:0 8px 25px rgba(92, 64, 51, 0.25); font-family:var(--font-body); font-size:1.05rem;">Liên hệ Facebook Chủ Trọ</a></div>` : '';
             
-            // Bio giờ sẽ render dạng HTML do dùng Rich Text
             document.getElementById("modal-body").innerHTML = `
                 <div style="text-align:center; margin-bottom:30px;">
                     ${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="width:160px; height:160px; border-radius:50%; object-fit:cover; margin:0 auto; border:4px solid var(--accent-peach); box-shadow:var(--shadow-soft);">` : ''}
@@ -1052,7 +1044,6 @@
                             
                             <div class="up-avatar-wrap">
                                 <img src="${bot.avatar}" class="up-avatar">
-                                <img src="2D_pixel_png-removebg-preview.png" class="up-bow" style="position:absolute; top:-15px; right:-15px; width:60px;">
                             </div>
                             
                             <div class="up-name">${bot.name}</div>
@@ -1090,13 +1081,12 @@
         };
 
         /* ============================================================
-           QUẢN LÝ ADMIN (MỞ KHÓA BẰNG DOUBLE TOUCH/CLICK)
+           QUẢN LÝ ADMIN 
            ============================================================ */
         let lastTap = 0;
         document.getElementById("trigger-admin").addEventListener("click", (e) => {
             const currentTime = new Date().getTime();
             const tapLength = currentTime - lastTap;
-            // Nhấp đúp thành công (Thời gian giữa 2 lần chạm liên tiếp < 400ms)
             if (tapLength < 400 && tapLength > 0) {
                 if(!isAdminMode) { 
                     if(prompt("Mật mã Chủ Trọ:") === "bhnt2006") { 
@@ -1196,13 +1186,13 @@
                     </div>
                     <button class="fb-btn-submit" id="ad-save">LƯU LẠI THÔNG TIN</button>
                 `;
-                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png";
+                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png";
                 document.getElementById("ad-sm-img").onchange = async (e) => {
                     if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:120px; border-radius:50%; border:4px solid var(--accent-peach);">`; }
                 };
                 document.getElementById("ad-save").onclick = async () => {
                     CONFIG.stationMaster.avatar = tempAdminImg;
-                    CONFIG.stationMaster.bio = document.getElementById("ad-bio").innerHTML; // Lấy HTML thay vì text thường
+                    CONFIG.stationMaster.bio = document.getElementById("ad-bio").innerHTML;
                     CONFIG.stationMaster.facebook = { name: document.getElementById("ad-fbname").value, url: document.getElementById("ad-fburl").value };
                     await saveConfig(); renderUI(); document.getElementById("admin-modal").classList.remove("show"); alert("Đã lưu Chủ Trọ!");
                 };
@@ -1232,23 +1222,15 @@
                     <button class="fb-btn-submit" id="ad-save">LƯU PHÒNG</button>
                 `;
 
-                // Render tags ban đầu
                 renderAdminTags();
 
                 window.addAdminTag = function() {
                     const inp = document.getElementById("ad-tag-input");
-                    const val = inp.value.trim().replace(/^#/, ''); // Lọc bỏ dấu thăng nếu admin lỡ gõ
-                    if(val) {
-                        tempTags.push(val);
-                        inp.value = "";
-                        renderAdminTags();
-                    }
+                    const val = inp.value.trim().replace(/^#/, '');
+                    if(val) { tempTags.push(val); inp.value = ""; renderAdminTags(); }
                 };
 
-                window.removeAdminTag = function(idx) {
-                    tempTags.splice(idx, 1);
-                    renderAdminTags();
-                };
+                window.removeAdminTag = function(idx) { tempTags.splice(idx, 1); renderAdminTags(); };
 
                 function renderAdminTags() {
                     const wrap = document.getElementById("ad-tags-wrapper");
@@ -1267,15 +1249,13 @@
 
                 document.getElementById("ad-save").onclick = async () => {
                     if(!tempAdminImg) return alert("Vui lòng tải ảnh lên!");
-                    
                     let finalData = {
                         name: document.getElementById("ad-name").value.trim(), 
                         avatar: tempAdminImg, 
-                        tags: tempTags, // Dùng mảng tempTags thay vì chuỗi
+                        tags: tempTags,
                         hook: document.getElementById("ad-hook").value.trim(), 
                         link: document.getElementById("ad-link").value.trim()
                     };
-                    
                     if(action === 'add') { finalData.id = "b_"+Date.now(); finalData.createdAt = Date.now(); finalData.feedbacks = []; finalData.isHidden = false; CONFIG.staff.push(finalData); }
                     else { Object.assign(CONFIG.staff.find(x => x.id === id), finalData); }
                     document.getElementById("ad-save").textContent = "Đang lưu..."; await saveConfig(); renderUI(); document.getElementById("admin-modal").classList.remove("show");
@@ -1309,29 +1289,17 @@
                     <button class="fb-btn-submit" id="ad-save">LƯU HỒ SƠ DỰ BỊ</button>
                 `;
 
-                // Render tags ban đầu
                 renderAdminTags();
 
                 window.addAdminTag = function() {
                     const inp = document.getElementById("ad-tag-input");
-                    const val = inp.value.trim().replace(/^#/, ''); // Lọc bỏ dấu thăng nếu admin lỡ gõ
-                    if(val) {
-                        tempTags.push(val);
-                        inp.value = "";
-                        renderAdminTags();
-                    }
+                    const val = inp.value.trim().replace(/^#/, ''); 
+                    if(val) { tempTags.push(val); inp.value = ""; renderAdminTags(); }
                 };
-
-                window.removeAdminTag = function(idx) {
-                    tempTags.splice(idx, 1);
-                    renderAdminTags();
-                };
-
+                window.removeAdminTag = function(idx) { tempTags.splice(idx, 1); renderAdminTags(); };
                 function renderAdminTags() {
                     const wrap = document.getElementById("ad-tags-wrapper");
-                    wrap.innerHTML = tempTags.map((t, i) => `
-                        <div class="ad-mini-tag">#${t} <span onclick="removeAdminTag(${i})">✕</span></div>
-                    `).join('');
+                    wrap.innerHTML = tempTags.map((t, i) => `<div class="ad-mini-tag">#${t} <span onclick="removeAdminTag(${i})">✕</span></div>`).join('');
                 }
 
                 document.getElementById("ad-img").onchange = async (e) => {
