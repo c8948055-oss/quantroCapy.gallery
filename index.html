@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- KHÓA CHẾ ĐỘ SÁNG: Ngăn điện thoại tự động đảo màu sang Dark Mode -->
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#FFF9F5">
     <title>Quán Trọ Capy</title>
     
     <!-- Favicon: Capy thắt nơ -->
     <link rel="icon" href="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" type="image/png">
     
-    <!-- Fonts: Baloo 2 (Hỗ trợ tiếng Việt 100%), Comfortaa & Nunito -->
+    <!-- Fonts: Baloo 2, Comfortaa & Nunito -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Comfortaa:wght@500;700;800&family=Nunito:ital,wght@0,500;0,700;0,800;1,500;1,700&display=swap" rel="stylesheet">
@@ -22,6 +25,7 @@
            BẢNG MÀU & VIBE
            ============================================================ */
         :root {
+            color-scheme: light; /* Ép trình duyệt dùng chế độ sáng */
             --bg-main: #FFF9F5; 
             --bg-card: #FFFFFF; 
             --text-dark: #3D2314; 
@@ -62,26 +66,41 @@
         }
 
         /* ============================================================
+           BẢNG THỐNG KÊ (GÓC TRÁI DƯỚI - MINI SIZE)
+           ============================================================ */
+        .global-stats {
+            position: fixed; left: 15px; bottom: 15px; z-index: 100;
+            display: flex; flex-direction: column; gap: 8px;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px);
+            padding: 10px 15px; border-radius: 16px;
+            border: 2px dashed var(--accent-mocha);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            pointer-events: none; /* Không cản trở việc click chuột phía dưới */
+        }
+        .stat-line { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
+        .stat-line .svg-icon { color: var(--accent-peach); width: 16px; height: 16px; }
+        .stat-line .num { color: var(--accent-peach); font-weight: 900; font-size: 1rem; min-width: 20px; text-align: center;}
+
+        /* ============================================================
            HEADER & BẢNG HIỆU
            ============================================================ */
         .header-section {
             max-width: 850px; 
-            margin: 140px auto 15px auto; /* CHỪA 140PX TRÊN CÙNG CHO CAPY HIỆN NGUYÊN HÌNH */
+            margin: 70px auto 15px auto; 
             text-align: center; padding: 0 20px;
         }
         
         .signboard-wrapper {
-            position: relative; max-width: 550px; margin: 0 auto 15px auto;
+            position: relative; max-width: 580px; margin: 0 auto 15px auto;
         }
 
-        /* Capybara ngó đầu (Chắc chắn 100% không bị cắt) */
         .peeking-capy {
             position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); 
-            width: 130px; z-index: 1; margin-bottom: -15px; 
+            width: 130px; z-index: 1; margin-bottom: -15px;
         }
 
         .cream-board {
-            background: #FFFBF8; border: 4px solid var(--text-dark); border-radius: 25px; 
+            background: #FFFBF8; border: 4px solid var(--text-dark); border-radius: 35px; 
             padding: 15px 30px; position: relative; z-index: 2; box-shadow: 0 8px 0 rgba(92, 64, 51, 0.08);
             cursor: pointer; user-select: none; transition: 0.2s; display: flex; justify-content: center; align-items: center;
         }
@@ -92,7 +111,7 @@
             filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15)); transform: rotate(-15deg);
         }
 
-        /* CHỮ QUÁN TRỌ CAPY (Baloo 2 ExtraBold - Hỗ trợ Tiếng Việt) */
+        /* CHỮ QUÁN TRỌ CAPY (Baloo 2) */
         .station-title {
             font-family: var(--font-title); font-size: clamp(2.2rem, 5vw, 3.5rem); 
             font-weight: 800; color: var(--text-dark); margin: 0; line-height: 1.1; 
@@ -102,10 +121,10 @@
                  0px -3px 0 #FFF, 0px 3px 0 #FFF, -3px 0px 0 #FFF, 3px 0px 0 #FFF,
                 -2px -3px 0 #FFF, 2px -3px 0 #FFF, -2px 3px 0 #FFF, 2px 3px 0 #FFF,
                 -3px -2px 0 #FFF, 3px -2px 0 #FFF, -3px 2px 0 #FFF, 3px 2px 0 #FFF,
-                 0px 5px 0px var(--accent-pink), -1px 5px 0px var(--accent-pink),
-                 1px 5px 0px var(--accent-pink), -2px 5px 0px var(--accent-pink),
-                 2px 5px 0px var(--accent-pink), -3px 5px 0px var(--accent-pink),
-                 3px 5px 0px var(--accent-pink);
+                 0px 6px 0px var(--accent-pink), -1px 6px 0px var(--accent-pink),
+                 1px 6px 0px var(--accent-pink), -2px 6px 0px var(--accent-pink),
+                 2px 6px 0px var(--accent-pink), -3px 6px 0px var(--accent-pink),
+                 3px 6px 0px var(--accent-pink);
         }
 
         .intro-text-wrap {
@@ -115,9 +134,9 @@
             font-size: 0.95rem; color: var(--text-muted); font-style: italic; text-align: center; font-weight: 700; line-height: 1.6;
         }
         .admin-edit-intro-btn {
-            display: none; background: #FFF; border: 2px solid var(--border-soft); border-radius: 50%; width: 24px; height: 24px;
-            align-items: center; justify-content: center; font-size: 0.65rem; cursor: pointer; color: var(--accent-peach);
-            box-shadow: 0 3px 5px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0;
+            display: none; background: #FFF; border: 2px solid var(--border-soft); border-radius: 50%; width: 26px; height: 26px;
+            align-items: center; justify-content: center; font-size: 0.7rem; cursor: pointer; color: var(--accent-peach);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0;
         }
         body.is-admin .admin-edit-intro-btn { display: flex; }
 
@@ -164,24 +183,14 @@
         }
 
         /* ============================================================
-           BẢNG THỐNG KÊ (DỜI VÀO PHÍA TRÊN GRID CHO GỌN)
+           BẢNG THỐNG KÊ MINI TRÊN MOBILE NẾU CẦN
            ============================================================ */
         .main-container { max-width: 1200px; margin: 0 auto 80px auto; padding: 0 15px; }
         
         .grid-header { 
-            display: flex; justify-content: space-between; align-items: flex-end; 
+            display: flex; justify-content: flex-end; align-items: flex-end; 
             margin-bottom: 20px; flex-wrap: wrap; gap: 15px;
         }
-
-        .global-stats {
-            display: flex; flex-direction: column; gap: 6px;
-            background: #FFF; padding: 10px 15px; border-radius: 16px;
-            border: 2px dashed var(--accent-mocha);
-            box-shadow: var(--shadow-soft);
-        }
-        .stat-line { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
-        .stat-line .svg-icon { color: var(--accent-peach); width: 14px; height: 14px; }
-        .stat-line .num { color: var(--accent-peach); font-weight: 900; font-size: 0.95rem; min-width: 15px; text-align: center;}
 
         .sort-select {
             padding: 8px 16px; border-radius: 50px; background: #FFF; border: 2px solid var(--border-soft);
@@ -189,9 +198,8 @@
         }
 
         /* ============================================================
-           GRID THẺ NHÂN VIÊN (SIZE SIÊU NHỎ NHƯ ẢNH MẪU)
+           GRID THẺ NHÂN VIÊN
            ============================================================ */
-        /* Giới hạn min-width nhỏ lại chỉ 160px để hiển thị nhiều cột */
         .bot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 18px; }
 
         .bot-card {
@@ -201,7 +209,6 @@
         }
         .bot-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(92, 64, 51, 0.1); border-color: var(--border-soft); }
         
-        /* Ảnh bìa ép chuẩn 9:16 */
         .b-img-wrap { width: 100%; aspect-ratio: 9/16; position: relative; overflow: hidden; background: #FDECE4; border-radius: 14px 14px 0 0;}
         .b-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .bot-card:hover .b-img-wrap img { transform: scale(1.05); }
@@ -218,14 +225,13 @@
             padding: 10px; display: flex; flex-direction: column; flex: 1; position: relative; background: #FFF;
         }
         .b-header-info { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-        /* Avatar ép chuẩn 1:1 */
         .b-avatar-mini { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-peach); flex-shrink:0; aspect-ratio: 1/1;}
         .b-name { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 800; color: var(--text-dark); line-height: 1.2;}
         
         .b-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px; }
         .b-tag { font-size: 0.6rem; padding: 2px 6px; background: var(--bg-main); border-radius: 50px; color: var(--text-dark); font-weight: 800; border: 1px solid var(--border-soft); }
         
-        .b-hook { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-bottom: 15px; flex: 1; font-weight: 700; line-height: 1.4;}
+        .b-hook { font-size: 0.75rem; color: var(--text-muted); font-style: italic; margin-bottom: 15px; flex: 1; font-weight: 700; line-height: 1.4;}
         
         .b-actions { display: flex; flex-direction: column; gap: 6px; margin-top: auto;}
         .b-btn { 
@@ -299,9 +305,9 @@
         .file-upload-label { display: inline-block; padding: 10px 14px; background: #FFF; border: 2px dashed var(--accent-mocha); border-radius: 10px; font-size: 0.8rem; color: var(--text-dark); font-weight: 800; cursor: pointer; margin-bottom: 10px; transition: 0.3s; width:100%; text-align:center;}
         .file-upload-label:hover { background: var(--bg-main); border-color: var(--accent-peach); }
         .img-preview { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;}
-        .img-preview img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; border: 2px solid var(--accent-mocha); }
+        .img-preview img { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; border: 2px solid var(--accent-mocha); }
 
-        /* DANH SÁCH FEEDBACK (Phong cách mới gọn gàng) */
+        /* DANH SÁCH FEEDBACK */
         .fb-list { display: flex; flex-direction: column; gap: 15px; }
         .fb-item { background: #FFF; padding: 15px; border-radius: 16px; border: 2px solid var(--border-soft); box-shadow: var(--shadow-soft); position: relative;}
         .fb-item-header { display: flex; justify-content: space-between; margin-bottom: 8px; align-items: flex-start;}
@@ -346,11 +352,11 @@
         
         .noti-btn { position: relative; cursor: pointer; color: var(--text-dark); display:flex; align-items:center; justify-content:center; padding: 6px; background: var(--bg-main); border-radius:50%; border: 2px solid var(--border-soft); transition:0.2s;}
         .noti-btn:hover { background: var(--accent-mocha); border-color: var(--accent-mocha); color: #FFF;}
-        .noti-badge { position: absolute; top: -5px; right: -5px; background: #EF4444; color: #FFF; font-size: 0.65rem; width: 18px; height: 18px; display:flex; align-items:center; justify-content:center; border-radius: 50%; font-weight: 900; border: 2px solid #FFF;}
+        .noti-badge { position: absolute; top: -4px; right: -4px; background: #EF4444; color: #FFF; font-size: 0.6rem; width: 16px; height: 16px; display:flex; align-items:center; justify-content:center; border-radius: 50%; font-weight: 900; border: 2px solid #FFF;}
 
-        .card-admin-overlay { position: absolute; top: 8px; left: 8px; z-index: 20; display: none; gap: 4px; flex-direction: column;}
+        .card-admin-overlay { position: absolute; top: 6px; left: 6px; z-index: 20; display: none; gap: 4px; flex-direction: column;}
         body.is-admin .card-admin-overlay { display: flex; }
-        .btn-card-ad { background: #FFF; color: var(--text-dark); border: 2px solid var(--text-dark); padding: 4px 10px; font-size: 0.75rem; font-weight:800; border-radius: 50px; transition:0.2s;}
+        .btn-card-ad { background: #FFF; color: var(--text-dark); border: 2px solid var(--text-dark); padding: 4px 8px; font-size: 0.65rem; font-weight:800; border-radius: 50px; transition:0.2s;}
         .btn-card-ad:hover { background: var(--accent-peach); color:#FFF; border-color:var(--accent-peach);}
 
         /* Form Admin Popup */
@@ -377,23 +383,23 @@
         .ad-mini-tag span:hover { transform: scale(1.2); }
 
         /* ============================================================
-           THIẾT KẾ THẺ SẮP RA MẮT (SIZE NHỎ GỌN)
+           THIẾT KẾ THẺ SẮP RA MẮT (SIZE NHỎ GỌN NHƯ THẺ PHÒNG)
            ============================================================ */
         .up-card {
-            background: var(--bg-card); border: 3px dashed var(--accent-peach); border-radius: 16px; padding: 20px 15px;
+            background: var(--bg-card); border: 2px solid var(--border-soft); border-radius: 16px; padding: 15px 10px;
             display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;
             box-shadow: var(--shadow-soft);
         }
-        .up-stamp { position: absolute; top: -8px; left: -8px; background: #EF4444; color: #FFF; font-weight: 900; font-size: 0.7rem; padding: 4px 10px; border: 2px solid #FFF; border-radius: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.15); z-index: 2; letter-spacing: 1px; transform: rotate(-5deg);}
+        .up-stamp { position: absolute; top: -8px; left: -8px; background: #EF4444; color: #FFF; font-weight: 900; font-size: 0.65rem; padding: 4px 10px; border: 2px solid #FFF; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 2; letter-spacing: 0.5px; transform: rotate(-5deg);}
         
-        .up-avatar-wrap { position:relative; margin-bottom: 15px; margin-top:10px;}
-        .up-avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; filter: blur(2px); border: 3px solid #FFF; box-shadow: 0 5px 15px rgba(92, 64, 51, 0.1);}
+        .up-avatar-wrap { position:relative; margin-bottom: 12px; margin-top:5px;}
+        .up-avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; filter: blur(2px); border: 3px solid #FFF; box-shadow: 0 4px 10px rgba(92, 64, 51, 0.1);}
         
-        .up-name { font-family: var(--font-heading); font-size: 1.2rem; font-weight:800; color: var(--text-dark); margin-bottom: 8px; line-height:1.2;}
+        .up-name { font-family: var(--font-heading); font-size: 1.05rem; font-weight:800; color: var(--text-dark); margin-bottom: 8px; line-height:1.2;}
         
         /* PHẦN Ý TƯỞNG CÓ THANH CUỘN VÀ NGẮT DÒNG TỰ NHIÊN */
         .up-idea { 
-            font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; 
+            font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px; 
             line-height: 1.5; font-style: italic; font-weight: 700;
             white-space: pre-wrap; /* Giữ nguyên ngắt dòng của admin */
             text-align: left; /* Căn trái cho dễ đọc */
@@ -405,25 +411,24 @@
         .up-idea::-webkit-scrollbar { width: 4px; }
         .up-idea::-webkit-scrollbar-thumb { background: var(--accent-mocha); border-radius: 4px; }
         
-        .up-progress-wrap { width: 100%; margin-bottom: 15px; text-align: left; background: var(--bg-main); padding: 10px; border-radius: 12px; border: 2px solid var(--border-soft);}
-        .up-p-header { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-dark); margin-bottom: 6px; font-weight:800;}
-        .up-p-bar { width: 100%; height: 8px; background: #FFF; border-radius: 50px; overflow: hidden; border: 2px solid var(--border-soft);}
+        .up-progress-wrap { width: 100%; margin-bottom: 12px; text-align: left; background: var(--bg-main); padding: 8px; border-radius: 10px; border: 1.5px solid var(--border-soft);}
+        .up-p-header { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-dark); margin-bottom: 4px; font-weight:800;}
+        .up-p-bar { width: 100%; height: 6px; background: #FFF; border-radius: 50px; overflow: hidden; border: 1px solid var(--border-soft);}
         .up-p-fill { height: 100%; background: var(--accent-peach); border-radius: 50px;}
         
-        .up-vote-btn { width: 100%; padding: 10px; border-radius: 12px; background: #FFF; border: 2.5px solid var(--border-soft); color: var(--text-dark); font-weight: 800; transition: 0.3s; font-size: 0.85rem; display:flex; align-items:center; justify-content:center; gap:6px; font-family: var(--font-body);}
-        .up-vote-btn.voted { border-color: var(--accent-pink); color: #FFF; background: var(--accent-pink); box-shadow: 0 4px 10px rgba(255,182,185,0.4);}
+        .up-vote-btn { width: 100%; padding: 8px; border-radius: 10px; background: #FFF; border: 2px solid var(--border-soft); color: var(--text-dark); font-weight: 800; transition: 0.3s; font-size: 0.8rem; display:flex; align-items:center; justify-content:center; gap:5px; font-family: var(--font-body);}
+        .up-vote-btn.voted { border-color: var(--accent-pink); color: #FFF; background: var(--accent-pink); box-shadow: 0 2px 8px rgba(255,182,185,0.4);}
         .up-vote-btn:hover { background: var(--bg-main); border-color: var(--accent-peach); transform:translateY(-2px);}
 
         /* Lightbox (Zoom ảnh) */
         .lightbox { position: fixed; inset: 0; background: rgba(92, 64, 51, 0.95); z-index: 10000; display: none; justify-content: center; align-items: center; cursor: zoom-out;}
-        .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 16px; border: 4px solid #FFF; box-shadow: 0 15px 30px rgba(0,0,0,0.5);}
+        .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 12px; border: 3px solid #FFF; box-shadow: 0 10px 25px rgba(0,0,0,0.5);}
 
         @media (max-width: 600px) {
-            .cream-board { padding: 15px 25px; }
+            .cream-board { padding: 10px 20px; }
             .bot-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
             .m-body { padding: 15px; }
             .fb-form { padding: 15px; }
-            .rt-toolbar button { padding: 6px 10px; }
         }
     </style>
 </head>
@@ -534,18 +539,30 @@
         </div>
     </div>
 
+    <!-- BẢNG THỐNG KÊ (GÓC DƯỚI TRÁI - HOÀN TOÀN KHÔNG CHE CHẮN) -->
+    <div class="global-stats">
+        <div class="stat-line">
+            <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-room"></use></svg>
+            <span class="num" id="stat-rooms">0</span>
+            <span class="text">phòng đang mở cửa.</span>
+        </div>
+        <div class="stat-line">
+            <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-user"></use></svg>
+            <span class="num" id="stat-visits">0</span>
+            <span class="text">lượt khách ghé thăm.</span>
+        </div>
+    </div>
+
     <!-- HEADER: TÊN QUÁN & BẢNG HIỆU KEM SỮA -->
     <header class="header-section">
         <div class="signboard-wrapper">
-            <!-- Bé Capy thò đầu lấp ló (Đã chỉnh để hiện đủ 100%) -->
+            <!-- Bé Capy thò đầu lấp ló (Nằm tĩnh) -->
             <img src="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" alt="Peeking Capy" class="peeking-capy">
             
             <!-- Bảng kem sữa viền nâu (click đúp vào để mở admin) -->
-            <div class="cream-board" id="trigger-admin" title="">
+            <div class="cream-board" id="trigger-admin" title="Nhấp đúp vào Bảng để vào Admin">
                 <!-- Nơ hồng lụa -->
                 <img src="2D_pixel_png-removebg-preview.png" alt="Pink Bow" class="pink-bow">
-                
-                <!-- Font tiêu đề dùng Baloo 2 -->
                 <h1 class="station-title">QUÁN TRỌ CAPY</h1>
             </div>
         </div>
@@ -577,20 +594,7 @@
 
     <!-- MAIN GRID THẺ NHÂN VIÊN -->
     <main class="main-container">
-        <!-- Grid Header gom chung Bảng thống kê mini và Nút Sắp xếp -->
         <div class="grid-header">
-            <div class="global-stats">
-                <div class="stat-line">
-                    <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-room"></use></svg>
-                    <span class="num" id="stat-rooms">0</span>
-                    <span class="text">phòng đang mở cửa.</span>
-                </div>
-                <div class="stat-line">
-                    <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-user"></use></svg>
-                    <span class="num" id="stat-visits">0</span>
-                    <span class="text">lượt khách ghé thăm.</span>
-                </div>
-            </div>
             <select id="sort-select" class="sort-select">
                 <option value="newest">Mới nhất</option>
                 <option value="rating">Yêu thích nhất</option>
@@ -692,13 +696,13 @@
            ============================================================ */
         async function fetchConfig() {
             try {
-                // Đổi ID truy cập thành 300 để Reset lượt khách về 0 và dời vị trí
-                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 300).single();
+                // Đổi ID truy cập thành 400 để Reset lượt khách về 0 
+                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 400).single();
                 if (visitData && visitData.data) { globalVisits = parseInt(visitData.data); }
-                if (!sessionStorage.getItem('capy_visited_v8') && !isAdminMode) { 
+                if (!sessionStorage.getItem('capy_visited_v9') && !isAdminMode) { 
                     globalVisits++; 
-                    sessionStorage.setItem('capy_visited_v8', 'true'); 
-                    supa.from('station_config').upsert([{ id: 300, data: globalVisits.toString() }]).then(); 
+                    sessionStorage.setItem('capy_visited_v9', 'true'); 
+                    supa.from('station_config').upsert([{ id: 400, data: globalVisits.toString() }]).then(); 
                 }
 
                 const { data } = await supa.from('station_config').select('data').eq('id', 777).single();
@@ -827,7 +831,7 @@
                     </div>
                 ` : "";
 
-                // Loại bỏ giới hạn slice(0,3) để hiện 100% tags
+                // Hiển thị 100% các tag đã có trong phòng
                 let tagsHtml = (bot.tags||[]).map(t => `<span class="b-tag">${t.startsWith('#')?t:'#'+t}</span>`).join('');
                 let rating = getAvgRating(bot);
 
@@ -839,7 +843,7 @@
                     <div class="b-img-wrap">
                         <img src="${coverImg}" loading="lazy">
                         <div class="b-rating">
-                            <svg class="svg-icon" viewBox="0 0 16 16" style="width:14px;height:14px;"><use href="#px-star-filled"></use></svg> 
+                            <svg class="svg-icon" viewBox="0 0 16 16" style="width:12px;height:12px;"><use href="#px-star-filled"></use></svg> 
                             ${rating}
                         </div>
                     </div>
@@ -854,7 +858,7 @@
                         
                         <div class="b-actions">
                             <button class="b-btn b-btn-fb" onclick="openFeedbackModal('${bot.id}'); event.stopPropagation();">💬 Góc Feedback (${bot.feedbacks.length})</button>
-                            ${bot.link ? `<a href="${bot.link}" target="_blank" class="b-btn b-btn-link" onclick="event.stopPropagation();"><svg class="svg-icon" viewBox="0 0 16 16" style="width:14px;height:14px;color:#FFF"><use href="#px-key"></use></svg> Ghé Thăm Phòng</a>` : `<button class="b-btn b-btn-link" style="opacity:0.5; cursor:not-allowed;" onclick="event.stopPropagation();">ĐANG DỌN PHÒNG</button>`}
+                            ${bot.link ? `<a href="${bot.link}" target="_blank" class="b-btn b-btn-link" onclick="event.stopPropagation();"><svg class="svg-icon" viewBox="0 0 16 16" style="width:12px;height:12px;color:#FFF"><use href="#px-key"></use></svg> Ghé Thăm Phòng</a>` : `<button class="b-btn b-btn-link" style="opacity:0.5; cursor:not-allowed;" onclick="event.stopPropagation();">ĐANG DỌN PHÒNG</button>`}
                         </div>
                     </div>
                 `;
@@ -915,7 +919,6 @@
                             : `<svg class="svg-icon" viewBox="0 0 16 16" style="width:16px;height:16px;color:var(--border-soft)"><use href="#px-star-empty"></use></svg>`;
                     }
 
-                    // Lấy chữ cái đầu làm Avatar
                     let initial = fb.name.charAt(0).toUpperCase();
 
                     return `
@@ -1041,7 +1044,7 @@
         };
 
         /* ============================================================
-           MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN (CÓ RICH TEXT & NÚT ĐÓNG MỞ SẠCH)
+           MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN
            ============================================================ */
         
         window.openSMModal = function() {
@@ -1098,7 +1101,7 @@
                 displayBots.forEach(bot => {
                     let adminOver = isAdminMode ? `<div class="card-admin-overlay"><button class="btn-card-ad" onclick="openAdminForm('up', 'edit', '${bot.id}')">Sửa</button><button class="btn-card-ad" onclick="toggleHideUp('${bot.id}')">${bot.isHidden?'Đang Ẩn':'Hiện'}</button><button class="btn-card-ad" style="color:#EF4444; border-color:#EF4444;" onclick="deleteUp('${bot.id}')">Xóa</button></div>` : '';
                     let hasVoted = localStorage.getItem('vote_up_' + bot.id) === 'true';
-                    // Bỏ hàm slice(0,3) để hiện tất cả tag
+                    // Hiển thị đầy đủ tag
                     let tagsHtml = (bot.tags||[]).map(t => `<span class="b-tag">${t.startsWith('#')?t:'#'+t}</span>`).join('');
                     
                     html += `
@@ -1113,7 +1116,6 @@
                             <div class="up-name">${bot.name}</div>
                             <div class="b-tags" style="justify-content:center; margin-bottom:8px;">${tagsHtml}</div>
                             
-                            <!-- Ý tưởng có thanh cuộn nếu quá dài -->
                             <div class="up-idea">${bot.idea}</div>
                             
                             <div class="up-progress-wrap">
@@ -1269,13 +1271,11 @@
                     <div class="admin-form-group"><label>Tên Phòng (OC)</label><input type="text" id="ad-name" value="${d.name}" class="fb-input"></div>
                     
                     <div style="display:flex; gap:10px; margin-bottom:15px;">
-                        <!-- Ảnh Nền 16:9 -->
                         <div style="flex:1;">
                             <label class="file-upload-label" style="padding:8px; font-size:0.8rem;"><input type="file" accept="image/*" id="ad-img-bg" style="display:none;"> 📸 ẢNH BÌA LỚN (9:16)</label>
                             <div id="ad-prev-bg" style="text-align:center;">${tempBgImg ? `<img src="${tempBgImg}" style="height:100px; width:60px; object-fit:cover; border-radius:8px; border:2px solid var(--accent-mocha);">` : ''}</div>
                         </div>
                         
-                        <!-- Ảnh Avatar Nhỏ 1:1 -->
                         <div style="flex:1;">
                             <label class="file-upload-label" style="padding:8px; font-size:0.8rem;"><input type="file" accept="image/*" id="ad-img-ava" style="display:none;"> 📸 AVATAR NHỎ (1:1)</label>
                             <div id="ad-prev-ava" style="text-align:center;">${tempAdminImg ? `<img src="${tempAdminImg}" style="height:60px; width:60px; object-fit:cover; border-radius:50%; margin:0 auto; border:2px solid var(--accent-mocha);">` : ''}</div>
