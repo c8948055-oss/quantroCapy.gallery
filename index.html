@@ -8,10 +8,10 @@
     <!-- Favicon: Capy thắt nơ -->
     <link rel="icon" href="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" type="image/png">
     
-    <!-- Fonts: Baloo 2 (Tiêu đề mập mạp, tiếng Việt chuẩn), Comfortaa & Nunito -->
+    <!-- Fonts: Luckiest Guy (Tiêu đề 3D), Comfortaa & Nunito -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Comfortaa:wght@400;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700;800&family=Luckiest+Guy&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
     
     <!-- Supabase & LocalForage -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -25,24 +25,23 @@
             --bg-main: #FFF9F5; /* Nền kem sữa ấm */
             --bg-card: #FFFFFF; 
             --text-dark: #3D2314; /* Nâu ca cao đậm đặc */
-            --text-muted: #A38A7A; /* Nâu nhạt */
+            --text-muted: #9E8576; /* Nâu nhạt */
             --accent-peach: #FF9F7C; /* Cam đào pastel */
             --accent-pink: #FFB6B9; /* Hồng lụa coquette */
             --accent-mocha: #E8D5C4; /* Nâu gỗ nhạt */
             --border-soft: #F4EBE6;
             
-            --font-title: 'Baloo 2', cursive; /* Mập mạp, chuẩn tiếng Việt */
+            --font-title: 'Luckiest Guy', cursive;
             --font-heading: 'Comfortaa', cursive;
             --font-body: 'Nunito', sans-serif;
             --shadow-soft: 0 12px 35px rgba(92, 64, 51, 0.06);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        
         body { 
             background-color: var(--bg-main);
-            /* Background Pattern: Cỏ 4 lá & Cam pastel rải rác lơ đãng */
-            background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.15'%3E%3Cpath d='M25 25 C25 20, 30 20, 30 25 C35 20, 40 20, 40 25 C40 30, 35 30, 32 30 C35 35, 30 40, 25 40 C20 40, 15 35, 18 30 C15 30, 10 30, 10 25 C10 20, 15 20, 15 25 C15 30, 20 30, 25 30 Z' fill='%23A7D129' transform='scale(0.5) translate(20, 20)'/%3E%3Ccircle cx='80' cy='80' r='6' fill='%23FF9F7C'/%3E%3Cpath d='M80 74 Q83 70 85 72' stroke='%23A7D129' stroke-width='2' fill='none'/%3E%3C/g%3E%3C/svg%3E");
+            background-image: radial-gradient(var(--accent-mocha) 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
             color: var(--text-dark); 
             font-family: var(--font-body); 
             min-height: 100vh; overflow-x: hidden; line-height: 1.6;
@@ -62,6 +61,13 @@
             shape-rendering: crispEdges;
         }
 
+        /* Hiệu ứng nhún nhảy đáng yêu */
+        .bounce { animation: bounce 2s infinite ease-in-out; }
+        @keyframes bounce { 
+            0%, 100% { transform: translateY(0); } 
+            50% { transform: translateY(-8px); } 
+        }
+
         /* ============================================================
            HEADER & BẢNG HIỆU KEM SỮA BO TRÒN
            ============================================================ */
@@ -71,34 +77,31 @@
         
         .signboard-wrapper {
             position: relative;
-            max-width: 580px; 
+            max-width: 600px;
             margin: 0 auto 15px auto;
-            padding-top: 105px; /* Chừa không gian rộng để Capy hiện nguyên hình */
+            padding-top: 50px; /* Chừa không gian cho Capy ngó đầu */
         }
 
-        /* Capybara ngồi hẳn lên bảng */
+        /* Capybara ngó đầu (Ảnh Đeo kính) - Hiện đủ 100% */
         .peeking-capy {
             position: absolute;
-            top: 0; left: 50%; transform: translateX(-50%);
-            height: 120px; /* Hiện nguyên hình, không bị cắt */
-            z-index: 3; /* Nổi lên TRÊN bảng hiệu */
+            top: -20px; left: 50%; transform: translateX(-50%);
+            width: 140px;
+            z-index: 3; /* Nằm TRÊN bảng hiệu */
         }
 
         /* Tấm bảng kem sữa viền nâu mảnh */
         .cream-board {
             background: #FFFBF8;
             border: 4px solid var(--text-dark);
-            border-radius: 35px; /* Bo tròn mượt mà */
-            padding: 20px 25px; 
+            border-radius: 25px; /* Bo tròn mượt mà */
+            padding: 20px 40px;
             position: relative;
             z-index: 2;
             box-shadow: 0 10px 0 rgba(92, 64, 51, 0.08);
             cursor: pointer; 
             user-select: none; /* KHÔNG THỂ BÔI ĐEN, BẢO ĐẢM DBLCLICK MƯỢT */
             transition: 0.2s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         .cream-board:active { transform: scale(0.98); box-shadow: 0 5px 0 rgba(92, 64, 51, 0.08); }
 
@@ -112,17 +115,18 @@
             transform: rotate(-15deg);
         }
 
-        /* CHỮ QUÁN TRỌ CAPY STICKER 3D (Font Baloo 2) */
+        /* CHỮ QUÁN TRỌ CAPY STICKER 3D (Luckiest Guy) */
         .station-title {
             font-family: var(--font-title); 
-            font-size: clamp(2.2rem, 5vw, 3.8rem); 
-            font-weight: 800;
+            font-size: clamp(2.5rem, 6vw, 4rem); 
+            font-weight: 400;
             color: var(--text-dark); 
             margin: 0;
             line-height: 1.1;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             white-space: nowrap;
+            /* Hiệu ứng 3D khối: Lớp 1 (Viền trắng 3px) - Lớp 2 (Bóng đổ cứng 4px màu hồng) */
             text-shadow: 
                 -3px -3px 0 #FFF, 3px -3px 0 #FFF, -3px 3px 0 #FFF, 3px 3px 0 #FFF,
                  0px -3px 0 #FFF, 0px 3px 0 #FFF, -3px 0px 0 #FFF, 3px 0px 0 #FFF,
@@ -137,28 +141,19 @@
                  3px 7px 0px var(--accent-pink);
         }
 
-        /* Lời tựa giới thiệu tự do */
-        .intro-text-wrap {
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            margin: 0 auto 35px auto; max-width: 650px;
-        }
+        /* Lời tựa giới thiệu (Tự do, không viền) */
         .station-desc-freestyle {
-            font-size: 1.1rem; 
-            color: var(--text-muted); 
+            font-size: 1.05rem; 
+            color: var(--text-muted); /* Nâu nhạt hơn để phân cấp */
             font-style: italic; 
             text-align: center;
+            margin: 0 auto 35px auto;
+            max-width: 650px;
             font-weight: 700;
             line-height: 1.6;
         }
-        .admin-edit-intro-btn {
-            display: none; background: #FFF; border: 2px solid var(--border-soft); border-radius: 50%; width: 30px; height: 30px;
-            align-items: center; justify-content: center; font-size: 0.8rem; cursor: pointer; color: var(--accent-peach);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0;
-        }
-        body.is-admin .admin-edit-intro-btn { display: flex; }
-        .admin-edit-intro-btn:hover { background: var(--accent-peach); color: #FFF; border-color: var(--accent-peach);}
 
-        /* Các Nút Trung Tâm */
+        /* Các Nút Trung Tâm (2 Ô hình viên thuốc) */
         .top-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .btn-top {
             padding: 14px 28px; border-radius: 50px; font-weight: 800; font-size: 1rem;
@@ -175,6 +170,7 @@
             display: flex; flex-direction: column; align-items: center; gap: 20px;
         }
 
+        /* Thanh Search có Icon lúp pixel */
         .search-wrapper { 
             width: 100%; max-width: 600px; position: relative; display: flex; align-items: center;
         }
@@ -189,6 +185,7 @@
         .search-input:focus { border-color: var(--accent-peach); }
         .search-input::placeholder { color: #C4B5A9; font-weight: 600; }
 
+        /* Tag Viên thuốc */
         .pill-tags-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 900px; }
         .pill-tag {
             padding: 10px 24px; border-radius: 50px; font-size: 0.95rem; font-weight: 800;
@@ -215,6 +212,7 @@
 
         .bot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px; }
 
+        /* THIẾT KẾ THẺ PHÒNG TRỌ (HEALING THEME) */
         .bot-card {
             background: var(--bg-card); border-radius: 35px; overflow: hidden; position: relative;
             display: flex; flex-direction: column; box-shadow: var(--shadow-soft);
@@ -226,6 +224,7 @@
         .b-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; border-radius: 30px 30px 0 0; }
         .bot-card:hover .b-img-wrap img { transform: scale(1.06); }
 
+        /* Đánh giá sao */
         .b-rating {
             position: absolute; top: 18px; right: 18px; background: #FFF;
             color: var(--text-dark); padding: 8px 16px; border-radius: 50px; font-size: 1rem; font-weight: 900;
@@ -233,6 +232,7 @@
             border: 3px solid var(--border-soft); font-family: var(--font-heading);
         }
 
+        /* Chân thẻ */
         .b-info {
             padding: 25px; display: flex; flex-direction: column; flex: 1; position: relative; background: #FFF;
         }
@@ -282,51 +282,68 @@
         .m-body::-webkit-scrollbar-thumb { background: var(--accent-mocha); border-radius: 20px; border: 2px solid var(--bg-main);}
 
         /* ============================================================
-           ÉP BUỘC FONT & SIZE CHỮ BÊN TRONG THÔNG TIN CHỦ TRỌ
-           (Chống copy-paste lỗi font)
+           CSS ÉP BUỘC TRONG THÔNG TIN CHỦ TRỌ
+           (Chống copy-paste nát form)
            ============================================================ */
-        .bio-content, .bio-content * {
+        .bio-content {
+            color: var(--text-dark); 
+            background: #FFF; 
+            padding: 30px; 
+            border-radius: 30px; 
+            border: 3.5px dashed var(--accent-mocha); 
+            margin-bottom: 25px; 
+            box-shadow: var(--shadow-soft); 
+            text-align: left; /* Đổi về căn trái để list hiển thị đẹp */
+        }
+        /* Mọi phần tử con bị ép font Nunito, ép trong suốt nền. 
+           LƯU Ý: Tuyệt đối không dùng !important cho màu chữ để Color Picker xài được */
+        .bio-content * {
             font-family: 'Nunito', sans-serif !important;
-            font-size: 1.05rem !important;
-            line-height: 1.8 !important;
-            background-color: transparent !important; /* Xóa nền bôi đen rác */
+            line-height: 1.7 !important;
+            background-color: transparent !important; 
         }
-        .bio-content b, .bio-content strong, .bio-content b *, .bio-content strong * {
-            font-weight: 800 !important;
-        }
-        .bio-content i, .bio-content em, .bio-content i *, .bio-content em * {
-            font-style: italic !important;
-        }
-        .bio-content ul, .bio-content ol {
-            padding-left: 20px !important;
-            margin: 10px 0 !important;
-        }
-        .bio-content li {
-            margin-bottom: 5px !important;
-        }
-        /* Riêng nút đóng mở (Details) trong Bio */
-        .bio-content details {
+        .bio-content b, .bio-content strong { font-weight: 800 !important; }
+        .bio-content i, .bio-content em { font-style: italic !important; }
+        .bio-content ul, .bio-content ol { padding-left: 20px; margin: 10px 0; }
+        .bio-content li { margin-bottom: 5px; }
+
+        /* Nút Toggle (Đóng Mở) Mượt Mà Tinh Tế */
+        .capy-toggle {
             background: #FFF !important;
-            border: 2.5px dashed var(--accent-mocha) !important;
+            border: 2px dashed var(--border-soft) !important;
             padding: 15px 20px !important;
             margin: 15px 0 !important;
             border-radius: 16px !important;
         }
-        .bio-content details[open] summary {
-            border-bottom: 2px dashed var(--border-soft) !important;
-            margin-bottom: 12px !important;
-            padding-bottom: 12px !important;
+        .capy-toggle summary {
+            cursor: pointer;
+            font-weight: 800;
+            color: var(--text-dark); /* Màu nâu đậm mặc định */
+            font-size: 1rem !important; /* Size nhỏ bằng text thường */
+            outline: none;
+            list-style: none; /* Ẩn mũi tên mặc định trình duyệt */
+            transition: 0.2s;
         }
-        .bio-content details summary, .bio-content details summary * {
-            color: var(--accent-peach) !important;
-            font-weight: 800 !important;
-            cursor: pointer !important;
-            font-size: 1.05rem !important;
-            list-style: none; /* Ẩn mũi tên mặc định */
+        .capy-toggle summary:hover { color: var(--accent-peach); }
+        .capy-toggle summary::-webkit-details-marker { display: none; }
+        .capy-toggle summary::before {
+            content: '▶';
+            color: var(--accent-peach);
+            margin-right: 8px;
+            display: inline-block;
+            transition: 0.2s;
+            font-size: 0.9rem;
         }
-        .bio-content details summary::-webkit-details-marker { display: none; }
-        .bio-content details summary::before { content: '▶ '; font-size: 0.9rem; }
-        .bio-content details[open] summary::before { content: '▼ '; }
+        .capy-toggle[open] summary::before {
+            transform: rotate(90deg);
+        }
+        .capy-toggle[open] summary {
+            border-bottom: 2px dashed var(--border-soft);
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+        }
+        .toggle-content { padding-top: 5px; }
+
 
         /* CỤM FEEDBACK FORM */
         .fb-form { background: #FFF; padding: 30px; border-radius: 25px; border: 3px solid var(--border-soft); margin-bottom: 35px; box-shadow: var(--shadow-soft); }
@@ -875,7 +892,6 @@
             });
         }
 
-        // Logic Tìm kiếm: Khi gõ, lọc ngay lập tức ở giao diện Nhân viên và Hồ sơ dự bị
         document.getElementById("search-inp").addEventListener("input", e => { searchQuery = e.target.value.trim(); renderGrid(); renderUpcomingBotsFilter(); });
         document.getElementById("sort-select").addEventListener("change", renderGrid);
 
@@ -1047,66 +1063,19 @@
         };
 
         /* ============================================================
-           MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN (CÓ RICH TEXT)
+           MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN (CÓ RICH TEXT & NÚT ĐÓNG MỞ)
            ============================================================ */
         
-        // --- CSS Ép buộc bên trong đoạn Tiểu Sử Chủ Trọ ---
-        const bioStyle = `
-            <style>
-                .bio-content, .bio-content * {
-                    font-family: 'Nunito', sans-serif !important;
-                    font-size: 1.05rem !important;
-                    line-height: 1.7 !important;
-                    background-color: transparent !important; /* Xóa nền bôi đen nếu paste từ web khác */
-                }
-                .bio-content b, .bio-content strong, .bio-content b *, .bio-content strong * {
-                    font-weight: 800 !important;
-                }
-                .bio-content i, .bio-content em, .bio-content i *, .bio-content em * {
-                    font-style: italic !important;
-                }
-                .bio-content ul, .bio-content ol {
-                    padding-left: 20px !important;
-                    margin: 10px 0 !important;
-                }
-                .bio-content li {
-                    margin-bottom: 5px !important;
-                }
-                .bio-content details {
-                    background: #FFF !important;
-                    border: 2.5px dashed var(--accent-mocha) !important;
-                    padding: 15px 20px !important;
-                    margin: 15px 0 !important;
-                    border-radius: 16px !important;
-                }
-                .bio-content details[open] summary {
-                    border-bottom: 2px dashed var(--border-soft) !important;
-                    margin-bottom: 12px !important;
-                    padding-bottom: 12px !important;
-                }
-                .bio-content details summary, .bio-content details summary * {
-                    color: var(--accent-peach) !important;
-                    font-weight: 800 !important;
-                    cursor: pointer !important;
-                    font-size: 1.05rem !important;
-                    list-style: none; /* Ẩn mũi tên mặc định trên một số trình duyệt */
-                }
-                .bio-content details summary::-webkit-details-marker { display: none; }
-                .bio-content details summary::before { content: '▶ '; font-size: 0.9rem; margin-right: 5px; }
-                .bio-content details[open] summary::before { content: '▼ '; }
-            </style>
-        `;
-
         window.openSMModal = function() {
             document.getElementById("modal-title").innerHTML = `<img src="ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" style="width:30px;height:30px;"> THÔNG TIN CHỦ TRỌ`;
             let fbHtml = CONFIG.stationMaster.facebook && CONFIG.stationMaster.facebook.url ? `<div style="margin-top:25px; text-align:center;"><a href="${CONFIG.stationMaster.facebook.url}" target="_blank" style="display:inline-block; padding:16px 32px; background:var(--text-dark); color:#FFF; font-weight:900; border-radius:50px; box-shadow:0 8px 25px rgba(92, 64, 51, 0.25); font-family:var(--font-body); font-size:1.05rem;">Liên hệ Facebook Chủ Trọ</a></div>` : '';
             
+            // Render khối Nội dung Bio (Tự do thay đổi màu sắc qua Editor)
             document.getElementById("modal-body").innerHTML = `
-                ${bioStyle}
                 <div style="text-align:center; margin-bottom:30px;">
                     ${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="width:160px; height:160px; border-radius:50%; object-fit:cover; margin:0 auto; border:4px solid var(--accent-peach); box-shadow:var(--shadow-soft);">` : ''}
                 </div>
-                <div class="bio-content" style="color:var(--text-dark); background:#FFF; padding:30px; border-radius:30px; border:3.5px dashed var(--accent-mocha); margin-bottom:25px; box-shadow:var(--shadow-soft);">
+                <div class="bio-content">
                     ${CONFIG.stationMaster.bio}
                 </div>
                 ${fbHtml}
@@ -1234,9 +1203,10 @@
         let tempAdminImg = "";
         let tempTags = [];
 
+        // HÀM CHÈN NÚT ĐÓNG MỞ (MÃ HTML SẠCH)
         window.insertToggleHTML = function() { 
             const id = 'det_' + Date.now();
-            const html = `<details><summary>Bấm vào đây để đổi tên nút</summary><div>Nhập nội dung vào đây...</div></details><div id="${id}"><br></div>`; 
+            const html = `&nbsp;<details class="capy-toggle"><summary>Tên nút đóng mở</summary><div class="toggle-content">Nội dung bên trong...</div></details><div id="${id}"><br></div>`; 
             document.execCommand('insertHTML', false, html); 
             setTimeout(() => {
                 const el = document.getElementById(id);
@@ -1275,7 +1245,6 @@
 
             if (type === 'sm') {
                 body.innerHTML = `
-                    ${bioStyle}
                     <label class="file-upload-label" style="width:100%; text-align:center;"><input type="file" accept="image/*" id="ad-sm-img" style="display:none;"> 📸 ĐỔI ẢNH CHỦ TRỌ</label>
                     <div id="ad-sm-prev" style="text-align:center; margin-bottom:20px;">${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="height:120px; border-radius:50%; border:4px solid var(--accent-peach);">` : ''}</div>
 
@@ -1302,7 +1271,7 @@
                     </div>
                     <button class="fb-btn-submit" id="ad-save">LƯU LẠI THÔNG TIN</button>
                 `;
-                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png";
+                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png";
                 document.getElementById("ad-sm-img").onchange = async (e) => {
                     if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:120px; border-radius:50%; border:4px solid var(--accent-peach);">`; }
                 };
