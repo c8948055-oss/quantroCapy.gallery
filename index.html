@@ -22,7 +22,7 @@
            BẢNG MÀU & VIBE (HEALING INN / COZY STYLE)
            ============================================================ */
         :root {
-            --bg-main: #F9F5EE; /* Nền kem trắng sữa / giấy cổ ấm áp */
+            --bg-main: #FFF9F5; /* Nền kem sữa ấm */
             --bg-card: #FFFFFF; 
             --text-dark: #3D2314; /* Nâu ca cao đậm đặc */
             --text-muted: #A38A7A; /* Nâu nhạt */
@@ -130,6 +130,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             white-space: nowrap;
+            /* Hiệu ứng 3D khối: Lớp 1 (Viền trắng 3px) - Lớp 2 (Bóng đổ cứng 4px màu hồng) */
             text-shadow: 
                 -3px -3px 0 #FFF, 3px -3px 0 #FFF, -3px 3px 0 #FFF, 3px 3px 0 #FFF,
                  0px -3px 0 #FFF, 0px 3px 0 #FFF, -3px 0px 0 #FFF, 3px 0px 0 #FFF,
@@ -144,14 +145,14 @@
                  3px 7px 0px var(--accent-pink);
         }
 
-        /* Lời tựa giới thiệu tự do */
+        /* Lời tựa giới thiệu tự do (Click to Edit cho Admin) */
         .intro-text-wrap {
             display: flex; align-items: center; justify-content: center; gap: 8px;
             margin: 0 auto 35px auto; max-width: 650px;
         }
         .station-desc-freestyle {
             font-size: 1.1rem; 
-            color: var(--text-muted); 
+            color: var(--text-muted); /* Nâu nhạt hơn để phân cấp */
             font-style: italic; 
             text-align: center;
             font-weight: 700;
@@ -182,6 +183,7 @@
             display: flex; flex-direction: column; align-items: center; gap: 20px;
         }
 
+        /* Thanh Search có Icon lúp pixel */
         .search-wrapper { 
             width: 100%; max-width: 600px; position: relative; display: flex; align-items: center;
         }
@@ -196,6 +198,7 @@
         .search-input:focus { border-color: var(--accent-peach); }
         .search-input::placeholder { color: #C4B5A9; font-weight: 600; }
 
+        /* Tag Viên thuốc */
         .pill-tags-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 900px; }
         .pill-tag {
             padding: 10px 24px; border-radius: 50px; font-size: 0.95rem; font-weight: 800;
@@ -222,6 +225,7 @@
 
         .bot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px; }
 
+        /* THIẾT KẾ THẺ PHÒNG TRỌ (HEALING THEME) */
         .bot-card {
             background: var(--bg-card); border-radius: 35px; overflow: hidden; position: relative;
             display: flex; flex-direction: column; box-shadow: var(--shadow-soft);
@@ -233,6 +237,7 @@
         .b-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; border-radius: 30px 30px 0 0; }
         .bot-card:hover .b-img-wrap img { transform: scale(1.06); }
 
+        /* Đánh giá sao Múp mím */
         .b-rating {
             position: absolute; top: 18px; right: 18px; background: #FFF;
             color: var(--text-dark); padding: 8px 16px; border-radius: 50px; font-size: 1rem; font-weight: 900;
@@ -240,6 +245,7 @@
             border: 3px solid var(--border-soft); font-family: var(--font-heading);
         }
 
+        /* Chân thẻ */
         .b-info {
             padding: 25px; display: flex; flex-direction: column; flex: 1; position: relative; background: #FFF;
         }
@@ -379,10 +385,11 @@
         .tag-input-box { display: flex; gap: 10px; margin-bottom: 10px; }
         .tag-input-box input { flex: 1; padding: 14px 20px; border-radius: 50px; border: 3px solid var(--border-soft); font-size: 0.95rem; font-weight: 600;}
         .tag-input-box input:focus { border-color: var(--accent-mocha); }
-        .tag-input-box button { padding: 0 24px; background: var(--text-dark); color: #FFF; font-weight: 800; border-radius: 50px; font-size: 0.9rem;}
-        #ad-tags-wrapper { display: flex; flex-wrap: wrap; gap: 8px; }
-        .ad-mini-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-peach); color: #FFF; padding: 6px 14px; border-radius: 50px; font-size: 0.85rem; font-weight: 700;}
-        .ad-mini-tag span { cursor: pointer; color: #FFF; font-weight: 900; font-size: 1.1rem; transition: 0.2s;}
+        .tag-input-box button { padding: 0 24px; background: var(--text-dark); color: #FFF; font-weight: 900; border-radius: 50px; font-size: 0.95rem; transition: 0.2s;}
+        .tag-input-box button:hover { background: var(--accent-peach); }
+        #ad-tags-wrapper, #ad-tags-up-wrapper { display: flex; flex-wrap: wrap; gap: 10px; }
+        .ad-mini-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-main); color: var(--text-dark); border: 2.5px solid var(--border-soft); padding: 8px 16px; border-radius: 50px; font-size: 0.9rem; font-weight: 800;}
+        .ad-mini-tag span { cursor: pointer; color: #EF4444; font-weight: 900; font-size: 1.1rem; transition: 0.2s;}
         .ad-mini-tag span:hover { transform: scale(1.2); }
 
         /* ============================================================
@@ -726,12 +733,20 @@
             container.innerHTML = "";
 
             let uniqueTags = new Set();
+            
+            // Gom tag từ Nhân viên
             CONFIG.staff.forEach(b => { 
                 if(!b.isHidden || isAdminMode) {
                     if(b.tags && Array.isArray(b.tags)) {
-                        b.tags.forEach(t => {
-                            if(t.trim()) uniqueTags.add(t.trim().replace(/^#/, ''));
-                        });
+                        b.tags.forEach(t => { if(t.trim()) uniqueTags.add(t.trim().replace(/^#/, '')); });
+                    }
+                } 
+            });
+            // Gom tag từ Hồ sơ dự bị
+            CONFIG.upcomingBots.forEach(b => { 
+                if(!b.isHidden || isAdminMode) {
+                    if(b.tags && Array.isArray(b.tags)) {
+                        b.tags.forEach(t => { if(t.trim()) uniqueTags.add(t.trim().replace(/^#/, '')); });
                     }
                 } 
             });
@@ -831,7 +846,7 @@
             });
         }
 
-        document.getElementById("search-inp").addEventListener("input", e => { searchQuery = e.target.value.trim(); renderGrid(); });
+        document.getElementById("search-inp").addEventListener("input", e => { searchQuery = e.target.value.trim(); renderGrid(); renderUpcomingBotsFilter(); });
         document.getElementById("sort-select").addEventListener("change", renderGrid);
 
         /* ============================================================
@@ -1023,9 +1038,32 @@
 
         window.openUpcomingModal = function() {
             document.getElementById("modal-title").innerHTML = `<svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-gift"></use></svg> PHÒNG SẮP RA MẮT`;
+            renderUpcomingBotsFilter();
+            document.getElementById("main-modal").classList.add("show");
+            document.body.style.overflow = "hidden";
+        };
+
+        function renderUpcomingBotsFilter() {
             const body = document.getElementById("modal-body");
-            
-            let displayBots = CONFIG.upcomingBots.filter(b => !b.isHidden || isAdminMode);
+            const q = removeAccents(searchQuery);
+
+            let displayBots = CONFIG.upcomingBots.filter(b => {
+                if(b.isHidden && !isAdminMode) return false;
+                
+                let isMatchSearch = true;
+                if(q !== "") {
+                    const matchName = removeAccents(b.name).includes(q);
+                    const matchTags = (b.tags||[]).some(t => removeAccents(t).includes(q));
+                    if(!matchName && !matchTags) isMatchSearch = false;
+                }
+                let isMatchTag = true;
+                if(activeRouteFilter !== 'all') {
+                    const botCleanTags = (b.tags||[]).map(t => t.trim().replace(/^#/, ''));
+                    if(!botCleanTags.includes(activeRouteFilter)) isMatchTag = false;
+                }
+
+                return isMatchSearch && isMatchTag;
+            });
             displayBots.sort((a,b) => (b.progress - a.progress) || (b.votes - a.votes));
 
             if(displayBots.length === 0) {
@@ -1044,6 +1082,7 @@
                             
                             <div class="up-avatar-wrap">
                                 <img src="${bot.avatar}" class="up-avatar">
+                                <img src="2D_pixel_png-removebg-preview.png" class="up-bow" style="position:absolute; top:-15px; right:-15px; width:60px;">
                             </div>
                             
                             <div class="up-name">${bot.name}</div>
@@ -1065,10 +1104,7 @@
                 html += `</div>`;
                 body.innerHTML = html;
             }
-
-            document.getElementById("main-modal").classList.add("show");
-            document.body.style.overflow = "hidden";
-        };
+        }
 
         window.voteUp = async function(id) {
             if(localStorage.getItem('vote_up_' + id) === 'true') return;
@@ -1081,7 +1117,7 @@
         };
 
         /* ============================================================
-           QUẢN LÝ ADMIN 
+           QUẢN LÝ ADMIN (MỞ KHÓA BẰNG DOUBLE TOUCH/CLICK)
            ============================================================ */
         let lastTap = 0;
         document.getElementById("trigger-admin").addEventListener("click", (e) => {
@@ -1186,13 +1222,13 @@
                     </div>
                     <button class="fb-btn-submit" id="ad-save">LƯU LẠI THÔNG TIN</button>
                 `;
-                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png";
+                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png";
                 document.getElementById("ad-sm-img").onchange = async (e) => {
                     if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:120px; border-radius:50%; border:4px solid var(--accent-peach);">`; }
                 };
                 document.getElementById("ad-save").onclick = async () => {
                     CONFIG.stationMaster.avatar = tempAdminImg;
-                    CONFIG.stationMaster.bio = document.getElementById("ad-bio").innerHTML;
+                    CONFIG.stationMaster.bio = document.getElementById("ad-bio").innerHTML; // Lấy HTML thay vì text thường
                     CONFIG.stationMaster.facebook = { name: document.getElementById("ad-fbname").value, url: document.getElementById("ad-fburl").value };
                     await saveConfig(); renderUI(); document.getElementById("admin-modal").classList.remove("show"); alert("Đã lưu Chủ Trọ!");
                 };
@@ -1222,15 +1258,23 @@
                     <button class="fb-btn-submit" id="ad-save">LƯU PHÒNG</button>
                 `;
 
+                // Render tags ban đầu
                 renderAdminTags();
 
                 window.addAdminTag = function() {
                     const inp = document.getElementById("ad-tag-input");
-                    const val = inp.value.trim().replace(/^#/, '');
-                    if(val) { tempTags.push(val); inp.value = ""; renderAdminTags(); }
+                    const val = inp.value.trim().replace(/^#/, ''); // Lọc bỏ dấu thăng nếu admin lỡ gõ
+                    if(val) {
+                        tempTags.push(val);
+                        inp.value = "";
+                        renderAdminTags();
+                    }
                 };
 
-                window.removeAdminTag = function(idx) { tempTags.splice(idx, 1); renderAdminTags(); };
+                window.removeAdminTag = function(idx) {
+                    tempTags.splice(idx, 1);
+                    renderAdminTags();
+                };
 
                 function renderAdminTags() {
                     const wrap = document.getElementById("ad-tags-wrapper");
@@ -1249,13 +1293,15 @@
 
                 document.getElementById("ad-save").onclick = async () => {
                     if(!tempAdminImg) return alert("Vui lòng tải ảnh lên!");
+                    
                     let finalData = {
                         name: document.getElementById("ad-name").value.trim(), 
                         avatar: tempAdminImg, 
-                        tags: tempTags,
+                        tags: tempTags, // Dùng mảng tempTags
                         hook: document.getElementById("ad-hook").value.trim(), 
                         link: document.getElementById("ad-link").value.trim()
                     };
+                    
                     if(action === 'add') { finalData.id = "b_"+Date.now(); finalData.createdAt = Date.now(); finalData.feedbacks = []; finalData.isHidden = false; CONFIG.staff.push(finalData); }
                     else { Object.assign(CONFIG.staff.find(x => x.id === id), finalData); }
                     document.getElementById("ad-save").textContent = "Đang lưu..."; await saveConfig(); renderUI(); document.getElementById("admin-modal").classList.remove("show");
@@ -1326,7 +1372,7 @@
         };
 
         /* ============================================================
-           BẢNG THÔNG BÁO (ADMIN ONLY) - THEO DÕI FEEDBACK
+           BẢNG THÔNG BÁO (ADMIN ONLY)
            ============================================================ */
         function checkNotifications() {
             if(!isAdminMode) return;
