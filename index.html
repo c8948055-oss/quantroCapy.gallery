@@ -33,7 +33,7 @@
             
             --font-title: 'Baloo 2', cursive; /* Mập mạp, chuẩn tiếng Việt */
             --font-heading: 'Comfortaa', cursive;
-            --font-body: 'Nunito', sans-serif;
+            --font-body: 'Nunito', sans-serif; /* Mềm mại, dễ đọc */
             --shadow-soft: 0 12px 35px rgba(92, 64, 51, 0.06);
         }
 
@@ -80,7 +80,7 @@
             position: relative;
             max-width: 580px; 
             margin: 0 auto 15px auto;
-            padding-top: 50px; /* Chừa không gian cho Capy ngó đầu */
+            padding-top: 50px; 
         }
 
         /* Capybara ngó đầu */
@@ -88,20 +88,20 @@
             position: absolute;
             top: -20px; left: 50%; transform: translateX(-50%);
             width: 140px;
-            z-index: 1; /* Nằm sau bảng hiệu */
+            z-index: 1; 
         }
 
         /* Tấm bảng kem sữa viền nâu mảnh */
         .cream-board {
             background: #FFFBF8;
             border: 4px solid var(--text-dark);
-            border-radius: 35px; /* Bo tròn mượt mà */
+            border-radius: 35px;
             padding: 20px 25px; 
             position: relative;
             z-index: 2;
             box-shadow: 0 10px 0 rgba(92, 64, 51, 0.08);
             cursor: pointer; 
-            user-select: none; /* KHÔNG THỂ BÔI ĐEN, BẢO ĐẢM DBLCLICK MƯỢT */
+            user-select: none; 
             transition: 0.2s;
             display: flex;
             justify-content: center;
@@ -119,7 +119,7 @@
             transform: rotate(-15deg);
         }
 
-        /* CHỮ QUÁN TRỌ CAPY STICKER 3D (Font Baloo 2) */
+        /* CHỮ QUÁN TRỌ CAPY STICKER 3D */
         .station-title {
             font-family: var(--font-title); 
             font-size: clamp(2.2rem, 5vw, 3.8rem); 
@@ -130,7 +130,6 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             white-space: nowrap;
-            /* Hiệu ứng 3D khối: Lớp 1 (Viền trắng 3px) - Lớp 2 (Bóng đổ cứng 4px màu hồng) */
             text-shadow: 
                 -3px -3px 0 #FFF, 3px -3px 0 #FFF, -3px 3px 0 #FFF, 3px 3px 0 #FFF,
                  0px -3px 0 #FFF, 0px 3px 0 #FFF, -3px 0px 0 #FFF, 3px 0px 0 #FFF,
@@ -145,14 +144,14 @@
                  3px 7px 0px var(--accent-pink);
         }
 
-        /* Lời tựa giới thiệu tự do (Click to Edit cho Admin) */
+        /* Lời tựa giới thiệu tự do */
         .intro-text-wrap {
             display: flex; align-items: center; justify-content: center; gap: 8px;
             margin: 0 auto 35px auto; max-width: 650px;
         }
         .station-desc-freestyle {
             font-size: 1.1rem; 
-            color: var(--text-muted); /* Nâu nhạt hơn để phân cấp */
+            color: var(--text-muted); 
             font-style: italic; 
             text-align: center;
             font-weight: 700;
@@ -183,7 +182,6 @@
             display: flex; flex-direction: column; align-items: center; gap: 20px;
         }
 
-        /* Thanh Search có Icon lúp pixel */
         .search-wrapper { 
             width: 100%; max-width: 600px; position: relative; display: flex; align-items: center;
         }
@@ -198,7 +196,6 @@
         .search-input:focus { border-color: var(--accent-peach); }
         .search-input::placeholder { color: #C4B5A9; font-weight: 600; }
 
-        /* Tag Viên thuốc */
         .pill-tags-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 900px; }
         .pill-tag {
             padding: 10px 24px; border-radius: 50px; font-size: 0.95rem; font-weight: 800;
@@ -225,7 +222,6 @@
 
         .bot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px; }
 
-        /* THIẾT KẾ THẺ PHÒNG TRỌ (HEALING THEME) */
         .bot-card {
             background: var(--bg-card); border-radius: 35px; overflow: hidden; position: relative;
             display: flex; flex-direction: column; box-shadow: var(--shadow-soft);
@@ -237,7 +233,6 @@
         .b-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; border-radius: 30px 30px 0 0; }
         .bot-card:hover .b-img-wrap img { transform: scale(1.06); }
 
-        /* Đánh giá sao Múp mím */
         .b-rating {
             position: absolute; top: 18px; right: 18px; background: #FFF;
             color: var(--text-dark); padding: 8px 16px; border-radius: 50px; font-size: 1rem; font-weight: 900;
@@ -245,7 +240,6 @@
             border: 3px solid var(--border-soft); font-family: var(--font-heading);
         }
 
-        /* Chân thẻ */
         .b-info {
             padding: 25px; display: flex; flex-direction: column; flex: 1; position: relative; background: #FFF;
         }
@@ -335,11 +329,40 @@
         .reply-btn { padding: 14px 28px; background: var(--text-dark); color: #FFF; font-weight: 900; border-radius: 50px; font-size: 0.95rem; transition: 0.3s;}
         .reply-btn:hover { background: var(--accent-peach); transform: translateY(-2px);}
 
-        /* Modal Nút Đóng Mở (Details) cho Thông tin Chủ Trọ */
-        .m-body details { background: #FFF; border: 3px dashed var(--accent-mocha); padding: 20px; margin: 20px 0; border-radius: 20px; color: var(--text-dark); box-shadow: var(--shadow-soft);}
-        .m-body details[open] summary { border-bottom: 2px solid var(--border-soft); margin-bottom: 15px; padding-bottom: 10px; }
-        .m-body summary { cursor: pointer; font-weight: 900; outline: none; font-size: 1.1rem; color: var(--accent-peach); font-family: var(--font-heading);}
-        .m-body details > div { font-weight: 600; line-height: 1.7; }
+        /* ============================================================
+           CSS MỚI: CHI TIẾT ĐÓNG MỞ (DETAILS / SUMMARY)
+           Cỡ chữ bằng text thường, font Nunito, bo góc mềm mại
+           ============================================================ */
+        details { 
+            background: var(--bg-main); 
+            border: 2.5px dashed var(--accent-mocha); 
+            padding: 15px 20px; 
+            margin: 15px 0; 
+            border-radius: 16px; 
+            color: var(--text-dark); 
+            font-family: var(--font-body); 
+        }
+        details[open] summary { 
+            border-bottom: 2px dashed var(--accent-mocha); 
+            margin-bottom: 12px; 
+            padding-bottom: 12px; 
+        }
+        summary { 
+            cursor: pointer; 
+            font-weight: 700; 
+            outline: none; 
+            font-size: 1rem; /* Kích thước bằng chữ bình thường */
+            color: var(--text-dark); 
+            font-family: var(--font-body); 
+            transition: 0.2s;
+        }
+        summary:hover { color: var(--accent-peach); }
+        details > div { 
+            font-weight: 600; 
+            line-height: 1.7; 
+            font-size: 1rem; 
+            font-family: var(--font-body); 
+        }
 
         /* ============================================================
            ADMIN PANEL & NOTIFICATION BELL
@@ -550,8 +573,8 @@
     <!-- HEADER: TÊN QUÁN & BẢNG HIỆU KEM SỮA -->
     <header class="header-section">
         <div class="signboard-wrapper">
-            <!-- Bé Capy thò đầu lấp ló (Ảnh đeo kính) -->
-            <img src="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" alt="Peeking Capy" class="peeking-capy bounce">
+            <!-- Bé Capy thò đầu lấp ló (Đã xóa hiệu ứng bounce) -->
+            <img src="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" alt="Peeking Capy" class="peeking-capy">
             
             <!-- Bảng kem sữa viền nâu (click đúp vào để mở admin) -->
             <div class="cream-board" id="trigger-admin" title="Nhấp đúp vào Bảng để vào Admin">
@@ -572,7 +595,7 @@
 
         <div class="top-buttons">
             <button class="btn-top" onclick="openSMModal()"><img src="ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" style="width:28px;height:28px;object-fit:contain;"> Thông tin chủ trọ</button>
-            <button class="btn-top" onclick="openUpcomingModal()"><svg class="svg-icon bounce" viewBox="0 0 16 16"><use href="#px-gift"></use></svg> Sắp Ra Mắt</button>
+            <button class="btn-top" onclick="openUpcomingModal()"><svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-gift"></use></svg> Sắp Ra Mắt</button>
         </div>
     </header>
 
@@ -583,7 +606,7 @@
         </div>
         <div class="search-wrapper">
             <div class="search-icon-box"><svg class="svg-icon" viewBox="0 0 16 16" style="width: 22px; height: 22px;"><use href="#px-search"></use></svg></div>
-            <input type="text" id="search-inp" class="search-input" placeholder="Tìm tên phòng, từ khóa...">
+            <input type="text" id="search-inp" class="search-input" placeholder="Tìm tên phòng">
         </div>
     </section>
 
@@ -1017,12 +1040,13 @@
         };
 
         /* ============================================================
-           MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN
+           MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN (CÓ RICH TEXT & NÚT ĐÓNG MỞ)
            ============================================================ */
         window.openSMModal = function() {
             document.getElementById("modal-title").innerHTML = `<img src="ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" style="width:30px;height:30px;"> THÔNG TIN CHỦ TRỌ`;
             let fbHtml = CONFIG.stationMaster.facebook && CONFIG.stationMaster.facebook.url ? `<div style="margin-top:25px; text-align:center;"><a href="${CONFIG.stationMaster.facebook.url}" target="_blank" style="display:inline-block; padding:16px 32px; background:var(--text-dark); color:#FFF; font-weight:900; border-radius:50px; box-shadow:0 8px 25px rgba(92, 64, 51, 0.25); font-family:var(--font-body); font-size:1.05rem;">Liên hệ Facebook Chủ Trọ</a></div>` : '';
             
+            // Render nguyên vẹn khối HTML từ Trình Soạn Thảo (Bao gồm thẻ <details>)
             document.getElementById("modal-body").innerHTML = `
                 <div style="text-align:center; margin-bottom:30px;">
                     ${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="width:160px; height:160px; border-radius:50%; object-fit:cover; margin:0 auto; border:4px solid var(--accent-peach); box-shadow:var(--shadow-soft);">` : ''}
@@ -1082,7 +1106,6 @@
                             
                             <div class="up-avatar-wrap">
                                 <img src="${bot.avatar}" class="up-avatar">
-                                <img src="2D_pixel_png-removebg-preview.png" class="up-bow" style="position:absolute; top:-15px; right:-15px; width:60px;">
                             </div>
                             
                             <div class="up-name">${bot.name}</div>
@@ -1155,9 +1178,10 @@
         let tempAdminImg = "";
         let tempTags = [];
 
+        // HÀM CHÈN NÚT ĐÓNG MỞ (SẠCH HTML)
         window.insertToggleHTML = function() { 
             const id = 'det_' + Date.now();
-            const html = `<details style="background:var(--bg-main); border:2.5px dashed var(--accent-mocha); padding:15px; margin:15px 0; border-radius:16px; color:var(--text-dark);"><summary style="cursor:pointer; font-weight:800; outline:none; font-size:1.05rem; color:var(--accent-peach);">Bấm vào đây để đổi tên nút</summary><div style="margin-top:8px;">Nhập nội dung vào đây...</div></details><div id="${id}"><br></div>`; 
+            const html = `<details><summary>▶ Bấm vào đây để đổi tên nút</summary><div>Nhập nội dung vào đây...</div></details><div id="${id}"><br></div>`; 
             document.execCommand('insertHTML', false, html); 
             setTimeout(() => {
                 const el = document.getElementById(id);
@@ -1222,13 +1246,13 @@
                     </div>
                     <button class="fb-btn-submit" id="ad-save">LƯU LẠI THÔNG TIN</button>
                 `;
-                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png";
+                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png";
                 document.getElementById("ad-sm-img").onchange = async (e) => {
                     if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:120px; border-radius:50%; border:4px solid var(--accent-peach);">`; }
                 };
                 document.getElementById("ad-save").onclick = async () => {
                     CONFIG.stationMaster.avatar = tempAdminImg;
-                    CONFIG.stationMaster.bio = document.getElementById("ad-bio").innerHTML; // Lấy HTML thay vì text thường
+                    CONFIG.stationMaster.bio = document.getElementById("ad-bio").innerHTML; // Lấy HTML
                     CONFIG.stationMaster.facebook = { name: document.getElementById("ad-fbname").value, url: document.getElementById("ad-fburl").value };
                     await saveConfig(); renderUI(); document.getElementById("admin-modal").classList.remove("show"); alert("Đã lưu Chủ Trọ!");
                 };
@@ -1258,12 +1282,11 @@
                     <button class="fb-btn-submit" id="ad-save">LƯU PHÒNG</button>
                 `;
 
-                // Render tags ban đầu
                 renderAdminTags();
 
                 window.addAdminTag = function() {
                     const inp = document.getElementById("ad-tag-input");
-                    const val = inp.value.trim().replace(/^#/, ''); // Lọc bỏ dấu thăng nếu admin lỡ gõ
+                    const val = inp.value.trim().replace(/^#/, '');
                     if(val) {
                         tempTags.push(val);
                         inp.value = "";
@@ -1293,11 +1316,10 @@
 
                 document.getElementById("ad-save").onclick = async () => {
                     if(!tempAdminImg) return alert("Vui lòng tải ảnh lên!");
-                    
                     let finalData = {
                         name: document.getElementById("ad-name").value.trim(), 
                         avatar: tempAdminImg, 
-                        tags: tempTags, // Dùng mảng tempTags
+                        tags: tempTags, 
                         hook: document.getElementById("ad-hook").value.trim(), 
                         link: document.getElementById("ad-link").value.trim()
                     };
