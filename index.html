@@ -33,7 +33,7 @@
             
             --font-title: 'Baloo 2', cursive; /* Mập mạp, chuẩn tiếng Việt */
             --font-heading: 'Comfortaa', cursive;
-            --font-body: 'Nunito', sans-serif; /* Mềm mại, dễ đọc */
+            --font-body: 'Nunito', sans-serif;
             --shadow-soft: 0 12px 35px rgba(92, 64, 51, 0.06);
         }
 
@@ -41,8 +41,8 @@
         
         body { 
             background-color: var(--bg-main);
-            /* Background Pattern: Cỏ 4 lá, Quả cam mini & Mầm non rải rác lơ đãng (Opacity 14%) */
-            background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.14'%3E%3Cg transform='translate(30, 40)'%3E%3Ccircle cx='-3' cy='-3' r='3.5' fill='%23A3B18A'/%3E%3Ccircle cx='3' cy='-3' r='3.5' fill='%23A3B18A'/%3E%3Ccircle cx='-3' cy='3' r='3.5' fill='%23A3B18A'/%3E%3Ccircle cx='3' cy='3' r='3.5' fill='%23A3B18A'/%3E%3Cpath d='M0 0 Q -2 6 -4 8' stroke='%23A3B18A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3Cg transform='translate(120, 60)'%3E%3Ccircle cx='0' cy='0' r='7' fill='%23F4C389'/%3E%3Cpath d='M0 -7 C 2 -12 6 -10 6 -7 C 4 -5 2 -5 0 -7' fill='%23A3B18A'/%3E%3Ccircle cx='-2' cy='-2' r='1' fill='%23FFFFFF' opacity='0.8'/%3E%3C/g%3E%3Cg transform='translate(70, 130)'%3E%3Cpath d='M 0 5 C 0 5 0 0 0 -2' stroke='%23A3B18A' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M 0 -1 C -4 -1 -6 -5 -6 -5 C -2 -7 0 -1 0 -1 Z' fill='%23A3B18A'/%3E%3Cpath d='M 0 -2 C 4 -2 6 -6 6 -6 C 2 -8 0 -2 0 -2 Z' fill='%23A3B18A'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            /* Background Pattern: Cỏ 4 lá & Cam pastel rải rác lơ đãng */
+            background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.15'%3E%3Cpath d='M25 25 C25 20, 30 20, 30 25 C35 20, 40 20, 40 25 C40 30, 35 30, 32 30 C35 35, 30 40, 25 40 C20 40, 15 35, 18 30 C15 30, 10 30, 10 25 C10 20, 15 20, 15 25 C15 30, 20 30, 25 30 Z' fill='%23A7D129' transform='scale(0.5) translate(20, 20)'/%3E%3Ccircle cx='80' cy='80' r='6' fill='%23FF9F7C'/%3E%3Cpath d='M80 74 Q83 70 85 72' stroke='%23A7D129' stroke-width='2' fill='none'/%3E%3C/g%3E%3C/svg%3E");
             color: var(--text-dark); 
             font-family: var(--font-body); 
             min-height: 100vh; overflow-x: hidden; line-height: 1.6;
@@ -62,13 +62,6 @@
             shape-rendering: crispEdges;
         }
 
-        /* Hiệu ứng nhún nhảy đáng yêu */
-        .bounce { animation: bounce 2s infinite ease-in-out; }
-        @keyframes bounce { 
-            0%, 100% { transform: translateY(0); } 
-            50% { transform: translateY(-8px); } 
-        }
-
         /* ============================================================
            HEADER & BẢNG HIỆU KEM SỮA BO TRÒN
            ============================================================ */
@@ -80,28 +73,28 @@
             position: relative;
             max-width: 580px; 
             margin: 0 auto 15px auto;
-            padding-top: 50px; 
+            padding-top: 105px; /* Chừa không gian rộng để Capy hiện nguyên hình */
         }
 
-        /* Capybara ngó đầu */
+        /* Capybara ngồi hẳn lên bảng */
         .peeking-capy {
             position: absolute;
-            top: -20px; left: 50%; transform: translateX(-50%);
-            width: 140px;
-            z-index: 1; 
+            top: 0; left: 50%; transform: translateX(-50%);
+            height: 120px; /* Hiện nguyên hình, không bị cắt */
+            z-index: 3; /* Nổi lên TRÊN bảng hiệu */
         }
 
         /* Tấm bảng kem sữa viền nâu mảnh */
         .cream-board {
             background: #FFFBF8;
             border: 4px solid var(--text-dark);
-            border-radius: 35px;
+            border-radius: 35px; /* Bo tròn mượt mà */
             padding: 20px 25px; 
             position: relative;
             z-index: 2;
             box-shadow: 0 10px 0 rgba(92, 64, 51, 0.08);
             cursor: pointer; 
-            user-select: none; 
+            user-select: none; /* KHÔNG THỂ BÔI ĐEN, BẢO ĐẢM DBLCLICK MƯỢT */
             transition: 0.2s;
             display: flex;
             justify-content: center;
@@ -114,12 +107,12 @@
             position: absolute;
             top: -20px; left: -25px;
             width: 75px;
-            z-index: 3;
+            z-index: 4;
             filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
             transform: rotate(-15deg);
         }
 
-        /* CHỮ QUÁN TRỌ CAPY STICKER 3D */
+        /* CHỮ QUÁN TRỌ CAPY STICKER 3D (Font Baloo 2) */
         .station-title {
             font-family: var(--font-title); 
             font-size: clamp(2.2rem, 5vw, 3.8rem); 
@@ -165,7 +158,7 @@
         body.is-admin .admin-edit-intro-btn { display: flex; }
         .admin-edit-intro-btn:hover { background: var(--accent-peach); color: #FFF; border-color: var(--accent-peach);}
 
-        /* Các Nút Trung Tâm (2 Ô hình viên thuốc) */
+        /* Các Nút Trung Tâm */
         .top-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .btn-top {
             padding: 14px 28px; border-radius: 50px; font-weight: 800; font-size: 1rem;
@@ -288,6 +281,53 @@
         .m-body::-webkit-scrollbar { width: 10px; }
         .m-body::-webkit-scrollbar-thumb { background: var(--accent-mocha); border-radius: 20px; border: 2px solid var(--bg-main);}
 
+        /* ============================================================
+           ÉP BUỘC FONT & SIZE CHỮ BÊN TRONG THÔNG TIN CHỦ TRỌ
+           (Chống copy-paste lỗi font)
+           ============================================================ */
+        .bio-content, .bio-content * {
+            font-family: 'Nunito', sans-serif !important;
+            font-size: 1.05rem !important;
+            line-height: 1.8 !important;
+            background-color: transparent !important; /* Xóa nền bôi đen rác */
+        }
+        .bio-content b, .bio-content strong, .bio-content b *, .bio-content strong * {
+            font-weight: 800 !important;
+        }
+        .bio-content i, .bio-content em, .bio-content i *, .bio-content em * {
+            font-style: italic !important;
+        }
+        .bio-content ul, .bio-content ol {
+            padding-left: 20px !important;
+            margin: 10px 0 !important;
+        }
+        .bio-content li {
+            margin-bottom: 5px !important;
+        }
+        /* Riêng nút đóng mở (Details) trong Bio */
+        .bio-content details {
+            background: #FFF !important;
+            border: 2.5px dashed var(--accent-mocha) !important;
+            padding: 15px 20px !important;
+            margin: 15px 0 !important;
+            border-radius: 16px !important;
+        }
+        .bio-content details[open] summary {
+            border-bottom: 2px dashed var(--border-soft) !important;
+            margin-bottom: 12px !important;
+            padding-bottom: 12px !important;
+        }
+        .bio-content details summary, .bio-content details summary * {
+            color: var(--accent-peach) !important;
+            font-weight: 800 !important;
+            cursor: pointer !important;
+            font-size: 1.05rem !important;
+            list-style: none; /* Ẩn mũi tên mặc định */
+        }
+        .bio-content details summary::-webkit-details-marker { display: none; }
+        .bio-content details summary::before { content: '▶ '; font-size: 0.9rem; }
+        .bio-content details[open] summary::before { content: '▼ '; }
+
         /* CỤM FEEDBACK FORM */
         .fb-form { background: #FFF; padding: 30px; border-radius: 25px; border: 3px solid var(--border-soft); margin-bottom: 35px; box-shadow: var(--shadow-soft); }
         .stars-select { display: flex; gap: 15px; justify-content: center; margin-bottom: 25px; cursor: pointer; }
@@ -330,41 +370,6 @@
         .reply-btn:hover { background: var(--accent-peach); transform: translateY(-2px);}
 
         /* ============================================================
-           CSS MỚI: CHI TIẾT ĐÓNG MỞ (DETAILS / SUMMARY)
-           Cỡ chữ bằng text thường, font Nunito, bo góc mềm mại
-           ============================================================ */
-        details { 
-            background: var(--bg-main); 
-            border: 2.5px dashed var(--accent-mocha); 
-            padding: 15px 20px; 
-            margin: 15px 0; 
-            border-radius: 16px; 
-            color: var(--text-dark); 
-            font-family: var(--font-body); 
-        }
-        details[open] summary { 
-            border-bottom: 2px dashed var(--accent-mocha); 
-            margin-bottom: 12px; 
-            padding-bottom: 12px; 
-        }
-        summary { 
-            cursor: pointer; 
-            font-weight: 700; 
-            outline: none; 
-            font-size: 1rem; /* Kích thước bằng chữ bình thường */
-            color: var(--text-dark); 
-            font-family: var(--font-body); 
-            transition: 0.2s;
-        }
-        summary:hover { color: var(--accent-peach); }
-        details > div { 
-            font-weight: 600; 
-            line-height: 1.7; 
-            font-size: 1rem; 
-            font-family: var(--font-body); 
-        }
-
-        /* ============================================================
            ADMIN PANEL & NOTIFICATION BELL
            ============================================================ */
         .admin-bar {
@@ -399,8 +404,8 @@
         
         /* Soạn thảo Rich Text cho Admin */
         .rt-toolbar { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; background: var(--bg-main); padding: 12px; border-radius: 16px; border: 3px solid var(--border-soft);}
-        .rt-btn { background: #FFF; border: 2.5px solid var(--border-soft); border-radius: 12px; padding: 8px 16px; font-weight: 800; color: var(--text-dark); cursor: pointer; transition: 0.2s; font-family: var(--font-body); display:flex; align-items:center; justify-content:center;}
-        .rt-btn:hover { border-color: var(--accent-peach); color: var(--accent-peach);}
+        .rt-btn { background: #FFF; border: 2.5px solid var(--text-dark); border-radius: 6px; padding: 8px 16px; font-weight: 800; color: var(--text-dark); cursor: pointer; transition: 0.2s; font-family: var(--font-body); display:flex; align-items:center; justify-content:center;}
+        .rt-btn:hover { background: var(--accent-peach); color: #FFF; border-color: var(--accent-peach);}
         .rt-editor { background: #FFF; min-height: 200px; padding: 20px; border: 3px solid var(--border-soft); border-radius: 20px; outline: none; overflow-y: auto; line-height: 1.7; font-size: 1.05rem; }
         .rt-editor:focus { border-color: var(--accent-peach); }
 
@@ -448,6 +453,7 @@
             .bot-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
             .m-body { padding: 25px 20px; }
             .fb-form { padding: 25px 20px; }
+            .rt-toolbar button { padding: 6px 12px; }
         }
     </style>
 </head>
@@ -573,7 +579,7 @@
     <!-- HEADER: TÊN QUÁN & BẢNG HIỆU KEM SỮA -->
     <header class="header-section">
         <div class="signboard-wrapper">
-            <!-- Bé Capy thò đầu lấp ló (Đã xóa hiệu ứng bounce) -->
+            <!-- Bé Capy thò đầu lấp ló (Nằm yên tĩnh, đầy đủ 100% hình) -->
             <img src="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" alt="Peeking Capy" class="peeking-capy">
             
             <!-- Bảng kem sữa viền nâu (click đúp vào để mở admin) -->
@@ -659,7 +665,7 @@
         let CONFIG = {
             stationMaster: { 
                 shortDesc: "Nơi đàn Capybara ngâm mình ven suối, cùng lữ khách bước vào những thế giới mở rộng lớn...",
-                bio: "Khu vực ghi tiểu sử dài của chủ trọ...", 
+                bio: "Cảm ơn các bạn đã ghé thăm trang của tui...", 
                 avatar: "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png",
                 facebook: {name: "", url: ""}
             },
@@ -869,6 +875,7 @@
             });
         }
 
+        // Logic Tìm kiếm: Khi gõ, lọc ngay lập tức ở giao diện Nhân viên và Hồ sơ dự bị
         document.getElementById("search-inp").addEventListener("input", e => { searchQuery = e.target.value.trim(); renderGrid(); renderUpcomingBotsFilter(); });
         document.getElementById("sort-select").addEventListener("change", renderGrid);
 
@@ -1040,18 +1047,66 @@
         };
 
         /* ============================================================
-           MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN (CÓ RICH TEXT & NÚT ĐÓNG MỞ)
+           MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN (CÓ RICH TEXT)
            ============================================================ */
+        
+        // --- CSS Ép buộc bên trong đoạn Tiểu Sử Chủ Trọ ---
+        const bioStyle = `
+            <style>
+                .bio-content, .bio-content * {
+                    font-family: 'Nunito', sans-serif !important;
+                    font-size: 1.05rem !important;
+                    line-height: 1.7 !important;
+                    background-color: transparent !important; /* Xóa nền bôi đen nếu paste từ web khác */
+                }
+                .bio-content b, .bio-content strong, .bio-content b *, .bio-content strong * {
+                    font-weight: 800 !important;
+                }
+                .bio-content i, .bio-content em, .bio-content i *, .bio-content em * {
+                    font-style: italic !important;
+                }
+                .bio-content ul, .bio-content ol {
+                    padding-left: 20px !important;
+                    margin: 10px 0 !important;
+                }
+                .bio-content li {
+                    margin-bottom: 5px !important;
+                }
+                .bio-content details {
+                    background: #FFF !important;
+                    border: 2.5px dashed var(--accent-mocha) !important;
+                    padding: 15px 20px !important;
+                    margin: 15px 0 !important;
+                    border-radius: 16px !important;
+                }
+                .bio-content details[open] summary {
+                    border-bottom: 2px dashed var(--border-soft) !important;
+                    margin-bottom: 12px !important;
+                    padding-bottom: 12px !important;
+                }
+                .bio-content details summary, .bio-content details summary * {
+                    color: var(--accent-peach) !important;
+                    font-weight: 800 !important;
+                    cursor: pointer !important;
+                    font-size: 1.05rem !important;
+                    list-style: none; /* Ẩn mũi tên mặc định trên một số trình duyệt */
+                }
+                .bio-content details summary::-webkit-details-marker { display: none; }
+                .bio-content details summary::before { content: '▶ '; font-size: 0.9rem; margin-right: 5px; }
+                .bio-content details[open] summary::before { content: '▼ '; }
+            </style>
+        `;
+
         window.openSMModal = function() {
             document.getElementById("modal-title").innerHTML = `<img src="ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" style="width:30px;height:30px;"> THÔNG TIN CHỦ TRỌ`;
             let fbHtml = CONFIG.stationMaster.facebook && CONFIG.stationMaster.facebook.url ? `<div style="margin-top:25px; text-align:center;"><a href="${CONFIG.stationMaster.facebook.url}" target="_blank" style="display:inline-block; padding:16px 32px; background:var(--text-dark); color:#FFF; font-weight:900; border-radius:50px; box-shadow:0 8px 25px rgba(92, 64, 51, 0.25); font-family:var(--font-body); font-size:1.05rem;">Liên hệ Facebook Chủ Trọ</a></div>` : '';
             
-            // Render nguyên vẹn khối HTML từ Trình Soạn Thảo (Bao gồm thẻ <details>)
             document.getElementById("modal-body").innerHTML = `
+                ${bioStyle}
                 <div style="text-align:center; margin-bottom:30px;">
                     ${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="width:160px; height:160px; border-radius:50%; object-fit:cover; margin:0 auto; border:4px solid var(--accent-peach); box-shadow:var(--shadow-soft);">` : ''}
                 </div>
-                <div style="color:var(--text-dark); font-size:1.1rem; font-weight:600; background:#FFF; padding:30px; border-radius:30px; border:3.5px dashed var(--accent-mocha); margin-bottom:25px; box-shadow:var(--shadow-soft); line-height: 1.8;">
+                <div class="bio-content" style="color:var(--text-dark); background:#FFF; padding:30px; border-radius:30px; border:3.5px dashed var(--accent-mocha); margin-bottom:25px; box-shadow:var(--shadow-soft);">
                     ${CONFIG.stationMaster.bio}
                 </div>
                 ${fbHtml}
@@ -1106,6 +1161,7 @@
                             
                             <div class="up-avatar-wrap">
                                 <img src="${bot.avatar}" class="up-avatar">
+                                <img src="2D_pixel_png-removebg-preview.png" class="up-bow" style="position:absolute; top:-15px; right:-15px; width:60px;">
                             </div>
                             
                             <div class="up-name">${bot.name}</div>
@@ -1178,10 +1234,9 @@
         let tempAdminImg = "";
         let tempTags = [];
 
-        // HÀM CHÈN NÚT ĐÓNG MỞ (SẠCH HTML)
         window.insertToggleHTML = function() { 
             const id = 'det_' + Date.now();
-            const html = `<details><summary>▶ Bấm vào đây để đổi tên nút</summary><div>Nhập nội dung vào đây...</div></details><div id="${id}"><br></div>`; 
+            const html = `<details><summary>Bấm vào đây để đổi tên nút</summary><div>Nhập nội dung vào đây...</div></details><div id="${id}"><br></div>`; 
             document.execCommand('insertHTML', false, html); 
             setTimeout(() => {
                 const el = document.getElementById(id);
@@ -1220,6 +1275,7 @@
 
             if (type === 'sm') {
                 body.innerHTML = `
+                    ${bioStyle}
                     <label class="file-upload-label" style="width:100%; text-align:center;"><input type="file" accept="image/*" id="ad-sm-img" style="display:none;"> 📸 ĐỔI ẢNH CHỦ TRỌ</label>
                     <div id="ad-sm-prev" style="text-align:center; margin-bottom:20px;">${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="height:120px; border-radius:50%; border:4px solid var(--accent-peach);">` : ''}</div>
 
@@ -1233,7 +1289,7 @@
                             <button type="button" class="rt-btn" onmousedown="event.preventDefault()" onclick="insertToggleHTML()">Thêm Nút Đóng Mở</button>
                             <button type="button" class="rt-btn" style="background:var(--accent-peach); color:#fff; border-color:var(--accent-peach);" onmousedown="event.preventDefault()" onclick="forceNewLine()">↵ Ép Xuống Dòng</button>
                         </div>
-                        <div id="ad-bio" class="rt-editor" contenteditable="true">${CONFIG.stationMaster.bio}</div>
+                        <div id="ad-bio" class="rt-editor bio-content" contenteditable="true">${CONFIG.stationMaster.bio}</div>
                     </div>
                     
                     <div class="admin-form-group">
@@ -1246,13 +1302,13 @@
                     </div>
                     <button class="fb-btn-submit" id="ad-save">LƯU LẠI THÔNG TIN</button>
                 `;
-                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png";
+                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png";
                 document.getElementById("ad-sm-img").onchange = async (e) => {
                     if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:120px; border-radius:50%; border:4px solid var(--accent-peach);">`; }
                 };
                 document.getElementById("ad-save").onclick = async () => {
                     CONFIG.stationMaster.avatar = tempAdminImg;
-                    CONFIG.stationMaster.bio = document.getElementById("ad-bio").innerHTML; // Lấy HTML
+                    CONFIG.stationMaster.bio = document.getElementById("ad-bio").innerHTML; // Lấy HTML thay vì text thường
                     CONFIG.stationMaster.facebook = { name: document.getElementById("ad-fbname").value, url: document.getElementById("ad-fburl").value };
                     await saveConfig(); renderUI(); document.getElementById("admin-modal").classList.remove("show"); alert("Đã lưu Chủ Trọ!");
                 };
@@ -1282,11 +1338,12 @@
                     <button class="fb-btn-submit" id="ad-save">LƯU PHÒNG</button>
                 `;
 
+                // Render tags ban đầu
                 renderAdminTags();
 
                 window.addAdminTag = function() {
                     const inp = document.getElementById("ad-tag-input");
-                    const val = inp.value.trim().replace(/^#/, '');
+                    const val = inp.value.trim().replace(/^#/, ''); // Lọc bỏ dấu thăng nếu admin lỡ gõ
                     if(val) {
                         tempTags.push(val);
                         inp.value = "";
@@ -1316,10 +1373,11 @@
 
                 document.getElementById("ad-save").onclick = async () => {
                     if(!tempAdminImg) return alert("Vui lòng tải ảnh lên!");
+                    
                     let finalData = {
                         name: document.getElementById("ad-name").value.trim(), 
                         avatar: tempAdminImg, 
-                        tags: tempTags, 
+                        tags: tempTags, // Dùng mảng tempTags
                         hook: document.getElementById("ad-hook").value.trim(), 
                         link: document.getElementById("ad-link").value.trim()
                     };
