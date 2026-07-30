@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- KHÓA CHẾ ĐỘ SÁNG: Ngăn điện thoại tự động đảo màu sang Dark Mode -->
     <meta name="color-scheme" content="light">
-    <meta name="theme-color" content="#FFF9F5">
+    <meta name="theme-color" content="#F9F5EE">
     <title>Quán Trọ Capy</title>
     
     <!-- Favicon: Capy thắt nơ -->
     <link rel="icon" href="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" type="image/png">
     
-    <!-- Fonts: Baloo 2, Comfortaa & Nunito -->
+    <!-- Fonts: Baloo 2 (Tiêu đề 3D), Comfortaa & Nunito -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Comfortaa:wght@500;700;800&family=Nunito:ital,wght@0,500;0,700;0,800;1,500;1,700&display=swap" rel="stylesheet">
@@ -25,8 +24,8 @@
            BẢNG MÀU & VIBE
            ============================================================ */
         :root {
-            color-scheme: light; /* Ép trình duyệt dùng chế độ sáng */
-            --bg-main: #FFF9F5; 
+            color-scheme: light;
+            --bg-main: #F9F5EE; /* Nền Giấy Cổ / Off-White Milk Tea */
             --bg-card: #FFFFFF; 
             --text-dark: #3D2314; 
             --text-muted: #A38A7A; 
@@ -42,13 +41,15 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body { 
             background-color: var(--bg-main);
-            background-image: radial-gradient(var(--accent-mocha) 1.5px, transparent 1.5px);
-            background-size: 30px 30px;
+            /* BỘ WATERMARK HOA CỎ CHÌM (OPACITY 14%) */
+            background-image: url("data:image/svg+xml,%3Csvg width='180' height='180' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.14'%3E%3Cg transform='translate(40,40)'%3E%3Cpath d='M0 5 Q -3 0 -5 -2 M 0 5 Q 3 0 5 -2' stroke='%23A3B18A' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3Cg transform='translate(130,40)'%3E%3Ccircle cx='-2.5' cy='-2.5' r='3' fill='none' stroke='%23A3B18A' stroke-width='1.5'/%3E%3Ccircle cx='2.5' cy='-2.5' r='3' fill='none' stroke='%23A3B18A' stroke-width='1.5'/%3E%3Ccircle cx='-2.5' cy='2.5' r='3' fill='none' stroke='%23A3B18A' stroke-width='1.5'/%3E%3Ccircle cx='2.5' cy='2.5' r='3' fill='none' stroke='%23A3B18A' stroke-width='1.5'/%3E%3C/g%3E%3Cg transform='translate(40,130)'%3E%3Ccircle cx='0' cy='0' r='5' fill='%23F4C389'/%3E%3Cpath d='M0 -5 Q 3 -8 5 -5' stroke='%23A3B18A' stroke-width='1.5' fill='none'/%3E%3C/g%3E%3Cg transform='translate(130,130)'%3E%3Cpath d='M-5 -4 L0 0 L-5 4 Z M5 -4 L0 0 L5 4 Z' fill='%23FFC6C6'/%3E%3Crect x='-1.5' y='-1.5' width='3' height='3' fill='%23FFC6C6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             color: var(--text-dark); 
             font-family: var(--font-body); 
             min-height: 100vh; overflow-x: hidden; line-height: 1.6;
+            padding-top: 50px; /* CHỐNG MẤT ĐẦU CAPY KHI CUỘN LÊN */
         }
         button { cursor: pointer; border: none; background: none; font-family: inherit; outline: none;}
         input, select, textarea { font-family: inherit; outline: none; }
@@ -66,27 +67,11 @@
         }
 
         /* ============================================================
-           BẢNG THỐNG KÊ (GÓC TRÁI DƯỚI - MINI SIZE)
-           ============================================================ */
-        .global-stats {
-            position: fixed; left: 15px; bottom: 15px; z-index: 100;
-            display: flex; flex-direction: column; gap: 8px;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px);
-            padding: 10px 15px; border-radius: 16px;
-            border: 2px dashed var(--accent-mocha);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            pointer-events: none; /* Không cản trở việc click chuột phía dưới */
-        }
-        .stat-line { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
-        .stat-line .svg-icon { color: var(--accent-peach); width: 16px; height: 16px; }
-        .stat-line .num { color: var(--accent-peach); font-weight: 900; font-size: 1rem; min-width: 20px; text-align: center;}
-
-        /* ============================================================
            HEADER & BẢNG HIỆU
            ============================================================ */
         .header-section {
             max-width: 850px; 
-            margin: 70px auto 15px auto; 
+            margin: 60px auto 15px auto; 
             text-align: center; padding: 0 20px;
         }
         
@@ -94,9 +79,10 @@
             position: relative; max-width: 580px; margin: 0 auto 15px auto;
         }
 
+        /* Capybara ngó đầu (Chắc chắn 100% không bị cắt) */
         .peeking-capy {
             position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); 
-            width: 130px; z-index: 1; margin-bottom: -15px;
+            width: 130px; z-index: 1; margin-bottom: -15px; 
         }
 
         .cream-board {
@@ -134,9 +120,9 @@
             font-size: 0.95rem; color: var(--text-muted); font-style: italic; text-align: center; font-weight: 700; line-height: 1.6;
         }
         .admin-edit-intro-btn {
-            display: none; background: #FFF; border: 2px solid var(--border-soft); border-radius: 50%; width: 26px; height: 26px;
-            align-items: center; justify-content: center; font-size: 0.7rem; cursor: pointer; color: var(--accent-peach);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0;
+            display: none; background: #FFF; border: 2px solid var(--border-soft); border-radius: 50%; width: 24px; height: 24px;
+            align-items: center; justify-content: center; font-size: 0.65rem; cursor: pointer; color: var(--accent-peach);
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0;
         }
         body.is-admin .admin-edit-intro-btn { display: flex; }
 
@@ -183,14 +169,24 @@
         }
 
         /* ============================================================
-           BẢNG THỐNG KÊ MINI TRÊN MOBILE NẾU CẦN
+           BẢNG THỐNG KÊ (NẰM TRONG HEADER GRID - CHUẨN KHÔNG BỊ CHE)
            ============================================================ */
         .main-container { max-width: 1200px; margin: 0 auto 80px auto; padding: 0 15px; }
         
         .grid-header { 
-            display: flex; justify-content: flex-end; align-items: flex-end; 
+            display: flex; justify-content: space-between; align-items: flex-end; 
             margin-bottom: 20px; flex-wrap: wrap; gap: 15px;
         }
+
+        .global-stats {
+            display: flex; flex-direction: column; gap: 6px;
+            background: #FFF; padding: 10px 15px; border-radius: 16px;
+            border: 2px dashed var(--accent-mocha);
+            box-shadow: var(--shadow-soft);
+        }
+        .stat-line { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
+        .stat-line .svg-icon { color: var(--accent-peach); width: 14px; height: 14px; }
+        .stat-line .num { color: var(--accent-peach); font-weight: 900; font-size: 0.95rem; min-width: 15px; text-align: center;}
 
         .sort-select {
             padding: 8px 16px; border-radius: 50px; background: #FFF; border: 2px solid var(--border-soft);
@@ -198,7 +194,7 @@
         }
 
         /* ============================================================
-           GRID THẺ NHÂN VIÊN
+           GRID THẺ NHÂN VIÊN (SIZE NHỎ GỌN - TỈ LỆ 3:4)
            ============================================================ */
         .bot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 18px; }
 
@@ -209,7 +205,8 @@
         }
         .bot-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(92, 64, 51, 0.1); border-color: var(--border-soft); }
         
-        .b-img-wrap { width: 100%; aspect-ratio: 9/16; position: relative; overflow: hidden; background: #FDECE4; border-radius: 14px 14px 0 0;}
+        /* Ảnh bìa ép tỷ lệ 3:4 */
+        .b-img-wrap { width: 100%; aspect-ratio: 3/4; position: relative; overflow: hidden; background: #FDECE4; border-radius: 14px 14px 0 0;}
         .b-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .bot-card:hover .b-img-wrap img { transform: scale(1.05); }
 
@@ -225,13 +222,14 @@
             padding: 10px; display: flex; flex-direction: column; flex: 1; position: relative; background: #FFF;
         }
         .b-header-info { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+        /* Avatar ép chuẩn 1:1 */
         .b-avatar-mini { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-peach); flex-shrink:0; aspect-ratio: 1/1;}
         .b-name { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 800; color: var(--text-dark); line-height: 1.2;}
         
         .b-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px; }
         .b-tag { font-size: 0.6rem; padding: 2px 6px; background: var(--bg-main); border-radius: 50px; color: var(--text-dark); font-weight: 800; border: 1px solid var(--border-soft); }
         
-        .b-hook { font-size: 0.75rem; color: var(--text-muted); font-style: italic; margin-bottom: 15px; flex: 1; font-weight: 700; line-height: 1.4;}
+        .b-hook { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-bottom: 15px; flex: 1; font-weight: 700; line-height: 1.4;}
         
         .b-actions { display: flex; flex-direction: column; gap: 6px; margin-top: auto;}
         .b-btn { 
@@ -364,12 +362,12 @@
         .admin-modal.show { display: flex; }
         .admin-modal-box { background: #FFF; width: 100%; max-width: 600px; padding: 25px; border-radius: 20px; max-height: 90vh; overflow-y: auto; color: var(--text-dark); border: 3px solid var(--border-soft); box-shadow: 0 15px 40px rgba(0,0,0,0.15);}
         .admin-form-group { margin-bottom: 15px; }
-        .admin-form-group label { display: block; font-weight: 800; margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dark);}
+        .admin-form-group label { display: block; font-weight: 800; margin-bottom: 6px; font-size: 0.9rem; color: var(--text-dark);}
         
         .rt-toolbar { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; background: var(--bg-main); padding: 8px; border-radius: 12px; border: 2px solid var(--border-soft);}
         .rt-btn { background: #FFF; border: 2px solid var(--text-dark); border-radius: 6px; padding: 4px 10px; font-weight: 800; color: var(--text-dark); cursor: pointer; transition: 0.2s; font-family: var(--font-body); display:flex; align-items:center; justify-content:center; font-size:0.85rem;}
         .rt-btn:hover { background: var(--accent-peach); color: #FFF; border-color: var(--accent-peach);}
-        .rt-editor { background: #FFF; min-height: 120px; padding: 12px; border: 2px solid var(--border-soft); border-radius: 12px; outline: none; overflow-y: auto; line-height: 1.6; font-size: 0.95rem; }
+        .rt-editor { background: #FFF; min-height: 120px; padding: 10px; border: 2px solid var(--border-soft); border-radius: 12px; outline: none; overflow-y: auto; line-height: 1.5; font-size: 0.9rem; }
         .rt-editor:focus { border-color: var(--accent-peach); }
 
         .tag-input-box { display: flex; gap: 6px; margin-bottom: 8px; }
@@ -378,38 +376,32 @@
         .tag-input-box button { padding: 0 15px; background: var(--text-dark); color: #FFF; font-weight: 800; border-radius: 50px; font-size: 0.85rem; transition: 0.2s;}
         .tag-input-box button:hover { background: var(--accent-peach); }
         #ad-tags-wrapper, #ad-tags-up-wrapper { display: flex; flex-wrap: wrap; gap: 6px; }
-        .ad-mini-tag { display: inline-flex; align-items: center; gap: 4px; background: var(--bg-main); color: var(--text-dark); border: 2px solid var(--border-soft); padding: 4px 10px; border-radius: 50px; font-size: 0.8rem; font-weight: 800;}
+        .ad-mini-tag { display: inline-flex; align-items: center; gap: 4px; background: var(--bg-main); color: var(--text-dark); border: 2px solid var(--border-soft); padding: 4px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 800;}
         .ad-mini-tag span { cursor: pointer; color: #EF4444; font-weight: 900; font-size: 0.9rem; transition: 0.2s;}
         .ad-mini-tag span:hover { transform: scale(1.2); }
 
         /* ============================================================
-           THIẾT KẾ THẺ SẮP RA MẮT (SIZE NHỎ GỌN NHƯ THẺ PHÒNG)
+           THIẾT KẾ THẺ SẮP RA MẮT (CÓ NÚT Ý TƯỞNG THAY VÌ TEXT DÀI)
            ============================================================ */
         .up-card {
             background: var(--bg-card); border: 2px solid var(--border-soft); border-radius: 16px; padding: 15px 10px;
             display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;
             box-shadow: var(--shadow-soft);
         }
-        .up-stamp { position: absolute; top: -8px; left: -8px; background: #EF4444; color: #FFF; font-weight: 900; font-size: 0.65rem; padding: 4px 10px; border: 2px solid #FFF; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 2; letter-spacing: 0.5px; transform: rotate(-5deg);}
+        .up-stamp { position: absolute; top: 10px; left: 10px; background: #EF4444; color: #FFF; font-weight: 900; font-size: 0.6rem; padding: 3px 8px; border: 1.5px solid #FFF; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 2; letter-spacing: 0.5px;}
         
-        .up-avatar-wrap { position:relative; margin-bottom: 12px; margin-top:5px;}
+        .up-avatar-wrap { position:relative; margin-bottom: 12px; margin-top:10px;}
         .up-avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; filter: blur(2px); border: 3px solid #FFF; box-shadow: 0 4px 10px rgba(92, 64, 51, 0.1);}
         
-        .up-name { font-family: var(--font-heading); font-size: 1.05rem; font-weight:800; color: var(--text-dark); margin-bottom: 8px; line-height:1.2;}
+        .up-name { font-family: var(--font-heading); font-size: 1.1rem; font-weight:800; color: var(--text-dark); margin-bottom: 6px; line-height:1.2;}
         
-        /* PHẦN Ý TƯỞNG CÓ THANH CUỘN VÀ NGẮT DÒNG TỰ NHIÊN */
-        .up-idea { 
-            font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px; 
-            line-height: 1.5; font-style: italic; font-weight: 700;
-            white-space: pre-wrap; /* Giữ nguyên ngắt dòng của admin */
-            text-align: left; /* Căn trái cho dễ đọc */
-            width: 100%;
-            max-height: 100px; /* Giới hạn chiều cao */
-            overflow-y: auto; /* Cuộn dọc nếu dài */
-            padding: 0 5px;
+        /* Nút Xem Ý Tưởng Gọn Gàng */
+        .up-idea-btn {
+            background: var(--bg-main); border: 1.5px dashed var(--accent-peach); color: var(--text-dark);
+            padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; cursor: pointer;
+            margin-bottom: 15px; transition: 0.2s; font-family: var(--font-body);
         }
-        .up-idea::-webkit-scrollbar { width: 4px; }
-        .up-idea::-webkit-scrollbar-thumb { background: var(--accent-mocha); border-radius: 4px; }
+        .up-idea-btn:hover { background: var(--accent-peach); color: #FFF; }
         
         .up-progress-wrap { width: 100%; margin-bottom: 12px; text-align: left; background: var(--bg-main); padding: 8px; border-radius: 10px; border: 1.5px solid var(--border-soft);}
         .up-p-header { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-dark); margin-bottom: 4px; font-weight:800;}
@@ -524,7 +516,7 @@
 
     <!-- THANH ADMIN -->
     <div class="admin-bar">
-        <div style="font-weight: 900; color: var(--text-dark); display:flex; align-items:center; gap:6px; font-family:var(--font-heading); font-size:0.95rem;">
+        <div style="font-weight: 900; color: var(--text-dark); display:flex; align-items:center; gap:6px; font-family:var(--font-heading); font-size:0.85rem;">
             <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-user"></use></svg> TRẠM ĐIỀU KHIỂN
         </div>
         <div class="admin-controls">
@@ -539,30 +531,17 @@
         </div>
     </div>
 
-    <!-- BẢNG THỐNG KÊ (GÓC DƯỚI TRÁI - HOÀN TOÀN KHÔNG CHE CHẮN) -->
-    <div class="global-stats">
-        <div class="stat-line">
-            <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-room"></use></svg>
-            <span class="num" id="stat-rooms">0</span>
-            <span class="text">phòng đang mở cửa.</span>
-        </div>
-        <div class="stat-line">
-            <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-user"></use></svg>
-            <span class="num" id="stat-visits">0</span>
-            <span class="text">lượt khách ghé thăm.</span>
-        </div>
-    </div>
-
     <!-- HEADER: TÊN QUÁN & BẢNG HIỆU KEM SỮA -->
     <header class="header-section">
         <div class="signboard-wrapper">
-            <!-- Bé Capy thò đầu lấp ló (Nằm tĩnh) -->
+            <!-- Bé Capy thò đầu lấp ló (Hiện đủ 100%) -->
             <img src="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" alt="Peeking Capy" class="peeking-capy">
             
             <!-- Bảng kem sữa viền nâu (click đúp vào để mở admin) -->
-            <div class="cream-board" id="trigger-admin" title="Nhấp đúp vào Bảng để vào Admin">
+            <div class="cream-board" id="trigger-admin" title="">
                 <!-- Nơ hồng lụa -->
                 <img src="2D_pixel_png-removebg-preview.png" alt="Pink Bow" class="pink-bow">
+                
                 <h1 class="station-title">QUÁN TRỌ CAPY</h1>
             </div>
         </div>
@@ -594,7 +573,20 @@
 
     <!-- MAIN GRID THẺ NHÂN VIÊN -->
     <main class="main-container">
+        <!-- Grid Header gom chung Bảng thống kê mini và Nút Sắp xếp (Không che khuất bất kỳ thẻ nào) -->
         <div class="grid-header">
+            <div class="global-stats">
+                <div class="stat-line">
+                    <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-room"></use></svg>
+                    <span class="num" id="stat-rooms">0</span>
+                    <span class="text">phòng đang mở cửa.</span>
+                </div>
+                <div class="stat-line">
+                    <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-user"></use></svg>
+                    <span class="num" id="stat-visits">0</span>
+                    <span class="text">lượt khách ghé thăm.</span>
+                </div>
+            </div>
             <select id="sort-select" class="sort-select">
                 <option value="newest">Mới nhất</option>
                 <option value="rating">Yêu thích nhất</option>
@@ -636,11 +628,11 @@
 
     <script>
         /* ============================================================
-           CƠ SỞ DỮ LIỆU & TRẠNG THÁI (CAPY STATION V8)
+           CƠ SỞ DỮ LIỆU & TRẠNG THÁI (CAPY STATION V9)
            ============================================================ */
         let CONFIG = {
             stationMaster: { 
-                shortDesc: "Nơi đàn Capybara ngâm mình ven suối, cùng lữ khách bước vào những thế giới mở rộng lớn...",
+                shortDesc: "Một quán trọ nhỏ, nơi mỗi cánh cửa dẫn đến một chuyến phiêu lưu khác",
                 bio: "Cảm ơn các bạn đã ghé thăm trang của tui...", 
                 avatar: "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png",
                 facebook: {name: "", url: ""}
@@ -696,13 +688,13 @@
            ============================================================ */
         async function fetchConfig() {
             try {
-                // Đổi ID truy cập thành 400 để Reset lượt khách về 0 
-                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 400).single();
+                // Đổi ID truy cập thành 500 để Reset lượt khách về 0 
+                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 500).single();
                 if (visitData && visitData.data) { globalVisits = parseInt(visitData.data); }
                 if (!sessionStorage.getItem('capy_visited_v9') && !isAdminMode) { 
                     globalVisits++; 
                     sessionStorage.setItem('capy_visited_v9', 'true'); 
-                    supa.from('station_config').upsert([{ id: 400, data: globalVisits.toString() }]).then(); 
+                    supa.from('station_config').upsert([{ id: 500, data: globalVisits.toString() }]).then(); 
                 }
 
                 const { data } = await supa.from('station_config').select('data').eq('id', 777).single();
@@ -715,7 +707,7 @@
 
                 if(!Array.isArray(CONFIG.staff)) CONFIG.staff = [];
                 if(!Array.isArray(CONFIG.upcomingBots)) CONFIG.upcomingBots = [];
-                if(!CONFIG.stationMaster.shortDesc) CONFIG.stationMaster.shortDesc = "Nơi đàn Capybara ngâm mình ven suối...";
+                if(!CONFIG.stationMaster.shortDesc) CONFIG.stationMaster.shortDesc = "Một quán trọ nhỏ, nơi mỗi cánh cửa dẫn đến một chuyến phiêu lưu khác";
                 
                 CONFIG.staff.forEach(s => { 
                     if(!Array.isArray(s.feedbacks)) s.feedbacks = []; 
@@ -831,7 +823,7 @@
                     </div>
                 ` : "";
 
-                // Hiển thị 100% các tag đã có trong phòng
+                // Loại bỏ giới hạn slice(0,3) để hiện 100% tags
                 let tagsHtml = (bot.tags||[]).map(t => `<span class="b-tag">${t.startsWith('#')?t:'#'+t}</span>`).join('');
                 let rating = getAvgRating(bot);
 
@@ -919,6 +911,7 @@
                             : `<svg class="svg-icon" viewBox="0 0 16 16" style="width:16px;height:16px;color:var(--border-soft)"><use href="#px-star-empty"></use></svg>`;
                     }
 
+                    // Lấy chữ cái đầu làm Avatar
                     let initial = fb.name.charAt(0).toUpperCase();
 
                     return `
@@ -1071,6 +1064,17 @@
             document.body.style.overflow = "hidden";
         };
 
+        // HÀM MỞ Ý TƯỞNG CỦA PHÒNG SẮP RA MẮT
+        window.showIdeaModal = function(id) {
+            let bot = CONFIG.upcomingBots.find(b => b.id === id);
+            if(!bot) return;
+            document.getElementById("modal-title").innerHTML = `💡 Ý Tưởng: ${bot.name}`;
+            document.getElementById("modal-body").innerHTML = `
+                <div style="font-size: 1rem; color: var(--text-dark); line-height: 1.8; padding: 20px; background: #FFF; border: 3px dashed var(--accent-mocha); border-radius: 20px; white-space: pre-wrap; font-weight: 600;">${bot.idea}</div>
+                <button onclick="openUpcomingModal()" style="margin-top:20px; width:100%; padding:12px; background:var(--text-dark); color:#FFF; font-weight:800; border-radius:12px;">QUAY LẠI DANH SÁCH</button>
+            `;
+        }
+
         function renderUpcomingBotsFilter() {
             const body = document.getElementById("modal-body");
             const q = removeAccents(searchQuery);
@@ -1097,7 +1101,7 @@
             if(displayBots.length === 0) {
                 body.innerHTML = "<p style='text-align:center; color:var(--text-muted); padding:30px; font-weight:800; font-size:1rem;'><svg class='svg-icon' viewBox='0 0 16 16'><use href='#px-paw'></use></svg> Khu vực đang dọn dẹp, chưa có phòng mới nào.</p>";
             } else {
-                let html = `<div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap:20px;">`;
+                let html = `<div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap:18px;">`;
                 displayBots.forEach(bot => {
                     let adminOver = isAdminMode ? `<div class="card-admin-overlay"><button class="btn-card-ad" onclick="openAdminForm('up', 'edit', '${bot.id}')">Sửa</button><button class="btn-card-ad" onclick="toggleHideUp('${bot.id}')">${bot.isHidden?'Đang Ẩn':'Hiện'}</button><button class="btn-card-ad" style="color:#EF4444; border-color:#EF4444;" onclick="deleteUp('${bot.id}')">Xóa</button></div>` : '';
                     let hasVoted = localStorage.getItem('vote_up_' + bot.id) === 'true';
@@ -1116,7 +1120,8 @@
                             <div class="up-name">${bot.name}</div>
                             <div class="b-tags" style="justify-content:center; margin-bottom:8px;">${tagsHtml}</div>
                             
-                            <div class="up-idea">${bot.idea}</div>
+                            <!-- NÚT XEM Ý TƯỞNG (THAY CHO TEXT DÀI) -->
+                            <button class="up-idea-btn" onclick="showIdeaModal('${bot.id}')">💡 Xem Ý Tưởng</button>
                             
                             <div class="up-progress-wrap">
                                 <div class="up-p-header"><span>Hoàn thiện:</span><span>${bot.progress}%</span></div>
@@ -1227,7 +1232,7 @@
             if (type === 'sm') {
                 body.innerHTML = `
                     <label class="file-upload-label" style="width:100%; text-align:center;"><input type="file" accept="image/*" id="ad-sm-img" style="display:none;"> 📸 ĐỔI ẢNH CHỦ TRỌ</label>
-                    <div id="ad-sm-prev" style="text-align:center; margin-bottom:15px;">${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="height:90px; border-radius:50%; border:3px solid var(--accent-peach);">` : ''}</div>
+                    <div id="ad-sm-prev" style="text-align:center; margin-bottom:20px;">${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="height:90px; border-radius:50%; border:3px solid var(--accent-peach);">` : ''}</div>
 
                     <div class="admin-form-group">
                         <label>Tiểu sử Chủ Trọ (Hỗ trợ định dạng chữ)</label>
@@ -1272,8 +1277,8 @@
                     
                     <div style="display:flex; gap:10px; margin-bottom:15px;">
                         <div style="flex:1;">
-                            <label class="file-upload-label" style="padding:8px; font-size:0.8rem;"><input type="file" accept="image/*" id="ad-img-bg" style="display:none;"> 📸 ẢNH BÌA LỚN (9:16)</label>
-                            <div id="ad-prev-bg" style="text-align:center;">${tempBgImg ? `<img src="${tempBgImg}" style="height:100px; width:60px; object-fit:cover; border-radius:8px; border:2px solid var(--accent-mocha);">` : ''}</div>
+                            <label class="file-upload-label" style="padding:8px; font-size:0.8rem;"><input type="file" accept="image/*" id="ad-img-bg" style="display:none;"> 📸 ẢNH BÌA LỚN (3:4)</label>
+                            <div id="ad-prev-bg" style="text-align:center;">${tempBgImg ? `<img src="${tempBgImg}" style="height:100px; width:75px; object-fit:cover; border-radius:8px; border:2px solid var(--accent-mocha);">` : ''}</div>
                         </div>
                         
                         <div style="flex:1;">
@@ -1318,7 +1323,7 @@
                     if(e.target.files.length > 0) {
                         document.getElementById("ad-prev-bg").innerHTML = "<span style='font-size:0.7rem;'>Đang xử lý...</span>";
                         tempBgImg = await resizeImage(e.target.files[0], 1000);
-                        document.getElementById("ad-prev-bg").innerHTML = `<img src="${tempBgImg}" style="height:100px; width:60px; object-fit:cover; border-radius:8px; border:2px solid var(--accent-mocha);">`;
+                        document.getElementById("ad-prev-bg").innerHTML = `<img src="${tempBgImg}" style="height:100px; width:75px; object-fit:cover; border-radius:8px; border:2px solid var(--accent-mocha);">`;
                     }
                 };
                 
@@ -1365,7 +1370,7 @@
                         <div id="ad-tags-wrapper"></div>
                     </div>
 
-                    <div class="admin-form-group"><label>Ý Tưởng</label><textarea id="ad-idea" class="fb-input" style="height:70px;">${d.idea}</textarea></div>
+                    <div class="admin-form-group"><label>Ý Tưởng</label><textarea id="ad-idea" class="fb-input" style="height:100px;">${d.idea}</textarea></div>
                     
                     <div style="display:flex; gap:10px; margin-bottom:10px;">
                         <div class="admin-form-group" style="flex:1;"><label>Tiến độ (%)</label><input type="number" id="ad-prog" value="${d.progress}" min="0" max="100" class="fb-input"></div>
