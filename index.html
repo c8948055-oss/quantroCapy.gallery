@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quán Trọ Capy 🍊🦫</title>
+    <title>Quán Trọ Capy</title>
     
-    <!-- Fonts: Comfortaa (Tròn xoe đáng yêu) & Nunito (Mềm mại, chữa lành) -->
+    <!-- Favicon: Capy thắt nơ -->
+    <link rel="icon" href="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" type="image/png">
+    
+    <!-- Fonts: Luckiest Guy (Tiêu đề 3D), Comfortaa (Đáng yêu) & Nunito (Chữa lành) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700;800&family=Luckiest+Guy&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
     
     <!-- Supabase & LocalForage -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -21,13 +24,14 @@
         :root {
             --bg-main: #FFF9F5; /* Nền kem sữa ấm */
             --bg-card: #FFFFFF; 
-            --text-dark: #5C4033; /* Nâu hạt dẻ / Ca cao */
-            --text-muted: #9E8576;
+            --text-dark: #3D2314; /* Nâu ca cao đậm đặc */
+            --text-muted: #9E8576; /* Nâu nhạt */
             --accent-peach: #FF9F7C; /* Cam đào pastel */
             --accent-pink: #FFB6B9; /* Hồng lụa coquette */
             --accent-mocha: #E8D5C4; /* Nâu gỗ nhạt */
             --border-soft: #F4EBE6;
             
+            --font-title: 'Luckiest Guy', cursive;
             --font-heading: 'Comfortaa', cursive;
             --font-body: 'Nunito', sans-serif;
             --shadow-soft: 0 12px 35px rgba(92, 64, 51, 0.06);
@@ -36,7 +40,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             background-color: var(--bg-main);
-            /* Vibe sổ tay giấy chấm bi (Polka dots) */
             background-image: radial-gradient(var(--accent-mocha) 1.5px, transparent 1.5px);
             background-size: 30px 30px;
             color: var(--text-dark); 
@@ -55,7 +58,7 @@
         .svg-icon {
             display: inline-block; vertical-align: middle;
             width: 26px; height: 26px; overflow: visible;
-            shape-rendering: crispEdges; /* Ép viền sắc nét ra dáng Pixel */
+            shape-rendering: crispEdges;
         }
 
         /* Hiệu ứng nhún nhảy đáng yêu */
@@ -75,14 +78,14 @@
         .signboard-wrapper {
             position: relative;
             max-width: 600px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto 15px auto;
             padding-top: 50px; /* Chừa không gian cho Capy ngó đầu */
         }
 
-        /* Capybara ngó đầu (Ảnh 3) */
+        /* Capybara ngó đầu (Ảnh Đeo kính) */
         .peeking-capy {
             position: absolute;
-            top: -15px; left: 50%; transform: translateX(-50%);
+            top: -20px; left: 50%; transform: translateX(-50%);
             width: 140px;
             z-index: 1; /* Nằm sau bảng hiệu */
         }
@@ -92,7 +95,7 @@
             background: #FFFBF8;
             border: 4px solid var(--text-dark);
             border-radius: 25px; /* Bo tròn mượt mà */
-            padding: 25px 40px;
+            padding: 20px 40px;
             position: relative;
             z-index: 2;
             box-shadow: 0 10px 0 rgba(92, 64, 51, 0.08);
@@ -102,7 +105,7 @@
         }
         .cream-board:active { transform: scale(0.98); box-shadow: 0 5px 0 rgba(92, 64, 51, 0.08); }
 
-        /* Nơ hồng lụa (Ảnh 4) dán góc */
+        /* Nơ hồng lụa dán góc */
         .pink-bow {
             position: absolute;
             top: -20px; left: -25px;
@@ -112,23 +115,42 @@
             transform: rotate(-15deg);
         }
 
-        /* Chữ Nâu đậm mượt mà nằm ngang */
+        /* CHỮ QUÁN TRỌ CAPY STICKER 3D */
         .station-title {
-            font-family: var(--font-heading); 
-            font-size: clamp(1.8rem, 5vw, 2.8rem); /* 1 hàng ngang co giãn */
-            font-weight: 800;
+            font-family: var(--font-title); 
+            font-size: clamp(2.5rem, 6vw, 4rem); 
+            font-weight: 400;
             color: var(--text-dark); 
             margin: 0;
-            line-height: 1.2;
+            line-height: 1.1;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 3px;
             white-space: nowrap;
+            /* Hiệu ứng 3D khối: Lớp 1 (Viền trắng 3px) - Lớp 2 (Bóng đổ cứng 4px màu hồng) */
+            text-shadow: 
+                -3px -3px 0 #FFF, 3px -3px 0 #FFF, -3px 3px 0 #FFF, 3px 3px 0 #FFF,
+                 0px -3px 0 #FFF, 0px 3px 0 #FFF, -3px 0px 0 #FFF, 3px 0px 0 #FFF,
+                -2px -3px 0 #FFF, 2px -3px 0 #FFF, -2px 3px 0 #FFF, 2px 3px 0 #FFF,
+                -3px -2px 0 #FFF, 3px -2px 0 #FFF, -3px 2px 0 #FFF, 3px 2px 0 #FFF,
+                 0px 7px 0px var(--accent-pink),
+                -1px 7px 0px var(--accent-pink),
+                 1px 7px 0px var(--accent-pink),
+                -2px 7px 0px var(--accent-pink),
+                 2px 7px 0px var(--accent-pink),
+                -3px 7px 0px var(--accent-pink),
+                 3px 7px 0px var(--accent-pink);
         }
 
-        /* Lời tựa giới thiệu */
-        .station-desc {
-            font-size: 1.15rem; color: var(--text-dark); white-space: pre-wrap; font-weight: 700; line-height: 1.7;
-            background: #FFF; border: 3px dashed var(--accent-mocha); border-radius: 25px; padding: 25px; margin-bottom: 35px; box-shadow: var(--shadow-soft);
+        /* Lời tựa giới thiệu (Tự do, không viền) */
+        .station-desc-freestyle {
+            font-size: 1.05rem; 
+            color: var(--text-muted); /* Nâu nhạt hơn để phân cấp */
+            font-style: italic; 
+            text-align: center;
+            margin: 0 auto 35px auto;
+            max-width: 650px;
+            font-weight: 700;
+            line-height: 1.6;
         }
 
         /* Các Nút Trung Tâm (2 Ô hình viên thuốc) */
@@ -202,7 +224,7 @@
         .b-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; border-radius: 30px 30px 0 0; }
         .bot-card:hover .b-img-wrap img { transform: scale(1.06); }
 
-        /* Đánh giá sao Múp mím */
+        /* Đánh giá sao */
         .b-rating {
             position: absolute; top: 18px; right: 18px; background: #FFF;
             color: var(--text-dark); padding: 8px 16px; border-radius: 50px; font-size: 1rem; font-weight: 900;
@@ -362,7 +384,8 @@
         .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 20px; border: 5px solid #FFF; box-shadow: 0 20px 50px rgba(0,0,0,0.5);}
 
         @media (max-width: 600px) {
-            .station-title { font-size: 1.8rem; }
+            .station-title { font-size: 2.5rem; }
+            .cream-board { padding: 15px 25px; }
             .bot-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
             .m-body { padding: 25px 20px; }
             .fb-form { padding: 25px 20px; }
@@ -392,11 +415,18 @@
 
             <!-- Quà Pixel (Sắp ra mắt) -->
             <g id="px-gift">
-                <rect x="3" y="7" width="10" height="8" fill="currentColor"/>
-                <rect x="2" y="5" width="12" height="2" fill="currentColor"/>
+                <!-- Nơ -->
+                <rect x="5" y="1" width="2" height="3" fill="var(--accent-pink)"/>
+                <rect x="9" y="1" width="2" height="3" fill="var(--accent-pink)"/>
+                <rect x="7" y="3" width="2" height="2" fill="var(--accent-pink)"/>
+                <!-- Thân nắp -->
+                <rect x="2" y="5" width="12" height="3" fill="var(--accent-peach)"/>
+                <rect x="2" y="5" width="12" height="3" fill="none" stroke="currentColor" stroke-width="1" shape-rendering="crispEdges"/>
+                <!-- Thân dưới -->
+                <rect x="3" y="8" width="10" height="7" fill="var(--bg-card)"/>
+                <rect x="3" y="8" width="10" height="7" fill="none" stroke="currentColor" stroke-width="1" shape-rendering="crispEdges"/>
+                <!-- Ruy băng dọc -->
                 <rect x="7" y="5" width="2" height="10" fill="var(--accent-pink)"/>
-                <rect x="4" y="2" width="3" height="3" fill="var(--accent-pink)"/>
-                <rect x="9" y="2" width="3" height="3" fill="var(--accent-pink)"/>
             </g>
 
             <!-- Dấu chân Capy Pixel -->
@@ -424,6 +454,13 @@
                 <rect x="4" y="6" width="8" height="6" fill="currentColor"/>
                 <rect x="2" y="12" width="12" height="2" fill="currentColor"/>
                 <rect x="7" y="14" width="2" height="2" fill="currentColor"/>
+            </g>
+
+            <!-- Nơ nhỏ xíu -->
+            <g id="px-ribbon">
+                <rect x="3" y="5" width="3" height="6" fill="currentColor"/>
+                <rect x="10" y="5" width="3" height="6" fill="currentColor"/>
+                <rect x="6" y="7" width="4" height="2" fill="currentColor"/>
             </g>
 
             <!-- Sao Đánh Giá Pixel (Filled) -->
@@ -474,26 +511,26 @@
         </div>
     </div>
 
-    <!-- HEADER: TÊN QUÁN & BẢNG HIỆU GỖ -->
+    <!-- HEADER: TÊN QUÁN & BẢNG HIỆU KEM SỮA -->
     <header class="header-section">
         <div class="signboard-wrapper">
-            <!-- Bé Capy thò đầu lấp ló phía sau bảng hiệu -->
-            <img src="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" alt="Peeking Capy" class="peeking-capy bounce">
+            <!-- Bé Capy thò đầu lấp ló (Ảnh đeo kính) -->
+            <img src="ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" alt="Peeking Capy" class="peeking-capy bounce">
             
-            <!-- Bảng kem sữa viền nâu (click vào để mở admin) -->
+            <!-- Bảng kem sữa viền nâu (click đúp vào để mở admin) -->
             <div class="cream-board" id="trigger-admin" title="Nhấp đúp vào Bảng để vào Admin">
-                <!-- Nơ hồng lụa -->
+                <!-- Nơ hồng lụa (Ảnh nơ pixel) -->
                 <img src="2D_pixel_png-removebg-preview.png" alt="Pink Bow" class="pink-bow">
+                
                 <h1 class="station-title">QUÁN TRỌ CAPY</h1>
             </div>
         </div>
         
-        <div class="signboard-note">
-            <div class="station-desc" id="station-bio">Đang pha trà sữa đào...</div>
-        </div>
+        <!-- Dòng tự do Intro Text kẹp bởi 2 nơ pixel -->
+        <div class="station-desc-freestyle" id="station-bio">Đang pha trà sữa đào...</div>
 
         <div class="top-buttons">
-            <button class="btn-top" onclick="openSMModal()"><img src="ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" style="width:30px;height:30px;object-fit:contain;"> Thông tin chủ quán</button>
+            <button class="btn-top" onclick="openSMModal()"><img src="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" style="width:28px;height:28px;object-fit:contain;"> Thông tin chủ trọ</button>
             <button class="btn-top" onclick="openUpcomingModal()"><svg class="svg-icon bounce" viewBox="0 0 16 16"><use href="#px-gift"></use></svg> Sắp Ra Mắt</button>
         </div>
     </header>
@@ -556,7 +593,7 @@
            CƠ SỞ DỮ LIỆU & TRẠNG THÁI (CAPY STATION V2)
            ============================================================ */
         let CONFIG = {
-            stationMaster: { bio: "Nơi đàn Capybara ngâm mình ven suối, cùng lữ khách bước vào những thế giới mở rộng lớn...", rules: "Hãy lịch sự và yêu thương động vật nhé!", avatar: "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" },
+            stationMaster: { bio: "Nơi đàn Capybara ngâm mình ven suối, cùng lữ khách bước vào những thế giới mở rộng lớn...", rules: "Hãy lịch sự và yêu thương động vật nhé!", avatar: "ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" },
             staff: [], // {id, name, avatar, hook, tags, link, feedbacks: [{id, name, stars, text, imgs, date, replies:[]}], isHidden, createdAt}
             upcomingBots: [] // {id, name, avatar, idea, train, progress, note, votes, isHidden}
         };
@@ -640,7 +677,10 @@
            RENDER GIAO DIỆN CHÍNH
            ============================================================ */
         function renderUI() {
-            document.getElementById("station-bio").innerHTML = CONFIG.stationMaster.bio;
+            // Render Bio với 2 icon Nơ Pixel bọc đầu cuối
+            const bioText = CONFIG.stationMaster.bio || "Ở rìa của thực tại, nơi đàn Capybara ngâm mình ven suối...";
+            document.getElementById("station-bio").innerHTML = `<svg class="svg-icon" viewBox="0 0 16 16" style="width:18px; height:18px; margin-right:5px; color:var(--accent-pink);"><use href="#px-ribbon"></use></svg> ${bioText} <svg class="svg-icon" viewBox="0 0 16 16" style="width:18px; height:18px; margin-left:5px; color:var(--accent-pink);"><use href="#px-ribbon"></use></svg>`;
+            
             renderTags();
             renderGrid();
         }
@@ -785,7 +825,7 @@
                     
                     let repliesHtml = (fb.replies||[]).map((r, rIdx) => {
                         let delRepBtn = isAdminMode ? `<button style="background:none; border:none; color:#EF4444; font-size:0.8rem; font-weight:900; cursor:pointer;" onclick="deleteReply('${botId}', '${fb.id}', ${rIdx})">Xóa</button>` : '';
-                        let nameColor = r.name.toLowerCase() === 'chủ quán' ? 'color:var(--accent-peach);' : 'color:var(--text-dark);';
+                        let nameColor = r.name.toLowerCase() === 'chủ trọ' ? 'color:var(--accent-peach);' : 'color:var(--text-dark);';
                         return `
                             <div class="reply-item">
                                 <div class="reply-name"><span style="${nameColor}">${r.name}</span> <span>${delRepBtn}</span></div>
@@ -890,7 +930,7 @@
             };
 
             if(isAdminMode) {
-                body.querySelectorAll("input[id^='rep-name-']").forEach(inp => inp.value = "Chủ Quán");
+                body.querySelectorAll("input[id^='rep-name-']").forEach(inp => inp.value = "Chủ Trọ");
             }
 
             document.getElementById("main-modal").classList.add("show");
@@ -931,8 +971,8 @@
            MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN
            ============================================================ */
         window.openSMModal = function() {
-            document.getElementById("modal-title").innerHTML = `<img src="ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" style="width:30px;height:30px;"> THÔNG TIN CHỦ QUÁN`;
-            let fbHtml = CONFIG.stationMaster.facebook && CONFIG.stationMaster.facebook.url ? `<div style="margin-top:25px; text-align:center;"><a href="${CONFIG.stationMaster.facebook.url}" target="_blank" style="display:inline-block; padding:16px 32px; background:var(--text-dark); color:#FFF; font-weight:900; border-radius:50px; box-shadow:0 8px 25px rgba(92, 64, 51, 0.25); font-family:var(--font-body); font-size:1.05rem;">Liên hệ Facebook Chủ Quán</a></div>` : '';
+            document.getElementById("modal-title").innerHTML = `<img src="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" style="width:30px;height:30px;"> THÔNG TIN CHỦ TRỌ`;
+            let fbHtml = CONFIG.stationMaster.facebook && CONFIG.stationMaster.facebook.url ? `<div style="margin-top:25px; text-align:center;"><a href="${CONFIG.stationMaster.facebook.url}" target="_blank" style="display:inline-block; padding:16px 32px; background:var(--text-dark); color:#FFF; font-weight:900; border-radius:50px; box-shadow:0 8px 25px rgba(92, 64, 51, 0.25); font-family:var(--font-body); font-size:1.05rem;">Liên hệ Facebook Chủ Trọ</a></div>` : '';
             
             document.getElementById("modal-body").innerHTML = `
                 <div style="text-align:center; margin-bottom:30px;">
@@ -1007,14 +1047,14 @@
         };
 
         /* ============================================================
-           QUẢN LÝ ADMIN (MỞ KHÓA BẰNG TOUCH/CLICK)
+           QUẢN LÝ ADMIN 
            ============================================================ */
+        // SỬA LỖI MỞ KHÓA BẰNG NHẤP ĐÚP CHUẨN THỜI GIAN CHẠM
         let lastTap = 0;
         document.getElementById("trigger-admin").addEventListener("click", (e) => {
             const currentTime = new Date().getTime();
             const tapLength = currentTime - lastTap;
-            if (tapLength < 500 && tapLength > 0) {
-                // Nhấp đúp thành công (Chữa lỗi di động)
+            if (tapLength < 400 && tapLength > 0) { // Nếu nhấp đúp thành công (thời gian giữa 2 lần bấm < 400ms)
                 if(!isAdminMode) { 
                     if(prompt("Mật mã Chủ Quán:") === "bhnt2006") { 
                         isAdminMode = true; document.body.classList.add("is-admin"); renderUI(); checkNotifications(); 
@@ -1042,7 +1082,7 @@
 
             if (type === 'sm') {
                 body.innerHTML = `
-                    <label class="file-upload-label" style="width:100%; text-align:center;"><input type="file" accept="image/*" id="ad-sm-img" style="display:none;"> 📸 ĐỔI ẢNH CHỦ QUÁN (TRÒN)</label>
+                    <label class="file-upload-label" style="width:100%; text-align:center;"><input type="file" accept="image/*" id="ad-sm-img" style="display:none;"> 📸 ĐỔI ẢNH CHỦ TRỌ</label>
                     <div id="ad-sm-prev" style="text-align:center; margin-bottom:20px;">${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="height:120px; border-radius:50%; border:4px solid var(--accent-peach);">` : ''}</div>
 
                     <div class="admin-form-group">
@@ -1063,7 +1103,7 @@
                     </div>
                     <button class="fb-btn-submit" id="ad-save">LƯU LẠI THÔNG TIN</button>
                 `;
-                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png";
+                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png";
                 document.getElementById("ad-sm-img").onchange = async (e) => {
                     if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:120px; border-radius:50%; border:4px solid var(--accent-peach);">`; }
                 };
@@ -1072,7 +1112,7 @@
                     CONFIG.stationMaster.bio = document.getElementById("ad-bio").value;
                     CONFIG.stationMaster.rules = document.getElementById("ad-rules").value;
                     CONFIG.stationMaster.facebook = { name: document.getElementById("ad-fbname").value, url: document.getElementById("ad-fburl").value };
-                    await saveConfig(); renderUI(); document.getElementById("admin-modal").classList.remove("show"); alert("Đã lưu Chủ Quán!");
+                    await saveConfig(); renderUI(); document.getElementById("admin-modal").classList.remove("show"); alert("Đã lưu Chủ Trọ!");
                 };
             }
             else if (type === 'bot') {
@@ -1187,7 +1227,7 @@
                 (bot.feedbacks||[]).forEach(fb => {
                     allNotis.push({ type: 'fb', botId: bot.id, botName: bot.name, name: fb.name, date: fb.date, text: fb.text });
                     (fb.replies||[]).forEach(r => {
-                        if(r.name.toLowerCase() !== 'chủ quán') {
+                        if(r.name.toLowerCase() !== 'chủ trọ') {
                             allNotis.push({ type: 'rep', botId: bot.id, botName: bot.name, name: r.name, fbName: fb.name, date: r.date, text: r.text });
                         }
                     });
