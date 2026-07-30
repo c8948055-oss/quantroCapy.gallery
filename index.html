@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quán Trọ Capy 🍊🦫</title>
+    <title>Quán Trọ Capy</title>
     
-    <!-- Fonts -->
+    <!-- Fonts: Comfortaa (Tròn xoe đáng yêu) & Nunito (Mềm mại, ấm áp) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
     
     <!-- Supabase & LocalForage -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -16,28 +16,26 @@
 
     <style>
         /* ============================================================
-           BẢNG MÀU & FONT (CAPYBARA COQUETTE)
+           BẢNG MÀU & FONT (CAPYBARA CHUBBY STYLE)
            ============================================================ */
         :root {
-            --bg-main: #F5EBE0; /* Nâu bơ nhạt */
-            --bg-card: rgba(255, 248, 240, 0.9); /* Kem sữa kính mờ */
-            --text-dark: #3D2314; /* Nâu đen ca cao */
-            --text-muted: #7A5C4A;
+            --bg-main: #FDF8F5; /* Kem sữa rất nhạt */
+            --bg-card: #FFFFFF; 
+            --text-dark: #4A3320; /* Nâu ca cao mềm */
+            --text-muted: #8B7365;
             --accent-peach: #FFA07A; /* Cam đào */
-            --accent-pink: #FFB6B9; /* Hồng nơ Coquette */
-            --accent-mocha: #D4A373; /* Nâu pastel */
-            --border-soft: rgba(61, 35, 20, 0.1);
+            --accent-pink: #FFB6B9; /* Hồng nơ */
+            --accent-mocha: #E5C3A6; /* Nâu pastel */
+            --border-soft: #F0E5DE;
             
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Montserrat', sans-serif;
-            --shadow-soft: 0 8px 25px rgba(61, 35, 20, 0.08);
+            --font-heading: 'Comfortaa', cursive;
+            --font-body: 'Nunito', sans-serif;
+            --shadow-soft: 0 10px 30px rgba(74, 51, 32, 0.06);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             background-color: var(--bg-main);
-            background-image: radial-gradient(circle at 100% 0%, rgba(255,160,122,0.1) 0%, transparent 50%),
-                              radial-gradient(circle at 0% 100%, rgba(255,182,185,0.15) 0%, transparent 50%);
             color: var(--text-dark); 
             font-family: var(--font-body); 
             min-height: 100vh; overflow-x: hidden; line-height: 1.6;
@@ -48,10 +46,19 @@
         a { text-decoration: none; color: inherit; }
         .hidden { display: none !important; }
 
-        /* Icon SVG Base Style */
+        /* ============================================================
+           STYLE ICON CHUBBY (MÚP MÍM, NÉT TRÒN, TÔ MÀU LỆCH)
+           ============================================================ */
         .svg-icon {
             display: inline-block; vertical-align: middle;
-            stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none;
+            width: 24px; height: 24px; overflow: visible;
+        }
+        .icon-stroke {
+            stroke: var(--text-dark);
+            stroke-width: 2.5px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
         }
 
         /* ============================================================
@@ -61,44 +68,57 @@
             max-width: 800px; margin: 60px auto 30px auto; text-align: center; padding: 0 20px;
         }
         .station-title {
-            font-family: var(--font-heading); font-size: 3.2rem; font-weight: 900;
-            color: var(--text-dark); text-shadow: 2px 2px 0px #FFF, 4px 4px 10px rgba(61,35,20,0.1);
-            margin-bottom: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 15px;
+            font-family: var(--font-heading); font-size: 2.8rem; font-weight: 700;
+            color: var(--text-dark); margin-bottom: 15px; cursor: pointer; 
+            display: flex; align-items: center; justify-content: center; gap: 15px;
         }
         .station-desc {
-            font-size: 1.05rem; color: var(--text-muted); white-space: pre-wrap; margin-bottom: 25px; font-weight: 500;
+            font-size: 1.1rem; color: var(--text-muted); white-space: pre-wrap; margin-bottom: 25px; font-weight: 600;
         }
         .top-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .btn-top {
-            padding: 12px 24px; border-radius: 50px; font-weight: 700; font-size: 0.95rem;
-            background: #FFF; border: 2px solid var(--accent-mocha); color: var(--text-dark); 
-            transition: 0.3s; box-shadow: 0 4px 10px rgba(212,163,115,0.2); display: flex; align-items: center; gap: 8px;
+            padding: 12px 24px; border-radius: 50px; font-weight: 800; font-size: 0.95rem;
+            background: #FFF; border: 2.5px solid var(--border-soft); color: var(--text-dark); 
+            transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.03); display: flex; align-items: center; gap: 8px;
         }
-        .btn-top:hover { background: var(--accent-mocha); color: #FFF; transform: translateY(-2px); }
+        .btn-top:hover { border-color: var(--accent-peach); background: var(--bg-main); transform: translateY(-3px); }
 
         /* ============================================================
-           THANH LỌC & TÌM KIẾM
+           THANH LỌC TAG ĐỘNG & TÌM KIẾM
            ============================================================ */
         .filter-section {
             max-width: 1200px; margin: 0 auto 50px auto; padding: 0 20px;
             display: flex; flex-direction: column; align-items: center; gap: 20px;
         }
-        .pill-tags-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 900px; }
-        .pill-tag {
-            padding: 8px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600;
-            background: rgba(255,255,255,0.5); border: 2px solid var(--accent-peach); color: var(--text-muted);
-            transition: 0.3s;
-        }
-        .pill-tag:hover { border-color: var(--text-dark); color: var(--text-dark); }
-        .pill-tag.active { background: var(--accent-peach); border-color: var(--accent-peach); color: #FFF; box-shadow: 0 4px 12px rgba(255,160,122,0.4); }
 
-        .search-wrapper { width: 100%; max-width: 500px; position: relative; }
+        /* Thanh Search (Ảnh 2) */
+        .search-wrapper { 
+            width: 100%; max-width: 600px; position: relative; 
+            display: flex; align-items: center;
+        }
+        .search-icon-box {
+            position: absolute; left: 20px; display: flex; align-items: center; justify-content: center;
+        }
         .search-input {
-            width: 100%; padding: 15px 25px; border-radius: 50px; background: #FFF;
-            border: 2px solid var(--border-soft); color: var(--text-dark); font-size: 0.95rem; font-weight: 500;
+            width: 100%; padding: 16px 20px 16px 55px; border-radius: 50px; background: #FFF;
+            border: 2.5px solid var(--border-soft); color: var(--text-dark); font-size: 1rem; font-weight: 600;
             transition: 0.3s; box-shadow: var(--shadow-soft);
         }
-        .search-input:focus { border-color: var(--accent-peach); outline: none; }
+        .search-input:focus { border-color: var(--accent-peach); }
+        .search-input::placeholder { color: #BDB5AE; font-weight: 600; }
+
+        /* Tag Viên thuốc (Ảnh 1) */
+        .pill-tags-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 900px; }
+        .pill-tag {
+            padding: 8px 22px; border-radius: 50px; font-size: 0.9rem; font-weight: 700;
+            background: transparent; border: 2.5px solid var(--accent-peach); color: var(--text-dark);
+            transition: 0.3s; box-shadow: 0 2px 5px rgba(255, 160, 122, 0.1);
+        }
+        .pill-tag:hover { background: #FFF3EE; transform: translateY(-2px); }
+        .pill-tag.active { 
+            background: var(--accent-peach); border-color: var(--accent-peach); color: #FFF; 
+            box-shadow: 0 6px 15px rgba(255,160,122,0.4); 
+        }
 
         /* ============================================================
            GRID THẺ NHÂN VIÊN
@@ -106,85 +126,76 @@
         .main-container { max-width: 1400px; margin: 0 auto 80px auto; padding: 0 20px; }
         .grid-header { display: flex; justify-content: flex-end; margin-bottom: 20px; }
         .sort-select {
-            padding: 10px 18px; border-radius: 50px; background: #FFF; border: 2px solid var(--accent-mocha);
-            color: var(--text-dark); font-size: 0.85rem; font-weight: 700; cursor: pointer; outline:none;
+            padding: 10px 20px; border-radius: 50px; background: #FFF; border: 2.5px solid var(--border-soft);
+            color: var(--text-dark); font-size: 0.9rem; font-weight: 800; cursor: pointer; transition: 0.3s;
         }
+        .sort-select:hover { border-color: var(--accent-peach); }
 
         .bot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; }
 
         /* THIẾT KẾ THẺ CAPY COQUETTE */
         .bot-card {
-            background: var(--bg-card); border-radius: 20px; overflow: hidden; position: relative;
+            background: var(--bg-card); border-radius: 24px; overflow: hidden; position: relative;
             display: flex; flex-direction: column; box-shadow: var(--shadow-soft);
-            border: 2px solid #FFF; transition: 0.3s; height: 100%; backdrop-filter: blur(10px);
+            border: 3px solid #FFF; transition: 0.3s; height: 100%;
         }
-        .bot-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(61,35,20,0.15); border-color: var(--accent-peach); }
+        .bot-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(74, 51, 32, 0.1); border-color: var(--accent-peach); }
         
-        .b-img-wrap { width: 100%; aspect-ratio: 9/16; position: relative; overflow: hidden; background: #EEE; }
-        .b-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .b-img-wrap { width: 100%; aspect-ratio: 9/16; position: relative; overflow: hidden; background: #FDECE4; }
+        .b-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; border-radius: 24px 24px 0 0; }
         .bot-card:hover .b-img-wrap img { transform: scale(1.05); }
 
-        /* Đánh giá sao */
+        /* Đánh giá sao Múp mím */
         .b-rating {
-            position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.9);
-            color: var(--text-dark); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 800;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 2; display: flex; align-items: center; gap: 4px; border: 2px solid var(--accent-mocha);
+            position: absolute; top: 15px; right: 15px; background: #FFF;
+            color: var(--text-dark); padding: 6px 14px; border-radius: 50px; font-size: 0.9rem; font-weight: 800;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); z-index: 2; display: flex; align-items: center; gap: 6px; 
+            border: 2px solid var(--border-soft);
         }
-        .b-rating .star-icon { color: #F59E0B; }
 
-        /* Ruy băng & Huy hiệu Capy */
-        .b-coquette-ribbon {
-            position: absolute; top: -5px; left: 10px; width: 60px; height: 80px; z-index: 3;
-            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2)); pointer-events: none;
-        }
-        
         /* Chân thẻ */
         .b-info {
             padding: 20px; display: flex; flex-direction: column; flex: 1; position: relative; background: #FFF;
-            border-top: 2px dashed var(--accent-mocha);
         }
         .b-header-info { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-        .b-avatar-mini { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-peach); }
-        .b-name { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--text-dark); }
+        .b-avatar-mini { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2.5px solid var(--accent-peach); }
+        .b-name { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--text-dark); }
         
-        .b-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-        .b-tag { font-size: 0.65rem; padding: 4px 10px; background: var(--bg-main); border-radius: 20px; color: var(--text-dark); font-weight: 700; border: 1px solid var(--accent-mocha); }
+        .b-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .b-tag { font-size: 0.7rem; padding: 5px 12px; background: var(--bg-main); border-radius: 50px; color: var(--text-dark); font-weight: 800; border: 2px solid var(--border-soft); }
         
-        .b-hook { font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-bottom: 20px; flex: 1; font-weight: 500;}
+        .b-hook { font-size: 0.9rem; color: var(--text-muted); font-style: italic; margin-bottom: 25px; flex: 1; font-weight: 600; line-height: 1.5;}
         
         .b-actions { display: flex; flex-direction: column; gap: 10px; margin-top: auto;}
         .b-btn { 
-            width: 100%; padding: 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 800; text-align: center; 
+            width: 100%; padding: 14px; border-radius: 16px; font-size: 0.85rem; font-weight: 800; text-align: center; 
             transition: 0.2s; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 8px;
+            font-family: var(--font-body); border: 2.5px solid transparent;
         }
-        .b-btn-link { background: var(--accent-peach); color: #FFF; box-shadow: 0 4px 12px rgba(255,160,122,0.4); }
+        .b-btn-link { background: var(--accent-peach); color: #FFF; box-shadow: 0 6px 15px rgba(255,160,122,0.3); }
         .b-btn-link:hover { background: #FF8C5A; transform: translateY(-2px); }
-        .b-btn-fb { background: var(--bg-main); color: var(--text-dark); border: 2px solid var(--accent-mocha); }
-        .b-btn-fb:hover { background: var(--accent-mocha); color: #FFF; }
-
-        .b-seal {
-            position: absolute; bottom: 15px; right: 15px; width: 45px; height: 45px; opacity: 0.8; z-index: 5; pointer-events: none;
-        }
+        .b-btn-fb { background: #FFF; color: var(--text-dark); border-color: var(--border-soft); }
+        .b-btn-fb:hover { background: var(--bg-main); border-color: var(--accent-peach); }
 
         /* ============================================================
            MODAL CHUNG & GÓC FEEDBACK
            ============================================================ */
         .modal-overlay {
-            position: fixed; inset: 0; background: rgba(61,35,20,0.6); backdrop-filter: blur(5px);
+            position: fixed; inset: 0; background: rgba(74, 51, 32, 0.4); backdrop-filter: blur(8px);
             z-index: 1000; display: none; justify-content: center; align-items: center; padding: 20px;
         }
         .modal-overlay.show { display: flex; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+        @keyframes fadeIn { from {opacity:0; transform:scale(0.95);} to {opacity:1; transform:scale(1);} }
         
         .modal-content {
-            background: #FFF; width: 100%; max-width: 750px; border-radius: 24px;
+            background: #FFF; width: 100%; max-width: 750px; border-radius: 30px;
             overflow: hidden; display: flex; flex-direction: column; max-height: 90vh;
-            box-shadow: 0 20px 50px rgba(61,35,20,0.2); border: 4px solid var(--bg-main);
+            box-shadow: 0 25px 60px rgba(74, 51, 32, 0.15); border: 4px solid var(--border-soft);
         }
         .m-header {
-            padding: 20px 30px; border-bottom: 2px dashed var(--accent-mocha); display: flex; justify-content: space-between; align-items: center; background: #FFF;
+            padding: 20px 30px; border-bottom: 2.5px dashed var(--border-soft); display: flex; justify-content: space-between; align-items: center; background: #FFF;
         }
-        .m-title { font-family: var(--font-heading); font-size: 1.5rem; color: var(--text-dark); margin: 0; font-weight: 800; display:flex; align-items:center; gap:10px;}
+        .m-title { font-family: var(--font-heading); font-size: 1.4rem; color: var(--text-dark); margin: 0; font-weight: 700; display:flex; align-items:center; gap:10px;}
         .m-close { font-size: 1.8rem; color: var(--text-muted); transition: 0.2s; font-weight: bold;}
         .m-close:hover { color: #EF4444; }
         .m-body { padding: 30px; overflow-y: auto; flex: 1; background: var(--bg-main); }
@@ -192,137 +203,188 @@
         .m-body::-webkit-scrollbar-thumb { background: var(--accent-mocha); border-radius: 10px; }
 
         /* CỤM FEEDBACK FORM */
-        .fb-form { background: #FFF; padding: 25px; border-radius: 16px; border: 2px solid var(--border-soft); margin-bottom: 30px; box-shadow: var(--shadow-soft); }
-        .stars-select { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; font-size: 2.5rem; color: #E2E8F0; cursor: pointer; }
-        .star-item.active { color: #F59E0B; text-shadow: 0 0 10px rgba(245, 158, 11, 0.4); }
-        .fb-input { width: 100%; padding: 14px 18px; background: var(--bg-main); border: 2px solid var(--accent-mocha); border-radius: 12px; color: var(--text-dark); margin-bottom: 15px; font-size: 0.95rem; font-weight: 500;}
-        .fb-input:focus { border-color: var(--accent-peach); background:#FFF;}
-        .fb-btn-submit { width: 100%; padding: 14px; background: var(--text-dark); color: #FFF; font-weight: 800; border-radius: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; font-size: 0.9rem;}
-        .fb-btn-submit:hover { background: var(--accent-peach); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,160,122,0.4);}
+        .fb-form { background: #FFF; padding: 25px; border-radius: 20px; border: 2.5px solid var(--border-soft); margin-bottom: 30px; box-shadow: var(--shadow-soft); }
+        .stars-select { display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; cursor: pointer; }
+        .star-svg { width: 45px; height: 45px; color: var(--border-soft); transition: 0.2s; }
+        .star-svg.active { color: #F59E0B; filter: drop-shadow(0 4px 6px rgba(245, 158, 11, 0.3)); transform: scale(1.1); }
         
-        .file-upload-label { display: inline-block; padding: 12px 20px; background: #FFF; border: 2px dashed var(--accent-mocha); border-radius: 12px; font-size: 0.85rem; color: var(--text-dark); font-weight: 700; cursor: pointer; margin-bottom: 15px; transition: 0.2s; width:100%; text-align:center;}
+        .fb-input { width: 100%; padding: 15px 20px; background: var(--bg-main); border: 2.5px solid var(--border-soft); border-radius: 16px; color: var(--text-dark); margin-bottom: 15px; font-size: 1rem; font-weight: 600;}
+        .fb-input:focus { border-color: var(--accent-peach); background:#FFF;}
+        
+        .fb-btn-submit { width: 100%; padding: 16px; background: var(--text-dark); color: #FFF; font-weight: 800; border-radius: 16px; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; font-size: 1rem; font-family: var(--font-body);}
+        .fb-btn-submit:hover { background: var(--accent-peach); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(255,160,122,0.4);}
+        
+        .file-upload-label { display: inline-block; padding: 14px 20px; background: #FFF; border: 2.5px dashed var(--accent-mocha); border-radius: 16px; font-size: 0.9rem; color: var(--text-dark); font-weight: 800; cursor: pointer; margin-bottom: 15px; transition: 0.2s; width:100%; text-align:center;}
         .file-upload-label:hover { background: var(--bg-main); border-color: var(--accent-peach); }
         .img-preview { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;}
-        .img-preview img { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid var(--accent-mocha); }
+        .img-preview img { width: 80px; height: 80px; object-fit: cover; border-radius: 12px; border: 2.5px solid var(--accent-mocha); }
 
         /* DANH SÁCH FEEDBACK */
         .fb-list { display: flex; flex-direction: column; gap: 20px; }
-        .fb-item { background: #FFF; padding: 20px; border-radius: 16px; border: 2px solid var(--border-soft); box-shadow: var(--shadow-soft); position: relative;}
-        .fb-item-header { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center;}
-        .fb-item-name { font-weight: 800; color: var(--text-dark); font-size: 1.1rem; display:flex; align-items:center; gap:8px;}
-        .fb-item-stars { color: #F59E0B; font-size: 0.95rem; }
-        .fb-item-text { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; white-space: pre-wrap; margin-bottom: 15px; font-weight: 500;}
-        .fb-item-imgs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;}
-        .fb-item-imgs img { width: 90px; height: 90px; object-fit: cover; border-radius: 10px; cursor: zoom-in; border: 1px solid var(--border-soft);}
-        .fb-del-btn { background: #EF4444; color: #FFF; padding: 6px 12px; font-size: 0.75rem; font-weight:bold; border-radius: 6px; position:absolute; top: 15px; right: 15px;}
+        .fb-item { background: #FFF; padding: 25px; border-radius: 20px; border: 2.5px solid var(--border-soft); box-shadow: var(--shadow-soft); position: relative;}
+        .fb-item-header { display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center;}
+        .fb-item-name { font-weight: 800; color: var(--text-dark); font-size: 1.2rem; display:flex; align-items:center; gap:10px;}
+        .fb-item-stars { display: flex; gap: 2px; }
+        .fb-item-text { color: var(--text-muted); font-size: 1rem; line-height: 1.7; white-space: pre-wrap; margin-bottom: 20px; font-weight: 600;}
+        .fb-item-imgs { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px;}
+        .fb-item-imgs img { width: 100px; height: 100px; object-fit: cover; border-radius: 12px; cursor: zoom-in; border: 2px solid var(--border-soft);}
+        .fb-del-btn { background: #EF4444; color: #FFF; padding: 6px 12px; font-size: 0.8rem; font-weight:800; border-radius: 50px; position:absolute; top: 20px; right: 20px; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);}
 
         /* BÌNH LUẬN CON (REP) */
-        .reply-section { border-top: 1px dashed var(--accent-mocha); padding-top: 15px; }
-        .reply-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;}
-        .reply-item { background: var(--bg-main); padding: 12px 15px; border-radius: 10px; font-size: 0.9rem; color: var(--text-dark); position:relative;}
-        .reply-name { font-weight: 700; margin-bottom: 4px; display:flex; justify-content:space-between;}
-        .reply-time { font-size: 0.7rem; color: var(--text-muted); font-weight:normal;}
+        .reply-section { border-top: 2.5px dashed var(--border-soft); padding-top: 20px; }
+        .reply-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 15px;}
+        .reply-item { background: var(--bg-main); padding: 15px 20px; border-radius: 16px; font-size: 0.95rem; color: var(--text-dark); position:relative; border: 1.5px solid var(--border-soft);}
+        .reply-name { font-weight: 800; margin-bottom: 6px; display:flex; justify-content:space-between; font-size: 1rem;}
+        .reply-time { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; margin-top: 5px;}
         .reply-input-wrap { display: flex; gap: 10px; }
-        .reply-input { flex: 1; padding: 10px 15px; border-radius: 50px; border: 1px solid var(--accent-mocha); font-size: 0.85rem;}
-        .reply-btn { padding: 10px 20px; background: var(--accent-mocha); color: #FFF; font-weight: 700; border-radius: 50px; font-size: 0.85rem;}
-        .reply-btn:hover { background: var(--text-dark); }
+        .reply-input { flex: 1; padding: 12px 18px; border-radius: 50px; border: 2.5px solid var(--border-soft); font-size: 0.9rem; font-weight: 600;}
+        .reply-input:focus { border-color: var(--accent-mocha); }
+        .reply-btn { padding: 12px 24px; background: var(--text-dark); color: #FFF; font-weight: 800; border-radius: 50px; font-size: 0.9rem; transition: 0.2s;}
+        .reply-btn:hover { background: var(--accent-peach); transform: translateY(-2px);}
 
         /* ============================================================
            ADMIN PANEL & NOTIFICATION BELL
            ============================================================ */
         .admin-bar {
-            position: fixed; top: 0; left: 0; right: 0; background: var(--text-dark);
-            padding: 10px 20px; z-index: 9999; display: none; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            position: fixed; top: 0; left: 0; right: 0; background: #FFF;
+            padding: 12px 20px; z-index: 9999; display: none; justify-content: space-between; align-items: center; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-bottom: 2px solid var(--border-soft);
         }
         body.is-admin .admin-bar { display: flex; }
         .admin-controls { display: flex; gap: 12px; align-items: center;}
-        .btn-ad { padding: 8px 16px; background: #FFF; color: var(--text-dark); border-radius: 8px; font-size: 0.85rem; font-weight: 700; transition: 0.2s;}
-        .btn-ad:hover { background: var(--accent-peach); color: #FFF; }
-        .btn-ad.danger { background: #EF4444; color: #FFF; border:none;}
+        .btn-ad { padding: 8px 16px; background: var(--bg-main); color: var(--text-dark); border-radius: 50px; font-size: 0.85rem; font-weight: 800; border: 2px solid var(--border-soft); transition: 0.2s;}
+        .btn-ad:hover { background: var(--accent-peach); color: #FFF; border-color: var(--accent-peach);}
+        .btn-ad.danger { background: #FFF; border-color: #EF4444; color: #EF4444;}
+        .btn-ad.danger:hover { background: #EF4444; color: #FFF;}
         
         /* Chuông thông báo */
-        .noti-btn { position: relative; cursor: pointer; color: #FFF; display:flex; align-items:center; justify-content:center; padding: 8px; background: rgba(255,255,255,0.1); border-radius:50%;}
-        .noti-badge { position: absolute; top: -5px; right: -5px; background: #EF4444; color: #FFF; font-size: 0.7rem; width: 18px; height: 18px; display:flex; align-items:center; justify-content:center; border-radius: 50%; font-weight: bold; border: 2px solid var(--text-dark);}
+        .noti-btn { position: relative; cursor: pointer; color: var(--text-dark); display:flex; align-items:center; justify-content:center; padding: 8px; background: var(--bg-main); border-radius:50%; border: 2px solid var(--border-soft); transition:0.2s;}
+        .noti-btn:hover { background: var(--accent-mocha); color: #FFF; border-color: var(--accent-mocha); }
+        .noti-badge { position: absolute; top: -6px; right: -6px; background: #EF4444; color: #FFF; font-size: 0.7rem; width: 22px; height: 22px; display:flex; align-items:center; justify-content:center; border-radius: 50%; font-weight: 900; border: 2.5px solid #FFF; box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
 
         /* Khung Admin gắn trên thẻ */
-        .card-admin-overlay { position: absolute; top: 10px; left: 10px; z-index: 20; display: none; gap: 5px; flex-direction: column;}
+        .card-admin-overlay { position: absolute; top: 15px; left: 15px; z-index: 20; display: none; gap: 8px; flex-direction: column;}
         body.is-admin .card-admin-overlay { display: flex; }
-        .btn-card-ad { background: #FFF; color: var(--text-dark); border: 2px solid var(--text-dark); padding: 5px 10px; font-size: 0.75rem; font-weight:bold; border-radius: 6px; box-shadow: 2px 2px 0 var(--text-dark); transition:0.2s;}
-        .btn-card-ad:hover { background: var(--accent-peach); color:#FFF; border-color:var(--accent-peach); box-shadow: 2px 2px 0 #FFF;}
+        .btn-card-ad { background: #FFF; color: var(--text-dark); border: 2.5px solid var(--border-soft); padding: 6px 12px; font-size: 0.8rem; font-weight:800; border-radius: 50px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition:0.2s;}
+        .btn-card-ad:hover { background: var(--accent-peach); color:#FFF; border-color:var(--accent-peach); transform: translateY(-2px);}
 
         /* Form Admin Popup */
-        .admin-modal { position: fixed; inset: 0; background: rgba(61,35,20,0.8); z-index: 10000; display: none; justify-content: center; align-items: center; padding: 20px;}
+        .admin-modal { position: fixed; inset: 0; background: rgba(74, 51, 32, 0.6); backdrop-filter: blur(8px); z-index: 10000; display: none; justify-content: center; align-items: center; padding: 20px;}
         .admin-modal.show { display: flex; }
-        .admin-modal-box { background: #FFF; width: 100%; max-width: 700px; padding: 30px; border-radius: 20px; max-height: 90vh; overflow-y: auto; color: var(--text-dark); border: 4px solid var(--bg-main);}
-        .admin-form-group { margin-bottom: 20px; }
-        .admin-form-group label { display: block; font-weight: 800; margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dark);}
-        .admin-form-group input, .admin-form-group select, .admin-form-group textarea { width: 100%; padding: 12px; border: 2px solid var(--accent-mocha); border-radius: 10px; background: #FFF; font-size: 0.95rem;}
+        .admin-modal-box { background: #FFF; width: 100%; max-width: 750px; padding: 35px; border-radius: 30px; max-height: 90vh; overflow-y: auto; color: var(--text-dark); border: 4px solid var(--border-soft); box-shadow: 0 20px 50px rgba(0,0,0,0.2);}
+        .admin-form-group { margin-bottom: 25px; }
+        .admin-form-group label { display: block; font-weight: 800; margin-bottom: 10px; font-size: 1rem; color: var(--text-dark);}
         
         /* ============================================================
            THIẾT KẾ THẺ SẮP RA MẮT (UPCOMING BOTS)
            ============================================================ */
         .up-card {
-            background: var(--bg-card); border: 2px dashed var(--accent-peach); border-radius: 20px; padding: 25px 20px;
+            background: var(--bg-card); border: 3px dashed var(--accent-peach); border-radius: 24px; padding: 30px 20px;
             display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;
-            box-shadow: var(--shadow-soft); backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-soft);
         }
-        .up-avatar-wrap { position:relative; margin-bottom: 15px; }
-        .up-avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; filter: blur(3px) grayscale(0.5); border: 3px solid #FFF; box-shadow: 0 5px 15px rgba(0,0,0,0.1);}
-        .up-stamp { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-10deg); background: #EF4444; color: #FFF; font-weight: 900; font-size: 0.8rem; padding: 4px 12px; border: 2px solid #FFF; border-radius: 4px; white-space: nowrap; box-shadow: 2px 2px 0 rgba(0,0,0,0.2); z-index: 2;}
-        .up-name { font-family: var(--font-heading); font-size: 1.5rem; font-weight:800; color: var(--text-dark); margin-bottom: 10px;}
-        .up-route { font-size: 0.75rem; color: #FFF; background: var(--accent-peach); padding: 4px 12px; border-radius: 20px; margin-bottom: 15px; font-weight:bold;}
-        .up-idea { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; font-style:italic; font-weight:500;}
+        .up-avatar-wrap { position:relative; margin-bottom: 20px; }
+        .up-avatar { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; filter: blur(2px) grayscale(0.2); border: 4px solid #FFF; box-shadow: 0 8px 20px rgba(0,0,0,0.1);}
         
-        .up-progress-wrap { width: 100%; margin-bottom: 20px; text-align: left; background: var(--bg-main); padding: 12px; border-radius: 12px; border: 1px solid var(--accent-mocha);}
-        .up-p-header { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-dark); margin-bottom: 8px; font-weight:800;}
-        .up-p-bar { width: 100%; height: 8px; background: #FFF; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-soft);}
-        .up-p-fill { height: 100%; background: var(--accent-peach); border-radius: 10px;}
+        /* Chỉnh nơ cho thẻ sắp ra mắt */
+        .up-bow { position: absolute; top: -15px; right: -10px; color: var(--accent-pink); filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15)); }
         
+        .up-stamp { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-10deg); background: #EF4444; color: #FFF; font-weight: 900; font-size: 0.9rem; padding: 6px 16px; border: 3px solid #FFF; border-radius: 8px; white-space: nowrap; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 2; letter-spacing: 1px;}
+        .up-name { font-family: var(--font-heading); font-size: 1.6rem; font-weight:700; color: var(--text-dark); margin-bottom: 12px;}
+        .up-idea { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; line-height: 1.6; font-style:italic; font-weight:600;}
+        
+        .up-progress-wrap { width: 100%; margin-bottom: 25px; text-align: left; background: var(--bg-main); padding: 15px; border-radius: 16px; border: 2px solid var(--border-soft);}
+        .up-p-header { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-dark); margin-bottom: 10px; font-weight:800;}
+        .up-p-bar { width: 100%; height: 10px; background: #FFF; border-radius: 50px; overflow: hidden; border: 2px solid var(--border-soft);}
+        .up-p-fill { height: 100%; background: var(--accent-peach); border-radius: 50px;}
+        
+        .up-vote-btn { width: 100%; padding: 14px; border-radius: 16px; background: #FFF; border: 2.5px solid var(--border-soft); color: var(--text-dark); font-weight: 800; transition: 0.3s; font-size: 0.95rem; display:flex; align-items:center; justify-content:center; gap:8px;}
+        .up-vote-btn.voted { border-color: #EF4444; color: #EF4444; background: #FEF2F2;}
+        .up-vote-btn:hover { background: var(--bg-main); border-color: var(--accent-peach); transform:translateY(-2px);}
+
         /* Lightbox (Zoom ảnh) */
-        .lightbox { position: fixed; inset: 0; background: rgba(61,35,20,0.95); z-index: 10000; display: none; justify-content: center; align-items: center; cursor: zoom-out;}
-        .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 12px; border: 4px solid #FFF;}
+        .lightbox { position: fixed; inset: 0; background: rgba(74, 51, 32, 0.95); z-index: 10000; display: none; justify-content: center; align-items: center; cursor: zoom-out;}
+        .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 16px; border: 4px solid #FFF;}
 
         @media (max-width: 600px) {
             .station-title { font-size: 2.2rem; }
             .bot-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
             .m-body { padding: 20px; }
-            .fb-form { padding: 15px; }
+            .fb-form { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- KHO CHỨA ICONS ĐỒNG BỘ CAPYBARA STYLE -->
+    <!-- KHO CHỨA ICONS ĐỒNG BỘ CAPYBARA CHUBBY STYLE -->
     <svg style="display: none;">
         <defs>
+            <!-- Capy Head -->
             <g id="icon-capy-head">
-                <path d="M7 14c-1.5 0-3-1-3-3s1.5-5 5-5h6c3.5 0 5 3 5 5s-1.5 3-3 3M7 6c-1-1-2.5-1-3.5 0M17 6c1-1 2.5-1 3.5 0" stroke="currentColor" fill="none"/>
-                <circle cx="8" cy="10" r="1" fill="currentColor" stroke="none"/>
-                <circle cx="16" cy="10" r="1" fill="currentColor" stroke="none"/>
-                <path d="M11 12h2" stroke="currentColor"/>
-                <circle cx="12" cy="3" r="2" fill="#FFA07A" stroke="none"/> <!-- Quả cam nhỏ -->
+                <!-- Màu nền Pastel chệch nhẹ -->
+                <path d="M6 15c-1.5 0-3-1-3-3s1.5-5 5-5h8c3.5 0 5 3 5 5s-1.5 3-3 3z" fill="var(--accent-mocha)" transform="translate(2, 2)"/>
+                <!-- Nét vẽ bo tròn -->
+                <path d="M5 14c-1.5 0-3-1-3-3s1.5-5 5-5h8c3.5 0 5 3 5 5s-1.5 3-3 3" class="icon-stroke"/>
+                <path d="M5 6c-1-1-2.5-1-3.5 0M19 6c1-1 2.5-1 3.5 0" class="icon-stroke"/>
+                <circle cx="7" cy="10" r="1.5" fill="var(--text-dark)"/>
+                <circle cx="17" cy="10" r="1.5" fill="var(--text-dark)"/>
+                <path d="M11 12h2" class="icon-stroke"/>
+                <!-- Quả cam trên đầu -->
+                <circle cx="12" cy="3" r="3" fill="var(--accent-peach)"/>
+                <path d="M12 0c1 1 2 1 2 1" class="icon-stroke" stroke-width="2"/>
             </g>
+            
+            <!-- Chuông Múp Mím -->
             <g id="icon-bell">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" />
+                <path d="M18 9A6 6 0 0 0 6 9c0 7-2.5 9-2.5 9h17s-2.5-2-2.5-9M13.73 21a2 2 0 0 1-3.46 0" fill="#FDE68A" transform="translate(1, 1)"/>
+                <path d="M18 9A6 6 0 0 0 6 9c0 7-2.5 9-2.5 9h17s-2.5-2-2.5-9z" class="icon-stroke"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0" class="icon-stroke"/>
             </g>
+            
+            <!-- Nơ Coquette -->
             <g id="icon-ribbon">
-                <path d="M12 12l-6-6v8l6-2l6 2V6l-6 6z" fill="#FFB6B9" stroke="#FFB6B9" stroke-linejoin="round"/>
-                <circle cx="12" cy="12" r="2" fill="#FFF" stroke="none"/>
+                <path d="M12 12l-6-5v7l6-2l6 2v-7l-6 5z" fill="var(--accent-pink)"/>
+                <path d="M12 12l-6-5v7l6-2l6 2v-7l-6 5z" class="icon-stroke"/>
+                <circle cx="12" cy="12" r="2.5" fill="#FFF" class="icon-stroke"/>
             </g>
+            
+            <!-- Dấu chân Capy béo -->
             <g id="icon-paw">
-                <path d="M12 20c-4 0-6-3-6-6s2-5 6-5 6 2 6 5-2 6-6 6zM8 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm4-1a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm4 1a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" fill="currentColor" stroke="none"/>
+                <path d="M12 21c-4.5 0-6.5-3-6.5-6.5s2.5-5.5 6.5-5.5 6.5 2 6.5 5.5-2 6.5-6.5 6.5zM7 7a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm5-1.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm5 1.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="var(--accent-mocha)"/>
+            </g>
+
+            <!-- Kính lúp bo tròn -->
+            <g id="icon-search">
+                <circle cx="10" cy="10" r="7" fill="#E0F2FE" transform="translate(-1,-1)"/>
+                <circle cx="10" cy="10" r="7" class="icon-stroke"/>
+                <path d="M15 15 L21 21" class="icon-stroke" stroke-width="3.5"/>
+            </g>
+
+            <!-- Sao đánh giá (Múp mím) -->
+            <g id="icon-star-filled">
+                <path d="M12 2l2.4 7.4h7.6l-6.1 4.5 2.3 7.1-6.2-4.6-6.2 4.6 2.3-7.1-6.1-4.5h7.6z" fill="#F59E0B" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round"/>
+            </g>
+            <g id="icon-star-empty">
+                <path d="M12 2l2.4 7.4h7.6l-6.1 4.5 2.3 7.1-6.2-4.6-6.2 4.6 2.3-7.1-6.1-4.5h7.6z" fill="transparent" class="icon-stroke" stroke-linejoin="round"/>
+            </g>
+
+            <!-- Chìa khóa mập -->
+            <g id="icon-key">
+                <circle cx="7" cy="12" r="4" fill="var(--accent-amber)" transform="translate(1,1)"/>
+                <circle cx="7" cy="12" r="4" class="icon-stroke"/>
+                <path d="M11 12h10M17 12v3M20 12v3" class="icon-stroke"/>
             </g>
         </defs>
     </svg>
 
     <!-- THANH ADMIN -->
     <div class="admin-bar">
-        <div style="font-weight: 800; color: var(--accent-amber); display:flex; align-items:center; gap:8px;">
-            <svg class="svg-icon" viewBox="0 0 24 24" width="24" height="24"><use href="#icon-capy-head"></use></svg> TRẠM ĐIỀU KHIỂN
+        <div style="font-weight: 800; color: var(--text-dark); display:flex; align-items:center; gap:10px; font-family:var(--font-heading);">
+            <svg class="svg-icon"><use href="#icon-capy-head"></use></svg> TRẠM ĐIỀU KHIỂN
         </div>
         <div class="admin-controls">
             <div class="noti-btn" onclick="openNotiModal()" title="Bảng Thông Báo">
-                <svg class="svg-icon" viewBox="0 0 24 24" width="20" height="20"><use href="#icon-bell"></use></svg>
+                <svg class="svg-icon" style="width:20px; height:20px;"><use href="#icon-bell"></use></svg>
                 <span class="noti-badge" id="noti-badge" style="display:none;">0</span>
             </div>
             <button class="btn-ad" onclick="openAdminForm('sm')">Giới thiệu Quán</button>
@@ -334,11 +396,11 @@
 
     <!-- HEADER: TÊN QUÁN & 2 NÚT TRUNG TÂM -->
     <header class="header-section">
-        <h1 class="station-title" id="trigger-admin" title="Nhấp đúp để vào Admin">QUÁN TRỌ CAPY <svg class="svg-icon" viewBox="0 0 24 24" width="48" height="48" style="color:var(--text-dark);"><use href="#icon-capy-head"></use></svg></h1>
+        <h1 class="station-title" id="trigger-admin" title="Nhấp đúp để vào Admin">QUÁN TRỌ CAPY <svg class="svg-icon" style="width:50px; height:50px;"><use href="#icon-capy-head"></use></svg></h1>
         <div class="station-desc" id="station-bio">Đang đun trà sữa...</div>
         <div class="top-buttons">
-            <button class="btn-top" onclick="openSMModal()">🍊 Thông Tin Chủ Quán Capy</button>
-            <button class="btn-top" onclick="openUpcomingModal()"><svg class="svg-icon" viewBox="0 0 24 24" width="18" height="18"><use href="#icon-paw"></use></svg> Sắp Ra Mắt</button>
+            <button class="btn-top" onclick="openSMModal()"><svg class="svg-icon"><use href="#icon-capy-head"></use></svg> Thông Tin Chủ Quán</button>
+            <button class="btn-top" onclick="openUpcomingModal()"><svg class="svg-icon"><use href="#icon-paw"></use></svg> Sắp Ra Mắt</button>
         </div>
     </header>
 
@@ -348,7 +410,8 @@
             <!-- Tags động -->
         </div>
         <div class="search-wrapper">
-            <input type="text" id="search-inp" class="search-input" placeholder="🍊 Tìm tên phòng hoặc từ khóa...">
+            <div class="search-icon-box"><svg class="svg-icon"><use href="#icon-search"></use></svg></div>
+            <input type="text" id="search-inp" class="search-input" placeholder="Tìm tên phòng hoặc từ khóa...">
         </div>
     </section>
 
@@ -396,11 +459,11 @@
 
     <script>
         /* ============================================================
-           CƠ SỞ DỮ LIỆU & TRẠNG THÁI (CAPY STATION V1)
+           CƠ SỞ DỮ LIỆU & TRẠNG THÁI (CAPY STATION V2)
            ============================================================ */
         let CONFIG = {
             stationMaster: { bio: "Nơi đàn Capybara ngâm mình ven suối, cùng lữ khách bước vào những thế giới mở rộng lớn...", rules: "Hãy lịch sự và yêu thương động vật nhé!", avatar: "" },
-            staff: [], // {id, name, avatar, hook, tags, link, route, feedbacks: [{id, name, stars, text, imgs, date, replies:[]}], isHidden, createdAt}
+            staff: [], // {id, name, avatar, hook, tags, link, feedbacks: [{id, name, stars, text, imgs, date, replies:[]}], isHidden, createdAt}
             upcomingBots: [] // {id, name, avatar, idea, train, progress, note, votes, isHidden}
         };
         
@@ -408,10 +471,7 @@
         let activeRouteFilter = "all";
         let searchQuery = "";
 
-        // Các tuyến cố định
-        const ROUTES = ["Openworld", "Hiện đại", "Cổ trang", "Kỳ ảo", "Kinh dị", "Vườn thú"];
-
-        // Kết nối Supabase (Dùng ID 888 để tạo DB mới trắng tinh)
+        // Kết nối Supabase (ID 777 để làm mới hoàn toàn)
         const SUPABASE_URL = "https://gmejjxvahnqqrhihahid.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdtZWpqeHZhaG5xcXJoaWhhaGlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3NTM5OTQsImV4cCI6MjA5OTMyOTk5NH0.Q1uit-9R_Lrs0uM_Azgbn9GGKMoyFl-cFfl3M7IeSMU";
         const supa = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -436,7 +496,7 @@
                     img.onload = () => { 
                         const canvas = document.createElement('canvas'); let w = img.width, h = img.height; 
                         if(w > maxSize || h > maxSize) { if(w > h) { h = Math.round((h * maxSize) / w); w = maxSize; } else { w = Math.round((w * maxSize) / h); h = maxSize; } } 
-                        canvas.width = w; canvas.height = h; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, w, h); resolve(canvas.toDataURL('image/jpeg', 0.8)); 
+                        canvas.width = w; canvas.height = h; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, w, h); resolve(canvas.toDataURL('image/jpeg', 0.85)); 
                     }; img.src = e.target.result; 
                 }; reader.readAsDataURL(file); 
             }); 
@@ -454,18 +514,17 @@
            ============================================================ */
         async function fetchConfig() {
             try {
-                const { data } = await supa.from('station_config').select('data').eq('id', 888).single();
+                const { data } = await supa.from('station_config').select('data').eq('id', 777).single();
                 if (data && data.data) {
                     CONFIG = typeof data.data === 'string' ? JSON.parse(data.data) : data.data;
                 } else {
-                    let localBackup = await localforage.getItem("capy_config");
+                    let localBackup = await localforage.getItem("capy_config_v2");
                     if (localBackup) CONFIG = { ...CONFIG, ...localBackup };
                 }
 
                 if(!Array.isArray(CONFIG.staff)) CONFIG.staff = [];
                 if(!Array.isArray(CONFIG.upcomingBots)) CONFIG.upcomingBots = [];
                 
-                // Đảm bảo cấu trúc an toàn
                 CONFIG.staff.forEach(s => { 
                     if(!Array.isArray(s.feedbacks)) s.feedbacks = []; 
                     s.feedbacks.forEach(f => { if(!Array.isArray(f.replies)) f.replies = []; if(!f.id) f.id = Date.now()+Math.random(); });
@@ -478,8 +537,8 @@
 
         async function saveConfig() {
             try {
-                await localforage.setItem("capy_config", CONFIG);
-                await supa.from('station_config').upsert([{ id: 888, data: JSON.stringify(CONFIG) }]);
+                await localforage.setItem("capy_config_v2", CONFIG);
+                await supa.from('station_config').upsert([{ id: 777, data: JSON.stringify(CONFIG) }]);
             } catch(e) { console.error("Lỗi lưu DB:", e); }
         }
 
@@ -492,27 +551,36 @@
             renderGrid();
         }
 
+        // TỰ ĐỘNG TẠO NÚT TAG TỪ DỮ LIỆU BOT
         function renderTags() {
             const container = document.getElementById("route-tags-container");
             container.innerHTML = "";
 
-            let activeRoutes = new Set();
-            CONFIG.staff.forEach(b => { if(!b.isHidden || isAdminMode) activeRoutes.add(b.route); });
+            let uniqueTags = new Set();
+            CONFIG.staff.forEach(b => { 
+                if(!b.isHidden || isAdminMode) {
+                    if(b.tags && Array.isArray(b.tags)) {
+                        b.tags.forEach(t => {
+                            if(t.trim()) uniqueTags.add(t.trim().replace(/^#/, '')); // Bỏ dấu # nếu có để chuẩn hóa
+                        });
+                    }
+                } 
+            });
 
+            // Luôn có nút Tất cả
             const allBtn = document.createElement("button");
             allBtn.className = `pill-tag ${activeRouteFilter === 'all' ? 'active' : ''}`;
             allBtn.textContent = "Tất cả";
             allBtn.onclick = () => { activeRouteFilter = 'all'; renderUI(); };
             container.appendChild(allBtn);
 
-            ROUTES.forEach(route => {
-                if (activeRoutes.has(route) || isAdminMode) {
-                    const btn = document.createElement("button");
-                    btn.className = `pill-tag ${activeRouteFilter === route ? 'active' : ''}`;
-                    btn.textContent = "#" + route;
-                    btn.onclick = () => { activeRouteFilter = route; renderUI(); };
-                    container.appendChild(btn);
-                }
+            // Render các tag động
+            Array.from(uniqueTags).sort().forEach(tag => {
+                const btn = document.createElement("button");
+                btn.className = `pill-tag ${activeRouteFilter === tag ? 'active' : ''}`;
+                btn.textContent = "#" + tag;
+                btn.onclick = () => { activeRouteFilter = tag; renderUI(); };
+                container.appendChild(btn);
             });
         }
 
@@ -524,13 +592,24 @@
 
             let displayBots = CONFIG.staff.filter(b => {
                 if(b.isHidden && !isAdminMode) return false;
-                if(activeRouteFilter !== 'all' && b.route !== activeRouteFilter) return false;
+                
+                // Lọc theo thanh tìm kiếm
+                let isMatchSearch = true;
                 if(q !== "") {
                     const matchName = removeAccents(b.name).includes(q);
                     const matchTags = (b.tags||[]).some(t => removeAccents(t).includes(q));
-                    if(!matchName && !matchTags) return false;
+                    if(!matchName && !matchTags) isMatchSearch = false;
                 }
-                return true;
+
+                // Lọc theo Tag click (Kiểm tra xem tag filter có nằm trong mảng tags của bot không)
+                let isMatchTag = true;
+                if(activeRouteFilter !== 'all') {
+                    // Chuẩn hóa mảng tags của bot để so sánh
+                    const botCleanTags = (b.tags||[]).map(t => t.trim().replace(/^#/, ''));
+                    if(!botCleanTags.includes(activeRouteFilter)) isMatchTag = false;
+                }
+
+                return isMatchSearch && isMatchTag;
             });
 
             displayBots.sort((a,b) => {
@@ -539,7 +618,7 @@
             });
 
             if(displayBots.length === 0) {
-                grid.innerHTML = "<p style='color:var(--text-muted); width:100%; text-align:center; padding: 40px; font-weight:600;'>Trống trơn... Không tìm thấy phòng nào phù hợp.</p>"; return;
+                grid.innerHTML = "<p style='color:var(--text-muted); width:100%; text-align:center; padding: 40px; font-weight:700; font-size:1.1rem;'>🐾 Không tìm thấy phòng nào phù hợp.</p>"; return;
             }
 
             displayBots.forEach(bot => {
@@ -554,41 +633,47 @@
                     </div>
                 ` : "";
 
+                // Hiển thị tối đa 3 tags trên giao diện thẻ cho gọn
                 let tagsHtml = (bot.tags||[]).slice(0,3).map(t => `<span class="b-tag">${t.startsWith('#')?t:'#'+t}</span>`).join('');
                 let rating = getAvgRating(bot);
 
                 card.innerHTML = `
                     ${adminOver}
                     
-                    <!-- Lớp phủ Nơ & Dấu Capy -->
+                    <!-- Ruy băng Nơ (Góc trên trái) -->
                     <svg class="b-coquette-ribbon" viewBox="0 0 24 24"><use href="#icon-ribbon"></use></svg>
-                    <svg class="b-seal" viewBox="0 0 24 24" style="color:var(--accent-peach);"><use href="#icon-paw"></use></svg>
 
-                    <div class="b-img-wrap"><img src="${bot.avatar || ''}" loading="lazy"><div class="b-rating"><span style="color:#F59E0B">★</span> ${rating}</div></div>
+                    <div class="b-img-wrap">
+                        <img src="${bot.avatar || ''}" loading="lazy">
+                        <div class="b-rating">
+                            <svg class="svg-icon star-icon" style="width:16px;height:16px;"><use href="#icon-star-filled"></use></svg> 
+                            ${rating}
+                        </div>
+                    </div>
                     
                     <div class="b-info">
                         <div class="b-header-info">
                             <img src="${bot.avatar || ''}" class="b-avatar-mini">
                             <div class="b-name">${bot.name}</div>
                         </div>
-                        <div class="b-tags"><span class="b-tag" style="background:var(--accent-peach); color:#FFF; border:none;">#${bot.route}</span>${tagsHtml}</div>
+                        <div class="b-tags">${tagsHtml}</div>
                         <div class="b-hook">"${bot.hook || '...'}"</div>
                         
                         <div class="b-actions">
-                            <button class="b-btn b-btn-fb" onclick="openFeedbackModal('${bot.id}'); event.stopPropagation();">💬 GÓC FEEDBACK (${bot.feedbacks.length})</button>
-                            ${bot.link ? `<a href="${bot.link}" target="_blank" class="b-btn b-btn-link" onclick="event.stopPropagation();">GHÉ THĂM PHÒNG 🔑</a>` : `<button class="b-btn b-btn-link" style="opacity:0.5; cursor:not-allowed;" onclick="event.stopPropagation();">ĐANG SỬA PHÒNG</button>`}
+                            <button class="b-btn b-btn-fb" onclick="openFeedbackModal('${bot.id}'); event.stopPropagation();">💬 Góc Feedback (${bot.feedbacks.length})</button>
+                            ${bot.link ? `<a href="${bot.link}" target="_blank" class="b-btn b-btn-link" onclick="event.stopPropagation();"><svg class="svg-icon" style="width:18px;height:18px;"><use href="#icon-key"></use></svg> Ghé Thăm Phòng</a>` : `<button class="b-btn b-btn-link" style="opacity:0.5; cursor:not-allowed;" onclick="event.stopPropagation();">ĐANG SỬA PHÒNG</button>`}
                         </div>
+
+                        <!-- Con dấu Capy (Góc dưới phải) -->
+                        <svg class="b-seal" viewBox="0 0 24 24"><use href="#icon-paw"></use></svg>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        document.getElementById("search-inp").addEventListener("input", e => { searchQuery = e.target.value.trim(); renderGrid(); });
-        document.getElementById("sort-select").addEventListener("change", renderGrid);
-
         /* ============================================================
-           MỞ MODAL: GÓC FEEDBACK ĐA CHIỀU (COQUETTE STYLE)
+           MỞ MODAL: GÓC FEEDBACK
            ============================================================ */
         let tempFbImgs = [];
         let currentStars = 0;
@@ -611,7 +696,7 @@
                     let imgsHtml = (fb.imgs||[]).map(src => `<img src="${src}" onclick="openLightbox(this.src, event)">`).join('');
                     let delBtn = isAdminMode ? `<button class="fb-del-btn" onclick="deleteFeedback('${botId}', '${fb.id}')">✕ Xóa FB</button>` : '';
                     
-                    // Xử lý list Replies (Phản hồi)
+                    // Xử lý Rep
                     let repliesHtml = (fb.replies||[]).map((r, rIdx) => {
                         let delRepBtn = isAdminMode ? `<button style="background:none; border:none; color:#EF4444; font-size:0.7rem; font-weight:bold; cursor:pointer;" onclick="deleteReply('${botId}', '${fb.id}', ${rIdx})">Xóa</button>` : '';
                         let nameColor = r.name.toLowerCase() === 'chủ quán' ? 'color:var(--accent-peach);' : 'color:var(--text-dark);';
@@ -632,12 +717,20 @@
                         </div>
                     `;
 
+                    // Vẽ sao trong comment
+                    let starsVisual = "";
+                    for(let i=0; i<5; i++) {
+                        starsVisual += i < fb.stars 
+                            ? `<svg class="svg-icon" style="width:16px;height:16px;color:#F59E0B"><use href="#icon-star-filled"></use></svg>`
+                            : `<svg class="svg-icon" style="width:16px;height:16px;color:var(--border-soft)"><use href="#icon-star-filled"></use></svg>`;
+                    }
+
                     return `
                         <div class="fb-item">
                             ${delBtn}
                             <div class="fb-item-header">
-                                <span class="fb-item-name"><img src="${bot.avatar}" style="width:24px; height:24px; border-radius:50%; object-fit:cover;"> ${fb.name}</span>
-                                <span class="fb-item-stars">${'★'.repeat(fb.stars)}${'☆'.repeat(5-fb.stars)}</span>
+                                <span class="fb-item-name"><img src="${bot.avatar}" style="width:28px; height:28px; border-radius:50%; object-fit:cover;"> ${fb.name}</span>
+                                <span class="fb-item-stars">${starsVisual}</span>
                             </div>
                             <div class="fb-item-text">${fb.text}</div>
                             ${imgsHtml ? `<div class="fb-item-imgs">${imgsHtml}</div>` : ''}
@@ -651,22 +744,25 @@
                 }).join('');
             }
 
+            // Vẽ khối chấm sao form
+            let formStarsHtml = "";
+            for(let i=1; i<=5; i++) {
+                formStarsHtml += `<svg class="svg-icon star-svg star-item" data-val="${i}"><use href="#icon-star-filled"></use></svg>`;
+            }
+
             body.innerHTML = `
                 <div class="fb-form">
-                    <div style="text-align:center; margin-bottom:10px; color:var(--text-muted); font-weight:700;">CHẤM ĐIỂM TRẢI NGHIỆM TẠI PHÒNG NÀY</div>
-                    <div class="stars-select" id="star-wrap">
-                        <span class="star-item" data-val="1">☆</span><span class="star-item" data-val="2">☆</span>
-                        <span class="star-item" data-val="3">☆</span><span class="star-item" data-val="4">☆</span><span class="star-item" data-val="5">☆</span>
-                    </div>
+                    <div style="text-align:center; margin-bottom:10px; color:var(--text-muted); font-weight:800;">CHẤM ĐIỂM TRẢI NGHIỆM TẠI PHÒNG NÀY</div>
+                    <div class="stars-select" id="star-wrap">${formStarsHtml}</div>
                     <input type="text" id="fb-name" class="fb-input" placeholder="Tên của bạn (Tùy chọn, mặc định: Lữ Khách)...">
-                    <textarea id="fb-text" class="fb-input" placeholder="Viết cảm nhận của bạn về nhân viên này..." style="height:100px;" required></textarea>
+                    <textarea id="fb-text" class="fb-input" placeholder="Viết cảm nhận của bạn về phòng trọ này..." style="height:100px;" required></textarea>
                     
                     <label class="file-upload-label"><input type="file" accept="image/*" multiple id="fb-file" style="display:none;"> 📸 Bấm để chọn ảnh minh chứng (Tối đa 3 ảnh)</label>
                     <div class="img-preview" id="fb-preview"></div>
                     
                     <button class="fb-btn-submit" id="fb-submit-btn">GỬI FEEDBACK CHÂN THỰC</button>
                 </div>
-                <div style="font-family:var(--font-heading); font-size:1.3rem; color:var(--text-dark); margin-bottom:15px; font-weight:800; border-bottom:2px dashed var(--accent-mocha); padding-bottom:10px;">GÓC TÁM CHUYỆN</div>
+                <div style="font-family:var(--font-heading); font-size:1.4rem; color:var(--text-dark); margin-bottom:15px; font-weight:800; border-bottom:2.5px dashed var(--accent-mocha); padding-bottom:10px;">GÓC TÁM CHUYỆN</div>
                 <div class="fb-list" id="fb-list-wrap">${fbListHtml}</div>
             `;
 
@@ -676,8 +772,8 @@
                 s.onclick = () => {
                     currentStars = parseInt(s.dataset.val);
                     starItems.forEach(st => {
-                        if(parseInt(st.dataset.val) <= currentStars) { st.textContent = '★'; st.classList.add('active'); }
-                        else { st.textContent = '☆'; st.classList.remove('active'); }
+                        if(parseInt(st.dataset.val) <= currentStars) { st.classList.add('active'); }
+                        else { st.classList.remove('active'); }
                     });
                 };
             });
@@ -688,12 +784,12 @@
                 if(e.target.files.length + tempFbImgs.length > 3) return alert("Chỉ được gửi tối đa 3 ảnh!");
                 prev.innerHTML = "<span style='color:var(--accent-mocha); font-size:12px; font-weight:bold;'>Đang xử lý ảnh...</span>";
                 for(let f of e.target.files) { tempFbImgs.push(await resizeImage(f, 1000)); }
-                prev.innerHTML = tempFbImgs.map((src, i) => `<div style="position:relative;"><img src="${src}"><button style="position:absolute;top:-5px;right:-5px;background:#EF4444;color:#fff;border-radius:50%;width:20px;height:20px;font-size:10px;font-weight:bold;" onclick="removeFbImg(${i}, '${botId}')">✕</button></div>`).join('');
+                prev.innerHTML = tempFbImgs.map((src, i) => `<div style="position:relative;"><img src="${src}"><button style="position:absolute;top:-5px;right:-5px;background:#EF4444;color:#fff;border-radius:50%;width:20px;height:20px;font-size:10px;font-weight:bold;border:none;cursor:pointer;" onclick="removeFbImg(${i}, '${botId}')">✕</button></div>`).join('');
             };
 
-            // Logic Submit Feedback gốc
+            // Logic Submit
             document.getElementById("fb-submit-btn").onclick = async () => {
-                if(currentStars === 0) return alert("Vui lòng chấm điểm (Sao) cho nhân viên!");
+                if(currentStars === 0) return alert("Vui lòng chấm điểm (Sao) cho phòng này!");
                 const text = document.getElementById("fb-text").value.trim();
                 if(!text && tempFbImgs.length === 0) return alert("Vui lòng viết vài dòng cảm nhận hoặc gửi ảnh!");
                 
@@ -708,7 +804,6 @@
             };
 
             if(isAdminMode) {
-                // Auto điền tên Admin cho các ô rep
                 body.querySelectorAll("input[id^='rep-name-']").forEach(inp => inp.value = "Chủ Quán");
             }
 
@@ -716,7 +811,7 @@
             document.body.style.overflow = "hidden";
         };
 
-        window.removeFbImg = function(idx, botId) { tempFbImgs.splice(idx, 1); const prev = document.getElementById("fb-preview"); prev.innerHTML = tempFbImgs.map((src, i) => `<div style="position:relative;"><img src="${src}"><button style="position:absolute;top:-5px;right:-5px;background:#EF4444;color:#fff;border-radius:50%;width:20px;height:20px;font-size:10px;font-weight:bold;" onclick="removeFbImg(${i}, '${botId}')">✕</button></div>`).join(''); }
+        window.removeFbImg = function(idx, botId) { tempFbImgs.splice(idx, 1); const prev = document.getElementById("fb-preview"); prev.innerHTML = tempFbImgs.map((src, i) => `<div style="position:relative;"><img src="${src}"><button style="position:absolute;top:-5px;right:-5px;background:#EF4444;color:#fff;border-radius:50%;width:20px;height:20px;font-size:10px;font-weight:bold;border:none;cursor:pointer;" onclick="removeFbImg(${i}, '${botId}')">✕</button></div>`).join(''); }
 
         // Logic Reply
         window.sendReply = async function(botId, fbId) {
@@ -750,20 +845,20 @@
 
 
         /* ============================================================
-           MỞ MODAL: SẮP RA MẮT & TRƯỞNG GA
+           MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN
            ============================================================ */
         window.openSMModal = function() {
-            document.getElementById("modal-title").textContent = "🍊 THÔNG TIN CHỦ QUÁN";
-            let fbHtml = CONFIG.stationMaster.facebook.url ? `<div style="margin-top:20px; text-align:center;"><a href="${CONFIG.stationMaster.facebook.url}" target="_blank" style="display:inline-block; padding:12px 24px; background:var(--text-dark); color:#FFF; font-weight:800; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.2);">Liên hệ Chủ Quán: ${CONFIG.stationMaster.facebook.name}</a></div>` : '';
+            document.getElementById("modal-title").innerHTML = `<svg class="svg-icon"><use href="#icon-capy-head"></use></svg> THÔNG TIN CHỦ QUÁN`;
+            let fbHtml = CONFIG.stationMaster.facebook && CONFIG.stationMaster.facebook.url ? `<div style="margin-top:20px; text-align:center;"><a href="${CONFIG.stationMaster.facebook.url}" target="_blank" style="display:inline-block; padding:14px 28px; background:var(--text-dark); color:#FFF; font-weight:800; border-radius:50px; box-shadow:0 6px 15px rgba(74, 51, 32, 0.2); font-family:var(--font-heading);">Liên hệ Facebook Chủ Quán</a></div>` : '';
             
             document.getElementById("modal-body").innerHTML = `
-                <div style="text-align:center; margin-bottom:20px;">
-                    ${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="width:120px; height:120px; border-radius:50%; object-fit:cover; margin:0 auto; border:4px solid var(--accent-mocha);">` : `<svg class="svg-icon" viewBox="0 0 24 24" width="80" height="80" style="color:var(--accent-mocha);"><use href="#icon-capy-head"></use></svg>`}
+                <div style="text-align:center; margin-bottom:25px;">
+                    ${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="width:140px; height:140px; border-radius:50%; object-fit:cover; margin:0 auto; border:4px solid var(--accent-peach); box-shadow:var(--shadow-soft);">` : `<svg class="svg-icon" style="width:100px; height:100px; color:var(--accent-mocha);"><use href="#icon-capy-head"></use></svg>`}
                 </div>
-                <div style="white-space:pre-wrap; line-height:1.8; color:var(--text-dark); font-size:1.05rem; font-weight:500; text-align:center; background:#FFF; padding:20px; border-radius:16px; border:2px dashed var(--accent-peach);">${CONFIG.stationMaster.bio}</div>
+                <div style="white-space:pre-wrap; color:var(--text-dark); font-size:1.1rem; font-weight:600; text-align:center; background:#FFF; padding:25px; border-radius:24px; border:2.5px dashed var(--accent-mocha); margin-bottom:20px;">${CONFIG.stationMaster.bio}</div>
                 
-                <h3 style="font-family:var(--font-heading); margin-top:25px; color:var(--text-dark);">📌 Quy tắc quán trọ:</h3>
-                <div style="white-space:pre-wrap; line-height:1.8; color:var(--text-muted); font-size:0.95rem; background:rgba(255,255,255,0.5); padding:15px; border-radius:12px;">${CONFIG.stationMaster.rules}</div>
+                <h3 style="font-family:var(--font-heading); margin-top:30px; margin-bottom:10px; color:var(--text-dark); font-size:1.3rem;">📌 Quy tắc lưu trú:</h3>
+                <div style="white-space:pre-wrap; color:var(--text-muted); font-size:1rem; background:rgba(255,255,255,0.6); padding:20px; border-radius:16px; font-weight:600; border: 2px solid var(--border-soft);">${CONFIG.stationMaster.rules}</div>
                 ${fbHtml}
             `;
             document.getElementById("main-modal").classList.add("show");
@@ -771,16 +866,16 @@
         };
 
         window.openUpcomingModal = function() {
-            document.getElementById("modal-title").innerHTML = "<svg class="+'"svg-icon"'+" viewBox="+'"0 0 24 24"'+" width="+'"24"'+" height="+'"24"'+"><use href="+'"#icon-paw"'+"></use></svg> HỒ SƠ DỰ BỊ";
+            document.getElementById("modal-title").innerHTML = `<svg class="svg-icon"><use href="#icon-paw"></use></svg> PHÒNG SẮP RA MẮT`;
             const body = document.getElementById("modal-body");
             
             let displayBots = CONFIG.upcomingBots.filter(b => !b.isHidden || isAdminMode);
             displayBots.sort((a,b) => (b.progress - a.progress) || (b.votes - a.votes));
 
             if(displayBots.length === 0) {
-                body.innerHTML = "<p style='text-align:center; color:var(--text-muted); padding:40px; font-weight:600;'>Khu vực đang dọn dẹp, chưa có hồ sơ mới nào.</p>";
+                body.innerHTML = "<p style='text-align:center; color:var(--text-muted); padding:40px; font-weight:700; font-size:1.1rem;'>🐾 Sảnh tuyển dụng hiện đang im lìm...</p>";
             } else {
-                let html = `<div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:25px;">`;
+                let html = `<div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:30px;">`;
                 displayBots.forEach(bot => {
                     let adminOver = isAdminMode ? `<div class="card-admin-overlay"><button class="btn-card-ad" onclick="openAdminForm('up', 'edit', '${bot.id}')">Sửa</button><button class="btn-card-ad" onclick="toggleHideUp('${bot.id}')">${bot.isHidden?'Đang Ẩn':'Hiện'}</button><button class="btn-card-ad" style="color:#EF4444; border-color:#EF4444;" onclick="deleteUp('${bot.id}')">Xóa</button></div>` : '';
                     let hasVoted = localStorage.getItem('vote_up_' + bot.id) === 'true';
@@ -789,20 +884,24 @@
                         <div class="up-card">
                             ${adminOver}
                             <div class="up-stamp">SẮP RA MẮT</div>
+                            
                             <div class="up-avatar-wrap">
                                 <img src="${bot.avatar}" class="up-avatar">
-                                <svg class="b-coquette-ribbon" style="top:-10px; left:-10px;" viewBox="0 0 24 24"><use href="#icon-ribbon"></use></svg>
+                                <svg class="up-bow svg-icon" viewBox="0 0 24 24" style="width:45px; height:45px;"><use href="#icon-ribbon"></use></svg>
                             </div>
+                            
                             <div class="up-name">${bot.name}</div>
-                            <div class="up-route">#${bot.train}</div>
+                            <div class="up-route">Tuyến ${bot.train}</div>
                             <div class="up-idea">"${bot.idea}"</div>
+                            
                             <div class="up-progress-wrap">
                                 <div class="up-p-header"><span>Hoàn thiện:</span><span>${bot.progress}%</span></div>
                                 <div class="up-p-bar"><div class="up-p-fill" style="width:${bot.progress}%"></div></div>
-                                ${bot.progressNote ? `<div class="up-p-note">➤ ${bot.progressNote}</div>` : ''}
+                                ${bot.progressNote ? `<div class="up-p-header" style="color:var(--text-muted); margin-top:8px; font-style:italic; font-size:0.8rem; font-weight:600;">➤ ${bot.progressNote}</div>` : ''}
                             </div>
+                            
                             <button class="up-vote-btn ${hasVoted?'voted':''}" onclick="voteUp('${bot.id}')">
-                                ${hasVoted ? '❤️ Đã ủng hộ' : '🤍 Hóng hớt'} (${bot.votes || 0})
+                                ${hasVoted ? '❤️ Lữ khách đang ngóng' : '🤍 Chấm hóng'} (${bot.votes || 0})
                             </button>
                         </div>
                     `;
@@ -828,13 +927,8 @@
         /* ============================================================
            QUẢN LÝ ADMIN (THÊM / SỬA / XÓA)
            ============================================================ */
-        document.getElementById("trigger-admin").addEventListener("dblclick", () => {
-            if(!isAdminMode) { if(prompt("Mật mã Chủ Quán:") === "bhnt2006") { isAdminMode = true; document.body.classList.add("is-admin"); renderUI(); checkNotifications(); } }
-        });
-        function exitAdmin() { isAdminMode = false; document.body.classList.remove("is-admin"); renderUI(); document.getElementById("noti-badge").style.display="none"; }
-
         window.toggleHideBot = async function(id, e) { e.stopPropagation(); let b = CONFIG.staff.find(x => x.id === id); if(b) { b.isHidden = !b.isHidden; await saveConfig(); renderUI(); } };
-        window.deleteBot = async function(id, e) { e.stopPropagation(); if(confirm("Xóa vĩnh viễn thẻ này?")) { CONFIG.staff = CONFIG.staff.filter(x => x.id !== id); await saveConfig(); renderUI(); } };
+        window.deleteBot = async function(id, e) { e.stopPropagation(); if(confirm("Xóa vĩnh viễn phòng này?")) { CONFIG.staff = CONFIG.staff.filter(x => x.id !== id); await saveConfig(); renderUI(); } };
         window.toggleHideUp = async function(id) { let b = CONFIG.upcomingBots.find(x => x.id === id); if(b) { b.isHidden = !b.isHidden; await saveConfig(); openUpcomingModal(); } };
         window.deleteUp = async function(id) { if(confirm("Xóa thẻ dự bị này?")) { CONFIG.upcomingBots = CONFIG.upcomingBots.filter(x => x.id !== id); await saveConfig(); openUpcomingModal(); } };
 
@@ -850,26 +944,26 @@
                     <div id="ad-sm-prev" style="text-align:center; margin-bottom:15px;">${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="height:100px; border-radius:50%;">` : ''}</div>
 
                     <div class="admin-form-group">
-                        <label>Lời giới thiệu Quán (Câu ngắn ở trang chủ)</label>
-                        <textarea id="ad-bio" style="height:80px;">${CONFIG.stationMaster.bio}</textarea>
+                        <label>Lời giới thiệu Quán (Trang chủ)</label>
+                        <textarea id="ad-bio" style="height:100px;">${CONFIG.stationMaster.bio}</textarea>
                     </div>
                     <div class="admin-form-group">
-                        <label>Quy tắc Quán Trọ (Hiển thị trong Pop-up)</label>
-                        <textarea id="ad-rules" style="height:100px;">${CONFIG.stationMaster.rules}</textarea>
+                        <label>Quy tắc Quán Trọ (Pop-up)</label>
+                        <textarea id="ad-rules" style="height:120px;">${CONFIG.stationMaster.rules}</textarea>
                     </div>
                     <div class="admin-form-group">
                         <label>Tên hiển thị FB</label>
-                        <input type="text" id="ad-fbname" value="${CONFIG.stationMaster.facebook.name}">
+                        <input type="text" id="ad-fbname" value="${CONFIG.stationMaster.facebook?.name || ''}">
                     </div>
                     <div class="admin-form-group">
                         <label>Link FB</label>
-                        <input type="text" id="ad-fburl" value="${CONFIG.stationMaster.facebook.url}">
+                        <input type="text" id="ad-fburl" value="${CONFIG.stationMaster.facebook?.url || ''}">
                     </div>
                     <button class="fb-btn-submit" id="ad-save">LƯU LẠI THÔNG TIN</button>
                 `;
                 tempAdminImg = CONFIG.stationMaster.avatar || "";
                 document.getElementById("ad-sm-img").onchange = async (e) => {
-                    if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:100px; border-radius:50%;">`; }
+                    if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:100px; border-radius:50%; border:4px solid var(--accent-peach);">`; }
                 };
                 document.getElementById("ad-save").onclick = async () => {
                     CONFIG.stationMaster.avatar = tempAdminImg;
@@ -880,61 +974,66 @@
                 };
             }
             else if (type === 'bot') {
-                let d = { name: "", route: ROUTES[0], hook: "", link: "", tags: [] };
+                let d = { name: "", hook: "", link: "", tags: [] };
                 if (action === 'edit') { const b = CONFIG.staff.find(x => x.id === id); if(b) { d = b; tempAdminImg = b.avatar; } }
                 
-                let routeOpts = ROUTES.map(r => `<option value="${r}" ${d.route === r ? 'selected' : ''}>${r}</option>`).join('');
-                
                 body.innerHTML = `
-                    <div style="display:flex; gap:10px;">
-                        <div class="admin-form-group" style="flex:1;"><label>Tên Phòng (OC)</label><input type="text" id="ad-name" value="${d.name}"></div>
-                        <div class="admin-form-group" style="flex:1;"><label>Thuộc Tuyến</label><select id="ad-route">${routeOpts}</select></div>
-                    </div>
-                    <label class="file-upload-label" style="width:100%; text-align:center;"><input type="file" accept="image/*" id="ad-img" style="display:none;"> 📸 TẢI ẢNH (CHÂN DUNG DỌC 9:16)</label>
-                    <div id="ad-prev" style="text-align:center; margin-bottom:15px;">${tempAdminImg ? `<img src="${tempAdminImg}" style="height:120px; border-radius:8px;">` : ''}</div>
+                    <div class="admin-form-group"><label>Tên Phòng (OC)</label><input type="text" id="ad-name" value="${d.name}"></div>
                     
-                    <div class="admin-form-group"><label>Tags (Cách nhau dấu phẩy)</label><input type="text" id="ad-tags" value="${(d.tags||[]).join(', ')}"></div>
-                    <div class="admin-form-group"><label>Câu thoại mồi (Hook)</label><textarea id="ad-hook" style="height:60px;">${d.hook}</textarea></div>
-                    <div class="admin-form-group"><label>Link Web Chi Tiết (Nhấn vào nút sẽ bay ra link này)</label><input type="text" id="ad-link" value="${d.link || ''}" placeholder="https://..."></div>
+                    <label class="file-upload-label" style="width:100%; text-align:center;"><input type="file" accept="image/*" id="ad-img" style="display:none;"> 📸 TẢI ẢNH (CHÂN DUNG DỌC 9:16)</label>
+                    <div id="ad-prev" style="text-align:center; margin-bottom:15px;">${tempAdminImg ? `<img src="${tempAdminImg}" style="height:140px; border-radius:12px; border:2px solid var(--accent-mocha);">` : ''}</div>
+                    
+                    <div class="admin-form-group">
+                        <label>Tags (Cách nhau dấu phẩy)</label>
+                        <p style="font-size:0.8rem; color:var(--text-muted); margin-top:-5px; margin-bottom:8px;">*Lưu ý: Bạn điền tag nào thì hệ thống tự động sinh ra nút lọc cho tag đó ở trang chủ.</p>
+                        <input type="text" id="ad-tags" value="${(d.tags||[]).join(', ')}">
+                    </div>
+                    <div class="admin-form-group"><label>Câu thoại mồi (Hook)</label><textarea id="ad-hook" style="height:80px;">${d.hook}</textarea></div>
+                    <div class="admin-form-group"><label>Link Web Chi Tiết (Nhấn nút Ghé Phòng sẽ ra link này)</label><input type="text" id="ad-link" value="${d.link || ''}" placeholder="https://..."></div>
                     
                     <button class="fb-btn-submit" id="ad-save">LƯU PHÒNG</button>
                 `;
 
                 document.getElementById("ad-img").onchange = async (e) => {
                     if(e.target.files.length > 0) {
-                        document.getElementById("ad-prev").innerHTML = "<span style='color:var(--accent-mocha);'>Đang nén ảnh...</span>";
+                        document.getElementById("ad-prev").innerHTML = "<span style='color:var(--accent-mocha); font-weight:bold;'>Đang xử lý ảnh...</span>";
                         tempAdminImg = await resizeImage(e.target.files[0], 1200);
-                        document.getElementById("ad-prev").innerHTML = `<img src="${tempAdminImg}" style="height:120px; border-radius:8px;">`;
+                        document.getElementById("ad-prev").innerHTML = `<img src="${tempAdminImg}" style="height:140px; border-radius:12px; border:2px solid var(--accent-mocha);">`;
                     }
                 };
 
                 document.getElementById("ad-save").onclick = async () => {
                     if(!tempAdminImg) return alert("Vui lòng tải ảnh lên!");
+                    let rawTags = document.getElementById("ad-tags").value.split(',').map(t=>t.trim()).filter(t=>t);
+                    
                     let finalData = {
-                        name: document.getElementById("ad-name").value.trim(), route: document.getElementById("ad-route").value,
-                        avatar: tempAdminImg, tags: document.getElementById("ad-tags").value.split(',').map(t=>t.trim()).filter(t=>t),
-                        hook: document.getElementById("ad-hook").value.trim(), link: document.getElementById("ad-link").value.trim()
+                        name: document.getElementById("ad-name").value.trim(), 
+                        avatar: tempAdminImg, 
+                        tags: rawTags,
+                        hook: document.getElementById("ad-hook").value.trim(), 
+                        link: document.getElementById("ad-link").value.trim()
                     };
+                    
                     if(action === 'add') { finalData.id = "b_"+Date.now(); finalData.createdAt = Date.now(); finalData.feedbacks = []; finalData.isHidden = false; CONFIG.staff.push(finalData); }
                     else { Object.assign(CONFIG.staff.find(x => x.id === id), finalData); }
                     document.getElementById("ad-save").textContent = "Đang lưu..."; await saveConfig(); renderUI(); document.getElementById("admin-modal").classList.remove("show");
                 };
             }
             else if (type === 'up') {
-                let d = { name: "", train: ROUTES[0], idea: "", progressNote: "", progress: 10 };
+                let d = { name: "", train: "Tuyến số...", idea: "", progressNote: "", progress: 10 };
                 if (action === 'edit') { const b = CONFIG.upcomingBots.find(x => x.id === id); if(b) { d = b; tempAdminImg = b.avatar; } }
                 
                 body.innerHTML = `
-                    <div style="display:flex; gap:10px;">
+                    <div style="display:flex; gap:15px;">
                         <div class="admin-form-group" style="flex:1;"><label>Tên Dự Kiến</label><input type="text" id="ad-name" value="${d.name}"></div>
-                        <div class="admin-form-group" style="flex:1;"><label>Chuyến Tàu</label><input type="text" id="ad-route" value="${d.train}"></div>
+                        <div class="admin-form-group" style="flex:1;"><label>Ghi chú Tuyến/Vùng</label><input type="text" id="ad-route" value="${d.train}"></div>
                     </div>
-                    <label class="file-upload-label" style="width:100%; text-align:center;"><input type="file" accept="image/*" id="ad-img" style="display:none;"> 📸 TẢI ẢNH (VUÔNG MỜ)</label>
-                    <div id="ad-prev" style="text-align:center; margin-bottom:15px;">${tempAdminImg ? `<img src="${tempAdminImg}" style="height:100px; border-radius:50%;">` : ''}</div>
+                    <label class="file-upload-label" style="width:100%; text-align:center;"><input type="file" accept="image/*" id="ad-img" style="display:none;"> 📸 TẢI ẢNH (VUÔNG)</label>
+                    <div id="ad-prev" style="text-align:center; margin-bottom:15px;">${tempAdminImg ? `<img src="${tempAdminImg}" style="height:100px; border-radius:50%; border:3px solid var(--accent-mocha);">` : ''}</div>
                     
-                    <div class="admin-form-group"><label>Ý Tưởng</label><textarea id="ad-idea" style="height:60px;">${d.idea}</textarea></div>
+                    <div class="admin-form-group"><label>Ý Tưởng</label><textarea id="ad-idea" style="height:80px;">${d.idea}</textarea></div>
                     
-                    <div style="display:flex; gap:10px;">
+                    <div style="display:flex; gap:15px;">
                         <div class="admin-form-group" style="flex:1;"><label>Tiến độ (%)</label><input type="number" id="ad-prog" value="${d.progress}" min="0" max="100"></div>
                         <div class="admin-form-group" style="flex:2;"><label>Ghi chú tiến độ</label><input type="text" id="ad-note" value="${d.progressNote}"></div>
                     </div>
@@ -943,10 +1042,11 @@
                 `;
 
                 document.getElementById("ad-img").onchange = async (e) => {
-                    if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-prev").innerHTML = `<img src="${tempAdminImg}" style="height:100px; border-radius:50%;">`; }
+                    if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-prev").innerHTML = `<img src="${tempAdminImg}" style="height:100px; border-radius:50%; border:3px solid var(--accent-mocha);">`; }
                 };
 
                 document.getElementById("ad-save").onclick = async () => {
+                    if(!tempAdminImg) return alert("Nhớ úp ảnh cho bạn ấy nhé!");
                     let finalData = {
                         name: document.getElementById("ad-name").value.trim(), train: document.getElementById("ad-route").value, avatar: tempAdminImg,
                         idea: document.getElementById("ad-idea").value.trim(), progressNote: document.getElementById("ad-note").value, progress: parseInt(document.getElementById("ad-prog").value) || 0
@@ -974,12 +1074,12 @@
                 });
             });
             const badge = document.getElementById("noti-badge");
-            if(unreadCount > 0) { badge.textContent = unreadCount; badge.style.display = "flex"; }
+            if(unreadCount > 0) { badge.textContent = unreadCount > 9 ? "9+" : unreadCount; badge.style.display = "flex"; }
             else { badge.style.display = "none"; }
         }
 
         window.openNotiModal = function() {
-            document.getElementById("modal-title").innerHTML = "🔔 BẢNG TIN CHUÔNG CHUỒNG CAPY";
+            document.getElementById("modal-title").innerHTML = `<svg class="svg-icon"><use href="#icon-bell"></use></svg> BẢNG TIN CHUÔNG CHUỒNG CAPY`;
             let lastRead = parseInt(localStorage.getItem("capy_admin_read") || "0");
             let html = "";
             let allNotis = [];
@@ -997,19 +1097,19 @@
             
             allNotis.sort((a,b) => b.date - a.date);
 
-            if(allNotis.length === 0) { html = "<p style='color:var(--text-muted); text-align:center; font-weight:600;'>Chưa có hoạt động nào từ hành khách.</p>"; }
+            if(allNotis.length === 0) { html = "<p style='color:var(--text-muted); text-align:center; font-weight:700;'>Chưa có hoạt động nào từ hành khách.</p>"; }
             else {
                 html = allNotis.map(item => {
-                    let isNew = item.date > lastRead ? `<span style="color:#EF4444; font-weight:900; font-size:0.7rem; border:2px solid #EF4444; padding:2px 6px; border-radius:10px; margin-left:10px;">MỚI TÍNH</span>` : "";
+                    let isNew = item.date > lastRead ? `<span style="color:#FFF; background:#EF4444; font-weight:900; font-size:0.7rem; padding:2px 8px; border-radius:10px; margin-left:10px;">MỚI TÍNH</span>` : "";
                     let contentTitle = item.type === 'fb' 
-                        ? `Lữ khách <b style="color:var(--accent-peach);">${item.name}</b> vừa review cho phòng <b style="color:var(--text-dark);">${item.botName}</b> ${isNew}`
-                        : `Lữ khách <b style="color:var(--accent-peach);">${item.name}</b> vừa rep lại bình luận của ${item.fbName} ở phòng <b style="color:var(--text-dark);">${item.botName}</b> ${isNew}`;
+                        ? `Khách <b style="color:var(--accent-peach);">${item.name}</b> vừa review cho phòng <b style="color:var(--text-dark);">${item.botName}</b> ${isNew}`
+                        : `Khách <b style="color:var(--accent-peach);">${item.name}</b> vừa rep lại bình luận của ${item.fbName} ở phòng <b style="color:var(--text-dark);">${item.botName}</b> ${isNew}`;
                     
                     return `
-                    <div style="background:#FFF; padding:15px; border-radius:12px; border:2px dashed var(--accent-mocha); margin-bottom:15px; cursor:pointer; box-shadow:var(--shadow-soft);" onclick="openFeedbackModal('${item.botId}')">
-                        <div style="font-size:0.95rem; color:var(--text-dark); font-weight:600;">${contentTitle}</div>
-                        <div style="font-size:0.9rem; color:var(--text-muted); margin-top:8px; font-style:italic;">"${item.text.substring(0, 80)}..."</div>
-                        <div style="font-size:0.75rem; color:#A0AEC0; margin-top:8px; font-weight:600;">${new Date(item.date).toLocaleString('vi-VN')}</div>
+                    <div style="background:#FFF; padding:20px; border-radius:16px; border:2.5px dashed var(--accent-mocha); margin-bottom:15px; cursor:pointer; box-shadow:var(--shadow-soft);" onclick="openFeedbackModal('${item.botId}')">
+                        <div style="font-size:1rem; color:var(--text-dark); font-weight:700;">${contentTitle}</div>
+                        <div style="font-size:0.95rem; color:var(--text-muted); margin-top:8px; font-style:italic; font-weight:600;">"${item.text.substring(0, 80)}..."</div>
+                        <div style="font-size:0.8rem; color:#A0AEC0; margin-top:10px; font-weight:700;">${new Date(item.date).toLocaleString('vi-VN')}</div>
                     </div>`;
                 }).join('');
             }
