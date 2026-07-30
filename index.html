@@ -8,10 +8,10 @@
     <!-- Favicon: Capy thắt nơ -->
     <link rel="icon" href="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" type="image/png">
     
-    <!-- Fonts: Fredoka (Tiêu đề 3D), Comfortaa (Đáng yêu) & Nunito (Chữa lành) -->
+    <!-- Fonts: Baloo 2 (Tiêu đề mập mạp, tiếng Việt chuẩn), Comfortaa & Nunito -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700;800&family=Fredoka:wght@600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Comfortaa:wght@400;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
     
     <!-- Supabase & LocalForage -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -25,23 +25,24 @@
             --bg-main: #FFF9F5; /* Nền kem sữa ấm */
             --bg-card: #FFFFFF; 
             --text-dark: #3D2314; /* Nâu ca cao đậm đặc */
-            --text-muted: #9E8576; /* Nâu nhạt */
+            --text-muted: #A38A7A; /* Nâu nhạt */
             --accent-peach: #FF9F7C; /* Cam đào pastel */
             --accent-pink: #FFB6B9; /* Hồng lụa coquette */
             --accent-mocha: #E8D5C4; /* Nâu gỗ nhạt */
             --border-soft: #F4EBE6;
             
-            --font-title: 'Fredoka', sans-serif;
+            --font-title: 'Baloo 2', cursive; /* Mập mạp, chuẩn tiếng Việt */
             --font-heading: 'Comfortaa', cursive;
             --font-body: 'Nunito', sans-serif;
             --shadow-soft: 0 12px 35px rgba(92, 64, 51, 0.06);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body { 
             background-color: var(--bg-main);
-            background-image: radial-gradient(var(--accent-mocha) 1.5px, transparent 1.5px);
-            background-size: 30px 30px;
+            /* Background Pattern: Cỏ 4 lá & Cam pastel rải rác lơ đãng */
+            background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.15'%3E%3Cpath d='M25 25 C25 20, 30 20, 30 25 C35 20, 40 20, 40 25 C40 30, 35 30, 32 30 C35 35, 30 40, 25 40 C20 40, 15 35, 18 30 C15 30, 10 30, 10 25 C10 20, 15 20, 15 25 C15 30, 20 30, 25 30 Z' fill='%23A7D129' transform='scale(0.5) translate(20, 20)'/%3E%3Ccircle cx='80' cy='80' r='6' fill='%23FF9F7C'/%3E%3Cpath d='M80 74 Q83 70 85 72' stroke='%23A7D129' stroke-width='2' fill='none'/%3E%3C/g%3E%3C/svg%3E");
             color: var(--text-dark); 
             font-family: var(--font-body); 
             min-height: 100vh; overflow-x: hidden; line-height: 1.6;
@@ -77,22 +78,34 @@
         
         .signboard-wrapper {
             position: relative;
-            max-width: 600px;
+            max-width: 580px; /* Thu gọn bảng lại một chút để vừa vặn */
             margin: 0 auto 15px auto;
+            padding-top: 50px; /* Chừa không gian cho Capy ngó đầu */
+        }
+
+        /* Capybara ngó đầu */
+        .peeking-capy {
+            position: absolute;
+            top: -20px; left: 50%; transform: translateX(-50%);
+            width: 140px;
+            z-index: 1; /* Nằm sau bảng hiệu */
         }
 
         /* Tấm bảng kem sữa viền nâu mảnh */
         .cream-board {
             background: #FFFBF8;
             border: 4px solid var(--text-dark);
-            border-radius: 25px; /* Bo tròn mượt mà */
-            padding: 20px 40px;
+            border-radius: 35px; /* Bo tròn mượt mà */
+            padding: 20px 25px; /* Điều chỉnh lề để chữ nằm lọt lòng */
             position: relative;
             z-index: 2;
             box-shadow: 0 10px 0 rgba(92, 64, 51, 0.08);
             cursor: pointer; 
             user-select: none; /* KHÔNG THỂ BÔI ĐEN, BẢO ĐẢM DBLCLICK MƯỢT */
             transition: 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .cream-board:active { transform: scale(0.98); box-shadow: 0 5px 0 rgba(92, 64, 51, 0.08); }
 
@@ -106,11 +119,11 @@
             transform: rotate(-15deg);
         }
 
-        /* CHỮ QUÁN TRỌ CAPY STICKER 3D (Fredoka) */
+        /* CHỮ QUÁN TRỌ CAPY STICKER 3D (Font Baloo 2) */
         .station-title {
             font-family: var(--font-title); 
-            font-size: clamp(2.5rem, 6vw, 4.5rem); 
-            font-weight: 700;
+            font-size: clamp(2.2rem, 5vw, 3.8rem); /* Chữ tự động thu nhỏ nếu màn hẹp, đảm bảo 1 dòng */
+            font-weight: 800;
             color: var(--text-dark); 
             margin: 0;
             line-height: 1.1;
@@ -132,17 +145,26 @@
                  3px 7px 0px var(--accent-pink);
         }
 
-        /* Lời tựa giới thiệu (Tự do, không viền) */
+        /* Lời tựa giới thiệu tự do (Click to Edit cho Admin) */
+        .intro-text-wrap {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            margin: 0 auto 35px auto; max-width: 650px;
+        }
         .station-desc-freestyle {
-            font-size: 1.05rem; 
+            font-size: 1.1rem; 
             color: var(--text-muted); /* Nâu nhạt hơn để phân cấp */
             font-style: italic; 
             text-align: center;
-            margin: 0 auto 35px auto;
-            max-width: 650px;
             font-weight: 700;
             line-height: 1.6;
         }
+        .admin-edit-intro-btn {
+            display: none; background: #FFF; border: 2px solid var(--border-soft); border-radius: 50%; width: 30px; height: 30px;
+            align-items: center; justify-content: center; font-size: 0.8rem; cursor: pointer; color: var(--accent-peach);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.2s;
+        }
+        body.is-admin .admin-edit-intro-btn { display: flex; }
+        .admin-edit-intro-btn:hover { background: var(--accent-peach); color: #FFF; border-color: var(--accent-peach);}
 
         /* Các Nút Trung Tâm (2 Ô hình viên thuốc) */
         .top-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
@@ -346,6 +368,22 @@
         .admin-form-group { margin-bottom: 25px; }
         .admin-form-group label { display: block; font-weight: 800; margin-bottom: 12px; font-size: 1.05rem; color: var(--text-dark);}
         
+        /* Soạn thảo Rich Text cho Admin */
+        .rt-toolbar { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; background: var(--bg-main); padding: 10px; border-radius: 15px; border: 2px solid var(--border-soft);}
+        .rt-toolbar button { background: #FFF; border: 2px solid var(--border-soft); border-radius: 8px; padding: 5px 12px; font-weight: 700; color: var(--text-dark); cursor: pointer; transition: 0.2s; font-family: var(--font-body);}
+        .rt-toolbar button:hover { background: var(--accent-peach); color: #FFF; border-color: var(--accent-peach);}
+        .rt-editor { background: #FFF; min-height: 150px; padding: 15px; border: 3px solid var(--border-soft); border-radius: 16px; outline: none; overflow-y: auto; line-height: 1.6; }
+        .rt-editor:focus { border-color: var(--accent-peach); }
+
+        /* Tag Input UI */
+        .tag-input-box { display: flex; gap: 10px; margin-bottom: 10px; }
+        .tag-input-box input { flex: 1; padding: 12px 18px; border-radius: 50px; border: 3px solid var(--border-soft); font-size: 0.95rem; font-weight: 600;}
+        .tag-input-box input:focus { border-color: var(--accent-mocha); }
+        .tag-input-box button { padding: 0 24px; background: var(--text-dark); color: #FFF; font-weight: 800; border-radius: 50px; font-size: 0.9rem;}
+        #ad-tags-wrapper { display: flex; flex-wrap: wrap; gap: 8px; }
+        .ad-mini-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-peach); color: #FFF; padding: 6px 14px; border-radius: 50px; font-size: 0.85rem; font-weight: 700;}
+        .ad-mini-tag span { cursor: pointer; color: #FFF; font-weight: 900; }
+
         /* ============================================================
            THIẾT KẾ THẺ SẮP RA MẮT (UPCOMING BOTS)
            ============================================================ */
@@ -375,7 +413,6 @@
         .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 20px; border: 5px solid #FFF; box-shadow: 0 20px 50px rgba(0,0,0,0.5);}
 
         @media (max-width: 600px) {
-            .station-title { font-size: 2rem; }
             .cream-board { padding: 15px 25px; }
             .bot-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
             .m-body { padding: 25px 20px; }
@@ -404,7 +441,7 @@
                 <rect x="13" y="13" width="2" height="2" fill="currentColor"/>
             </g>
 
-            <!-- Quà Pixel Tone Nâu Múp Mím (Sắp ra mắt) -->
+            <!-- Quà Pixel Tone Nâu Đồng Bộ (Sắp ra mắt) -->
             <g id="px-gift">
                 <!-- Nơ -->
                 <rect x="5" y="1" width="2" height="3" fill="var(--text-dark)"/>
@@ -495,14 +532,14 @@
                 <svg class="svg-icon" viewBox="0 0 16 16" style="width:20px; height:20px;"><use href="#px-bell"></use></svg>
                 <span class="noti-badge" id="noti-badge" style="display:none;">0</span>
             </div>
-            <button class="btn-ad" onclick="openAdminForm('sm')">Giới thiệu Quán</button>
+            <button class="btn-ad" onclick="openAdminForm('sm')">Thông tin Chủ Trọ</button>
             <button class="btn-ad" onclick="openAdminForm('bot', 'add')">+ Thêm Phòng</button>
             <button class="btn-ad" onclick="openAdminForm('up', 'add')">+ Thêm Dự Bị</button>
             <button class="btn-ad danger" onclick="exitAdmin()">Thoát Admin</button>
         </div>
     </div>
 
-    <!-- HEADER: TÊN QUÁN KEM SỮA DẬP NỔI -->
+    <!-- HEADER: TÊN QUÁN & BẢNG HIỆU KEM SỮA -->
     <header class="header-section">
         <div class="signboard-wrapper">
             <!-- Bảng kem sữa viền nâu (click đúp vào để mở admin) -->
@@ -514,10 +551,11 @@
         </div>
         
         <!-- Dòng tự do Intro Text kẹp bởi 2 nơ pixel -->
-        <div class="station-desc-freestyle" id="station-bio">
-            <svg class="svg-icon" viewBox="0 0 16 16" style="width:18px; height:18px; margin-right:5px; color:var(--accent-pink);"><use href="#px-ribbon"></use></svg> 
-            Đang pha trà sữa đào... 
-            <svg class="svg-icon" viewBox="0 0 16 16" style="width:18px; height:18px; margin-left:5px; color:var(--accent-pink);"><use href="#px-ribbon"></use></svg>
+        <div class="intro-text-wrap">
+            <svg class="svg-icon" viewBox="0 0 16 16" style="width:18px; height:18px; color:var(--accent-pink);"><use href="#px-ribbon"></use></svg> 
+            <div class="station-desc-freestyle" id="station-bio">Nơi đàn Capybara ngâm mình ven suối...</div>
+            <div class="admin-edit-intro-btn" onclick="editShortDesc()" title="Sửa dòng giới thiệu này">✏️</div>
+            <svg class="svg-icon" viewBox="0 0 16 16" style="width:18px; height:18px; color:var(--accent-pink);"><use href="#px-ribbon"></use></svg>
         </div>
 
         <div class="top-buttons">
@@ -581,10 +619,15 @@
 
     <script>
         /* ============================================================
-           CƠ SỞ DỮ LIỆU & TRẠNG THÁI (CAPY STATION V2)
+           CƠ SỞ DỮ LIỆU & TRẠNG THÁI (CAPY STATION V3)
            ============================================================ */
         let CONFIG = {
-            stationMaster: { bio: "Nơi đàn Capybara ngâm mình ven suối, cùng lữ khách bước vào những thế giới mở rộng lớn...", rules: "Hãy lịch sự và yêu thương động vật nhé!", avatar: "ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" },
+            stationMaster: { 
+                shortDesc: "Nơi đàn Capybara ngâm mình ven suối, cùng lữ khách bước vào những thế giới mở rộng lớn...",
+                bio: "Khu vực ghi tiểu sử dài của chủ trọ...", 
+                avatar: "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png",
+                facebook: {name: "", url: ""}
+            },
             staff: [], // {id, name, avatar, hook, tags, link, feedbacks: [{id, name, stars, text, imgs, date, replies:[]}], isHidden, createdAt}
             upcomingBots: [] // {id, name, avatar, idea, train, progress, note, votes, isHidden}
         };
@@ -624,7 +667,6 @@
             }); 
         }
 
-        // Tính sao trung bình chuẩn
         function getAvgRating(bot) {
             if(!bot.feedbacks || bot.feedbacks.length === 0) return 5.0;
             let sum = bot.feedbacks.reduce((acc, curr) => acc + curr.stars, 0);
@@ -640,12 +682,13 @@
                 if (data && data.data) {
                     CONFIG = typeof data.data === 'string' ? JSON.parse(data.data) : data.data;
                 } else {
-                    let localBackup = await localforage.getItem("capy_config_v2");
+                    let localBackup = await localforage.getItem("capy_config_v3");
                     if (localBackup) CONFIG = { ...CONFIG, ...localBackup };
                 }
 
                 if(!Array.isArray(CONFIG.staff)) CONFIG.staff = [];
                 if(!Array.isArray(CONFIG.upcomingBots)) CONFIG.upcomingBots = [];
+                if(!CONFIG.stationMaster.shortDesc) CONFIG.stationMaster.shortDesc = "Nơi đàn Capybara ngâm mình ven suối...";
                 
                 CONFIG.staff.forEach(s => { 
                     if(!Array.isArray(s.feedbacks)) s.feedbacks = []; 
@@ -659,7 +702,7 @@
 
         async function saveConfig() {
             try {
-                await localforage.setItem("capy_config_v2", CONFIG);
+                await localforage.setItem("capy_config_v3", CONFIG);
                 await supa.from('station_config').upsert([{ id: 777, data: JSON.stringify(CONFIG) }]);
             } catch(e) { console.error("Lỗi lưu DB:", e); }
         }
@@ -668,14 +711,11 @@
            RENDER GIAO DIỆN CHÍNH
            ============================================================ */
         function renderUI() {
-            const bioText = CONFIG.stationMaster.bio || "Ở rìa của thực tại, nơi đàn Capybara ngâm mình ven suối...";
-            document.getElementById("station-bio").innerHTML = `<svg class="svg-icon" viewBox="0 0 16 16" style="width:18px; height:18px; margin-right:5px; color:var(--accent-pink);"><use href="#px-ribbon"></use></svg> ${bioText} <svg class="svg-icon" viewBox="0 0 16 16" style="width:18px; height:18px; margin-left:5px; color:var(--accent-pink);"><use href="#px-ribbon"></use></svg>`;
-            
+            document.getElementById("station-bio").textContent = CONFIG.stationMaster.shortDesc;
             renderTags();
             renderGrid();
         }
 
-        // TỰ ĐỘNG TẠO NÚT TAG TỪ DỮ LIỆU BOT
         function renderTags() {
             const container = document.getElementById("route-tags-container");
             container.innerHTML = "";
@@ -685,7 +725,7 @@
                 if(!b.isHidden || isAdminMode) {
                     if(b.tags && Array.isArray(b.tags)) {
                         b.tags.forEach(t => {
-                            if(t.trim()) uniqueTags.add(t.trim().replace(/^#/, '')); // Bỏ dấu #
+                            if(t.trim()) uniqueTags.add(t.trim().replace(/^#/, ''));
                         });
                     }
                 } 
@@ -779,7 +819,6 @@
                             ${bot.link ? `<a href="${bot.link}" target="_blank" class="b-btn b-btn-link" onclick="event.stopPropagation();"><svg class="svg-icon" viewBox="0 0 16 16" style="width:20px;height:20px;color:#FFF"><use href="#px-key"></use></svg> Ghé Thăm Phòng</a>` : `<button class="b-btn b-btn-link" style="opacity:0.5; cursor:not-allowed;" onclick="event.stopPropagation();">ĐANG DỌN PHÒNG</button>`}
                         </div>
 
-                        <!-- Con dấu Capy Pixel -->
                         <svg class="b-seal svg-icon" viewBox="0 0 16 16" style="position:absolute; bottom:15px; right:15px; width:45px; height:45px; color:var(--accent-peach); opacity:0.8;"><use href="#px-paw"></use></svg>
                     </div>
                 `;
@@ -804,7 +843,6 @@
             document.getElementById("modal-title").innerHTML = `💬 GÓC FEEDBACK: <span style="color:var(--accent-peach)">${bot.name.toUpperCase()}</span>`;
             const body = document.getElementById("modal-body");
             
-            // Render Danh sách Feedbacks
             let fbListHtml = "";
             if(!bot.feedbacks || bot.feedbacks.length === 0) {
                 fbListHtml = "<p style='color:var(--text-muted); font-style:italic; text-align:center; font-size:1.1rem; font-weight:700;'>Chưa có lữ khách nào ghé thăm. Hãy là người đầu tiên!</p>";
@@ -814,7 +852,6 @@
                     let imgsHtml = (fb.imgs||[]).map(src => `<img src="${src}" onclick="openLightbox(this.src, event)">`).join('');
                     let delBtn = isAdminMode ? `<button class="fb-del-btn" onclick="deleteFeedback('${botId}', '${fb.id}')">✕ Xóa FB</button>` : '';
                     
-                    // Xử lý Rep
                     let repliesHtml = (fb.replies||[]).map((r, rIdx) => {
                         let delRepBtn = isAdminMode ? `<button style="background:none; border:none; color:#EF4444; font-size:0.8rem; font-weight:900; cursor:pointer;" onclick="deleteReply('${botId}', '${fb.id}', ${rIdx})">Xóa</button>` : '';
                         let nameColor = r.name.toLowerCase() === 'chủ trọ' ? 'color:var(--accent-peach);' : 'color:var(--text-dark);';
@@ -960,20 +997,20 @@
         };
 
         /* ============================================================
-           MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN
+           MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN (CÓ RICH TEXT)
            ============================================================ */
         window.openSMModal = function() {
             document.getElementById("modal-title").innerHTML = `<img src="ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" style="width:30px;height:30px;"> THÔNG TIN CHỦ TRỌ`;
             let fbHtml = CONFIG.stationMaster.facebook && CONFIG.stationMaster.facebook.url ? `<div style="margin-top:25px; text-align:center;"><a href="${CONFIG.stationMaster.facebook.url}" target="_blank" style="display:inline-block; padding:16px 32px; background:var(--text-dark); color:#FFF; font-weight:900; border-radius:50px; box-shadow:0 8px 25px rgba(92, 64, 51, 0.25); font-family:var(--font-body); font-size:1.05rem;">Liên hệ Facebook Chủ Trọ</a></div>` : '';
             
+            // Bio giờ sẽ render dạng HTML do dùng Rich Text
             document.getElementById("modal-body").innerHTML = `
                 <div style="text-align:center; margin-bottom:30px;">
                     ${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="width:160px; height:160px; border-radius:50%; object-fit:cover; margin:0 auto; border:4px solid var(--accent-peach); box-shadow:var(--shadow-soft);">` : ''}
                 </div>
-                <div style="white-space:pre-wrap; color:var(--text-dark); font-size:1.15rem; font-weight:700; text-align:center; background:#FFF; padding:30px; border-radius:30px; border:3.5px dashed var(--accent-mocha); margin-bottom:25px; box-shadow:var(--shadow-soft);">${CONFIG.stationMaster.bio}</div>
-                
-                <h3 style="font-family:var(--font-heading); margin-top:35px; margin-bottom:15px; color:var(--text-dark); font-size:1.5rem; font-weight:800;">📌 Quy tắc của Quán:</h3>
-                <div style="white-space:pre-wrap; color:var(--text-muted); font-size:1.05rem; background:var(--bg-main); padding:25px; border-radius:24px; font-weight:700; border: 3px solid var(--border-soft);">${CONFIG.stationMaster.rules}</div>
+                <div style="color:var(--text-dark); font-size:1.1rem; font-weight:600; background:#FFF; padding:30px; border-radius:30px; border:3.5px dashed var(--accent-mocha); margin-bottom:25px; box-shadow:var(--shadow-soft); line-height: 1.8;">
+                    ${CONFIG.stationMaster.bio}
+                </div>
                 ${fbHtml}
             `;
             document.getElementById("main-modal").classList.add("show");
@@ -1039,7 +1076,7 @@
         };
 
         /* ============================================================
-           QUẢN LÝ ADMIN (MỞ KHÓA BẰNG TOUCH/CLICK)
+           QUẢN LÝ ADMIN (MỞ KHÓA BẰNG DOUBLE TOUCH/CLICK)
            ============================================================ */
         let lastTap = 0;
         document.getElementById("trigger-admin").addEventListener("click", (e) => {
@@ -1061,16 +1098,28 @@
 
         function exitAdmin() { isAdminMode = false; document.body.classList.remove("is-admin"); renderUI(); document.getElementById("noti-badge").style.display="none"; }
 
+        // Sửa dòng intro ngắn
+        window.editShortDesc = async function() {
+            let newDesc = prompt("Sửa dòng giới thiệu ngắn:", CONFIG.stationMaster.shortDesc);
+            if(newDesc !== null) {
+                CONFIG.stationMaster.shortDesc = newDesc.trim();
+                await saveConfig(); renderUI();
+            }
+        }
+
         window.toggleHideBot = async function(id, e) { e.stopPropagation(); let b = CONFIG.staff.find(x => x.id === id); if(b) { b.isHidden = !b.isHidden; await saveConfig(); renderUI(); } };
         window.deleteBot = async function(id, e) { e.stopPropagation(); if(confirm("Xóa vĩnh viễn phòng này?")) { CONFIG.staff = CONFIG.staff.filter(x => x.id !== id); await saveConfig(); renderUI(); } };
         window.toggleHideUp = async function(id) { let b = CONFIG.upcomingBots.find(x => x.id === id); if(b) { b.isHidden = !b.isHidden; await saveConfig(); openUpcomingModal(); } };
         window.deleteUp = async function(id) { if(confirm("Xóa thẻ dự bị này?")) { CONFIG.upcomingBots = CONFIG.upcomingBots.filter(x => x.id !== id); await saveConfig(); openUpcomingModal(); } };
 
         let tempAdminImg = "";
+        let tempTags = [];
+
         window.openAdminForm = function(type, action, id) {
             document.getElementById("admin-form-title").innerHTML = `<svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-paw"></use></svg> BẢNG ĐIỀU KHIỂN`;
             const body = document.getElementById("admin-form-body");
             tempAdminImg = "";
+            tempTags = [];
 
             if (type === 'sm') {
                 body.innerHTML = `
@@ -1078,13 +1127,16 @@
                     <div id="ad-sm-prev" style="text-align:center; margin-bottom:20px;">${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="height:120px; border-radius:50%; border:4px solid var(--accent-peach);">` : ''}</div>
 
                     <div class="admin-form-group">
-                        <label>Lời giới thiệu Quán (Trang chủ)</label>
-                        <textarea id="ad-bio" style="height:120px;">${CONFIG.stationMaster.bio}</textarea>
+                        <label>Tiểu sử Chủ Trọ (Hỗ trợ định dạng chữ)</label>
+                        <div class="rt-toolbar">
+                            <button type="button" onclick="document.execCommand('bold',false,null)"><b>B</b></button>
+                            <button type="button" onclick="document.execCommand('italic',false,null)"><i>I</i></button>
+                            <button type="button" onclick="document.execCommand('underline',false,null)"><u>U</u></button>
+                            <button type="button" onclick="const ed=document.getElementById('ad-bio'); const div=document.createElement('div'); div.innerHTML='<br>'; ed.appendChild(div); const range=document.createRange(); const sel=window.getSelection(); range.setStart(div,0); range.collapse(true); sel.removeAllRanges(); sel.addRange(range); ed.focus();">↵ Xuống dòng</button>
+                        </div>
+                        <div id="ad-bio" class="rt-editor" contenteditable="true">${CONFIG.stationMaster.bio}</div>
                     </div>
-                    <div class="admin-form-group">
-                        <label>Quy tắc Quán Trọ (Pop-up)</label>
-                        <textarea id="ad-rules" style="height:140px;">${CONFIG.stationMaster.rules}</textarea>
-                    </div>
+                    
                     <div class="admin-form-group">
                         <label>Tên hiển thị FB</label>
                         <input type="text" id="ad-fbname" value="${CONFIG.stationMaster.facebook?.name || ''}">
@@ -1095,21 +1147,20 @@
                     </div>
                     <button class="fb-btn-submit" id="ad-save">LƯU LẠI THÔNG TIN</button>
                 `;
-                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png";
+                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png";
                 document.getElementById("ad-sm-img").onchange = async (e) => {
                     if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:120px; border-radius:50%; border:4px solid var(--accent-peach);">`; }
                 };
                 document.getElementById("ad-save").onclick = async () => {
                     CONFIG.stationMaster.avatar = tempAdminImg;
-                    CONFIG.stationMaster.bio = document.getElementById("ad-bio").value;
-                    CONFIG.stationMaster.rules = document.getElementById("ad-rules").value;
+                    CONFIG.stationMaster.bio = document.getElementById("ad-bio").innerHTML; // Lấy HTML thay vì text thường
                     CONFIG.stationMaster.facebook = { name: document.getElementById("ad-fbname").value, url: document.getElementById("ad-fburl").value };
                     await saveConfig(); renderUI(); document.getElementById("admin-modal").classList.remove("show"); alert("Đã lưu Chủ Trọ!");
                 };
             }
             else if (type === 'bot') {
                 let d = { name: "", hook: "", link: "", tags: [] };
-                if (action === 'edit') { const b = CONFIG.staff.find(x => x.id === id); if(b) { d = b; tempAdminImg = b.avatar; } }
+                if (action === 'edit') { const b = CONFIG.staff.find(x => x.id === id); if(b) { d = b; tempAdminImg = b.avatar; tempTags = [...(b.tags||[])]; } }
                 
                 body.innerHTML = `
                     <div class="admin-form-group"><label>Tên Phòng (OC)</label><input type="text" id="ad-name" value="${d.name}"></div>
@@ -1118,15 +1169,44 @@
                     <div id="ad-prev" style="text-align:center; margin-bottom:20px;">${tempAdminImg ? `<img src="${tempAdminImg}" style="height:160px; border-radius:16px; border:3px solid var(--accent-mocha);">` : ''}</div>
                     
                     <div class="admin-form-group">
-                        <label>Tags (Cách nhau dấu phẩy)</label>
-                        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:-5px; margin-bottom:10px; font-weight:600;">*Lưu ý: Tag bạn nhập sẽ tự động thành cục thuốc lọc ở trang chủ.</p>
-                        <input type="text" id="ad-tags" value="${(d.tags||[]).join(', ')}">
+                        <label>Tags Thể Loại</label>
+                        <div class="tag-input-box">
+                            <input type="text" id="ad-tag-input" placeholder="Nhập một thẻ tag mới..." onkeypress="if(event.key==='Enter') addAdminTag()">
+                            <button type="button" onclick="addAdminTag()">Thêm</button>
+                        </div>
+                        <div id="ad-tags-wrapper"></div>
                     </div>
+
                     <div class="admin-form-group"><label>Câu thoại mồi (Hook)</label><textarea id="ad-hook" style="height:100px;">${d.hook}</textarea></div>
                     <div class="admin-form-group"><label>Link Web Chi Tiết (Nhấn nút Ghé Phòng sẽ ra link này)</label><input type="text" id="ad-link" value="${d.link || ''}" placeholder="https://..."></div>
                     
                     <button class="fb-btn-submit" id="ad-save">LƯU PHÒNG</button>
                 `;
+
+                // Render tags ban đầu
+                renderAdminTags();
+
+                window.addAdminTag = function() {
+                    const inp = document.getElementById("ad-tag-input");
+                    const val = inp.value.trim().replace(/^#/, ''); // Lọc bỏ dấu thăng nếu admin lỡ gõ
+                    if(val) {
+                        tempTags.push(val);
+                        inp.value = "";
+                        renderAdminTags();
+                    }
+                };
+
+                window.removeAdminTag = function(idx) {
+                    tempTags.splice(idx, 1);
+                    renderAdminTags();
+                };
+
+                function renderAdminTags() {
+                    const wrap = document.getElementById("ad-tags-wrapper");
+                    wrap.innerHTML = tempTags.map((t, i) => `
+                        <div class="ad-mini-tag">#${t} <span onclick="removeAdminTag(${i})">✕</span></div>
+                    `).join('');
+                }
 
                 document.getElementById("ad-img").onchange = async (e) => {
                     if(e.target.files.length > 0) {
@@ -1138,12 +1218,11 @@
 
                 document.getElementById("ad-save").onclick = async () => {
                     if(!tempAdminImg) return alert("Vui lòng tải ảnh lên!");
-                    let rawTags = document.getElementById("ad-tags").value.split(',').map(t=>t.trim()).filter(t=>t);
                     
                     let finalData = {
                         name: document.getElementById("ad-name").value.trim(), 
                         avatar: tempAdminImg, 
-                        tags: rawTags,
+                        tags: tempTags, // Dùng mảng tempTags thay vì chuỗi
                         hook: document.getElementById("ad-hook").value.trim(), 
                         link: document.getElementById("ad-link").value.trim()
                     };
@@ -1210,7 +1289,7 @@
         }
 
         window.openNotiModal = function() {
-            document.getElementById("modal-title").innerHTML = `<svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-bell"></use></svg> BẢNG TIN CHUÔNG CHUỒNG CAPY`;
+            document.getElementById("modal-title").innerHTML = `<svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-bell"></use></svg> BẢNG THÔNG BÁO`;
             let lastRead = parseInt(localStorage.getItem("capy_admin_read") || "0");
             let html = "";
             let allNotis = [];
@@ -1257,7 +1336,7 @@
            KHỞI CHẠY LÚC LOAD TRANG
            ============================================================ */
         document.addEventListener("DOMContentLoaded", () => {
-            localforage.config({ name: 'CapyStationV1' });
+            localforage.config({ name: 'CapyStationV3' });
             fetchConfig(); 
         });
 
