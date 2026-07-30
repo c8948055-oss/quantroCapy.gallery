@@ -16,14 +16,6 @@
 
     <style>
         /* ============================================================
-           FONT TH SOPHIA MELANIE (Hoặc fallback sang script tự nhiên)
-           ============================================================ */
-        @font-face {
-            font-family: 'TH Sophia Melanie';
-            src: local('TH Sophia Melanie'); 
-        }
-
-        /* ============================================================
            BẢNG MÀU & VIBE (HEALING INN / COZY STYLE)
            ============================================================ */
         :root {
@@ -58,131 +50,85 @@
         .hidden { display: none !important; }
 
         /* ============================================================
-           STYLE ICON CHUBBY (MÚP MÍM, NÉT TRÒN)
+           STYLE ICON PIXEL (8-BIT)
            ============================================================ */
         .svg-icon {
             display: inline-block; vertical-align: middle;
-            width: 28px; height: 28px; overflow: visible;
-        }
-        .icon-stroke {
-            stroke: var(--text-dark);
-            stroke-width: 2.5px;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            fill: none;
+            width: 26px; height: 26px; overflow: visible;
+            shape-rendering: crispEdges; /* Ép viền sắc nét ra dáng Pixel */
         }
 
         /* Hiệu ứng nhún nhảy đáng yêu */
         .bounce { animation: bounce 2s infinite ease-in-out; }
         @keyframes bounce { 
-            0%, 100% { transform: translateY(0) rotate(-3deg); } 
-            50% { transform: translateY(-8px) rotate(3deg); } 
+            0%, 100% { transform: translateY(0); } 
+            50% { transform: translateY(-8px); } 
         }
 
         /* ============================================================
-           HEADER & BẢNG HIỆU GỖ NHÀ TRỌ ĐỈNH CAO
+           HEADER & BẢNG HIỆU KEM SỮA BO TRÒN
            ============================================================ */
         .header-section {
-            max-width: 850px; margin: 30px auto 30px auto; text-align: center; padding: 0 20px;
+            max-width: 850px; margin: 40px auto 30px auto; text-align: center; padding: 0 20px;
         }
         
         .signboard-wrapper {
             position: relative;
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto 30px auto;
-            padding-top: 60px; /* Chừa không gian cho dây thừng */
+            padding-top: 50px; /* Chừa không gian cho Capy ngó đầu */
         }
 
-        /* Capybara thò đầu ra từ sau bảng */
+        /* Capybara ngó đầu (Ảnh 3) */
         .peeking-capy {
             position: absolute;
-            top: -5px; right: -40px;
-            width: 150px;
-            z-index: 0; /* Nằm sau bảng hiệu */
+            top: -15px; left: 50%; transform: translateX(-50%);
+            width: 140px;
+            z-index: 1; /* Nằm sau bảng hiệu */
         }
 
-        /* Dây thừng treo bảng */
-        .ropes {
-            position: absolute;
-            top: 0; left: 15%; right: 15%;
-            display: flex; justify-content: space-between;
-            z-index: 1;
-        }
-        .rope {
-            width: 6px; height: 80px;
-            background: repeating-linear-gradient(to bottom, #d2a679, #d2a679 6px, #a67c52 6px, #a67c52 12px);
-            position: relative;
-            box-shadow: 2px 2px 5px rgba(92, 64, 51, 0.3);
-            border-radius: 3px;
-        }
-        .rope .bow {
-            position: absolute;
-            top: -20px; left: 50%; transform: translateX(-50%);
-            width: 70px; height: 70px;
-            filter: drop-shadow(0 5px 8px rgba(92, 64, 51, 0.25));
-        }
-
-        /* Tấm bảng gỗ óc chó */
-        .wooden-board {
-            background: #6B442A;
-            background-image: 
-                linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.03) 75%, transparent 75%, transparent);
-            background-size: 15px 15px;
-            border: 8px solid #432818;
-            border-radius: 35px;
-            padding: 45px 20px;
+        /* Tấm bảng kem sữa viền nâu mảnh */
+        .cream-board {
+            background: #FFFBF8;
+            border: 4px solid var(--text-dark);
+            border-radius: 25px; /* Bo tròn mượt mà */
+            padding: 25px 40px;
             position: relative;
             z-index: 2;
-            box-shadow: 0 20px 40px rgba(92, 64, 51, 0.3), inset 0 0 25px rgba(0,0,0,0.4);
-            cursor: pointer; /* Cho biết có thể click */
+            box-shadow: 0 10px 0 rgba(92, 64, 51, 0.08);
+            cursor: pointer; 
             user-select: none; /* KHÔNG THỂ BÔI ĐEN, BẢO ĐẢM DBLCLICK MƯỢT */
             transition: 0.2s;
         }
-        .wooden-board:active { transform: scale(0.98); }
+        .cream-board:active { transform: scale(0.98); box-shadow: 0 5px 0 rgba(92, 64, 51, 0.08); }
 
-        /* Chữ Tem Dán 3D (Double Stroke) */
+        /* Nơ hồng lụa (Ảnh 4) dán góc */
+        .pink-bow {
+            position: absolute;
+            top: -20px; left: -25px;
+            width: 75px;
+            z-index: 3;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
+            transform: rotate(-15deg);
+        }
+
+        /* Chữ Nâu đậm mượt mà nằm ngang */
         .station-title {
-            font-family: 'TH Sophia Melanie', 'Comfortaa', cursive; 
-            font-size: 4.8rem; /* Kích thước siêu to 2.5x */
-            font-weight: 900;
-            color: #FFF; /* Gỗ sơn trắng rực rỡ */
+            font-family: var(--font-heading); 
+            font-size: clamp(1.8rem, 5vw, 2.8rem); /* 1 hàng ngang co giãn */
+            font-weight: 800;
+            color: var(--text-dark); 
             margin: 0;
-            line-height: 1;
+            line-height: 1.2;
             text-transform: uppercase;
-            text-align: center;
-            letter-spacing: 3px;
-            text-shadow: 
-                /* Viền Nâu Ca Cao ôm sát chữ */
-                -2px -2px 0 var(--text-dark), 2px -2px 0 var(--text-dark), -2px 2px 0 var(--text-dark), 2px 2px 0 var(--text-dark),
-                0px -2px 0 var(--text-dark), 0px 2px 0 var(--text-dark), -2px 0px 0 var(--text-dark), 2px 0px 0 var(--text-dark),
-                /* Viền Trắng Tuyết lớp 1 */
-                -7px -7px 0 #FFF, 7px -7px 0 #FFF, -7px 7px 0 #FFF, 7px 7px 0 #FFF,
-                0px -7px 0 #FFF, 0px 7px 0 #FFF, -7px 0px 0 #FFF, 7px 0px 0 #FFF,
-                /* Viền Cam Đào lớp ngoài cùng */
-                -11px -11px 0 var(--accent-peach), 11px -11px 0 var(--accent-peach), -11px 11px 0 var(--accent-peach), 11px 11px 0 var(--accent-peach),
-                0px -11px 0 var(--accent-peach), 0px 11px 0 var(--accent-peach), -11px 0px 0 var(--accent-peach), 11px 0px 0 var(--accent-peach),
-                /* Bóng đổ nổi bần bật lên màn hình */
-                0 25px 30px rgba(0,0,0,0.5);
+            letter-spacing: 1.5px;
+            white-space: nowrap;
         }
 
-        /* Khung giấy Note Giới thiệu */
-        .signboard-note {
-            background: #FFF;
-            border: 3.5px dashed var(--accent-mocha);
-            border-radius: 25px;
-            padding: 30px 20px 20px 20px;
-            position: relative;
-            box-shadow: var(--shadow-soft);
-            margin: 0 auto 35px auto;
-            max-width: 600px;
-        }
-        .signboard-note::before {
-            content: ''; position: absolute; top: -10px; left: 50%; transform: translateX(-50%) rotate(-3deg);
-            width: 70px; height: 26px; background: var(--accent-pink); border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08); border: 2px solid var(--text-dark);
-        }
+        /* Lời tựa giới thiệu */
         .station-desc {
             font-size: 1.15rem; color: var(--text-dark); white-space: pre-wrap; font-weight: 700; line-height: 1.7;
+            background: #FFF; border: 3px dashed var(--accent-mocha); border-radius: 25px; padding: 25px; margin-bottom: 35px; box-shadow: var(--shadow-soft);
         }
 
         /* Các Nút Trung Tâm (2 Ô hình viên thuốc) */
@@ -202,13 +148,12 @@
             display: flex; flex-direction: column; align-items: center; gap: 20px;
         }
 
-        /* Thanh Search có Icon lúp */
+        /* Thanh Search có Icon lúp pixel */
         .search-wrapper { 
-            width: 100%; max-width: 600px; position: relative; 
-            display: flex; align-items: center;
+            width: 100%; max-width: 600px; position: relative; display: flex; align-items: center;
         }
         .search-icon-box {
-            position: absolute; left: 22px; display: flex; align-items: center; justify-content: center;
+            position: absolute; left: 22px; display: flex; align-items: center; justify-content: center; color: var(--text-dark);
         }
         .search-input {
             width: 100%; padding: 18px 20px 18px 60px; border-radius: 50px; background: #FFF;
@@ -317,7 +262,7 @@
         /* CỤM FEEDBACK FORM */
         .fb-form { background: #FFF; padding: 30px; border-radius: 25px; border: 3px solid var(--border-soft); margin-bottom: 35px; box-shadow: var(--shadow-soft); }
         .stars-select { display: flex; gap: 15px; justify-content: center; margin-bottom: 25px; cursor: pointer; }
-        .star-svg { width: 50px; height: 50px; color: var(--border-soft); transition: 0.2s; }
+        .star-svg { width: 40px; height: 40px; color: var(--border-soft); transition: 0.2s; }
         .star-svg.active { color: #F59E0B; filter: drop-shadow(0 5px 8px rgba(245, 158, 11, 0.3)); transform: scale(1.15); }
         
         .fb-input { width: 100%; padding: 16px 22px; background: var(--bg-main); border: 3px solid var(--border-soft); border-radius: 20px; color: var(--text-dark); margin-bottom: 18px; font-size: 1.05rem; font-weight: 700;}
@@ -399,9 +344,6 @@
         .up-avatar-wrap { position:relative; margin-bottom: 25px; }
         .up-avatar { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; filter: blur(3px) grayscale(0.2); border: 5px solid #FFF; box-shadow: 0 10px 25px rgba(92, 64, 51, 0.15);}
         
-        /* Chỉnh nơ cho thẻ sắp ra mắt */
-        .up-bow { position: absolute; top: -15px; right: -15px; filter: drop-shadow(0 6px 10px rgba(92, 64, 51, 0.15)); }
-        
         .up-stamp { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-12deg); background: #EF4444; color: #FFF; font-weight: 900; font-size: 1rem; padding: 8px 20px; border: 3.5px solid #FFF; border-radius: 12px; white-space: nowrap; box-shadow: 0 6px 15px rgba(0,0,0,0.2); z-index: 2; letter-spacing: 1.5px;}
         .up-name { font-family: var(--font-heading); font-size: 1.8rem; font-weight:800; color: var(--text-dark); margin-bottom: 12px;}
         .up-idea { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 30px; line-height: 1.7; font-style:italic; font-weight:700;}
@@ -420,7 +362,7 @@
         .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 20px; border: 5px solid #FFF; box-shadow: 0 20px 50px rgba(0,0,0,0.5);}
 
         @media (max-width: 600px) {
-            .station-title { font-size: 2.5rem; }
+            .station-title { font-size: 1.8rem; }
             .bot-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
             .m-body { padding: 25px 20px; }
             .fb-form { padding: 25px 20px; }
@@ -429,72 +371,88 @@
 </head>
 <body>
 
-    <!-- KHO CHỨA ICONS ĐỒNG BỘ CAPYBARA CHUBBY STYLE -->
-    <svg style="display: none;">
+    <!-- KHO CHỨA ICONS PIXEL 8-BIT ĐÁNG YÊU -->
+    <svg style="display: none;" viewBox="0 0 16 16">
         <defs>
-            <!-- Trái Cam Múp Mím Cute -->
-            <g id="icon-cute-orange">
-                <circle cx="12" cy="13" r="9" fill="#FF9F7C" class="icon-stroke" />
-                <path d="M12 4 c-2-2 -4-1 -4 2" fill="#A7D129" class="icon-stroke" /> <!-- Lá -->
-                <circle cx="9" cy="11" r="1.2" fill="var(--text-dark)" /> <!-- Mắt -->
-                <circle cx="15" cy="11" r="1.2" fill="var(--text-dark)" /> <!-- Mắt -->
-                <path d="M11 14 Q12 15.5 13 14" class="icon-stroke" stroke-width="2"/> <!-- Miệng cười -->
-            </g>
-            
-            <!-- Chuông Múp Mím -->
-            <g id="icon-bell">
-                <path d="M18 9A6 6 0 0 0 6 9c0 7-2.5 9-2.5 9h17s-2.5-2-2.5-9M13.73 21a2 2 0 0 1-3.46 0" fill="#FDE68A" transform="translate(1, 1)"/>
-                <path d="M18 9A6 6 0 0 0 6 9c0 7-2.5 9-2.5 9h17s-2.5-2-2.5-9z" class="icon-stroke"/>
-                <path d="M13.73 21a2 2 0 0 1-3.46 0" class="icon-stroke"/>
-            </g>
-            
-            <!-- Nơ Coquette -->
-            <g id="icon-ribbon">
-                <path d="M12 12l-6-5v7l6-2l6 2v-7l-6 5z" fill="var(--accent-pink)"/>
-                <path d="M12 12l-6-5v7l6-2l6 2v-7l-6 5z" class="icon-stroke"/>
-                <circle cx="12" cy="12" r="2.5" fill="#FFF" class="icon-stroke"/>
-            </g>
-            
-            <!-- Hộp quà Múp Mím (Sắp ra mắt) -->
-            <g id="icon-gift">
-                <!-- Thân hộp -->
-                <rect x="4" y="10" width="16" height="12" rx="2" fill="var(--bg-card)" class="icon-stroke"/>
-                <!-- Nắp hộp -->
-                <rect x="2" y="6" width="20" height="4" rx="2" fill="var(--accent-peach)" class="icon-stroke"/>
-                <!-- Dây ruy băng dọc -->
-                <line x1="12" y1="6" x2="12" y2="22" class="icon-stroke"/>
-                <!-- Dây ruy băng ngang -->
-                <line x1="4" y1="16" x2="20" y2="16" class="icon-stroke"/>
-                <!-- Nơ nhỏ xíu ở trên nắp -->
-                <path d="M12 6 C12 6 6 -2 3 2 C0 6 12 6 12 6 Z" fill="var(--accent-pink)" class="icon-stroke"/>
-                <path d="M12 6 C12 6 18 -2 21 2 C24 6 12 6 12 6 Z" fill="var(--accent-pink)" class="icon-stroke"/>
+            <!-- Kính lúp Pixel -->
+            <g id="px-search">
+                <rect x="5" y="2" width="4" height="1" fill="currentColor"/>
+                <rect x="4" y="3" width="1" height="1" fill="currentColor"/>
+                <rect x="9" y="3" width="1" height="1" fill="currentColor"/>
+                <rect x="3" y="4" width="1" height="4" fill="currentColor"/>
+                <rect x="10" y="4" width="1" height="4" fill="currentColor"/>
+                <rect x="4" y="8" width="1" height="1" fill="currentColor"/>
+                <rect x="9" y="8" width="1" height="1" fill="currentColor"/>
+                <rect x="5" y="9" width="4" height="1" fill="currentColor"/>
+                <rect x="4" y="4" width="6" height="4" fill="var(--bg-card)"/> <!-- glass fill -->
+                <rect x="9" y="9" width="2" height="2" fill="currentColor"/>
+                <rect x="11" y="11" width="2" height="2" fill="currentColor"/>
+                <rect x="13" y="13" width="2" height="2" fill="currentColor"/>
             </g>
 
-            <!-- Dấu chân Capy béo -->
-            <g id="icon-paw">
-                <path d="M12 21c-4.5 0-6.5-3-6.5-6.5s2.5-5.5 6.5-5.5 6.5 2 6.5 5.5-2 6.5-6.5 6.5zM7 7a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm5-1.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm5 1.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="var(--accent-mocha)"/>
+            <!-- Quà Pixel (Sắp ra mắt) -->
+            <g id="px-gift">
+                <rect x="3" y="7" width="10" height="8" fill="currentColor"/>
+                <rect x="2" y="5" width="12" height="2" fill="currentColor"/>
+                <rect x="7" y="5" width="2" height="10" fill="var(--accent-pink)"/>
+                <rect x="4" y="2" width="3" height="3" fill="var(--accent-pink)"/>
+                <rect x="9" y="2" width="3" height="3" fill="var(--accent-pink)"/>
             </g>
 
-            <!-- Kính lúp bo tròn -->
-            <g id="icon-search">
-                <circle cx="10" cy="10" r="7" fill="#FFF" transform="translate(-1,-1)"/>
-                <circle cx="10" cy="10" r="7" class="icon-stroke"/>
-                <path d="M15 15 L21 21" class="icon-stroke" stroke-width="4"/>
+            <!-- Dấu chân Capy Pixel -->
+            <g id="px-paw">
+                <rect x="4" y="3" width="2" height="3" fill="currentColor"/>
+                <rect x="7" y="2" width="2" height="3" fill="currentColor"/>
+                <rect x="10" y="3" width="2" height="3" fill="currentColor"/>
+                <rect x="3" y="8" width="10" height="5" fill="currentColor"/>
+                <rect x="4" y="13" width="8" height="1" fill="currentColor"/>
             </g>
 
-            <!-- Sao đánh giá (Múp mím) -->
-            <g id="icon-star-filled">
-                <path d="M12 2l2.4 7.4h7.6l-6.1 4.5 2.3 7.1-6.2-4.6-6.2 4.6 2.3-7.1-6.1-4.5h7.6z" fill="#F59E0B" class="icon-stroke" stroke-linejoin="round"/>
-            </g>
-            <g id="icon-star-empty">
-                <path d="M12 2l2.4 7.4h7.6l-6.1 4.5 2.3 7.1-6.2-4.6-6.2 4.6 2.3-7.1-6.1-4.5h7.6z" fill="var(--bg-main)" class="icon-stroke" stroke-linejoin="round"/>
+            <!-- Chìa Khóa Pixel -->
+            <g id="px-key">
+                <rect x="2" y="5" width="5" height="5" fill="currentColor"/>
+                <rect x="3" y="6" width="3" height="3" fill="var(--bg-main)"/> <!-- hole -->
+                <rect x="7" y="7" width="7" height="2" fill="currentColor"/>
+                <rect x="10" y="9" width="1" height="2" fill="currentColor"/>
+                <rect x="12" y="9" width="2" height="2" fill="currentColor"/>
             </g>
 
-            <!-- Chìa khóa mập -->
-            <g id="icon-key">
-                <circle cx="7" cy="12" r="4" fill="var(--accent-peach)" transform="translate(1,1)"/>
-                <circle cx="7" cy="12" r="4" class="icon-stroke"/>
-                <path d="M11 12h10M17 12v3M20 12v3" class="icon-stroke"/>
+            <!-- Chuông Thông Báo Pixel -->
+            <g id="px-bell">
+                <rect x="7" y="2" width="2" height="2" fill="currentColor"/>
+                <rect x="5" y="4" width="6" height="2" fill="currentColor"/>
+                <rect x="4" y="6" width="8" height="6" fill="currentColor"/>
+                <rect x="2" y="12" width="12" height="2" fill="currentColor"/>
+                <rect x="7" y="14" width="2" height="2" fill="currentColor"/>
+            </g>
+
+            <!-- Sao Đánh Giá Pixel (Filled) -->
+            <g id="px-star-filled">
+                <rect x="7" y="1" width="2" height="2" fill="#F59E0B"/>
+                <rect x="6" y="3" width="4" height="2" fill="#F59E0B"/>
+                <rect x="2" y="5" width="12" height="2" fill="#F59E0B"/>
+                <rect x="3" y="7" width="10" height="2" fill="#F59E0B"/>
+                <rect x="4" y="9" width="8" height="2" fill="#F59E0B"/>
+                <rect x="3" y="11" width="3" height="4" fill="#F59E0B"/>
+                <rect x="10" y="11" width="3" height="4" fill="#F59E0B"/>
+            </g>
+
+            <!-- Sao Đánh Giá Pixel (Empty/Border) -->
+            <g id="px-star-empty">
+                <rect x="7" y="1" width="2" height="2" fill="currentColor"/>
+                <rect x="6" y="3" width="4" height="2" fill="currentColor"/>
+                <rect x="2" y="5" width="12" height="2" fill="currentColor"/>
+                <rect x="3" y="7" width="10" height="2" fill="currentColor"/>
+                <rect x="4" y="9" width="8" height="2" fill="currentColor"/>
+                <rect x="3" y="11" width="3" height="4" fill="currentColor"/>
+                <rect x="10" y="11" width="3" height="4" fill="currentColor"/>
+                <!-- Hollow inner -->
+                <rect x="7" y="3" width="2" height="2" fill="var(--bg-main)"/>
+                <rect x="3" y="6" width="10" height="1" fill="var(--bg-main)"/>
+                <rect x="4" y="7" width="8" height="2" fill="var(--bg-main)"/>
+                <rect x="5" y="9" width="6" height="2" fill="var(--bg-main)"/>
+                <rect x="4" y="11" width="1" height="3" fill="var(--bg-main)"/>
+                <rect x="11" y="11" width="1" height="3" fill="var(--bg-main)"/>
             </g>
         </defs>
     </svg>
@@ -502,11 +460,11 @@
     <!-- THANH ADMIN -->
     <div class="admin-bar">
         <div style="font-weight: 900; color: var(--text-dark); display:flex; align-items:center; gap:10px; font-family:var(--font-heading); font-size:1.1rem;">
-            <svg class="svg-icon"><use href="#icon-cute-orange"></use></svg> TRẠM ĐIỀU KHIỂN
+            <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-paw"></use></svg> TRẠM ĐIỀU KHIỂN
         </div>
         <div class="admin-controls">
             <div class="noti-btn" onclick="openNotiModal()" title="Bảng Thông Báo">
-                <svg class="svg-icon" style="width:24px; height:24px;"><use href="#icon-bell"></use></svg>
+                <svg class="svg-icon" viewBox="0 0 16 16" style="width:20px; height:20px;"><use href="#px-bell"></use></svg>
                 <span class="noti-badge" id="noti-badge" style="display:none;">0</span>
             </div>
             <button class="btn-ad" onclick="openAdminForm('sm')">Giới thiệu Quán</button>
@@ -516,23 +474,17 @@
         </div>
     </div>
 
-    <!-- HEADER: TÊN QUÁN & BẢNG HIỆU -->
+    <!-- HEADER: TÊN QUÁN & BẢNG HIỆU GỖ -->
     <header class="header-section">
         <div class="signboard-wrapper">
             <!-- Bé Capy thò đầu lấp ló phía sau bảng hiệu -->
-            <img src="ChatGPT_Image_18_04_35_30_thg_7__2026-removebg-preview.png" alt="Peeking Capy" class="peeking-capy bounce">
+            <img src="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" alt="Peeking Capy" class="peeking-capy bounce">
             
-            <!-- Dây thừng treo bảng -->
-            <div class="ropes">
-                <div class="rope"><svg class="bow svg-icon" viewBox="0 0 24 24"><use href="#icon-ribbon"></use></svg></div>
-                <div class="rope"><svg class="bow svg-icon" viewBox="0 0 24 24"><use href="#icon-ribbon"></use></svg></div>
-            </div>
-            
-            <!-- Bảng gỗ Óc Chó có ID gắn sẵn cho việc Click Mở Mật Khẩu Admin -->
-            <div class="wooden-board" id="trigger-admin" title="Nhấp đúp vào Bảng Hiệu để vào Admin">
-                <h1 class="station-title">
-                    QUÁN TRỌ CAPY 
-                </h1>
+            <!-- Bảng kem sữa viền nâu (click vào để mở admin) -->
+            <div class="cream-board" id="trigger-admin" title="Nhấp đúp vào Bảng để vào Admin">
+                <!-- Nơ hồng lụa -->
+                <img src="2D_pixel_png-removebg-preview.png" alt="Pink Bow" class="pink-bow">
+                <h1 class="station-title">QUÁN TRỌ CAPY</h1>
             </div>
         </div>
         
@@ -541,8 +493,8 @@
         </div>
 
         <div class="top-buttons">
-            <button class="btn-top" onclick="openSMModal()"><img src="ChatGPT_Image_18_01_27_30_thg_7__2026-removebg-preview.png" style="width:28px;height:28px;object-fit:cover;border-radius:50%;"> Thông tin chủ quán</button>
-            <button class="btn-top" onclick="openUpcomingModal()"><svg class="svg-icon bounce"><use href="#icon-gift"></use></svg> Sắp Ra Mắt</button>
+            <button class="btn-top" onclick="openSMModal()"><img src="ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" style="width:30px;height:30px;object-fit:contain;"> Thông tin chủ quán</button>
+            <button class="btn-top" onclick="openUpcomingModal()"><svg class="svg-icon bounce" viewBox="0 0 16 16"><use href="#px-gift"></use></svg> Sắp Ra Mắt</button>
         </div>
     </header>
 
@@ -552,7 +504,7 @@
             <!-- Tags động -->
         </div>
         <div class="search-wrapper">
-            <div class="search-icon-box"><svg class="svg-icon" style="width: 22px; height: 22px;"><use href="#icon-search"></use></svg></div>
+            <div class="search-icon-box"><svg class="svg-icon" viewBox="0 0 16 16" style="width: 22px; height: 22px;"><use href="#px-search"></use></svg></div>
             <input type="text" id="search-inp" class="search-input" placeholder="Tìm tên phòng, từ khóa...">
         </div>
     </section>
@@ -604,7 +556,7 @@
            CƠ SỞ DỮ LIỆU & TRẠNG THÁI (CAPY STATION V2)
            ============================================================ */
         let CONFIG = {
-            stationMaster: { bio: "Nơi đàn Capybara ngâm mình ven suối, cùng lữ khách bước vào những thế giới mở rộng lớn...", rules: "Hãy lịch sự và yêu thương động vật nhé!", avatar: "ChatGPT_Image_18_01_27_30_thg_7__2026-removebg-preview.png" },
+            stationMaster: { bio: "Nơi đàn Capybara ngâm mình ven suối, cùng lữ khách bước vào những thế giới mở rộng lớn...", rules: "Hãy lịch sự và yêu thương động vật nhé!", avatar: "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" },
             staff: [], // {id, name, avatar, hook, tags, link, feedbacks: [{id, name, stars, text, imgs, date, replies:[]}], isHidden, createdAt}
             upcomingBots: [] // {id, name, avatar, idea, train, progress, note, votes, isHidden}
         };
@@ -703,20 +655,18 @@
                 if(!b.isHidden || isAdminMode) {
                     if(b.tags && Array.isArray(b.tags)) {
                         b.tags.forEach(t => {
-                            if(t.trim()) uniqueTags.add(t.trim().replace(/^#/, '')); // Bỏ dấu # nếu có
+                            if(t.trim()) uniqueTags.add(t.trim().replace(/^#/, '')); // Bỏ dấu #
                         });
                     }
                 } 
             });
 
-            // Luôn có nút Tất cả
             const allBtn = document.createElement("button");
             allBtn.className = `pill-tag ${activeRouteFilter === 'all' ? 'active' : ''}`;
             allBtn.textContent = "Tất cả";
             allBtn.onclick = () => { activeRouteFilter = 'all'; renderUI(); };
             container.appendChild(allBtn);
 
-            // Render các tag động
             Array.from(uniqueTags).sort().forEach(tag => {
                 const btn = document.createElement("button");
                 btn.className = `pill-tag ${activeRouteFilter === tag ? 'active' : ''}`;
@@ -735,7 +685,6 @@
             let displayBots = CONFIG.staff.filter(b => {
                 if(b.isHidden && !isAdminMode) return false;
                 
-                // Lọc theo thanh tìm kiếm
                 let isMatchSearch = true;
                 if(q !== "") {
                     const matchName = removeAccents(b.name).includes(q);
@@ -743,7 +692,6 @@
                     if(!matchName && !matchTags) isMatchSearch = false;
                 }
 
-                // Lọc theo Tag click
                 let isMatchTag = true;
                 if(activeRouteFilter !== 'all') {
                     const botCleanTags = (b.tags||[]).map(t => t.trim().replace(/^#/, ''));
@@ -759,7 +707,7 @@
             });
 
             if(displayBots.length === 0) {
-                grid.innerHTML = "<p style='color:var(--text-muted); width:100%; text-align:center; padding: 40px; font-weight:800; font-size:1.2rem;'><svg class='svg-icon'><use href='#icon-paw'></use></svg> Hiện không có phòng nào phù hợp.</p>"; return;
+                grid.innerHTML = "<p style='color:var(--text-muted); width:100%; text-align:center; padding: 40px; font-weight:800; font-size:1.2rem;'><svg class='svg-icon' viewBox='0 0 16 16'><use href='#px-paw'></use></svg> Hiện không có phòng nào phù hợp.</p>"; return;
             }
 
             displayBots.forEach(bot => {
@@ -774,20 +722,16 @@
                     </div>
                 ` : "";
 
-                // Hiển thị 3 tags đầu
                 let tagsHtml = (bot.tags||[]).slice(0,3).map(t => `<span class="b-tag">${t.startsWith('#')?t:'#'+t}</span>`).join('');
                 let rating = getAvgRating(bot);
 
                 card.innerHTML = `
                     ${adminOver}
                     
-                    <!-- Ruy băng Nơ Cute -->
-                    <svg class="b-coquette-ribbon svg-icon" style="position:absolute; top:-15px; left:-5px; width:70px; height:70px; z-index:5; filter: drop-shadow(0 6px 10px rgba(92, 64, 51, 0.2));" viewBox="0 0 24 24"><use href="#icon-ribbon"></use></svg>
-
                     <div class="b-img-wrap">
                         <img src="${bot.avatar || ''}" loading="lazy">
                         <div class="b-rating">
-                            <svg class="svg-icon star-icon" style="width:20px;height:20px;"><use href="#icon-star-filled"></use></svg> 
+                            <svg class="svg-icon" viewBox="0 0 16 16" style="width:20px;height:20px;"><use href="#px-star-filled"></use></svg> 
                             ${rating}
                         </div>
                     </div>
@@ -802,11 +746,11 @@
                         
                         <div class="b-actions">
                             <button class="b-btn b-btn-fb" onclick="openFeedbackModal('${bot.id}'); event.stopPropagation();">💬 Góc Feedback (${bot.feedbacks.length})</button>
-                            ${bot.link ? `<a href="${bot.link}" target="_blank" class="b-btn b-btn-link" onclick="event.stopPropagation();"><svg class="svg-icon" style="width:20px;height:20px;color:#FFF"><use href="#icon-key"></use></svg> Ghé Thăm Phòng</a>` : `<button class="b-btn b-btn-link" style="opacity:0.5; cursor:not-allowed;" onclick="event.stopPropagation();">ĐANG DỌN PHÒNG</button>`}
+                            ${bot.link ? `<a href="${bot.link}" target="_blank" class="b-btn b-btn-link" onclick="event.stopPropagation();"><svg class="svg-icon" viewBox="0 0 16 16" style="width:20px;height:20px;color:#FFF"><use href="#px-key"></use></svg> Ghé Thăm Phòng</a>` : `<button class="b-btn b-btn-link" style="opacity:0.5; cursor:not-allowed;" onclick="event.stopPropagation();">ĐANG DỌN PHÒNG</button>`}
                         </div>
 
-                        <!-- Con dấu Capy (Góc dưới phải) -->
-                        <svg class="b-seal svg-icon" style="position:absolute; bottom:15px; right:15px; width:45px; height:45px; color:var(--accent-peach); opacity:0.8;" viewBox="0 0 24 24"><use href="#icon-paw"></use></svg>
+                        <!-- Con dấu Capy Pixel -->
+                        <svg class="b-seal svg-icon" viewBox="0 0 16 16" style="position:absolute; bottom:15px; right:15px; width:45px; height:45px; color:var(--accent-peach); opacity:0.8;"><use href="#px-paw"></use></svg>
                     </div>
                 `;
                 grid.appendChild(card);
@@ -830,7 +774,6 @@
             document.getElementById("modal-title").innerHTML = `💬 GÓC FEEDBACK: <span style="color:var(--accent-peach)">${bot.name.toUpperCase()}</span>`;
             const body = document.getElementById("modal-body");
             
-            // Render Danh sách Feedbacks
             let fbListHtml = "";
             if(!bot.feedbacks || bot.feedbacks.length === 0) {
                 fbListHtml = "<p style='color:var(--text-muted); font-style:italic; text-align:center; font-size:1.1rem; font-weight:700;'>Chưa có lữ khách nào ghé thăm. Hãy là người đầu tiên!</p>";
@@ -840,7 +783,6 @@
                     let imgsHtml = (fb.imgs||[]).map(src => `<img src="${src}" onclick="openLightbox(this.src, event)">`).join('');
                     let delBtn = isAdminMode ? `<button class="fb-del-btn" onclick="deleteFeedback('${botId}', '${fb.id}')">✕ Xóa FB</button>` : '';
                     
-                    // Xử lý Rep
                     let repliesHtml = (fb.replies||[]).map((r, rIdx) => {
                         let delRepBtn = isAdminMode ? `<button style="background:none; border:none; color:#EF4444; font-size:0.8rem; font-weight:900; cursor:pointer;" onclick="deleteReply('${botId}', '${fb.id}', ${rIdx})">Xóa</button>` : '';
                         let nameColor = r.name.toLowerCase() === 'chủ quán' ? 'color:var(--accent-peach);' : 'color:var(--text-dark);';
@@ -861,12 +803,11 @@
                         </div>
                     `;
 
-                    // Vẽ sao múp mím
                     let starsVisual = "";
                     for(let i=0; i<5; i++) {
                         starsVisual += i < fb.stars 
-                            ? `<svg class="svg-icon" style="width:20px;height:20px;color:#F59E0B"><use href="#icon-star-filled"></use></svg>`
-                            : `<svg class="svg-icon" style="width:20px;height:20px;color:var(--border-soft)"><use href="#icon-star-empty"></use></svg>`;
+                            ? `<svg class="svg-icon" viewBox="0 0 16 16" style="width:20px;height:20px;color:#F59E0B"><use href="#px-star-filled"></use></svg>`
+                            : `<svg class="svg-icon" viewBox="0 0 16 16" style="width:20px;height:20px;color:var(--border-soft)"><use href="#px-star-empty"></use></svg>`;
                     }
 
                     return `
@@ -888,10 +829,9 @@
                 }).join('');
             }
 
-            // Vẽ khối chấm sao form
             let formStarsHtml = "";
             for(let i=1; i<=5; i++) {
-                formStarsHtml += `<svg class="svg-icon star-svg star-item" data-val="${i}"><use href="#icon-star-empty"></use></svg>`;
+                formStarsHtml += `<svg class="svg-icon star-svg star-item" data-val="${i}" viewBox="0 0 16 16"><use href="#px-star-empty"></use></svg>`;
             }
 
             body.innerHTML = `
@@ -910,24 +850,22 @@
                 <div class="fb-list" id="fb-list-wrap">${fbListHtml}</div>
             `;
 
-            // Logic chọn Sao
             const starItems = body.querySelectorAll('.star-item');
             starItems.forEach((s, idx) => {
                 s.onclick = () => {
                     currentStars = parseInt(s.dataset.val);
                     starItems.forEach((st, stIdx) => {
                         if(stIdx < currentStars) { 
-                            st.innerHTML = '<use href="#icon-star-filled"></use>'; 
+                            st.innerHTML = '<use href="#px-star-filled"></use>'; 
                             st.classList.add('active'); 
                         } else { 
-                            st.innerHTML = '<use href="#icon-star-empty"></use>'; 
+                            st.innerHTML = '<use href="#px-star-empty"></use>'; 
                             st.classList.remove('active'); 
                         }
                     });
                 };
             });
 
-            // Logic tải ảnh
             document.getElementById("fb-file").onchange = async (e) => {
                 const prev = document.getElementById("fb-preview");
                 if(e.target.files.length + tempFbImgs.length > 3) return alert("Chỉ được gửi tối đa 3 ảnh!");
@@ -936,7 +874,6 @@
                 prev.innerHTML = tempFbImgs.map((src, i) => `<div style="position:relative;"><img src="${src}"><button style="position:absolute;top:-8px;right:-8px;background:#EF4444;color:#fff;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:900;border:none;cursor:pointer;box-shadow:0 3px 5px rgba(0,0,0,0.2);" onclick="removeFbImg(${i}, '${botId}')">✕</button></div>`).join('');
             };
 
-            // Logic Submit
             document.getElementById("fb-submit-btn").onclick = async () => {
                 if(currentStars === 0) return alert("Vui lòng chấm điểm (Sao) cho phòng này!");
                 const text = document.getElementById("fb-text").value.trim();
@@ -962,7 +899,6 @@
 
         window.removeFbImg = function(idx, botId) { tempFbImgs.splice(idx, 1); const prev = document.getElementById("fb-preview"); prev.innerHTML = tempFbImgs.map((src, i) => `<div style="position:relative;"><img src="${src}"><button style="position:absolute;top:-8px;right:-8px;background:#EF4444;color:#fff;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:900;border:none;cursor:pointer;box-shadow:0 3px 5px rgba(0,0,0,0.2);" onclick="removeFbImg(${i}, '${botId}')">✕</button></div>`).join(''); }
 
-        // Logic Reply
         window.sendReply = async function(botId, fbId) {
             const nameInput = document.getElementById(`rep-name-${fbId}`);
             const textInput = document.getElementById(`rep-text-${fbId}`);
@@ -977,7 +913,6 @@
             }
         };
 
-        // Logic Delete
         window.deleteFeedback = async function(botId, fbId) {
             if(!confirm("Xóa vĩnh viễn feedback này?")) return;
             const bot = CONFIG.staff.find(b => b.id === botId);
@@ -996,12 +931,12 @@
            MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN
            ============================================================ */
         window.openSMModal = function() {
-            document.getElementById("modal-title").innerHTML = `<svg class="svg-icon"><use href="#icon-cute-orange"></use></svg> THÔNG TIN CHỦ QUÁN`;
+            document.getElementById("modal-title").innerHTML = `<img src="ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png" style="width:30px;height:30px;"> THÔNG TIN CHỦ QUÁN`;
             let fbHtml = CONFIG.stationMaster.facebook && CONFIG.stationMaster.facebook.url ? `<div style="margin-top:25px; text-align:center;"><a href="${CONFIG.stationMaster.facebook.url}" target="_blank" style="display:inline-block; padding:16px 32px; background:var(--text-dark); color:#FFF; font-weight:900; border-radius:50px; box-shadow:0 8px 25px rgba(92, 64, 51, 0.25); font-family:var(--font-body); font-size:1.05rem;">Liên hệ Facebook Chủ Quán</a></div>` : '';
             
             document.getElementById("modal-body").innerHTML = `
                 <div style="text-align:center; margin-bottom:30px;">
-                    ${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="width:160px; height:160px; border-radius:50%; object-fit:cover; margin:0 auto; border:4px solid var(--accent-peach); box-shadow:var(--shadow-soft);">` : `<svg class="svg-icon" style="width:120px; height:120px; color:var(--accent-mocha);"><use href="#icon-cute-orange"></use></svg>`}
+                    ${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="width:160px; height:160px; border-radius:50%; object-fit:cover; margin:0 auto; border:4px solid var(--accent-peach); box-shadow:var(--shadow-soft);">` : ''}
                 </div>
                 <div style="white-space:pre-wrap; color:var(--text-dark); font-size:1.15rem; font-weight:700; text-align:center; background:#FFF; padding:30px; border-radius:30px; border:3.5px dashed var(--accent-mocha); margin-bottom:25px; box-shadow:var(--shadow-soft);">${CONFIG.stationMaster.bio}</div>
                 
@@ -1014,14 +949,14 @@
         };
 
         window.openUpcomingModal = function() {
-            document.getElementById("modal-title").innerHTML = `<svg class="svg-icon"><use href="#icon-gift"></use></svg> PHÒNG SẮP RA MẮT`;
+            document.getElementById("modal-title").innerHTML = `<svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-gift"></use></svg> PHÒNG SẮP RA MẮT`;
             const body = document.getElementById("modal-body");
             
             let displayBots = CONFIG.upcomingBots.filter(b => !b.isHidden || isAdminMode);
             displayBots.sort((a,b) => (b.progress - a.progress) || (b.votes - a.votes));
 
             if(displayBots.length === 0) {
-                body.innerHTML = "<p style='text-align:center; color:var(--text-muted); padding:50px; font-weight:800; font-size:1.2rem;'><svg class='svg-icon'><use href='#icon-paw'></use></svg> Khu vực đang dọn dẹp, chưa có phòng mới nào.</p>";
+                body.innerHTML = "<p style='text-align:center; color:var(--text-muted); padding:50px; font-weight:800; font-size:1.2rem;'><svg class='svg-icon' viewBox='0 0 16 16'><use href='#px-paw'></use></svg> Khu vực đang dọn dẹp, chưa có phòng mới nào.</p>";
             } else {
                 let html = `<div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:35px;">`;
                 displayBots.forEach(bot => {
@@ -1035,7 +970,7 @@
                             
                             <div class="up-avatar-wrap">
                                 <img src="${bot.avatar}" class="up-avatar">
-                                <svg class="up-bow svg-icon" viewBox="0 0 24 24" style="width:55px; height:55px;"><use href="#icon-ribbon"></use></svg>
+                                <img src="2D_pixel_png-removebg-preview.png" class="up-bow" style="position:absolute; top:-15px; right:-15px; width:60px;">
                             </div>
                             
                             <div class="up-name">${bot.name}</div>
@@ -1072,14 +1007,25 @@
         };
 
         /* ============================================================
-           QUẢN LÝ ADMIN (THÊM / SỬA / XÓA)
+           QUẢN LÝ ADMIN (MỞ KHÓA BẰNG TOUCH/CLICK)
            ============================================================ */
-        const adminTrigger = document.getElementById("trigger-admin");
-        if(adminTrigger) {
-            adminTrigger.addEventListener("dblclick", () => {
-                if(!isAdminMode) { if(prompt("Mật mã Chủ Quán:") === "bhnt2006") { isAdminMode = true; document.body.classList.add("is-admin"); renderUI(); checkNotifications(); } }
-            });
-        }
+        let lastTap = 0;
+        document.getElementById("trigger-admin").addEventListener("click", (e) => {
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
+            if (tapLength < 500 && tapLength > 0) {
+                // Nhấp đúp thành công (Chữa lỗi di động)
+                if(!isAdminMode) { 
+                    if(prompt("Mật mã Chủ Quán:") === "bhnt2006") { 
+                        isAdminMode = true; document.body.classList.add("is-admin"); renderUI(); checkNotifications(); 
+                    } 
+                } else {
+                    if(confirm("Thoát chế độ Admin?")) exitAdmin();
+                }
+                e.preventDefault();
+            }
+            lastTap = currentTime;
+        });
 
         function exitAdmin() { isAdminMode = false; document.body.classList.remove("is-admin"); renderUI(); document.getElementById("noti-badge").style.display="none"; }
 
@@ -1090,7 +1036,7 @@
 
         let tempAdminImg = "";
         window.openAdminForm = function(type, action, id) {
-            document.getElementById("admin-form-title").innerHTML = `<svg class="svg-icon" style="width:30px;height:30px;"><use href="#icon-cute-orange"></use></svg> BẢNG ĐIỀU KHIỂN`;
+            document.getElementById("admin-form-title").innerHTML = `<svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-paw"></use></svg> BẢNG ĐIỀU KHIỂN`;
             const body = document.getElementById("admin-form-body");
             tempAdminImg = "";
 
@@ -1117,7 +1063,7 @@
                     </div>
                     <button class="fb-btn-submit" id="ad-save">LƯU LẠI THÔNG TIN</button>
                 `;
-                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_01_27_30_thg_7__2026-removebg-preview.png";
+                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_18_21_28_30_thg_7__2026-removebg-preview.png";
                 document.getElementById("ad-sm-img").onchange = async (e) => {
                     if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 800); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:120px; border-radius:50%; border:4px solid var(--accent-peach);">`; }
                 };
@@ -1232,7 +1178,7 @@
         }
 
         window.openNotiModal = function() {
-            document.getElementById("modal-title").innerHTML = `<svg class="svg-icon"><use href="#icon-bell"></use></svg> BẢNG TIN CHUÔNG CHUỒNG CAPY`;
+            document.getElementById("modal-title").innerHTML = `<svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-bell"></use></svg> BẢNG TIN CHUÔNG CHUỒNG CAPY`;
             let lastRead = parseInt(localStorage.getItem("capy_admin_read") || "0");
             let html = "";
             let allNotis = [];
