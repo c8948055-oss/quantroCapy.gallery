@@ -86,6 +86,22 @@
         }
 
         /* ============================================================
+           BẢNG THỐNG KÊ MINI GÓC TRÁI DƯỚI (KHÔNG CHE CHẮN)
+           ============================================================ */
+        .global-stats {
+            position: fixed; left: 15px; bottom: 15px; z-index: 100;
+            display: flex; flex-direction: column; gap: 8px;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px);
+            padding: 10px 15px; border-radius: 16px;
+            border: 2px dashed var(--accent-mocha);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            pointer-events: none; /* Cực kỳ quan trọng: Cho phép click xuyên qua nó */
+        }
+        .stat-line { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
+        .stat-line .svg-icon { color: var(--accent-peach); width: 16px; height: 16px; }
+        .stat-line .num { color: var(--accent-peach); font-weight: 900; font-size: 1rem; min-width: 20px; text-align: center;}
+
+        /* ============================================================
            HEADER & BẢNG HIỆU
            ============================================================ */
         .header-section {
@@ -140,7 +156,7 @@
         .admin-edit-intro-btn {
             display: none; background: #FFF; border: 2px solid var(--border-soft); border-radius: 50%; width: 26px; height: 26px;
             align-items: center; justify-content: center; font-size: 0.7rem; cursor: pointer; color: var(--accent-peach);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0;
         }
         body.is-admin .admin-edit-intro-btn { display: flex; }
 
@@ -187,24 +203,14 @@
         }
 
         /* ============================================================
-           BẢNG THỐNG KÊ MINI
+           MÀN CHÍNH
            ============================================================ */
         .main-container { max-width: 1200px; margin: 0 auto 80px auto; padding: 0 15px; }
         
         .grid-header { 
-            display: flex; justify-content: space-between; align-items: flex-end; 
+            display: flex; justify-content: flex-end; align-items: flex-end; 
             margin-bottom: 20px; flex-wrap: wrap; gap: 15px;
         }
-
-        .global-stats {
-            display: flex; flex-direction: column; gap: 6px;
-            background: #FFF; padding: 10px 15px; border-radius: 16px;
-            border: 2px dashed var(--accent-mocha);
-            box-shadow: var(--shadow-soft);
-        }
-        .stat-line { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
-        .stat-line .svg-icon { color: var(--accent-peach); width: 14px; height: 14px; }
-        .stat-line .num { color: var(--accent-peach); font-weight: 900; font-size: 0.95rem; min-width: 15px; text-align: center;}
 
         .sort-select {
             padding: 8px 16px; border-radius: 50px; background: #FFF; border: 2px solid var(--border-soft);
@@ -416,30 +422,35 @@
         .up-p-bar { width: 100%; height: 6px; background: #FFF; border-radius: 50px; overflow: hidden; border: 1px solid var(--border-soft);}
         .up-p-fill { height: 100%; background: var(--accent-peach); border-radius: 50px;}
         
-        .up-vote-btn { width: 100%; padding: 8px; border-radius: 10px; background: #FFF; border: 2.5px solid var(--border-soft); color: var(--text-dark); font-weight: 800; transition: 0.3s; font-size: 0.8rem; display:flex; align-items:center; justify-content:center; gap:5px; font-family: var(--font-body);}
+        .up-vote-btn { width: 100%; padding: 8px; border-radius: 10px; background: #FFF; border: 2px solid var(--border-soft); color: var(--text-dark); font-weight: 800; transition: 0.3s; font-size: 0.8rem; display:flex; align-items:center; justify-content:center; gap:5px; font-family: var(--font-body);}
         .up-vote-btn.voted { border-color: var(--accent-pink); color: #FFF; background: var(--accent-pink); box-shadow: 0 2px 8px rgba(255,182,185,0.4);}
         .up-vote-btn:hover { background: var(--bg-main); border-color: var(--accent-peach); transform:translateY(-2px);}
 
-        /* Modal phụ (Chứa Ý tưởng phòng sắp ra mắt) */
+        /* ============================================================
+           MODAL PHỤ CHỨA Ý TƯỞNG (ĐÃ FIX LỖI TRÀN VÀ ÉP CĂN TRÁI)
+           ============================================================ */
         .sub-modal-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.3); backdrop-filter: blur(3px);
+            position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);
             z-index: 10001; display: none; justify-content: center; align-items: center; padding: 15px;
         }
         .sub-modal-overlay.show { display: flex; animation: fadeIn 0.2s ease; }
-        .sub-modal-content {
-            background: #FFF; width: 100%; max-width: 500px; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2); border: 3px solid var(--border-soft);
-        }
         
-        /* ĐÂY LÀ CLASS CSS CỨNG ĐẦU ÉP CHỮ TRONG BẢNG Ý TƯỞNG CĂN TRÁI */
+        .sub-modal-content {
+            background: #FFF; width: 100%; max-width: 550px; border-radius: 20px; overflow: hidden; 
+            display: flex; flex-direction: column;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2); border: 3px solid var(--border-soft);
+            max-height: 85vh; /* Khóa giới hạn chiều cao để không bao giờ bị tràn */
+        }
+
+        /* KHẮC PHỤC CHỮ BỊ CĂN GIỮA + THANH CUỘN MƯỢT */
         .idea-modal-text {
             background: #FFF;
-            padding: 20px;
+            padding: 20px 25px;
             border-radius: 16px;
-            border: 2px dashed var(--accent-mocha);
+            border: 2.5px dashed var(--accent-mocha);
             color: var(--text-dark);
-            font-size: 0.95rem;
-            line-height: 1.7;
+            font-size: 1rem;
+            line-height: 1.8;
             white-space: pre-wrap;
             font-weight: 600;
             text-align: left !important; /* LỆNH ÉP CĂN TRÁI VĨNH VIỄN */
@@ -493,6 +504,20 @@
         </div>
     </div>
 
+    <!-- BẢNG THỐNG KÊ (GÓC DƯỚI TRÁI - HOÀN TOÀN KHÔNG CHE CHẮN) -->
+    <div class="global-stats">
+        <div class="stat-line">
+            <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-room"></use></svg>
+            <span class="num" id="stat-rooms">0</span>
+            <span class="text">phòng đang mở cửa.</span>
+        </div>
+        <div class="stat-line">
+            <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-user"></use></svg>
+            <span class="num" id="stat-visits">0</span>
+            <span class="text">lượt khách ghé thăm.</span>
+        </div>
+    </div>
+
     <!-- HEADER: TÊN QUÁN & BẢNG HIỆU KEM SỮA -->
     <header class="header-section">
         <div class="signboard-wrapper">
@@ -530,20 +555,7 @@
 
     <!-- MAIN GRID THẺ NHÂN VIÊN -->
     <main class="main-container">
-        <!-- Grid Header gom chung Bảng thống kê mini và Nút Sắp xếp -->
         <div class="grid-header">
-            <div class="global-stats">
-                <div class="stat-line">
-                    <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-room"></use></svg>
-                    <span class="num" id="stat-rooms">0</span>
-                    <span class="text">phòng đang mở cửa.</span>
-                </div>
-                <div class="stat-line">
-                    <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-user"></use></svg>
-                    <span class="num" id="stat-visits">0</span>
-                    <span class="text">lượt khách ghé thăm.</span>
-                </div>
-            </div>
             <select id="sort-select" class="sort-select">
                 <option value="newest">Mới nhất</option>
                 <option value="rating">Yêu thích nhất</option>
@@ -565,7 +577,7 @@
         </div>
     </div>
 
-    <!-- MODAL PHỤ CHO Ý TƯỞNG -->
+    <!-- MODAL PHỤ CHO Ý TƯỞNG CÓ THANH CUỘN CHỐNG TRÀN -->
     <div class="sub-modal-overlay" id="sub-modal" onclick="closeSubModal(event)">
         <div class="sub-modal-content" onclick="event.stopPropagation()">
             <div class="m-header">
@@ -658,13 +670,13 @@
            ============================================================ */
         async function fetchConfig() {
             try {
-                // Đổi ID truy cập thành 700 để Reset lượt khách về 0 
-                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 700).single();
+                // Đổi ID truy cập thành 800 để Reset lượt khách về 0 (Sửa triệt để)
+                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 800).single();
                 if (visitData && visitData.data) { globalVisits = parseInt(visitData.data); }
-                if (!sessionStorage.getItem('capy_visited_v11') && !isAdminMode) { 
+                if (!sessionStorage.getItem('capy_visited_v12') && !isAdminMode) { 
                     globalVisits++; 
-                    sessionStorage.setItem('capy_visited_v11', 'true'); 
-                    supa.from('station_config').upsert([{ id: 700, data: globalVisits.toString() }]).then(); 
+                    sessionStorage.setItem('capy_visited_v12', 'true'); 
+                    supa.from('station_config').upsert([{ id: 800, data: globalVisits.toString() }]).then(); 
                 }
 
                 const { data } = await supa.from('station_config').select('data').eq('id', 777).single();
@@ -702,7 +714,6 @@
         function renderUI() {
             document.getElementById("station-bio").textContent = CONFIG.stationMaster.shortDesc;
             
-            // Cập nhật thống kê
             document.getElementById("stat-visits").textContent = globalVisits;
             let activeRooms = CONFIG.staff.filter(b => !b.isHidden).length;
             document.getElementById("stat-rooms").textContent = isAdminMode ? CONFIG.staff.length : activeRooms;
@@ -1038,7 +1049,7 @@
             if(!bot) return;
             document.getElementById("sub-modal-title").innerHTML = `💡 Ý TƯỞNG: ${bot.name}`;
             
-            // Ép thẻ text-align: left bằng class CSS chuyên dụng cho bảng Ý TƯỞNG
+            // Ép thẻ text-align: left bằng class CSS chuyên dụng cho bảng Ý TƯỞNG để căn trái và lướt được
             document.getElementById("sub-modal-body").innerHTML = `
                 <div class="idea-modal-text">
                     ${bot.idea || "Chưa có nội dung ý tưởng nào được ghi lại..."}
