@@ -11,7 +11,7 @@
 
     <title>Quán Trọ Nhà Mèo</title>
     
-    <!-- Favicon: Mèo đeo kính -->
+    <!-- Favicon: Mèo đeo kính (Hiện trên tab trình duyệt) -->
     <link rel="icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png" type="image/png">
     
     <!-- Fonts: Baloo 2, Comfortaa & Nunito -->
@@ -115,7 +115,7 @@
             position: relative; max-width: 550px; margin: 0 auto 15px auto;
         }
 
-        /* Mèo ngó đầu trên cùng (Ảnh 1) */
+        /* Mèo ngó đầu trên cùng */
         .peeking-cat {
             position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); 
             width: 140px; z-index: 1; margin-bottom: -15px;
@@ -128,10 +128,10 @@
         }
         .cream-board:active { transform: scale(0.98); box-shadow: 0 4px 0 rgba(44, 62, 44, 0.1); }
 
-        /* Icon bên trái bảng tên (Thay bằng Ảnh 1 theo yêu cầu) */
-        .board-left-icon {
-            position: absolute; top: -15px; left: -25px; width: 75px; z-index: 3;
-            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15)); transform: rotate(-10deg);
+        /* Chuông vàng thắt nơ */
+        .bell-icon {
+            position: absolute; top: -25px; left: -25px; width: 85px; z-index: 3;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15)); transform: rotate(-5deg);
         }
 
         /* CHỮ QUÁN TRỌ NHÀ MÈO (Baloo 2) */
@@ -501,7 +501,7 @@
 
     <!-- THANH ADMIN -->
     <div class="admin-bar">
-        <div style="font-weight: 900; color: var(--text-dark); display:flex; align-items:center; gap:6px; font-family:var(--font-heading); font-size:0.85rem;">
+        <div style="font-weight: 900; color: var(--text-dark); display:flex; align-items:center; gap:6px; font-family:var(--font-heading); font-size:0.95rem;">
             <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-user"></use></svg> TRẠM ĐIỀU KHIỂN
         </div>
         <div class="admin-controls">
@@ -533,11 +533,12 @@
     <!-- HEADER: TÊN QUÁN & BẢNG HIỆU -->
     <header class="header-section">
         <div class="signboard-wrapper">
+            <!-- Mèo ngó đầu trên cùng -->
             <img src="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png" alt="Peeking Cat" class="peeking-cat">
             
             <div class="cream-board" id="trigger-admin" title="">
-                <!-- Icon bên trái QUÁN TRỌ NHÀ MÈO đã được thay thành Ảnh 1 -->
-                <img src="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png" alt="Cat Icon" class="board-left-icon">
+                <!-- Icon Chuông vàng (Ảnh 3) -->
+                <img src="ChatGPT_Image_22_00_11_31_thg_7__2026-removebg-preview.png" alt="Bell Icon" class="bell-icon">
                 <h1 class="station-title">QUÁN TRỌ NHÀ MÈO</h1>
             </div>
         </div>
@@ -683,16 +684,14 @@
            ============================================================ */
         async function fetchConfig() {
             try {
-                // Đổi ID truy cập thành 900 để Reset lượt khách về 0 (lần cuối cùng)
-                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 900).single();
+                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 888).single();
                 if (visitData && visitData.data) { globalVisits = parseInt(visitData.data); }
-                if (!sessionStorage.getItem('cat_visited_v2') && !isAdminMode) { 
+                if (!sessionStorage.getItem('cat_visited_v1') && !isAdminMode) { 
                     globalVisits++; 
-                    sessionStorage.setItem('cat_visited_v2', 'true'); 
-                    supa.from('station_config').upsert([{ id: 900, data: globalVisits.toString() }]).then(); 
+                    sessionStorage.setItem('cat_visited_v1', 'true'); 
+                    supa.from('station_config').upsert([{ id: 888, data: globalVisits.toString() }]).then(); 
                 }
 
-                // Dữ liệu phòng vẫn giữ nguyên ID 777 để không mất phòng của bạn
                 const { data } = await supa.from('station_config').select('data').eq('id', 777).single();
                 if (data && data.data) {
                     CONFIG = typeof data.data === 'string' ? JSON.parse(data.data) : data.data;
@@ -872,7 +871,7 @@
             document.getElementById("modal-title").innerHTML = `💬 GÓC FEEDBACK: <span style="color:var(--accent-peach)">${bot.name.toUpperCase()}</span>`;
             const body = document.getElementById("modal-body");
             
-            // Lọc: CHỈ hiện feedback CÔNG KHAI. NẾU LÀ ADMIN thì hiện TẤT CẢ.
+            // CHỈ HIỆN FEEDBACK CÔNG KHAI HOẶC NẾU ĐANG LÀ ADMIN
             let displayFbs = bot.feedbacks.filter(fb => isAdminMode || !fb.isPrivate);
 
             let fbListHtml = "";
@@ -1434,7 +1433,7 @@
         };
 
         /* ============================================================
-           BẢNG THÔNG BÁO (ADMIN ONLY)
+           BẢNG THÔNG BÁO (ADMIN ONLY) BÁO CÁO FB PRIVATE
            ============================================================ */
         function checkNotifications() {
             if(!isAdminMode) return;
