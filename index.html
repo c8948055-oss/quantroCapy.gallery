@@ -12,7 +12,7 @@
     <title>Quán Trọ Nhà Mèo</title>
     
     <!-- Favicon: Mèo đeo kính (Hiện trên tab trình duyệt) -->
-    <link rel="icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png" type="image/png">
+    <link rel="icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview_2.png" type="image/png">
     
     <!-- Fonts: Baloo 2, Comfortaa & Nunito -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -533,8 +533,7 @@
     <!-- HEADER: TÊN QUÁN & BẢNG HIỆU -->
     <header class="header-section">
         <div class="signboard-wrapper">
-            <!-- Mèo ngó đầu trên cùng -->
-            <img src="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png" alt="Peeking Cat" class="peeking-cat">
+            <img src="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview_2.png" alt="Peeking Cat" class="peeking-cat">
             
             <div class="cream-board" id="trigger-admin" title="">
                 <!-- Icon Chuông vàng (Ảnh 3) -->
@@ -626,7 +625,7 @@
             stationMaster: { 
                 shortDesc: "Một quán trọ nhỏ, nơi những chú mèo lười biếng phơi nắng bên suối...",
                 bio: "Cảm ơn các bạn đã ghé thăm trang của tui...", 
-                avatar: "ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png",
+                avatar: "ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview_2.png",
                 facebook: {name: "", url: ""}
             },
             staff: [], 
@@ -684,12 +683,12 @@
            ============================================================ */
         async function fetchConfig() {
             try {
-                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 888).single();
+                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 900).single();
                 if (visitData && visitData.data) { globalVisits = parseInt(visitData.data); }
-                if (!sessionStorage.getItem('cat_visited_v1') && !isAdminMode) { 
+                if (!sessionStorage.getItem('cat_visited_v2') && !isAdminMode) { 
                     globalVisits++; 
-                    sessionStorage.setItem('cat_visited_v1', 'true'); 
-                    supa.from('station_config').upsert([{ id: 888, data: globalVisits.toString() }]).then(); 
+                    sessionStorage.setItem('cat_visited_v2', 'true'); 
+                    supa.from('station_config').upsert([{ id: 900, data: globalVisits.toString() }]).then(); 
                 }
 
                 const { data } = await supa.from('station_config').select('data').eq('id', 777).single();
@@ -871,7 +870,8 @@
             document.getElementById("modal-title").innerHTML = `💬 GÓC FEEDBACK: <span style="color:var(--accent-peach)">${bot.name.toUpperCase()}</span>`;
             const body = document.getElementById("modal-body");
             
-            // CHỈ HIỆN FEEDBACK CÔNG KHAI HOẶC NẾU ĐANG LÀ ADMIN
+            // Lọc: CHỈ hiện feedback CÔNG KHAI. NẾU LÀ ADMIN thì hiện TẤT CẢ.
+            // Xóa bộ nhớ đệm người dùng, thư gửi riêng hoàn toàn tàng hình với khách
             let displayFbs = bot.feedbacks.filter(fb => isAdminMode || !fb.isPrivate);
 
             let fbListHtml = "";
@@ -911,7 +911,6 @@
                     }
 
                     let initial = (fb.name || "K").charAt(0).toUpperCase();
-
                     let privacyBadge = fb.isPrivate ? `<span style="background:#EF4444; color:#FFF; font-size:0.6rem; padding:2px 6px; border-radius:6px; margin-left:6px; vertical-align:middle;">🔒 Riêng tư</span>` : '';
 
                     return `
@@ -954,7 +953,7 @@
                             <input type="radio" name="fb_privacy" value="public" checked> 🌐 Công khai
                         </label>
                         <label class="fb-privacy-label">
-                            <input type="radio" name="fb_privacy" value="private"> 🔒 Gửi riêng (Chỉ Admin đọc được)
+                            <input type="radio" name="fb_privacy" value="private"> 🔒 Gửi riêng Admin
                         </label>
                     </div>
 
@@ -1273,7 +1272,7 @@
                     </div>
                     <button class="fb-btn-submit" id="ad-save">LƯU LẠI THÔNG TIN</button>
                 `;
-                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png";
+                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview_2.png";
                 document.getElementById("ad-sm-img").onchange = async (e) => {
                     if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 600); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:90px; border-radius:50%; border:3px solid var(--accent-peach);">`; }
                 };
