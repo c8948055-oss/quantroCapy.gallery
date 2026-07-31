@@ -7,7 +7,7 @@
     <!-- KHÓA CHẾ ĐỘ SÁNG: Ngăn chặn triệt để điện thoại ép Dark Mode -->
     <meta name="color-scheme" content="light only">
     <meta name="supported-color-schemes" content="light">
-    <meta name="theme-color" content="#F2F7F2">
+    <meta name="theme-color" content="#EAF2EA">
 
     <title>Quán Trọ Nhà Mèo</title>
     
@@ -29,14 +29,14 @@
            ============================================================ */
         :root {
             color-scheme: light only;
-            --bg-main: #EAF2EA; /* Nền xanh pastel cực nhẹ */
+            --bg-main: #EAF2EA; 
             --bg-card: #FFFFFF; 
-            --text-dark: #2C3E2C; /* Xanh rêu đậm (thay cho đen/nâu) */
-            --text-muted: #6B806B; /* Rêu nhạt */
-            --accent-peach: #659165; /* Xanh lá chủ đạo */
-            --accent-pink: #A3CBA3; /* Xanh lá sáng (Viền 3D) */
-            --accent-mocha: #CDE0CA; /* Xanh mộc mạc cho viền thẻ */
-            --border-soft: #DFEFDC; /* Viền siêu nhạt */
+            --text-dark: #2C3E2C; 
+            --text-muted: #6B806B; 
+            --accent-peach: #659165; 
+            --accent-pink: #A3CBA3; 
+            --accent-mocha: #CDE0CA; 
+            --border-soft: #DFEFDC;
             
             --font-title: 'Baloo 2', cursive;
             --font-heading: 'Comfortaa', cursive;
@@ -96,7 +96,7 @@
             padding: 10px 15px; border-radius: 16px;
             border: 2px dashed var(--accent-mocha);
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            pointer-events: none; /* Cực kỳ quan trọng: Cho phép click xuyên qua nó */
+            pointer-events: none;
         }
         .stat-line { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
         .stat-line .svg-icon { color: var(--accent-peach); width: 16px; height: 16px; }
@@ -115,7 +115,7 @@
             position: relative; max-width: 550px; margin: 0 auto 15px auto;
         }
 
-        /* Mèo ngó đầu */
+        /* Mèo ngó đầu trên cùng (Ảnh 1) */
         .peeking-cat {
             position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); 
             width: 140px; z-index: 1; margin-bottom: -15px;
@@ -128,10 +128,10 @@
         }
         .cream-board:active { transform: scale(0.98); box-shadow: 0 4px 0 rgba(44, 62, 44, 0.1); }
 
-        /* Chuông vàng thắt nơ (Thay cho nơ hồng) */
-        .bell-icon {
-            position: absolute; top: -25px; left: -25px; width: 85px; z-index: 3;
-            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15)); transform: rotate(-5deg);
+        /* Icon bên trái bảng tên (Thay bằng Ảnh 1 theo yêu cầu) */
+        .board-left-icon {
+            position: absolute; top: -15px; left: -25px; width: 75px; z-index: 3;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15)); transform: rotate(-10deg);
         }
 
         /* CHỮ QUÁN TRỌ NHÀ MÈO (Baloo 2) */
@@ -221,7 +221,7 @@
         }
 
         /* ============================================================
-           GRID THẺ NHÂN VIÊN (SIZE PINTEREST)
+           GRID THẺ NHÂN VIÊN
            ============================================================ */
         .bot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 18px; }
 
@@ -313,7 +313,7 @@
         .capy-toggle[open] summary { border-bottom: 2px dashed var(--border-soft); margin-bottom: 10px; padding-bottom: 10px; }
         .toggle-content { padding-top: 5px; }
 
-        /* CỤM FEEDBACK FORM (Thêm Tùy chọn Riêng Tư) */
+        /* CỤM FEEDBACK FORM */
         .fb-form { background: #FFF; padding: 20px; border-radius: 16px; border: 2px solid var(--border-soft); margin-bottom: 25px; box-shadow: var(--shadow-soft); }
         .stars-select { display: flex; gap: 8px; justify-content: center; margin-bottom: 15px; cursor: pointer; }
         .star-svg { width: 30px; height: 30px; color: var(--border-soft); transition: 0.2s; }
@@ -434,7 +434,7 @@
         .up-vote-btn:hover { background: var(--bg-main); border-color: var(--accent-peach); transform:translateY(-2px);}
 
         /* ============================================================
-           MODAL PHỤ CHỨA Ý TƯỞNG (FIX LỖI TRÀN & CĂN LỀ TRÁI CỨNG)
+           MODAL PHỤ CHỨA Ý TƯỞNG
            ============================================================ */
         .sub-modal-overlay {
             position: fixed; inset: 0; background: rgba(44, 62, 44, 0.6); backdrop-filter: blur(4px);
@@ -446,27 +446,26 @@
             background: #FFF; width: 100%; max-width: 550px; border-radius: 20px; overflow: hidden; 
             display: flex; flex-direction: column;
             box-shadow: 0 15px 40px rgba(0,0,0,0.2); border: 3px solid var(--border-soft);
-            max-height: 80vh; /* KHÓA CHIỀU CAO: Bảng không bao giờ dài vượt quá 80% màn hình */
+            max-height: 80vh; 
         }
 
         .idea-modal-body {
             padding: 20px;
-            overflow-y: auto; /* BẬT THANH LƯỚT NẾU CHỮ DÀI */
+            overflow-y: auto; 
             background: #FFF;
         }
         .idea-modal-body::-webkit-scrollbar { width: 6px; }
         .idea-modal-body::-webkit-scrollbar-thumb { background: var(--accent-mocha); border-radius: 10px;}
 
-        /* LỆNH ÉP CĂN TRÁI CHO VĂN BẢN Ý TƯỞNG */
         .idea-modal-text {
             border-radius: 16px;
             border: 2.5px dashed var(--accent-mocha);
             color: var(--text-dark);
             font-size: 1rem;
             line-height: 1.8;
-            white-space: pre-wrap; /* Giữ nguyên ngắt dòng */
+            white-space: pre-wrap; 
             font-weight: 600;
-            text-align: left !important; /* ĐÂY LÀ LỆNH ÉP CĂN TRÁI VĨNH VIỄN */
+            text-align: left !important; 
             padding: 20px;
         }
 
@@ -502,7 +501,7 @@
 
     <!-- THANH ADMIN -->
     <div class="admin-bar">
-        <div style="font-weight: 900; color: var(--text-dark); display:flex; align-items:center; gap:6px; font-family:var(--font-heading); font-size:0.95rem;">
+        <div style="font-weight: 900; color: var(--text-dark); display:flex; align-items:center; gap:6px; font-family:var(--font-heading); font-size:0.85rem;">
             <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-user"></use></svg> TRẠM ĐIỀU KHIỂN
         </div>
         <div class="admin-controls">
@@ -517,7 +516,7 @@
         </div>
     </div>
 
-    <!-- BẢNG THỐNG KÊ (GÓC DƯỚI TRÁI - GẮN CHẾT VÀ KHÔNG CHE CHẮN) -->
+    <!-- BẢNG THỐNG KÊ (GÓC DƯỚI TRÁI) -->
     <div class="global-stats">
         <div class="stat-line">
             <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-room"></use></svg>
@@ -534,19 +533,18 @@
     <!-- HEADER: TÊN QUÁN & BẢNG HIỆU -->
     <header class="header-section">
         <div class="signboard-wrapper">
-            <!-- Mèo ngó đầu -->
             <img src="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png" alt="Peeking Cat" class="peeking-cat">
             
             <div class="cream-board" id="trigger-admin" title="">
-                <!-- Chuông thay nơ -->
-                <img src="ChatGPT_Image_22_00_11_31_thg_7__2026-removebg-preview.png" alt="Bell Icon" class="bell-icon">
+                <!-- Icon bên trái QUÁN TRỌ NHÀ MÈO đã được thay thành Ảnh 1 -->
+                <img src="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png" alt="Cat Icon" class="board-left-icon">
                 <h1 class="station-title">QUÁN TRỌ NHÀ MÈO</h1>
             </div>
         </div>
         
         <div class="intro-text-wrap">
             <img src="ChatGPT_Image_22_00_11_31_thg_7__2026-removebg-preview.png" style="width:16px; height:16px; object-fit:contain;"> 
-            <div class="station-desc-freestyle" id="station-bio">Nơi những chú mèo lười biếng phơi nắng bên suối...</div>
+            <div class="station-desc-freestyle" id="station-bio">Một quán trọ nhỏ, nơi những chú mèo lười biếng phơi nắng bên suối...</div>
             <div class="admin-edit-intro-btn" onclick="editShortDesc()" title="Sửa dòng giới thiệu này">✏️</div>
             <img src="ChatGPT_Image_22_00_11_31_thg_7__2026-removebg-preview.png" style="width:16px; height:16px; object-fit:contain;"> 
         </div>
@@ -592,14 +590,13 @@
         </div>
     </div>
 
-    <!-- MODAL PHỤ CHO Ý TƯỞNG (ĐÃ FIX LƯỚT & CĂN LỀ) -->
+    <!-- MODAL PHỤ CHO Ý TƯỞNG -->
     <div class="sub-modal-overlay" id="sub-modal" onclick="closeSubModal(event)">
         <div class="sub-modal-content" onclick="event.stopPropagation()">
             <div class="m-header">
                 <h2 class="m-title" id="sub-modal-title">Tiêu Đề</h2>
                 <button class="m-close" onclick="closeSubModal(true)">✕</button>
             </div>
-            <!-- Body bọc ngoài để tạo thanh lướt -->
             <div class="idea-modal-body" id="sub-modal-body"></div>
         </div>
     </div>
@@ -622,7 +619,7 @@
 
     <script>
         /* ============================================================
-           CƠ SỞ DỮ LIỆU & TRẠNG THÁI (CAT STATION V1)
+           CƠ SỞ DỮ LIỆU & TRẠNG THÁI
            ============================================================ */
         let CONFIG = {
             stationMaster: { 
@@ -686,13 +683,13 @@
            ============================================================ */
         async function fetchConfig() {
             try {
-                // Đổi sang ID hoàn toàn mới (888) để dọn dẹp sạch sẽ cache lượt truy cập cũ
-                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 888).single();
+                // Đổi ID truy cập thành 900 để Reset lượt khách về 0 (lần cuối cùng)
+                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 900).single();
                 if (visitData && visitData.data) { globalVisits = parseInt(visitData.data); }
-                if (!sessionStorage.getItem('cat_visited_v1') && !isAdminMode) { 
+                if (!sessionStorage.getItem('cat_visited_v2') && !isAdminMode) { 
                     globalVisits++; 
-                    sessionStorage.setItem('cat_visited_v1', 'true'); 
-                    supa.from('station_config').upsert([{ id: 888, data: globalVisits.toString() }]).then(); 
+                    sessionStorage.setItem('cat_visited_v2', 'true'); 
+                    supa.from('station_config').upsert([{ id: 900, data: globalVisits.toString() }]).then(); 
                 }
 
                 // Dữ liệu phòng vẫn giữ nguyên ID 777 để không mất phòng của bạn
@@ -706,14 +703,13 @@
 
                 if(!Array.isArray(CONFIG.staff)) CONFIG.staff = [];
                 if(!Array.isArray(CONFIG.upcomingBots)) CONFIG.upcomingBots = [];
-                if(!CONFIG.stationMaster.shortDesc) CONFIG.stationMaster.shortDesc = "Một quán trọ nhỏ, nơi những chú mèo lười biếng phơi nắng bên suối...";
                 
                 CONFIG.staff.forEach(s => { 
                     if(!Array.isArray(s.feedbacks)) s.feedbacks = []; 
                     s.feedbacks.forEach(f => { 
                         if(!Array.isArray(f.replies)) f.replies = []; 
                         if(!f.id) f.id = "fb_" + Date.now() + Math.random(); 
-                        if(f.isPrivate === undefined) f.isPrivate = false; // Mặc định cũ là công khai
+                        if(f.isPrivate === undefined) f.isPrivate = false; 
                     });
                 });
 
@@ -863,7 +859,7 @@
         document.getElementById("sort-select").addEventListener("change", renderGrid);
 
         /* ============================================================
-           MỞ MODAL: GÓC FEEDBACK (HỖ TRỢ QUYỀN RIÊNG TƯ)
+           MỞ MODAL: GÓC FEEDBACK (BẢO MẬT: CHỈ CÓ ADMIN ĐỌC ĐƯỢC)
            ============================================================ */
         let tempFbImgs = [];
         let currentStars = 0;
@@ -876,11 +872,8 @@
             document.getElementById("modal-title").innerHTML = `💬 GÓC FEEDBACK: <span style="color:var(--accent-peach)">${bot.name.toUpperCase()}</span>`;
             const body = document.getElementById("modal-body");
             
-            // Lấy danh sách ID feedback mà máy người dùng này đã tạo
-            let myFbs = JSON.parse(localStorage.getItem("cat_my_feedbacks") || "[]");
-
-            // Lọc: Chỉ hiện Công Khai, HOẶC Admin Mode, HOẶC Feedback gửi riêng của CHÍNH BẠN
-            let displayFbs = bot.feedbacks.filter(fb => isAdminMode || !fb.isPrivate || myFbs.includes(fb.id));
+            // Lọc: CHỈ hiện feedback CÔNG KHAI. NẾU LÀ ADMIN thì hiện TẤT CẢ.
+            let displayFbs = bot.feedbacks.filter(fb => isAdminMode || !fb.isPrivate);
 
             let fbListHtml = "";
             if(displayFbs.length === 0) {
@@ -903,7 +896,6 @@
                         `;
                     }).join('');
 
-                    // Mọi người đều có quyền trả lời (nếu thấy được feedback)
                     let replyInputHtml = `
                         <div class="reply-input-wrap">
                             <input type="text" id="rep-name-${fb.id}" class="reply-input" placeholder="Tên..." style="width:90px; flex:none;">
@@ -919,10 +911,8 @@
                             : `<svg class="svg-icon" viewBox="0 0 16 16" style="width:16px;height:16px;color:var(--border-soft)"><use href="#px-star-empty"></use></svg>`;
                     }
 
-                    // Chữ cái đầu
                     let initial = (fb.name || "K").charAt(0).toUpperCase();
 
-                    // Nhãn Quyền riêng tư
                     let privacyBadge = fb.isPrivate ? `<span style="background:#EF4444; color:#FFF; font-size:0.6rem; padding:2px 6px; border-radius:6px; margin-left:6px; vertical-align:middle;">🔒 Riêng tư</span>` : '';
 
                     return `
@@ -965,7 +955,7 @@
                             <input type="radio" name="fb_privacy" value="public" checked> 🌐 Công khai
                         </label>
                         <label class="fb-privacy-label">
-                            <input type="radio" name="fb_privacy" value="private"> 🔒 Gửi riêng Admin
+                            <input type="radio" name="fb_privacy" value="private"> 🔒 Gửi riêng (Chỉ Admin đọc được)
                         </label>
                     </div>
 
@@ -1014,16 +1004,15 @@
                 
                 const newFb = { id: "fb_"+Date.now(), name: name, stars: currentStars, text: text, imgs: [...tempFbImgs], date: Date.now(), replies: [], isPrivate: isPriv };
                 bot.feedbacks.push(newFb);
-                
-                // Lưu id vào máy cá nhân để vẫn xem được private của chính mình
-                let myFbs = JSON.parse(localStorage.getItem("cat_my_feedbacks") || "[]");
-                myFbs.push(newFb.id);
-                localStorage.setItem("cat_my_feedbacks", JSON.stringify(myFbs));
 
                 document.getElementById("fb-submit-btn").textContent = "ĐANG GỬI...";
                 await saveConfig();
                 renderUI(); 
                 openFeedbackModal(botId);
+                
+                if(isPriv) {
+                    alert("Đã gửi thư mật thành công! Lời nhắn của bạn đã được giấu đi và chỉ có Chủ Trọ mới xem được.");
+                }
             };
 
             if(isAdminMode) {
@@ -1097,7 +1086,6 @@
             if(!bot) return;
             document.getElementById("sub-modal-title").innerHTML = `💡 Ý TƯỞNG: ${bot.name}`;
             
-            // Đã fix lỗi tràn, nội dung dài sẽ tự hiện thanh cuộn và ép căn trái
             document.getElementById("sub-modal-body").innerHTML = `
                 <div class="idea-modal-text">
                     ${bot.idea || "Chưa có nội dung ý tưởng nào được ghi lại..."}
@@ -1446,7 +1434,7 @@
         };
 
         /* ============================================================
-           BẢNG THÔNG BÁO (ADMIN ONLY) BÁO CÁO FB PRIVATE
+           BẢNG THÔNG BÁO (ADMIN ONLY)
            ============================================================ */
         function checkNotifications() {
             if(!isAdminMode) return;
