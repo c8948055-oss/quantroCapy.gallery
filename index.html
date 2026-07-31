@@ -11,8 +11,10 @@
 
     <title>Quán Trọ Nhà Mèo</title>
     
-    <!-- Favicon: Mèo đeo kính (Hiện trên tab trình duyệt) -->
-    <link rel="icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview_2.png" type="image/png">
+    <!-- Favicon: Mèo đeo kính (Hiện trên tab trình duyệt) - Thêm ?v=2 để chống cache Cốc Cốc -->
+    <link rel="icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png?v=2" type="image/png">
+    <link rel="shortcut icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png?v=2" type="image/png">
+    <link rel="apple-touch-icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png?v=2">
     
     <!-- Fonts: Baloo 2, Comfortaa & Nunito -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -115,7 +117,7 @@
             position: relative; max-width: 550px; margin: 0 auto 15px auto;
         }
 
-        /* Mèo ngó đầu trên cùng */
+        /* Mèo ngó đầu trên cùng (Ảnh 1) */
         .peeking-cat {
             position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); 
             width: 140px; z-index: 1; margin-bottom: -15px;
@@ -128,7 +130,7 @@
         }
         .cream-board:active { transform: scale(0.98); box-shadow: 0 4px 0 rgba(44, 62, 44, 0.1); }
 
-        /* Chuông vàng thắt nơ */
+        /* Chuông vàng thắt nơ (Ảnh 3) */
         .bell-icon {
             position: absolute; top: -25px; left: -25px; width: 85px; z-index: 3;
             filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15)); transform: rotate(-5deg);
@@ -533,10 +535,10 @@
     <!-- HEADER: TÊN QUÁN & BẢNG HIỆU -->
     <header class="header-section">
         <div class="signboard-wrapper">
-            <img src="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview_2.png" alt="Peeking Cat" class="peeking-cat">
+            <img src="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png" alt="Peeking Cat" class="peeking-cat">
             
             <div class="cream-board" id="trigger-admin" title="">
-                <!-- Icon Chuông vàng (Ảnh 3) -->
+                <!-- Tháo ảnh mèo lỗi ra, trả lại nguyên vẹn cái Chuông Vàng thắt nơ -->
                 <img src="ChatGPT_Image_22_00_11_31_thg_7__2026-removebg-preview.png" alt="Bell Icon" class="bell-icon">
                 <h1 class="station-title">QUÁN TRỌ NHÀ MÈO</h1>
             </div>
@@ -625,7 +627,7 @@
             stationMaster: { 
                 shortDesc: "Một quán trọ nhỏ, nơi những chú mèo lười biếng phơi nắng bên suối...",
                 bio: "Cảm ơn các bạn đã ghé thăm trang của tui...", 
-                avatar: "ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview_2.png",
+                avatar: "ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png",
                 facebook: {name: "", url: ""}
             },
             staff: [], 
@@ -683,12 +685,13 @@
            ============================================================ */
         async function fetchConfig() {
             try {
-                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 900).single();
+                // Đổi ID truy cập thành 1000 để reset sạch lượt truy cập cũ của các bản sửa lỗi trước
+                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 1000).single();
                 if (visitData && visitData.data) { globalVisits = parseInt(visitData.data); }
-                if (!sessionStorage.getItem('cat_visited_v2') && !isAdminMode) { 
+                if (!sessionStorage.getItem('cat_visited_v3') && !isAdminMode) { 
                     globalVisits++; 
-                    sessionStorage.setItem('cat_visited_v2', 'true'); 
-                    supa.from('station_config').upsert([{ id: 900, data: globalVisits.toString() }]).then(); 
+                    sessionStorage.setItem('cat_visited_v3', 'true'); 
+                    supa.from('station_config').upsert([{ id: 1000, data: globalVisits.toString() }]).then(); 
                 }
 
                 const { data } = await supa.from('station_config').select('data').eq('id', 777).single();
@@ -857,7 +860,7 @@
         document.getElementById("sort-select").addEventListener("change", renderGrid);
 
         /* ============================================================
-           MỞ MODAL: GÓC FEEDBACK (BẢO MẬT: CHỈ CÓ ADMIN ĐỌC ĐƯỢC)
+           MỞ MODAL: GÓC FEEDBACK (RIÊNG TƯ HOÀN TOÀN TÀNG HÌNH VỚI KHÁCH)
            ============================================================ */
         let tempFbImgs = [];
         let currentStars = 0;
@@ -870,8 +873,8 @@
             document.getElementById("modal-title").innerHTML = `💬 GÓC FEEDBACK: <span style="color:var(--accent-peach)">${bot.name.toUpperCase()}</span>`;
             const body = document.getElementById("modal-body");
             
-            // Lọc: CHỈ hiện feedback CÔNG KHAI. NẾU LÀ ADMIN thì hiện TẤT CẢ.
-            // Xóa bộ nhớ đệm người dùng, thư gửi riêng hoàn toàn tàng hình với khách
+            // CHỈ HIỆN FEEDBACK CÔNG KHAI (Hoặc hiện TẤT CẢ nếu là Admin)
+            // Khách gửi riêng xong sẽ bị ẩn lập tức khỏi máy khách.
             let displayFbs = bot.feedbacks.filter(fb => isAdminMode || !fb.isPrivate);
 
             let fbListHtml = "";
@@ -911,7 +914,8 @@
                     }
 
                     let initial = (fb.name || "K").charAt(0).toUpperCase();
-                    let privacyBadge = fb.isPrivate ? `<span style="background:#EF4444; color:#FFF; font-size:0.6rem; padding:2px 6px; border-radius:6px; margin-left:6px; vertical-align:middle;">🔒 Riêng tư</span>` : '';
+
+                    let privacyBadge = fb.isPrivate ? `<span style="background:#EF4444; color:#FFF; font-size:0.6rem; padding:2px 6px; border-radius:6px; margin-left:6px; vertical-align:middle;">🔒 Thư Mật</span>` : '';
 
                     return `
                         <div class="fb-item">
@@ -950,7 +954,7 @@
                     
                     <div class="fb-privacy-wrap">
                         <label class="fb-privacy-label">
-                            <input type="radio" name="fb_privacy" value="public" checked> 🌐 Công khai
+                            <input type="radio" name="fb_privacy" value="public" checked> 🌐 Đăng công khai
                         </label>
                         <label class="fb-privacy-label">
                             <input type="radio" name="fb_privacy" value="private"> 🔒 Gửi riêng Admin
@@ -1005,12 +1009,13 @@
 
                 document.getElementById("fb-submit-btn").textContent = "ĐANG GỬI...";
                 await saveConfig();
-                renderUI(); 
-                openFeedbackModal(botId);
                 
                 if(isPriv) {
-                    alert("Đã gửi thư mật thành công! Lời nhắn của bạn đã được giấu đi và chỉ có Chủ Trọ mới xem được.");
+                    alert("Đã gửi thư mật thành công! Lời nhắn của bạn đã được ẩn đi, chỉ có Chủ Trọ mới xem được.");
                 }
+                
+                renderUI(); 
+                openFeedbackModal(botId);
             };
 
             if(isAdminMode) {
@@ -1272,7 +1277,7 @@
                     </div>
                     <button class="fb-btn-submit" id="ad-save">LƯU LẠI THÔNG TIN</button>
                 `;
-                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview_2.png";
+                tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png";
                 document.getElementById("ad-sm-img").onchange = async (e) => {
                     if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 600); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:90px; border-radius:50%; border:3px solid var(--accent-peach);">`; }
                 };
@@ -1472,7 +1477,7 @@
             else {
                 html = allNotis.map(item => {
                     let isNew = item.date > lastRead ? `<span style="color:#FFF; background:#EF4444; font-weight:900; font-size:0.7rem; padding:2px 8px; border-radius:10px; margin-left:8px;">MỚI TÍNH</span>` : "";
-                    let privBadge = item.isPrivate ? `<span style="background:#EF4444; color:#FFF; font-size:0.6rem; padding:2px 6px; border-radius:6px; margin-right:6px;">🔒 Riêng tư</span>` : '';
+                    let privBadge = item.isPrivate ? `<span style="background:#EF4444; color:#FFF; font-size:0.6rem; padding:2px 6px; border-radius:6px; margin-right:6px;">🔒 Thư Mật</span>` : '';
                     
                     let contentTitle = item.type === 'fb' 
                         ? `${privBadge}Khách <b style="color:var(--accent-peach);">${item.name}</b> vừa review cho phòng <b style="color:var(--text-dark);">${item.botName}</b> ${isNew}`
