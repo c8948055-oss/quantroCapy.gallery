@@ -140,7 +140,7 @@
         .admin-edit-intro-btn {
             display: none; background: #FFF; border: 2px solid var(--border-soft); border-radius: 50%; width: 26px; height: 26px;
             align-items: center; justify-content: center; font-size: 0.7rem; cursor: pointer; color: var(--accent-peach);
-            box-shadow: 0 3px 5px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0;
         }
         body.is-admin .admin-edit-intro-btn { display: flex; }
 
@@ -187,7 +187,7 @@
         }
 
         /* ============================================================
-           BẢNG THỐNG KÊ MINI NẰM TRÊN GRID
+           BẢNG THỐNG KÊ MINI
            ============================================================ */
         .main-container { max-width: 1200px; margin: 0 auto 80px auto; padding: 0 15px; }
         
@@ -310,10 +310,10 @@
         .star-svg { width: 30px; height: 30px; color: var(--border-soft); transition: 0.2s; }
         .star-svg.active { color: #F59E0B; filter: drop-shadow(0 3px 5px rgba(245, 158, 11, 0.3)); transform: scale(1.1); }
         
-        .fb-input { width: 100%; padding: 12px 16px; background: var(--bg-main); border: 2px solid var(--border-soft); border-radius: 12px; color: var(--text-dark); margin-bottom: 12px; font-size: 0.9rem; font-weight: 700;}
+        .fb-input { width: 100%; padding: 12px 16px; background: var(--bg-main); border: 2px solid var(--border-soft); border-radius: 12px; color: var(--text-dark); margin-bottom: 12px; font-size: 0.95rem; font-weight: 700;}
         .fb-input:focus { border-color: var(--accent-peach); background:#FFF;}
         
-        .fb-btn-submit { width: 100%; padding: 12px; background: var(--text-dark); color: #FFF; font-weight: 900; border-radius: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; font-size: 0.9rem; font-family: var(--font-body);}
+        .fb-btn-submit { width: 100%; padding: 12px; background: var(--text-dark); color: #FFF; font-weight: 900; border-radius: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; font-size: 0.95rem; font-family: var(--font-body);}
         .fb-btn-submit:hover { background: var(--accent-peach); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255,159,124,0.3);}
         
         .file-upload-label { display: inline-block; padding: 10px 14px; background: #FFF; border: 2px dashed var(--accent-mocha); border-radius: 10px; font-size: 0.8rem; color: var(--text-dark); font-weight: 800; cursor: pointer; margin-bottom: 10px; transition: 0.3s; width:100%; text-align:center;}
@@ -326,27 +326,27 @@
         .fb-item { background: #FFF; padding: 15px; border-radius: 16px; border: 2px solid var(--border-soft); box-shadow: var(--shadow-soft); position: relative;}
         .fb-item-header { display: flex; justify-content: space-between; margin-bottom: 8px; align-items: flex-start;}
         .fb-item-user-info { display: flex; align-items: center; gap: 10px;}
-        .fb-avatar-letter { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-peach); color: #FFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 900; font-size: 0.9rem; flex-shrink:0;}
+        .fb-avatar-letter { width: 35px; height: 35px; border-radius: 50%; background: var(--accent-peach); color: #FFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 900; font-size: 1rem; flex-shrink:0;}
         .fb-item-name-group { display: flex; flex-direction: column; }
-        .fb-item-name { font-weight: 800; color: var(--text-dark); font-size: 0.9rem; line-height: 1.1;}
-        .fb-item-date { font-size: 0.65rem; color: var(--text-muted); font-weight: 600; margin-top:2px;}
+        .fb-item-name { font-weight: 800; color: var(--text-dark); font-size: 0.95rem; line-height: 1.1;}
+        .fb-item-date { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; margin-top:2px;}
         .fb-item-stars { display: flex; gap: 2px; }
-        .fb-item-text { color: var(--text-dark); font-size: 0.85rem; line-height: 1.5; white-space: pre-wrap; margin-bottom: 10px; font-weight: 600;}
+        .fb-item-text { color: var(--text-dark); font-size: 0.9rem; line-height: 1.5; white-space: pre-wrap; margin-bottom: 10px; font-weight: 600;}
         .fb-item-imgs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;}
         .fb-item-imgs img { width: 75px; height: 75px; object-fit: cover; border-radius: 8px; cursor: zoom-in; border: 2px solid var(--border-soft);}
-        .fb-del-btn { background: #FFF; color: #EF4444; border: 1.5px solid #EF4444; padding: 3px 8px; font-size: 0.65rem; font-weight:800; border-radius: 50px; margin-left: 10px; transition: 0.2s;}
+        .fb-del-btn { background: #FFF; color: #EF4444; border: 1.5px solid #EF4444; padding: 3px 8px; font-size: 0.7rem; font-weight:800; border-radius: 50px; margin-left: 10px; transition: 0.2s;}
         .fb-del-btn:hover { background: #EF4444; color: #FFF; }
 
         /* BÌNH LUẬN CON (REP) */
-        .reply-section { border-top: 2px dashed var(--border-soft); padding-top: 10px; }
-        .reply-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px;}
-        .reply-item { background: var(--bg-main); padding: 8px 12px; border-radius: 10px; font-size: 0.8rem; color: var(--text-dark); position:relative; border: 1.5px solid var(--border-soft); font-weight: 600;}
-        .reply-name { font-weight: 800; margin-bottom: 4px; display:flex; justify-content:space-between; font-size: 0.85rem;}
-        .reply-time { font-size: 0.65rem; color: var(--text-muted); font-weight: 700; margin-top: 4px;}
+        .reply-section { border-top: 2px dashed var(--border-soft); padding-top: 12px; }
+        .reply-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;}
+        .reply-item { background: var(--bg-main); padding: 10px 15px; border-radius: 12px; font-size: 0.85rem; color: var(--text-dark); position:relative; border: 1.5px solid var(--border-soft); font-weight: 600;}
+        .reply-name { font-weight: 800; margin-bottom: 4px; display:flex; justify-content:space-between; font-size: 0.9rem;}
+        .reply-time { font-size: 0.7rem; color: var(--text-muted); font-weight: 700; margin-top: 4px;}
         .reply-input-wrap { display: flex; gap: 6px; }
-        .reply-input { flex: 1; padding: 6px 12px; border-radius: 50px; border: 2px solid var(--border-soft); font-size: 0.8rem; font-weight: 600;}
+        .reply-input { flex: 1; padding: 8px 12px; border-radius: 50px; border: 2px solid var(--border-soft); font-size: 0.85rem; font-weight: 600;}
         .reply-input:focus { border-color: var(--accent-mocha); outline: none;}
-        .reply-btn { padding: 6px 12px; background: var(--text-dark); color: #FFF; font-weight: 800; border-radius: 50px; font-size: 0.8rem; transition: 0.2s;}
+        .reply-btn { padding: 8px 16px; background: var(--text-dark); color: #FFF; font-weight: 800; border-radius: 50px; font-size: 0.85rem; transition: 0.2s;}
         .reply-btn:hover { background: var(--accent-peach); transform: translateY(-2px);}
 
         /* ============================================================
@@ -359,18 +359,18 @@
         }
         body.is-admin .admin-bar { display: flex; }
         .admin-controls { display: flex; gap: 8px; align-items: center;}
-        .btn-ad { padding: 6px 12px; background: var(--bg-main); color: var(--text-dark); border-radius: 50px; font-size: 0.75rem; font-weight: 800; border: 2px solid var(--border-soft); transition: 0.2s;}
+        .btn-ad { padding: 6px 12px; background: var(--bg-main); color: var(--text-dark); border-radius: 50px; font-size: 0.8rem; font-weight: 800; border: 2px solid var(--border-soft); transition: 0.2s;}
         .btn-ad:hover { background: var(--accent-peach); color: #FFF; border-color: var(--accent-peach);}
         .btn-ad.danger { background: #FFF; border-color: #EF4444; color: #EF4444;}
         .btn-ad.danger:hover { background: #EF4444; color: #FFF;}
         
         .noti-btn { position: relative; cursor: pointer; color: var(--text-dark); display:flex; align-items:center; justify-content:center; padding: 6px; background: var(--bg-main); border-radius:50%; border: 2px solid var(--border-soft); transition:0.2s;}
         .noti-btn:hover { background: var(--accent-mocha); border-color: var(--accent-mocha); color: #FFF;}
-        .noti-badge { position: absolute; top: -4px; right: -4px; background: #EF4444; color: #FFF; font-size: 0.6rem; width: 16px; height: 16px; display:flex; align-items:center; justify-content:center; border-radius: 50%; font-weight: 900; border: 2px solid #FFF;}
+        .noti-badge { position: absolute; top: -5px; right: -5px; background: #EF4444; color: #FFF; font-size: 0.65rem; width: 18px; height: 18px; display:flex; align-items:center; justify-content:center; border-radius: 50%; font-weight: 900; border: 2px solid #FFF;}
 
-        .card-admin-overlay { position: absolute; top: 6px; left: 6px; z-index: 20; display: none; gap: 4px; flex-direction: column;}
+        .card-admin-overlay { position: absolute; top: 8px; left: 8px; z-index: 20; display: none; gap: 4px; flex-direction: column;}
         body.is-admin .card-admin-overlay { display: flex; }
-        .btn-card-ad { background: #FFF; color: var(--text-dark); border: 2px solid var(--text-dark); padding: 4px 8px; font-size: 0.65rem; font-weight:800; border-radius: 50px; transition:0.2s;}
+        .btn-card-ad { background: #FFF; color: var(--text-dark); border: 2px solid var(--text-dark); padding: 4px 10px; font-size: 0.75rem; font-weight:800; border-radius: 50px; transition:0.2s;}
         .btn-card-ad:hover { background: var(--accent-peach); color:#FFF; border-color:var(--accent-peach);}
 
         /* Form Admin Popup */
@@ -378,21 +378,21 @@
         .admin-modal.show { display: flex; }
         .admin-modal-box { background: #FFF; width: 100%; max-width: 600px; padding: 25px; border-radius: 20px; max-height: 90vh; overflow-y: auto; color: var(--text-dark); border: 3px solid var(--border-soft); box-shadow: 0 15px 40px rgba(0,0,0,0.15);}
         .admin-form-group { margin-bottom: 15px; }
-        .admin-form-group label { display: block; font-weight: 800; margin-bottom: 6px; font-size: 0.9rem; color: var(--text-dark);}
+        .admin-form-group label { display: block; font-weight: 800; margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dark);}
         
         .rt-toolbar { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; background: var(--bg-main); padding: 8px; border-radius: 12px; border: 2px solid var(--border-soft);}
-        .rt-btn { background: #FFF; border: 2px solid var(--text-dark); border-radius: 6px; padding: 4px 10px; font-weight: 800; color: var(--text-dark); cursor: pointer; transition: 0.2s; font-family: var(--font-body); display:flex; align-items:center; justify-content:center; font-size:0.8rem;}
+        .rt-btn { background: #FFF; border: 2px solid var(--text-dark); border-radius: 6px; padding: 4px 10px; font-weight: 800; color: var(--text-dark); cursor: pointer; transition: 0.2s; font-family: var(--font-body); display:flex; align-items:center; justify-content:center; font-size:0.85rem;}
         .rt-btn:hover { background: var(--accent-peach); color: #FFF; border-color: var(--accent-peach);}
-        .rt-editor { background: #FFF; min-height: 120px; padding: 10px; border: 2px solid var(--border-soft); border-radius: 12px; outline: none; overflow-y: auto; line-height: 1.5; font-size: 0.9rem; }
+        .rt-editor { background: #FFF; min-height: 120px; padding: 12px; border: 2px solid var(--border-soft); border-radius: 12px; outline: none; overflow-y: auto; line-height: 1.6; font-size: 0.95rem; }
         .rt-editor:focus { border-color: var(--accent-peach); }
 
         .tag-input-box { display: flex; gap: 6px; margin-bottom: 8px; }
-        .tag-input-box input { flex: 1; padding: 8px 12px; border-radius: 50px; border: 2px solid var(--border-soft); font-size: 0.8rem; font-weight: 600;}
+        .tag-input-box input { flex: 1; padding: 10px 15px; border-radius: 50px; border: 2px solid var(--border-soft); font-size: 0.85rem; font-weight: 600;}
         .tag-input-box input:focus { border-color: var(--accent-mocha); }
-        .tag-input-box button { padding: 0 15px; background: var(--text-dark); color: #FFF; font-weight: 800; border-radius: 50px; font-size: 0.8rem; transition: 0.2s;}
+        .tag-input-box button { padding: 0 15px; background: var(--text-dark); color: #FFF; font-weight: 800; border-radius: 50px; font-size: 0.85rem; transition: 0.2s;}
         .tag-input-box button:hover { background: var(--accent-peach); }
         #ad-tags-wrapper, #ad-tags-up-wrapper { display: flex; flex-wrap: wrap; gap: 6px; }
-        .ad-mini-tag { display: inline-flex; align-items: center; gap: 4px; background: var(--bg-main); color: var(--text-dark); border: 2px solid var(--border-soft); padding: 4px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 800;}
+        .ad-mini-tag { display: inline-flex; align-items: center; gap: 4px; background: var(--bg-main); color: var(--text-dark); border: 2px solid var(--border-soft); padding: 4px 10px; border-radius: 50px; font-size: 0.8rem; font-weight: 800;}
         .ad-mini-tag span { cursor: pointer; color: #EF4444; font-weight: 900; font-size: 0.9rem; transition: 0.2s;}
         .ad-mini-tag span:hover { transform: scale(1.2); }
 
@@ -416,7 +416,7 @@
         .up-p-bar { width: 100%; height: 6px; background: #FFF; border-radius: 50px; overflow: hidden; border: 1px solid var(--border-soft);}
         .up-p-fill { height: 100%; background: var(--accent-peach); border-radius: 50px;}
         
-        .up-vote-btn { width: 100%; padding: 8px; border-radius: 10px; background: #FFF; border: 2px solid var(--border-soft); color: var(--text-dark); font-weight: 800; transition: 0.3s; font-size: 0.8rem; display:flex; align-items:center; justify-content:center; gap:5px; font-family: var(--font-body);}
+        .up-vote-btn { width: 100%; padding: 8px; border-radius: 10px; background: #FFF; border: 2.5px solid var(--border-soft); color: var(--text-dark); font-weight: 800; transition: 0.3s; font-size: 0.8rem; display:flex; align-items:center; justify-content:center; gap:5px; font-family: var(--font-body);}
         .up-vote-btn.voted { border-color: var(--accent-pink); color: #FFF; background: var(--accent-pink); box-shadow: 0 2px 8px rgba(255,182,185,0.4);}
         .up-vote-btn:hover { background: var(--bg-main); border-color: var(--accent-peach); transform:translateY(-2px);}
 
@@ -429,6 +429,22 @@
         .sub-modal-content {
             background: #FFF; width: 100%; max-width: 500px; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column;
             box-shadow: 0 15px 40px rgba(0,0,0,0.2); border: 3px solid var(--border-soft);
+        }
+        
+        /* ĐÂY LÀ CLASS CSS CỨNG ĐẦU ÉP CHỮ TRONG BẢNG Ý TƯỞNG CĂN TRÁI */
+        .idea-modal-text {
+            background: #FFF;
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px dashed var(--accent-mocha);
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            font-weight: 600;
+            text-align: left !important; /* LỆNH ÉP CĂN TRÁI VĨNH VIỄN */
+            display: block;
+            width: 100%;
         }
 
         /* Lightbox (Zoom ảnh) */
@@ -480,7 +496,6 @@
     <!-- HEADER: TÊN QUÁN & BẢNG HIỆU KEM SỮA -->
     <header class="header-section">
         <div class="signboard-wrapper">
-            <!-- Bé Capy thò đầu lấp ló -->
             <img src="ChatGPT_Image_18_19_44_30_thg_7__2026-removebg-preview.png" alt="Peeking Capy" class="peeking-capy">
             
             <div class="cream-board" id="trigger-admin" title="">
@@ -643,13 +658,13 @@
            ============================================================ */
         async function fetchConfig() {
             try {
-                // Đổi ID truy cập thành 600 để Reset lượt khách về 0 (lần cuối cùng)
-                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 600).single();
+                // Đổi ID truy cập thành 700 để Reset lượt khách về 0 
+                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 700).single();
                 if (visitData && visitData.data) { globalVisits = parseInt(visitData.data); }
-                if (!sessionStorage.getItem('capy_visited_v10') && !isAdminMode) { 
+                if (!sessionStorage.getItem('capy_visited_v11') && !isAdminMode) { 
                     globalVisits++; 
-                    sessionStorage.setItem('capy_visited_v10', 'true'); 
-                    supa.from('station_config').upsert([{ id: 600, data: globalVisits.toString() }]).then(); 
+                    sessionStorage.setItem('capy_visited_v11', 'true'); 
+                    supa.from('station_config').upsert([{ id: 700, data: globalVisits.toString() }]).then(); 
                 }
 
                 const { data } = await supa.from('station_config').select('data').eq('id', 777).single();
@@ -1023,9 +1038,9 @@
             if(!bot) return;
             document.getElementById("sub-modal-title").innerHTML = `💡 Ý TƯỞNG: ${bot.name}`;
             
-            // Ép thẻ text-align: left để chữ không bị căn giữa ở bảng Ý TƯỞNG
+            // Ép thẻ text-align: left bằng class CSS chuyên dụng cho bảng Ý TƯỞNG
             document.getElementById("sub-modal-body").innerHTML = `
-                <div style="background:#FFF; padding:20px; border-radius:16px; border:2px dashed var(--accent-mocha); color:var(--text-dark); font-size:0.95rem; line-height:1.6; white-space:pre-wrap; font-weight:600; text-align:left;">
+                <div class="idea-modal-text">
                     ${bot.idea || "Chưa có nội dung ý tưởng nào được ghi lại..."}
                 </div>
             `;
