@@ -11,7 +11,7 @@
 
     <title>Quán Trọ Nhà Mèo</title>
     
-    <!-- Favicon: Mèo đeo kính (Hiện trên tab trình duyệt) - Thêm ?v=2 để chống cache Cốc Cốc -->
+    <!-- Favicon: Mèo đeo kính -->
     <link rel="icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png?v=2" type="image/png">
     <link rel="shortcut icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png?v=2" type="image/png">
     <link rel="apple-touch-icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png?v=2">
@@ -27,7 +27,7 @@
 
     <style>
         /* ============================================================
-           BẢNG MÀU & VIBE (THIÊN NHIÊN / MÈO / CÂY CỎ)
+           BẢNG MÀU & VIBE
            ============================================================ */
         :root {
             color-scheme: light only;
@@ -58,16 +58,12 @@
                 --accent-mocha: #CDE0CA !important; 
                 --border-soft: #DFEFDC !important;
             }
-            html, body {
-                background-color: #EAF2EA !important;
-                color: #2C3E2C !important;
-            }
+            html, body { background-color: #EAF2EA !important; color: #2C3E2C !important; }
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             background-color: var(--bg-main);
-            /* Background Pattern: Gợn sóng nước & Chiếc lá thiên nhiên */
             background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.25'%3E%3Cpath d='M25 25 C25 20, 30 20, 30 25 C35 20, 40 20, 40 25 C40 30, 35 30, 32 30 C35 35, 30 40, 25 40 C20 40, 15 35, 18 30 C15 30, 10 30, 10 25 C10 20, 15 20, 15 25 C15 30, 20 30, 25 30 Z' fill='%23659165' transform='scale(0.4) translate(40, 40)'/%3E%3Cpath d='M70 80 Q80 70 90 80 T110 80' stroke='%23A3CBA3' stroke-width='2' fill='none'/%3E%3C/g%3E%3C/svg%3E");
             color: var(--text-dark); 
             font-family: var(--font-body); 
@@ -79,13 +75,9 @@
         a { text-decoration: none; color: inherit; }
         .hidden { display: none !important; }
 
-        /* ============================================================
-           STYLE ICON PIXEL
-           ============================================================ */
         .svg-icon {
             display: inline-block; vertical-align: middle;
-            width: 22px; height: 22px; overflow: visible;
-            shape-rendering: crispEdges;
+            width: 22px; height: 22px; overflow: visible; shape-rendering: crispEdges;
         }
 
         /* ============================================================
@@ -117,7 +109,6 @@
             position: relative; max-width: 550px; margin: 0 auto 15px auto;
         }
 
-        /* Mèo ngó đầu trên cùng (Ảnh 1) */
         .peeking-cat {
             position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); 
             width: 140px; z-index: 1; margin-bottom: -15px;
@@ -130,15 +121,13 @@
         }
         .cream-board:active { transform: scale(0.98); box-shadow: 0 4px 0 rgba(44, 62, 44, 0.1); }
 
-        /* Chuông vàng thắt nơ (Ảnh 3) */
         .bell-icon {
             position: absolute; top: -25px; left: -25px; width: 85px; z-index: 3;
             filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15)); transform: rotate(-5deg);
         }
 
-        /* CHỮ QUÁN TRỌ NHÀ MÈO (Baloo 2) */
         .station-title {
-            font-family: var(--font-title); font-size: clamp(2.2rem, 5vw, 3.2rem); 
+            font-family: var(--font-title); font-size: clamp(1.6rem, 5vw, 3.2rem); 
             font-weight: 800; color: var(--text-dark); margin: 0; line-height: 1.1; 
             text-transform: uppercase; letter-spacing: 2px; white-space: nowrap;
             text-shadow: 
@@ -152,103 +141,53 @@
                  3px 6px 0px var(--accent-pink);
         }
 
-        .intro-text-wrap {
-            display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto 20px auto; max-width: 650px;
-        }
-        .station-desc-freestyle {
-            font-size: 0.95rem; color: var(--text-muted); font-style: italic; text-align: center; font-weight: 800; line-height: 1.6;
-        }
-        .admin-edit-intro-btn {
-            display: none; background: #FFF; border: 2px solid var(--border-soft); border-radius: 50%; width: 26px; height: 26px;
-            align-items: center; justify-content: center; font-size: 0.7rem; cursor: pointer; color: var(--accent-peach);
-            box-shadow: 0 3px 5px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0;
-        }
+        .intro-text-wrap { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto 20px auto; max-width: 650px; }
+        .station-desc-freestyle { font-size: 0.95rem; color: var(--text-muted); font-style: italic; text-align: center; font-weight: 800; line-height: 1.6; }
+        .admin-edit-intro-btn { display: none; background: #FFF; border: 2px solid var(--border-soft); border-radius: 50%; width: 26px; height: 26px; align-items: center; justify-content: center; font-size: 0.7rem; cursor: pointer; color: var(--accent-peach); box-shadow: 0 3px 5px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0; }
         body.is-admin .admin-edit-intro-btn { display: flex; }
 
         .top-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;}
-        .btn-top {
-            padding: 10px 20px; border-radius: 50px; font-weight: 800; font-size: 0.85rem;
-            background: #FFF; border: 2.5px solid var(--border-soft); color: var(--text-dark); 
-            transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.03); display: flex; align-items: center; gap: 8px;
-        }
+        .btn-top { padding: 10px 20px; border-radius: 50px; font-weight: 800; font-size: 0.85rem; background: #FFF; border: 2.5px solid var(--border-soft); color: var(--text-dark); transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.03); display: flex; align-items: center; gap: 8px; }
         .btn-top:hover { border-color: var(--accent-peach); background: #EAF2EA; transform: translateY(-3px); }
 
         /* ============================================================
            THANH LỌC TAG ĐỘNG & TÌM KIẾM
            ============================================================ */
-        .filter-section {
-            max-width: 1000px; margin: 0 auto 30px auto; padding: 0 20px;
-            display: flex; flex-direction: column; align-items: center; gap: 15px;
-        }
-
-        .search-wrapper { 
-            width: 100%; max-width: 450px; position: relative; display: flex; align-items: center;
-        }
-        .search-icon-box {
-            position: absolute; left: 16px; display: flex; align-items: center; justify-content: center; color: var(--text-dark);
-        }
-        .search-input {
-            width: 100%; padding: 12px 20px 12px 45px; border-radius: 50px; background: #FFF;
-            border: 2px solid var(--border-soft); color: var(--text-dark); font-size: 0.9rem; font-weight: 800;
-            transition: 0.3s; box-shadow: var(--shadow-soft);
-        }
+        .filter-section { max-width: 1000px; margin: 0 auto 30px auto; padding: 0 20px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .search-wrapper { width: 100%; max-width: 450px; position: relative; display: flex; align-items: center; }
+        .search-icon-box { position: absolute; left: 16px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); }
+        .search-input { width: 100%; padding: 12px 20px 12px 45px; border-radius: 50px; background: #FFF; border: 2px solid var(--border-soft); color: var(--text-dark); font-size: 0.9rem; font-weight: 800; transition: 0.3s; box-shadow: var(--shadow-soft); }
         .search-input:focus { border-color: var(--accent-peach); }
         .search-input::placeholder { color: #A3B8A3; font-weight: 700; }
 
         .pill-tags-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 800px; }
-        .pill-tag {
-            padding: 6px 14px; border-radius: 50px; font-size: 0.75rem; font-weight: 800;
-            background: #FFF; border: 2px solid var(--border-soft); color: var(--text-muted);
-            transition: 0.3s; box-shadow: 0 3px 6px rgba(0,0,0,0.03);
-        }
+        .pill-tag { padding: 6px 14px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; background: #FFF; border: 2px solid var(--border-soft); color: var(--text-muted); transition: 0.3s; box-shadow: 0 3px 6px rgba(0,0,0,0.03); }
         .pill-tag:hover { background: #EAF2EA; transform: translateY(-2px); border-color: var(--accent-peach); color: var(--text-dark);}
-        .pill-tag.active { 
-            background: var(--accent-peach); border-color: var(--accent-peach); color: #FFF; 
-            box-shadow: 0 4px 10px rgba(101, 145, 101, 0.3); transform: translateY(-2px);
-        }
+        .pill-tag.active { background: var(--accent-peach); border-color: var(--accent-peach); color: #FFF; box-shadow: 0 4px 10px rgba(101, 145, 101, 0.3); transform: translateY(-2px); }
 
         /* ============================================================
            MÀN CHÍNH
            ============================================================ */
         .main-container { max-width: 1200px; margin: 0 auto 80px auto; padding: 0 15px; }
-        
-        .grid-header { 
-            display: flex; justify-content: flex-end; align-items: flex-end; 
-            margin-bottom: 20px; flex-wrap: wrap; gap: 15px;
-        }
-
-        .sort-select {
-            padding: 8px 16px; border-radius: 50px; background: #FFF; border: 2.5px solid var(--border-soft);
-            color: var(--text-dark); font-size: 0.8rem; font-weight: 800; cursor: pointer; transition: 0.3s;
-        }
+        .grid-header { display: flex; justify-content: flex-end; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
+        .sort-select { padding: 8px 16px; border-radius: 50px; background: #FFF; border: 2.5px solid var(--border-soft); color: var(--text-dark); font-size: 0.8rem; font-weight: 800; cursor: pointer; transition: 0.3s; }
 
         /* ============================================================
            GRID THẺ NHÂN VIÊN
            ============================================================ */
         .bot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 18px; }
 
-        .bot-card {
-            background: var(--bg-card); border-radius: 16px; overflow: hidden; position: relative;
-            display: flex; flex-direction: column; box-shadow: var(--shadow-soft);
-            border: 2px solid #FFF; transition: 0.3s; height: 100%;
-        }
+        .bot-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; position: relative; display: flex; flex-direction: column; box-shadow: var(--shadow-soft); border: 2px solid #FFF; transition: 0.3s; height: 100%; }
         .bot-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(44, 62, 44, 0.1); border-color: var(--border-soft); }
         
         .b-img-wrap { width: 100%; aspect-ratio: 9/16; position: relative; overflow: hidden; background: #EAF2EA; border-radius: 14px 14px 0 0;}
         .b-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .bot-card:hover .b-img-wrap img { transform: scale(1.05); }
 
-        .b-rating {
-            position: absolute; top: 6px; right: 6px; background: #FFF;
-            color: var(--text-dark); padding: 3px 8px; border-radius: 50px; font-size: 0.75rem; font-weight: 900;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1); z-index: 2; display: flex; align-items: center; gap: 4px; 
-            font-family: var(--font-heading);
-        }
+        .b-rating { position: absolute; top: 6px; right: 6px; background: #FFF; color: var(--text-dark); padding: 3px 8px; border-radius: 50px; font-size: 0.75rem; font-weight: 900; box-shadow: 0 3px 8px rgba(0,0,0,0.1); z-index: 2; display: flex; align-items: center; gap: 4px; font-family: var(--font-heading); }
         .b-rating .svg-icon { width: 12px; height: 12px; }
 
-        .b-info {
-            padding: 10px; display: flex; flex-direction: column; flex: 1; position: relative; background: #FFF;
-        }
+        .b-info { padding: 10px; display: flex; flex-direction: column; flex: 1; position: relative; background: #FFF; }
         .b-header-info { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
         .b-avatar-mini { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-peach); flex-shrink:0; aspect-ratio: 1/1;}
         .b-name { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 800; color: var(--text-dark); line-height: 1.2;}
@@ -259,11 +198,7 @@
         .b-hook { font-size: 0.75rem; color: var(--text-muted); font-style: italic; margin-bottom: 15px; flex: 1; font-weight: 700; line-height: 1.4;}
         
         .b-actions { display: flex; flex-direction: column; gap: 5px; margin-top: auto;}
-        .b-btn { 
-            width: 100%; padding: 6px; border-radius: 8px; font-size: 0.65rem; font-weight: 900; text-align: center; 
-            transition: 0.2s; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 4px;
-            font-family: var(--font-body); border: 2px solid transparent; cursor: pointer;
-        }
+        .b-btn { width: 100%; padding: 6px; border-radius: 8px; font-size: 0.65rem; font-weight: 900; text-align: center; transition: 0.2s; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 4px; font-family: var(--font-body); border: 2px solid transparent; cursor: pointer; }
         .b-btn .svg-icon { width: 12px; height: 12px; }
         .b-btn-link { background: var(--accent-peach); color: #FFF; }
         .b-btn-link:hover { background: #4D734D; }
@@ -273,21 +208,12 @@
         /* ============================================================
            MODAL CHUNG & GÓC FEEDBACK
            ============================================================ */
-        .modal-overlay {
-            position: fixed; inset: 0; background: rgba(44, 62, 44, 0.5); backdrop-filter: blur(8px);
-            z-index: 1000; display: none; justify-content: center; align-items: center; padding: 15px;
-        }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(44, 62, 44, 0.5); backdrop-filter: blur(8px); z-index: 1000; display: none; justify-content: center; align-items: center; padding: 15px; }
         .modal-overlay.show { display: flex; animation: fadeIn 0.2s ease; }
         @keyframes fadeIn { from {opacity:0; transform:scale(0.95);} to {opacity:1; transform:scale(1);} }
         
-        .modal-content {
-            background: #FFF; width: 100%; max-width: 650px; border-radius: 20px;
-            overflow: hidden; display: flex; flex-direction: column; max-height: 90vh;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15); border: 3px solid var(--border-soft);
-        }
-        .m-header {
-            padding: 15px 20px; border-bottom: 2px dashed var(--border-soft); display: flex; justify-content: space-between; align-items: center; background: #FFF;
-        }
+        .modal-content { background: #FFF; width: 100%; max-width: 650px; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; max-height: 90vh; box-shadow: 0 15px 40px rgba(0,0,0,0.15); border: 3px solid var(--border-soft); }
+        .m-header { padding: 15px 20px; border-bottom: 2px dashed var(--border-soft); display: flex; justify-content: space-between; align-items: center; background: #FFF; }
         .m-title { font-family: var(--font-heading); font-size: 1.1rem; color: var(--text-dark); margin: 0; font-weight: 800; display:flex; align-items:center; gap:8px;}
         .m-close { font-size: 1.4rem; color: var(--text-muted); transition: 0.2s; font-weight: bold;}
         .m-close:hover { color: #EF4444; }
@@ -296,10 +222,7 @@
         .m-body::-webkit-scrollbar-thumb { background: var(--accent-mocha); border-radius: 10px;}
 
         /* CSS Ép buộc trong Thông tin Chủ Trọ */
-        .bio-content {
-            color: var(--text-dark); background: #FFF; padding: 20px; border-radius: 16px; 
-            border: 2px dashed var(--accent-mocha); margin-bottom: 20px; box-shadow: var(--shadow-soft); text-align: left; 
-        }
+        .bio-content { color: var(--text-dark); background: #FFF; padding: 20px; border-radius: 16px; border: 2px dashed var(--accent-mocha); margin-bottom: 20px; box-shadow: var(--shadow-soft); text-align: left; }
         .bio-content * { font-family: 'Nunito', sans-serif !important; line-height: 1.6 !important; background-color: transparent !important; font-size:0.95rem !important;}
         .bio-content b, .bio-content strong { font-weight: 800 !important; }
         .bio-content i, .bio-content em { font-style: italic !important; }
@@ -352,7 +275,6 @@
         .fb-del-btn { background: #FFF; color: #EF4444; border: 1.5px solid #EF4444; padding: 3px 8px; font-size: 0.65rem; font-weight:800; border-radius: 50px; margin-left: 10px; transition: 0.2s;}
         .fb-del-btn:hover { background: #EF4444; color: #FFF; }
 
-        /* BÌNH LUẬN CON (REP) */
         .reply-section { border-top: 2px dashed var(--border-soft); padding-top: 12px; }
         .reply-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;}
         .reply-item { background: var(--bg-main); padding: 10px 15px; border-radius: 12px; font-size: 0.85rem; color: var(--text-dark); position:relative; border: 1.5px solid var(--border-soft); font-weight: 600;}
@@ -475,13 +397,34 @@
         .lightbox { position: fixed; inset: 0; background: rgba(44, 62, 44, 0.95); z-index: 10000; display: none; justify-content: center; align-items: center; cursor: zoom-out;}
         .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 12px; border: 3px solid #FFF; box-shadow: 0 10px 25px rgba(0,0,0,0.5);}
 
+        /* MEDIA QUERIES DI ĐỘNG */
         @media (max-width: 600px) {
-            .cream-board { padding: 10px 20px; }
-            .bot-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+            .header-section { margin-top: 100px; padding: 0 10px; }
+            .peeking-cat { width: 100px; margin-bottom: -10px; }
+            .cream-board { padding: 12px 15px; border-radius: 25px; }
+            .bell-icon { width: 50px; top: -15px; left: -10px; }
+            .station-title { font-size: 1.6rem; letter-spacing: 1px; }
+            
+            .global-stats { left: 10px; bottom: 10px; padding: 8px 12px; }
+            .stat-line { font-size: 0.75rem; }
+            .stat-line .num { font-size: 0.9rem; }
+            .stat-line .svg-icon { width: 14px; height: 14px; }
+            
+            .bot-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
             .m-body { padding: 15px; }
             .fb-form { padding: 15px; }
             .idea-modal-body { padding: 15px; }
-            .idea-modal-text { padding: 15px; font-size: 0.95rem;}
+            .idea-modal-text { padding: 15px; font-size: 0.9rem;}
+            
+            .search-input { font-size: 0.85rem; padding: 10px 15px 10px 40px; }
+            .pill-tag { font-size: 0.7rem; padding: 5px 10px; }
+            
+            .btn-top { font-size: 0.75rem; padding: 8px 15px; }
+            .btn-top img { width: 20px !important; height: 20px !important; }
+            .btn-top svg { width: 16px !important; height: 16px !important; }
+
+            .admin-bar { flex-wrap: wrap; justify-content: center; gap: 8px; padding: 8px;}
+            .admin-controls { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
@@ -518,7 +461,7 @@
         </div>
     </div>
 
-    <!-- BẢNG THỐNG KÊ (GÓC DƯỚI TRÁI) -->
+    <!-- BẢNG THỐNG KÊ (GÓC DƯỚI TRÁI - GẮN CHẾT VÀ KHÔNG CHE CHẮN) -->
     <div class="global-stats">
         <div class="stat-line">
             <svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-room"></use></svg>
@@ -535,10 +478,11 @@
     <!-- HEADER: TÊN QUÁN & BẢNG HIỆU -->
     <header class="header-section">
         <div class="signboard-wrapper">
+            <!-- Mèo ngó đầu trên cùng (Ảnh 1) -->
             <img src="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png" alt="Peeking Cat" class="peeking-cat">
             
             <div class="cream-board" id="trigger-admin" title="">
-                <!-- Tháo ảnh mèo lỗi ra, trả lại nguyên vẹn cái Chuông Vàng thắt nơ -->
+                <!-- Icon Chuông vàng (Ảnh 3) -->
                 <img src="ChatGPT_Image_22_00_11_31_thg_7__2026-removebg-preview.png" alt="Bell Icon" class="bell-icon">
                 <h1 class="station-title">QUÁN TRỌ NHÀ MÈO</h1>
             </div>
@@ -552,6 +496,7 @@
         </div>
 
         <div class="top-buttons">
+            <!-- Icon bên trái thông tin chủ trọ: Mèo vẫy tay (Ảnh 2) -->
             <button class="btn-top" onclick="openSMModal()"><img src="ChatGPT_Image_21_56_27_31_thg_7__2026-removebg-preview.png" style="width:24px;height:24px;object-fit:contain;"> Thông tin chủ trọ</button>
             <button class="btn-top" onclick="openUpcomingModal()"><svg class="svg-icon" viewBox="0 0 16 16" style="width:18px;height:18px;"><use href="#px-gift"></use></svg> Sắp Ra Mắt</button>
         </div>
@@ -592,7 +537,7 @@
         </div>
     </div>
 
-    <!-- MODAL PHỤ CHO Ý TƯỞNG -->
+    <!-- MODAL PHỤ CHO Ý TƯỞNG CÓ THANH CUỘN CHỐNG TRÀN -->
     <div class="sub-modal-overlay" id="sub-modal" onclick="closeSubModal(event)">
         <div class="sub-modal-content" onclick="event.stopPropagation()">
             <div class="m-header">
@@ -685,7 +630,7 @@
            ============================================================ */
         async function fetchConfig() {
             try {
-                // Đổi ID truy cập thành 1000 để reset sạch lượt truy cập cũ của các bản sửa lỗi trước
+                // Đổi ID truy cập sang 1000 để reset lượt khách về 0
                 const { data: visitData } = await supa.from('station_config').select('data').eq('id', 1000).single();
                 if (visitData && visitData.data) { globalVisits = parseInt(visitData.data); }
                 if (!sessionStorage.getItem('cat_visited_v3') && !isAdminMode) { 
@@ -860,7 +805,7 @@
         document.getElementById("sort-select").addEventListener("change", renderGrid);
 
         /* ============================================================
-           MỞ MODAL: GÓC FEEDBACK (RIÊNG TƯ HOÀN TOÀN TÀNG HÌNH VỚI KHÁCH)
+           MỞ MODAL: GÓC FEEDBACK (BẢO MẬT: GỬI KÍN LÀ TÀNG HÌNH VỚI KHÁCH)
            ============================================================ */
         let tempFbImgs = [];
         let currentStars = 0;
@@ -873,8 +818,9 @@
             document.getElementById("modal-title").innerHTML = `💬 GÓC FEEDBACK: <span style="color:var(--accent-peach)">${bot.name.toUpperCase()}</span>`;
             const body = document.getElementById("modal-body");
             
-            // CHỈ HIỆN FEEDBACK CÔNG KHAI (Hoặc hiện TẤT CẢ nếu là Admin)
-            // Khách gửi riêng xong sẽ bị ẩn lập tức khỏi máy khách.
+            // BẢO MẬT TUYỆT ĐỐI: 
+            // Nếu không phải Admin -> CHỈ HIỆN FEEDBACK CÔNG KHAI (Không lưu máy khách nữa)
+            // Nếu là Admin -> Hiển thị tất cả
             let displayFbs = bot.feedbacks.filter(fb => isAdminMode || !fb.isPrivate);
 
             let fbListHtml = "";
@@ -913,6 +859,7 @@
                             : `<svg class="svg-icon" viewBox="0 0 16 16" style="width:16px;height:16px;color:var(--border-soft)"><use href="#px-star-empty"></use></svg>`;
                     }
 
+                    // Lấy chữ cái đầu làm Avatar
                     let initial = (fb.name || "K").charAt(0).toUpperCase();
 
                     let privacyBadge = fb.isPrivate ? `<span style="background:#EF4444; color:#FFF; font-size:0.6rem; padding:2px 6px; border-radius:6px; margin-left:6px; vertical-align:middle;">🔒 Thư Mật</span>` : '';
