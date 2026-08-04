@@ -11,10 +11,10 @@
 
     <title>Quán Trọ Nhà Mèo</title>
     
-    <!-- Favicon: Mèo đeo kính -->
-    <link rel="icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png?v=2" type="image/png">
-    <link rel="shortcut icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png?v=2" type="image/png">
-    <link rel="apple-touch-icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png?v=2">
+    <!-- Favicon: Mèo đeo kính (Hiện trên tab trình duyệt) -->
+    <link rel="icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png?v=3" type="image/png">
+    <link rel="shortcut icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png?v=3" type="image/png">
+    <link rel="apple-touch-icon" href="ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png?v=3">
     
     <!-- Fonts: Baloo 2, Comfortaa & Nunito -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,7 +46,6 @@
             --shadow-soft: 0 8px 25px rgba(44, 62, 44, 0.08);
         }
 
-        /* Lệnh ép màu lại nếu hệ thống cố tình bật Dark Mode */
         @media (prefers-color-scheme: dark) {
             :root {
                 --bg-main: #EAF2EA !important; 
@@ -58,7 +57,10 @@
                 --accent-mocha: #CDE0CA !important; 
                 --border-soft: #DFEFDC !important;
             }
-            html, body { background-color: #EAF2EA !important; color: #2C3E2C !important; }
+            html, body {
+                background-color: #EAF2EA !important;
+                color: #2C3E2C !important;
+            }
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -77,11 +79,12 @@
 
         .svg-icon {
             display: inline-block; vertical-align: middle;
-            width: 22px; height: 22px; overflow: visible; shape-rendering: crispEdges;
+            width: 22px; height: 22px; overflow: visible;
+            shape-rendering: crispEdges;
         }
 
         /* ============================================================
-           BẢNG THỐNG KÊ MINI GÓC TRÁI DƯỚI
+           BẢNG THỐNG KÊ MINI
            ============================================================ */
         .global-stats {
             position: fixed; left: 15px; bottom: 15px; z-index: 100;
@@ -100,11 +103,8 @@
            HEADER & BẢNG HIỆU
            ============================================================ */
         .header-section {
-            max-width: 850px; 
-            margin: 140px auto 15px auto; 
-            text-align: center; padding: 0 20px;
+            max-width: 850px; margin: 140px auto 15px auto; text-align: center; padding: 0 20px;
         }
-        
         .signboard-wrapper {
             position: relative; max-width: 550px; margin: 0 auto 15px auto;
         }
@@ -127,7 +127,7 @@
         }
 
         .station-title {
-            font-family: var(--font-title); font-size: clamp(1.6rem, 5vw, 3.2rem); 
+            font-family: var(--font-title); font-size: clamp(2.2rem, 5vw, 3.2rem); 
             font-weight: 800; color: var(--text-dark); margin: 0; line-height: 1.1; 
             text-transform: uppercase; letter-spacing: 2px; white-space: nowrap;
             text-shadow: 
@@ -397,12 +397,15 @@
         .lightbox { position: fixed; inset: 0; background: rgba(44, 62, 44, 0.95); z-index: 10000; display: none; justify-content: center; align-items: center; cursor: zoom-out;}
         .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 12px; border: 3px solid #FFF; box-shadow: 0 10px 25px rgba(0,0,0,0.5);}
 
-        /* MEDIA QUERIES DI ĐỘNG */
+        /* ĐIỀU CHỈNH TRÊN ĐIỆN THOẠI */
         @media (max-width: 600px) {
             .header-section { margin-top: 100px; padding: 0 10px; }
+            /* Căn lề trái sâu hơn để chuông không đè chữ */
+            .cream-board { padding: 12px 15px 12px 40px; border-radius: 25px; }
             .peeking-cat { width: 100px; margin-bottom: -10px; }
-            .cream-board { padding: 12px 15px; border-radius: 25px; }
-            .bell-icon { width: 50px; top: -15px; left: -10px; }
+            /* Resize cái chuông để nó vừa, và lùi sang trái */
+            .bell-icon { width: 60px; top: -18px; left: -15px; }
+            
             .station-title { font-size: 1.6rem; letter-spacing: 1px; }
             
             .global-stats { left: 10px; bottom: 10px; padding: 8px 12px; }
@@ -537,7 +540,7 @@
         </div>
     </div>
 
-    <!-- MODAL PHỤ CHO Ý TƯỞNG CÓ THANH CUỘN CHỐNG TRÀN -->
+    <!-- MODAL PHỤ CHO Ý TƯỞNG -->
     <div class="sub-modal-overlay" id="sub-modal" onclick="closeSubModal(event)">
         <div class="sub-modal-content" onclick="event.stopPropagation()">
             <div class="m-header">
@@ -630,13 +633,13 @@
            ============================================================ */
         async function fetchConfig() {
             try {
-                // Đổi ID truy cập sang 1000 để reset lượt khách về 0
-                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 1000).single();
+                // ID mới toanh (1111) để reset lượt khách về 0 
+                const { data: visitData } = await supa.from('station_config').select('data').eq('id', 1111).single();
                 if (visitData && visitData.data) { globalVisits = parseInt(visitData.data); }
-                if (!sessionStorage.getItem('cat_visited_v3') && !isAdminMode) { 
+                if (!sessionStorage.getItem('cat_visited_v4') && !isAdminMode) { 
                     globalVisits++; 
-                    sessionStorage.setItem('cat_visited_v3', 'true'); 
-                    supa.from('station_config').upsert([{ id: 1000, data: globalVisits.toString() }]).then(); 
+                    sessionStorage.setItem('cat_visited_v4', 'true'); 
+                    supa.from('station_config').upsert([{ id: 1111, data: globalVisits.toString() }]).then(); 
                 }
 
                 const { data } = await supa.from('station_config').select('data').eq('id', 777).single();
@@ -805,7 +808,8 @@
         document.getElementById("sort-select").addEventListener("change", renderGrid);
 
         /* ============================================================
-           MỞ MODAL: GÓC FEEDBACK (BẢO MẬT: GỬI KÍN LÀ TÀNG HÌNH VỚI KHÁCH)
+           MỞ MODAL: GÓC FEEDBACK 
+           (ĐÃ SỬA: KHÁCH GỬI RIÊNG XONG TÀNG HÌNH HOÀN TOÀN, CHỈ ADMIN ĐỌC ĐƯỢC)
            ============================================================ */
         let tempFbImgs = [];
         let currentStars = 0;
@@ -818,8 +822,7 @@
             document.getElementById("modal-title").innerHTML = `💬 GÓC FEEDBACK: <span style="color:var(--accent-peach)">${bot.name.toUpperCase()}</span>`;
             const body = document.getElementById("modal-body");
             
-            // BẢO MẬT TUYỆT ĐỐI: 
-            // Nếu không phải Admin -> CHỈ HIỆN FEEDBACK CÔNG KHAI (Không lưu máy khách nữa)
+            // CHỈ HIỆN FEEDBACK CÔNG KHAI (Không còn check myFbs của máy khách nữa)
             // Nếu là Admin -> Hiển thị tất cả
             let displayFbs = bot.feedbacks.filter(fb => isAdminMode || !fb.isPrivate);
 
@@ -859,7 +862,6 @@
                             : `<svg class="svg-icon" viewBox="0 0 16 16" style="width:16px;height:16px;color:var(--border-soft)"><use href="#px-star-empty"></use></svg>`;
                     }
 
-                    // Lấy chữ cái đầu làm Avatar
                     let initial = (fb.name || "K").charAt(0).toUpperCase();
 
                     let privacyBadge = fb.isPrivate ? `<span style="background:#EF4444; color:#FFF; font-size:0.6rem; padding:2px 6px; border-radius:6px; margin-left:6px; vertical-align:middle;">🔒 Thư Mật</span>` : '';
