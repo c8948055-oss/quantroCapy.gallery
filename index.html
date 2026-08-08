@@ -60,52 +60,140 @@
             html, body { background-color: #EAF2EA !important; color: #2C3E2C !important; }
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; overflow-wrap: break-word; }
-        html, body { max-width: 100vw; overflow-x: hidden; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            overflow-wrap: break-word;
+        }
+
+        html, body {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
         
         body { 
             background-color: var(--bg-main);
             background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.25'%3E%3Cpath d='M25 25 C25 20, 30 20, 30 25 C35 20, 40 20, 40 25 C40 30, 35 30, 32 30 C35 35, 30 40, 25 40 C20 40, 15 35, 18 30 C15 30, 10 30, 10 25 C10 20, 15 20, 15 25 C15 30, 20 30, 25 30 Z' fill='%23659165' transform='scale(0.4) translate(40, 40)'/%3E%3Cpath d='M70 80 Q80 70 90 80 T110 80' stroke='%23A3CBA3' stroke-width='2' fill='none'/%3E%3C/g%3E%3C/svg%3E");
             color: var(--text-dark); 
             font-family: var(--font-body); 
-            min-height: 100vh; line-height: 1.6;
+            min-height: 100vh;
+            line-height: 1.6;
         }
         
-        button, a, input, select { touch-action: manipulation; }
-        button { cursor: pointer; border: none; background: none; font-family: inherit; outline: none; }
+        button, a, input, select {
+            touch-action: manipulation;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+            outline: none;
+        }
         
-        input, select, textarea { font-family: inherit; outline: none; font-size: 16px !important; }
-        img { max-width: 100%; display: block; }
-        a { text-decoration: none; color: inherit; }
-        .hidden { display: none !important; }
+        input, select, textarea {
+            font-family: inherit;
+            outline: none;
+            font-size: 16px !important;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .hidden {
+            display: none !important;
+        }
 
         .svg-icon {
-            display: inline-block; vertical-align: middle;
-            width: 22px; height: 22px; overflow: visible;
+            display: inline-block;
+            vertical-align: middle;
+            width: 22px;
+            height: 22px;
+            overflow: visible;
             shape-rendering: crispEdges;
         }
 
         /* ============================================================
            HEADER & BẢNG HIỆU
            ============================================================ */
-        .header-section { max-width: 850px; margin: 120px auto 15px auto; text-align: center; padding: 0 15px; transition: margin-top 0.3s ease; }
-        body.is-admin .header-section { margin-top: 150px; }
+        .header-section {
+            max-width: 850px;
+            margin: 120px auto 15px auto;
+            text-align: center;
+            padding: 0 15px;
+            transition: margin-top 0.3s ease;
+        }
+
+        body.is-admin .header-section {
+            margin-top: 150px;
+        }
         
-        .signboard-wrapper { position: relative; max-width: 550px; margin: 0 auto 15px auto; }
-        .peeking-cat { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); width: 140px; z-index: 1; margin-bottom: -15px; }
+        .signboard-wrapper {
+            position: relative;
+            max-width: 550px;
+            margin: 0 auto 15px auto;
+        }
+
+        .peeking-cat {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            z-index: 1;
+            margin-bottom: -15px;
+        }
 
         .cream-board {
-            background: #FAFCFA; border: 4px solid var(--text-dark); border-radius: 35px; 
-            padding: 15px 30px; position: relative; z-index: 2; box-shadow: 0 8px 0 rgba(44, 62, 44, 0.1);
-            cursor: pointer; user-select: none; transition: 0.2s; display: flex; justify-content: center; align-items: center;
+            background: #FAFCFA;
+            border: 4px solid var(--text-dark);
+            border-radius: 35px; 
+            padding: 15px 30px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 0 rgba(44, 62, 44, 0.1);
+            cursor: pointer;
+            user-select: none;
+            transition: 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .cream-board:active { transform: scale(0.98); box-shadow: 0 4px 0 rgba(44, 62, 44, 0.1); }
 
-        .bell-icon { position: absolute; top: -25px; left: -25px; width: 85px; z-index: 3; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15)); transform: rotate(-5deg); }
+        .cream-board:active {
+            transform: scale(0.98);
+            box-shadow: 0 4px 0 rgba(44, 62, 44, 0.1);
+        }
+
+        .bell-icon {
+            position: absolute;
+            top: -25px;
+            left: -25px;
+            width: 85px;
+            z-index: 3;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
+            transform: rotate(-5deg);
+        }
 
         .station-title {
-            font-family: var(--font-title); font-size: clamp(1.8rem, 5vw, 3.2rem); font-weight: 800; color: var(--text-dark); margin: 0; line-height: 1.2; 
-            text-transform: uppercase; letter-spacing: 2px; white-space: normal;
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 5vw, 3.2rem);
+            font-weight: 800;
+            color: var(--text-dark);
+            margin: 0;
+            line-height: 1.2; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            white-space: normal;
             text-shadow: 
                 -3px -3px 0 #FFF, 3px -3px 0 #FFF, -3px 3px 0 #FFF, 3px 3px 0 #FFF,
                  0px -3px 0 #FFF, 0px 3px 0 #FFF, -3px 0px 0 #FFF, 3px 0px 0 #FFF,
@@ -117,39 +205,191 @@
                  3px 6px 0px var(--accent-pink);
         }
 
-        .intro-text-wrap { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto 20px auto; max-width: 650px; }
-        .station-desc-freestyle { font-size: 0.95rem; color: var(--text-muted); font-style: italic; text-align: center; font-weight: 800; line-height: 1.6; }
-        .admin-edit-intro-btn { display: none; background: #FFF; border: 2px solid var(--border-soft); border-radius: 50%; width: 26px; height: 26px; align-items: center; justify-content: center; font-size: 0.7rem; cursor: pointer; color: var(--accent-peach); box-shadow: 0 3px 5px rgba(0,0,0,0.05); transition: 0.2s; flex-shrink: 0; }
-        body.is-admin .admin-edit-intro-btn { display: flex; }
+        .intro-text-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 0 auto 20px auto;
+            max-width: 650px;
+        }
 
-        .top-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;}
-        .btn-top { padding: 12px 24px; border-radius: 50px; font-weight: 800; font-size: 0.85rem; background: #FFF; border: 2.5px solid var(--border-soft); color: var(--text-dark); transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.03); display: flex; align-items: center; gap: 8px; }
-        .btn-top:hover { border-color: var(--accent-peach); background: #EAF2EA; transform: translateY(-3px); }
+        .station-desc-freestyle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: center;
+            font-weight: 800;
+            line-height: 1.6;
+        }
+
+        .admin-edit-intro-btn {
+            display: none;
+            background: #FFF;
+            border: 2px solid var(--border-soft);
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            cursor: pointer;
+            color: var(--accent-peach);
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+            transition: 0.2s;
+            flex-shrink: 0;
+        }
+
+        body.is-admin .admin-edit-intro-btn {
+            display: flex;
+        }
+
+        .top-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .btn-top {
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            background: #FFF;
+            border: 2.5px solid var(--border-soft);
+            color: var(--text-dark);
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-top:hover {
+            border-color: var(--accent-peach);
+            background: #EAF2EA;
+            transform: translateY(-3px);
+        }
 
         /* ============================================================
            THANH LỌC TAG ĐỘNG & TÌM KIẾM
            ============================================================ */
-        .filter-section { max-width: 1000px; margin: 0 auto 30px auto; padding: 0 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
-        .search-wrapper { width: 100%; max-width: 500px; position: relative; display: flex; align-items: center; }
-        .search-icon-box { position: absolute; left: 16px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); }
-        .search-input { width: 100%; padding: 14px 20px 14px 45px; border-radius: 50px; background: #FFF; border: 2px solid var(--border-soft); color: var(--text-dark); font-weight: 800; transition: 0.3s; box-shadow: var(--shadow-soft); }
-        .search-input:focus { border-color: var(--accent-peach); }
-        .search-input::placeholder { color: #A3B8A3; font-weight: 700; }
+        .filter-section {
+            max-width: 1000px;
+            margin: 0 auto 30px auto;
+            padding: 0 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
 
-        .pill-tags-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 800px; }
-        .pill-tag { padding: 8px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 800; background: #FFF; border: 2px solid var(--border-soft); color: var(--text-muted); transition: 0.3s; box-shadow: 0 3px 6px rgba(0,0,0,0.03); }
-        .pill-tag:hover { background: #EAF2EA; transform: translateY(-2px); border-color: var(--accent-peach); color: var(--text-dark);}
-        .pill-tag.active { background: var(--accent-peach); border-color: var(--accent-peach); color: #FFF; box-shadow: 0 4px 10px rgba(101, 145, 101, 0.3); transform: translateY(-2px); }
+        .search-wrapper {
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-icon-box {
+            position: absolute;
+            left: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px 14px 45px;
+            border-radius: 50px;
+            background: #FFF;
+            border: 2px solid var(--border-soft);
+            color: var(--text-dark);
+            font-weight: 800;
+            transition: 0.3s;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-peach);
+        }
+
+        .search-input::placeholder {
+            color: #A3B8A3;
+            font-weight: 700;
+        }
+
+        .pill-tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            max-width: 800px;
+        }
+
+        .pill-tag {
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            background: #FFF;
+            border: 2px solid var(--border-soft);
+            color: var(--text-muted);
+            transition: 0.3s;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.03);
+        }
+
+        .pill-tag:hover {
+            background: #EAF2EA;
+            transform: translateY(-2px);
+            border-color: var(--accent-peach);
+            color: var(--text-dark);
+        }
+
+        .pill-tag.active {
+            background: var(--accent-peach);
+            border-color: var(--accent-peach);
+            color: #FFF;
+            box-shadow: 0 4px 10px rgba(101, 145, 101, 0.3);
+            transform: translateY(-2px);
+        }
 
         /* ============================================================
            MÀN CHÍNH
            ============================================================ */
-        .main-container { max-width: 1200px; margin: 0 auto 80px auto; padding: 0 15px; }
-        .grid-header { display: flex; justify-content: flex-end; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
-        .sort-select { padding: 10px 16px; border-radius: 50px; background: #FFF; border: 2.5px solid var(--border-soft); color: var(--text-dark); font-weight: 800; cursor: pointer; transition: 0.3s; }
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto 80px auto;
+            padding: 0 15px;
+        }
+
+        .grid-header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .sort-select {
+            padding: 10px 16px;
+            border-radius: 50px;
+            background: #FFF;
+            border: 2.5px solid var(--border-soft);
+            color: var(--text-dark);
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
         /* ============================================================
-           GRID THẺ NHÂN VIÊN & SẮP RA MẮT (ĐÃ TRẢ VỀ CHUẨN GỐC)
+           GRID THẺ NHÂN VIÊN & SẮP RA MẮT
            ============================================================ */
         .bot-grid, .up-grid { 
             display: grid; 
@@ -157,233 +397,1232 @@
             gap: 18px; 
         }
 
-        .bot-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; position: relative; display: flex; flex-direction: column; box-shadow: var(--shadow-soft); border: 2px solid #FFF; transition: 0.3s; height: 100%; }
-        .bot-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(44, 62, 44, 0.1); border-color: var(--border-soft); }
-        
-        .b-img-wrap { width: 100%; aspect-ratio: 9/16; position: relative; overflow: hidden; background: #EAF2EA; border-radius: 14px 14px 0 0;}
-        .b-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .bot-card:hover .b-img-wrap img { transform: scale(1.05); }
+        .bot-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-soft);
+            border: 2px solid #FFF;
+            transition: 0.3s;
+            height: 100%;
+            min-width: 0;
+        }
 
-        .b-rating { position: absolute; top: 6px; right: 6px; background: #FFF; color: var(--text-dark); padding: 4px 10px; border-radius: 50px; font-size: 0.8rem; font-weight: 900; box-shadow: 0 3px 8px rgba(0,0,0,0.1); z-index: 2; display: flex; align-items: center; gap: 4px; font-family: var(--font-heading); }
-        .b-rating .svg-icon { width: 12px; height: 12px; }
+        .bot-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(44, 62, 44, 0.1);
+            border-color: var(--border-soft);
+        }
+        
+        .b-img-wrap {
+            width: 100%;
+            aspect-ratio: 9/16;
+            position: relative;
+            overflow: hidden;
+            background: #EAF2EA;
+            border-radius: 14px 14px 0 0;
+        }
 
-        .b-info { padding: 12px; display: flex; flex-direction: column; flex: 1; position: relative; background: #FFF; }
-        .b-header-info { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-        .b-avatar-mini { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-peach); flex-shrink:0; }
-        .b-name { font-family: var(--font-heading); font-size: 1rem; font-weight: 800; color: var(--text-dark); line-height: 1.2; word-break: break-word;}
-        
-        .b-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
-        .b-tag { font-size: 0.65rem; padding: 4px 8px; background: var(--bg-main); border-radius: 50px; color: var(--text-dark); font-weight: 800; border: 1px solid var(--border-soft); }
-        
-        .b-hook { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-bottom: 15px; flex: 1; font-weight: 700; line-height: 1.5; word-break: break-word;}
-        
-        .b-actions { display: flex; flex-direction: column; gap: 8px; margin-top: auto;}
-        .b-btn { width: 100%; padding: 10px; border-radius: 10px; font-size: 0.75rem; font-weight: 900; text-align: center; transition: 0.2s; text-transform: uppercase; display: flex; justify-content: center; align-items: center; gap: 6px; font-family: var(--font-body); border: 2px solid transparent; cursor: pointer; }
-        .b-btn .svg-icon { width: 14px; height: 14px; }
-        .b-btn-link { background: var(--accent-peach); color: #FFF; }
-        .b-btn-link:hover { background: #4D734D; }
-        .b-btn-fb { background: #FFF; color: var(--text-dark); border-color: var(--border-soft); }
-        .b-btn-fb:hover { background: var(--bg-main); border-color: var(--accent-peach);}
+        .b-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s;
+        }
 
-        /* THẺ SẮP RA MẮT (Bỏ height 100% để không bị giãn dọc) */
+        .bot-card:hover .b-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .b-rating {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            background: #FFF;
+            color: var(--text-dark);
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 900;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-family: var(--font-heading);
+        }
+
+        .b-rating .svg-icon {
+            width: 12px;
+            height: 12px;
+        }
+
+        .b-info {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            position: relative;
+            background: #FFF;
+            min-width: 0;
+        }
+
+        .b-header-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .b-avatar-mini {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-peach);
+            flex-shrink: 0;
+        }
+
+        .b-name {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.2;
+            word-break: break-word;
+        }
+        
+        .b-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .b-tag {
+            font-size: 0.65rem;
+            padding: 4px 8px;
+            background: var(--bg-main);
+            border-radius: 50px;
+            color: var(--text-dark);
+            font-weight: 800;
+            border: 1px solid var(--border-soft);
+        }
+        
+        .b-hook {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 15px;
+            flex: 1;
+            font-weight: 700;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+        
+        .b-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .b-btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            text-align: center;
+            transition: 0.2s;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-body);
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .b-btn .svg-icon {
+            width: 14px;
+            height: 14px;
+        }
+
+        .b-btn-link {
+            background: var(--accent-peach);
+            color: #FFF;
+        }
+
+        .b-btn-link:hover {
+            background: #4D734D;
+        }
+
+        .b-btn-fb {
+            background: #FFF;
+            color: var(--text-dark);
+            border-color: var(--border-soft);
+        }
+
+        .b-btn-fb:hover {
+            background: var(--bg-main);
+            border-color: var(--accent-peach);
+        }
+
+        /* THẺ SẮP RA MẮT */
         .up-card {
-            background: var(--bg-card); border: 2px solid var(--border-soft); border-radius: 16px; padding: 18px 12px;
-            display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;
+            background: var(--bg-card);
+            border: 2px solid var(--border-soft);
+            border-radius: 16px;
+            padding: 18px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
             box-shadow: var(--shadow-soft);
         }
-        .up-stamp { position: absolute; top: -8px; left: -8px; background: #EF4444; color: #FFF; font-weight: 900; font-size: 0.7rem; padding: 5px 12px; border: 2px solid #FFF; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 2; letter-spacing: 0.5px; transform: rotate(-5deg);}
-        
-        .up-avatar-wrap { position:relative; margin-bottom: 12px; margin-top:8px;}
-        .up-avatar { width: 85px; height: 85px; border-radius: 50%; object-fit: cover; filter: blur(2px); border: 3px solid #FFF; box-shadow: 0 4px 10px rgba(44,62,44, 0.1);}
-        
-        .up-name { font-family: var(--font-heading); font-size: 1.1rem; font-weight:800; color: var(--text-dark); margin-bottom: 8px; line-height:1.2; word-break:break-word;}
-        
-        .up-progress-wrap { width: 100%; margin-bottom: 12px; text-align: left; background: var(--bg-main); padding: 10px; border-radius: 10px; border: 1.5px solid var(--border-soft);}
-        .up-p-header { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-dark); margin-bottom: 6px; font-weight:800;}
-        .up-p-bar { width: 100%; height: 8px; background: #FFF; border-radius: 50px; overflow: hidden; border: 1px solid var(--border-soft);}
-        .up-p-fill { height: 100%; background: var(--accent-peach); border-radius: 50px;}
-        
-        .up-vote-btn { width: 100%; padding: 12px; border-radius: 12px; background: #FFF; border: 2px solid var(--border-soft); color: var(--text-dark); font-weight: 800; transition: 0.3s; font-size: 0.85rem; display:flex; align-items:center; justify-content:center; gap:6px; font-family: var(--font-body); margin-top:auto;}
-        .up-vote-btn.voted { border-color: var(--accent-pink); color: #FFF; background: var(--accent-pink); box-shadow: 0 2px 8px rgba(163,203,163,0.4);}
-        .up-vote-btn:hover { background: var(--bg-main); border-color: var(--accent-peach); transform:translateY(-2px);}
 
+        .up-stamp {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background: #EF4444;
+            color: #FFF;
+            font-weight: 900;
+            font-size: 0.7rem;
+            padding: 5px 12px;
+            border: 2px solid #FFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 2;
+            letter-spacing: 0.5px;
+            transform: rotate(-5deg);
+        }
+        
+        .up-avatar-wrap {
+            position: relative;
+            margin-bottom: 12px;
+            margin-top: 8px;
+        }
+
+        .up-avatar {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: blur(2px);
+            border: 3px solid #FFF;
+            box-shadow: 0 4px 10px rgba(44,62,44, 0.1);
+        }
+        
+        .up-name {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            line-height: 1.2;
+            word-break: break-word;
+        }
+        
+        .up-progress-wrap {
+            width: 100%;
+            margin-bottom: 12px;
+            text-align: left;
+            background: var(--bg-main);
+            padding: 10px;
+            border-radius: 10px;
+            border: 1.5px solid var(--border-soft);
+        }
+
+        .up-p-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+
+        .up-p-bar {
+            width: 100%;
+            height: 8px;
+            background: #FFF;
+            border-radius: 50px;
+            overflow: hidden;
+            border: 1px solid var(--border-soft);
+        }
+
+        .up-p-fill {
+            height: 100%;
+            background: var(--accent-peach);
+            border-radius: 50px;
+        }
+        
+        .up-vote-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            background: #FFF;
+            border: 2px solid var(--border-soft);
+            color: var(--text-dark);
+            font-weight: 800;
+            transition: 0.3s;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-family: var(--font-body);
+            margin-top: auto;
+        }
+
+        .up-vote-btn.voted {
+            border-color: var(--accent-pink);
+            color: #FFF;
+            background: var(--accent-pink);
+            box-shadow: 0 2px 8px rgba(163,203,163,0.4);
+        }
+
+        .up-vote-btn:hover {
+            background: var(--bg-main);
+            border-color: var(--accent-peach);
+            transform: translateY(-2px);
+        }
 
         /* ============================================================
            MODAL UX: BOTTOM SHEET TRÊN MOBILE
            ============================================================ */
         .modal-overlay, .sub-modal-overlay, .admin-modal { 
-            position: fixed; inset: 0; background: rgba(44, 62, 44, 0.6); backdrop-filter: blur(5px); 
-            z-index: 1000; display: none; justify-content: center; align-items: center; padding: 2vh 15px; overflow: hidden; 
+            position: fixed;
+            inset: 0;
+            background: rgba(44, 62, 44, 0.6);
+            backdrop-filter: blur(5px); 
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 2vh 15px;
+            overflow: hidden; 
         }
-        .modal-overlay.show, .sub-modal-overlay.show, .admin-modal.show { display: flex; animation: fadeIn 0.25s ease; }
-        @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-        @keyframes slideUp { from {transform:translateY(100%);} to {transform:translateY(0);} }
+
+        .modal-overlay.show, .sub-modal-overlay.show, .admin-modal.show {
+            display: flex;
+            animation: fadeIn 0.25s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
         
         .modal-content, .sub-modal-content, .admin-modal-box { 
-            background: #FFF; width: 100%; max-width: 650px; margin: auto; border-radius: 20px; 
-            display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.2); border: 3px solid var(--border-soft);
-            max-height: 90vh; overflow: hidden;
+            background: #FFF;
+            width: 100%;
+            max-width: 650px;
+            margin: auto;
+            border-radius: 20px; 
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border: 3px solid var(--border-soft);
+            max-height: 90vh;
+            overflow: hidden;
         }
         
         .m-header { 
-            padding: 16px 20px; border-bottom: 2px dashed var(--border-soft); display: flex; justify-content: space-between; align-items: center; 
-            background: #FFF; position: sticky; top: 0; z-index: 10;
+            padding: 16px 20px;
+            border-bottom: 2px dashed var(--border-soft);
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            background: #FFF;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
-        .m-title { font-family: var(--font-heading); font-size: 1.15rem; color: var(--text-dark); margin: 0; font-weight: 800; display:flex; align-items:center; gap:8px;}
-        .m-close { font-size: 1.5rem; color: var(--text-muted); transition: 0.2s; font-weight: bold; width: 36px; height: 36px; display:flex; justify-content:center; align-items:center; border-radius: 50%; background: var(--bg-main);}
-        .m-close:hover { color: #FFF; background: #EF4444; }
+
+        .m-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin: 0;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .m-close {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            transition: 0.2s;
+            font-weight: bold;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: var(--bg-main);
+        }
+
+        .m-close:hover {
+            color: #FFF;
+            background: #EF4444;
+        }
         
-        .m-body, .idea-modal-body, #admin-form-body { padding: 20px; overflow-y: auto; flex: 1; background: var(--bg-main); }
-        .m-body::-webkit-scrollbar, .idea-modal-body::-webkit-scrollbar, #admin-form-body::-webkit-scrollbar { width: 6px; }
-        .m-body::-webkit-scrollbar-thumb, .idea-modal-body::-webkit-scrollbar-thumb, #admin-form-body::-webkit-scrollbar-thumb { background: var(--accent-mocha); border-radius: 10px;}
+        .m-body, .idea-modal-body, #admin-form-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+            background: var(--bg-main);
+        }
+
+        .m-body::-webkit-scrollbar, .idea-modal-body::-webkit-scrollbar, #admin-form-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .m-body::-webkit-scrollbar-thumb, .idea-modal-body::-webkit-scrollbar-thumb, #admin-form-body::-webkit-scrollbar-thumb {
+            background: var(--accent-mocha);
+            border-radius: 10px;
+        }
 
         /* CÁC CHI TIẾT TRONG MODAL */
-        .bio-content { color: var(--text-dark); background: #FFF; padding: 20px; border-radius: 16px; border: 2px dashed var(--accent-mocha); margin-bottom: 20px; box-shadow: var(--shadow-soft); text-align: left; }
-        .bio-content * { font-family: 'Nunito', sans-serif !important; line-height: 1.6 !important; background-color: transparent !important; font-size:1rem !important;}
-        .bio-content b, .bio-content strong { font-weight: 800 !important; }
-        .bio-content i, .bio-content em { font-style: italic !important; }
-        .bio-content ul, .bio-content ol { padding-left: 20px; margin: 8px 0; }
-        .bio-content li { margin-bottom: 4px; }
+        .bio-content {
+            color: var(--text-dark);
+            background: #FFF;
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px dashed var(--accent-mocha);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-soft);
+            text-align: left;
+        }
 
-        .capy-toggle { background: #FFF !important; border: 2px dashed var(--border-soft) !important; padding: 12px 15px !important; margin: 12px 0 !important; border-radius: 12px !important; }
-        .capy-toggle summary { cursor: pointer; font-weight: 800; color: var(--text-dark); font-size: 1rem !important; outline: none; list-style: none; transition: 0.2s; }
-        .capy-toggle summary:hover { color: var(--accent-peach); }
-        .capy-toggle summary::-webkit-details-marker { display: none; }
-        .capy-toggle summary::before { content: '▶'; color: var(--accent-peach); margin-right: 6px; display: inline-block; transition: 0.2s; font-size: 0.8rem; }
-        .capy-toggle[open] summary::before { transform: rotate(90deg); }
-        .capy-toggle[open] summary { border-bottom: 2px dashed var(--border-soft); margin-bottom: 10px; padding-bottom: 10px; }
-        .toggle-content { padding-top: 5px; }
+        .bio-content * {
+            font-family: 'Nunito', sans-serif !important;
+            line-height: 1.6 !important;
+            background-color: transparent !important;
+            font-size: 1rem !important;
+        }
+
+        .bio-content b, .bio-content strong {
+            font-weight: 800 !important;
+        }
+
+        .bio-content i, .bio-content em {
+            font-style: italic !important;
+        }
+
+        .bio-content ul, .bio-content ol {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+
+        .bio-content li {
+            margin-bottom: 4px;
+        }
+
+        .capy-toggle {
+            background: #FFF !important;
+            border: 2px dashed var(--border-soft) !important;
+            padding: 12px 15px !important;
+            margin: 12px 0 !important;
+            border-radius: 12px !important;
+        }
+
+        .capy-toggle summary {
+            cursor: pointer;
+            font-weight: 800;
+            color: var(--text-dark);
+            font-size: 1rem !important;
+            outline: none;
+            list-style: none;
+            transition: 0.2s;
+        }
+
+        .capy-toggle summary:hover {
+            color: var(--accent-peach);
+        }
+
+        .capy-toggle summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .capy-toggle summary::before {
+            content: '▶';
+            color: var(--accent-peach);
+            margin-right: 6px;
+            display: inline-block;
+            transition: 0.2s;
+            font-size: 0.8rem;
+        }
+
+        .capy-toggle[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .capy-toggle[open] summary {
+            border-bottom: 2px dashed var(--border-soft);
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+        .toggle-content {
+            padding-top: 5px;
+        }
 
         /* CỤM FEEDBACK FORM */
-        .fb-form { background: #FFF; padding: 20px; border-radius: 16px; border: 2px solid var(--border-soft); margin-bottom: 25px; box-shadow: var(--shadow-soft); }
-        .stars-select { display: flex; gap: 8px; justify-content: center; margin-bottom: 15px; cursor: pointer; }
-        .star-svg { width: 34px; height: 34px; color: var(--border-soft); transition: 0.2s; }
-        .star-svg.active { color: #F59E0B; filter: drop-shadow(0 3px 5px rgba(245, 158, 11, 0.3)); transform: scale(1.1); }
-        
-        .fb-privacy-wrap { display: flex; justify-content: center; gap: 20px; margin-bottom: 15px; }
-        .fb-privacy-label { font-size: 0.9rem; font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 5px; cursor: pointer; }
-        .fb-privacy-label input { accent-color: var(--accent-peach); width: 18px; height: 18px; }
+        .fb-form {
+            background: #FFF;
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px solid var(--border-soft);
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-soft);
+        }
 
-        .fb-input { width: 100%; padding: 14px 16px; background: var(--bg-main); border: 2px solid var(--border-soft); border-radius: 12px; color: var(--text-dark); margin-bottom: 12px; font-weight: 700;}
-        .fb-input:focus { border-color: var(--accent-peach); background:#FFF;}
-        textarea.fb-input { resize: none; min-height: 60px; max-height: 150px; overflow-y: auto; line-height: 1.5; }
+        .stars-select {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .star-svg {
+            width: 34px;
+            height: 34px;
+            color: var(--border-soft);
+            transition: 0.2s;
+        }
+
+        .star-svg.active {
+            color: #F59E0B;
+            filter: drop-shadow(0 3px 5px rgba(245, 158, 11, 0.3));
+            transform: scale(1.1);
+        }
         
-        .fb-btn-submit { width: 100%; padding: 14px; background: var(--text-dark); color: #FFF; font-weight: 900; border-radius: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; font-size: 1rem; font-family: var(--font-body);}
-        .fb-btn-submit:hover { background: var(--accent-peach); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(101, 145, 101, 0.3);}
+        .fb-privacy-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .fb-privacy-label {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .fb-privacy-label input {
+            accent-color: var(--accent-peach);
+            width: 18px;
+            height: 18px;
+        }
+
+        .fb-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-main);
+            border: 2px solid var(--border-soft);
+            border-radius: 12px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .fb-input:focus {
+            border-color: var(--accent-peach);
+            background: #FFF;
+        }
+
+        textarea.fb-input {
+            resize: none;
+            min-height: 60px;
+            max-height: 150px;
+            overflow-y: auto;
+            line-height: 1.5;
+        }
         
-        .file-upload-label { display: inline-block; padding: 12px 14px; background: #FFF; border: 2px dashed var(--accent-mocha); border-radius: 10px; font-size: 0.9rem; color: var(--text-dark); font-weight: 800; cursor: pointer; margin-bottom: 10px; transition: 0.3s; width:100%; text-align:center;}
-        .file-upload-label:hover { background: var(--bg-main); border-color: var(--accent-peach); }
-        .img-preview { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px;}
-        .img-preview img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; border: 2px solid var(--accent-mocha); }
+        .fb-btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--text-dark);
+            color: #FFF;
+            font-weight: 900;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.2s;
+            font-size: 1rem;
+            font-family: var(--font-body);
+        }
+
+        .fb-btn-submit:hover {
+            background: var(--accent-peach);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(101, 145, 101, 0.3);
+        }
+        
+        .file-upload-label {
+            display: inline-block;
+            padding: 12px 14px;
+            background: #FFF;
+            border: 2px dashed var(--accent-mocha);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 800;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: 0.3s;
+            width: 100%;
+            text-align: center;
+        }
+
+        .file-upload-label:hover {
+            background: var(--bg-main);
+            border-color: var(--accent-peach);
+        }
+
+        .img-preview {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .img-preview img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--accent-mocha);
+        }
 
         /* DANH SÁCH FEEDBACK */
-        .fb-list { display: flex; flex-direction: column; gap: 15px; }
-        .fb-item { background: #FFF; padding: 15px; border-radius: 16px; border: 2px solid var(--border-soft); box-shadow: var(--shadow-soft); position: relative; }
-        .fb-item-header { display: flex; justify-content: space-between; margin-bottom: 8px; align-items: flex-start;}
-        .fb-item-user-info { display: flex; align-items: center; gap: 10px; flex: 1; }
-        .fb-avatar-letter { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-peach); color: #FFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 900; font-size: 1.1rem; flex-shrink:0;}
-        .fb-item-name-group { display: flex; flex-direction: column; flex: 1; }
-        .fb-item-name { font-weight: 800; color: var(--text-dark); font-size: 1rem; line-height: 1.2; overflow-wrap: anywhere; word-break: break-word;}
-        .fb-item-date { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; margin-top:2px;}
-        .fb-item-stars { display: flex; gap: 2px; flex-shrink: 0;}
-        .fb-item-text { color: var(--text-dark); font-size: 0.95rem; line-height: 1.5; white-space: pre-wrap; margin-bottom: 10px; font-weight: 600;}
-        .fb-item-imgs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;}
-        .fb-item-imgs img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: zoom-in; border: 2px solid var(--border-soft);}
-        .fb-del-btn { background: #FFF; color: #EF4444; border: 1.5px solid #EF4444; padding: 4px 10px; font-size: 0.75rem; font-weight:800; border-radius: 50px; margin-left: 10px; transition: 0.2s; white-space:nowrap;}
-        .fb-del-btn:hover { background: #EF4444; color: #FFF; }
+        .fb-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-        /* NÂNG CẤP KHUNG PHẢN HỒI (REPLY INPUT) DẠNG CHAT BUBBLE */
-        .reply-section { border-top: 2px dashed var(--border-soft); padding-top: 15px; }
-        .reply-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px;}
-        .reply-item { background: var(--bg-main); padding: 12px 15px; border-radius: 12px; font-size: 0.9rem; color: var(--text-dark); position:relative; border: 1.5px solid var(--border-soft); font-weight: 600; overflow-wrap: anywhere; word-break:break-word;}
-        .reply-name { font-weight: 800; margin-bottom: 4px; display:flex; justify-content:space-between; font-size: 0.95rem;}
-        .reply-time { font-size: 0.75rem; color: var(--text-muted); font-weight: 700; margin-top: 6px;}
+        .fb-item {
+            background: #FFF;
+            padding: 15px;
+            border-radius: 16px;
+            border: 2px solid var(--border-soft);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            min-width: 0;
+        }
+
+        .fb-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            align-items: flex-start;
+        }
+
+        .fb-item-user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .fb-avatar-letter {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--accent-peach);
+            color: #FFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .fb-item-name-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .fb-item-name {
+            font-weight: 800;
+            color: var(--text-dark);
+            font-size: 1rem;
+            line-height: 1.2;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .fb-item-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .fb-item-stars {
+            display: flex;
+            gap: 2px;
+            flex-shrink: 0;
+        }
+
+        .fb-item-text {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .fb-item-imgs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .fb-item-imgs img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: zoom-in;
+            border: 2px solid var(--border-soft);
+        }
+
+        .fb-del-btn {
+            background: #FFF;
+            color: #EF4444;
+            border: 1.5px solid #EF4444;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            border-radius: 50px;
+            margin-left: 10px;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        .fb-del-btn:hover {
+            background: #EF4444;
+            color: #FFF;
+        }
+
+        /* KHUNG PHẢN HỒI (REPLY INPUT) DẠNG CHAT BUBBLE */
+        .reply-section {
+            border-top: 2px dashed var(--border-soft);
+            padding-top: 15px;
+        }
+
+        .reply-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .reply-item {
+            background: var(--bg-main);
+            padding: 12px 15px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            position: relative;
+            border: 1.5px solid var(--border-soft);
+            font-weight: 600;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .reply-name {
+            font-weight: 800;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+
+        .reply-time {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            margin-top: 6px;
+        }
         
-        .reply-input-wrap { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; width: 100%; }
-        .reply-name-input { max-width: 150px; height: 42px; }
-        .reply-row { display: flex; gap: 8px; align-items: flex-end; width: 100%; }
-        .reply-input { flex: 1; padding: 10px 14px; border-radius: 20px; border: 2px solid var(--border-soft); font-weight: 600; font-size: 16px; background: #FFF; color: var(--text-dark); font-family: var(--font-body); }
-        .reply-input:focus { border-color: var(--accent-mocha); }
-        textarea.reply-input { resize: none; height: 42px; min-height: 42px; max-height: 120px; overflow-y: auto; line-height: 18px; padding-top: 10px; padding-bottom: 10px;}
+        .reply-input-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .reply-name-input {
+            max-width: 150px;
+            height: 42px;
+        }
+
+        .reply-row {
+            display: flex;
+            gap: 8px;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        .reply-input {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 20px;
+            border: 2px solid var(--border-soft);
+            font-weight: 600;
+            font-size: 16px;
+            background: #FFF;
+            color: var(--text-dark);
+            font-family: var(--font-body);
+        }
+
+        .reply-input:focus {
+            border-color: var(--accent-mocha);
+        }
+
+        textarea.reply-input {
+            resize: none;
+            height: 42px;
+            min-height: 42px;
+            max-height: 120px;
+            overflow-y: auto;
+            line-height: 18px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
         
-        .reply-btn { height: 42px; padding: 0 18px; background: var(--text-dark); color: #FFF; font-weight: 800; border-radius: 50px; font-size: 0.85rem; transition: 0.2s; white-space: nowrap; display: flex; align-items: center; justify-content: center; }
-        .reply-btn:hover { background: var(--accent-peach); transform: translateY(-2px);}
+        .reply-btn {
+            height: 42px;
+            padding: 0 18px;
+            background: var(--text-dark);
+            color: #FFF;
+            font-weight: 800;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-        .idea-modal-text { border-radius: 16px; border: 2.5px dashed var(--accent-mocha); color: var(--text-dark); font-size: 1.05rem; line-height: 1.8; white-space: pre-wrap; font-weight: 600; text-align: left !important; padding: 20px; }
+        .reply-btn:hover {
+            background: var(--accent-peach);
+            transform: translateY(-2px);
+        }
 
-        .lightbox { position: fixed; inset: 0; background: rgba(44, 62, 44, 0.95); z-index: 10000; display: none; justify-content: center; align-items: center; cursor: zoom-out;}
-        .lightbox img { max-width: 95vw; max-height: 90vh; border-radius: 12px; border: 3px solid #FFF; box-shadow: 0 10px 25px rgba(0,0,0,0.5);}
+        .idea-modal-text {
+            border-radius: 16px;
+            border: 2.5px dashed var(--accent-mocha);
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            font-weight: 600;
+            text-align: left !important;
+            padding: 20px;
+        }
+
+        /* Lightbox (Zoom ảnh) */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(44, 62, 44, 0.95);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox img {
+            max-width: 95vw;
+            max-height: 90vh;
+            border-radius: 12px;
+            border: 3px solid #FFF;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
 
         /* ============================================================
            ADMIN PANEL
            ============================================================ */
-        .admin-bar { position: fixed; top: 0; left: 0; right: 0; background: #FFF; padding: 10px 15px; z-index: 999; display: none; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-bottom: 2px solid var(--border-soft); flex-wrap: wrap; gap:10px; }
-        body.is-admin .admin-bar { display: flex; }
-        .admin-controls { display: flex; gap: 8px; align-items: center; flex-wrap:wrap; justify-content:center; width:100%;}
-        @media (min-width: 769px) { .admin-controls { width:auto; justify-content:flex-end;} }
+        .admin-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #FFF;
+            padding: 10px 15px;
+            z-index: 999;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom: 2px solid var(--border-soft);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-        .btn-ad { padding: 8px 16px; background: var(--bg-main); color: var(--text-dark); border-radius: 50px; font-size: 0.85rem; font-weight: 800; border: 2px solid var(--border-soft); transition: 0.2s;}
-        .btn-ad:hover { background: var(--accent-peach); color: #FFF; border-color: var(--accent-peach);}
-        .btn-ad.danger { background: #FFF; border-color: #EF4444; color: #EF4444;}
-        .btn-ad.danger:hover { background: #EF4444; color: #FFF;}
+        body.is-admin .admin-bar {
+            display: flex;
+        }
+
+        .admin-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+
+        @media (min-width: 769px) {
+            .admin-controls {
+                width: auto;
+                justify-content: flex-end;
+            }
+        }
+
+        .btn-ad {
+            padding: 8px 16px;
+            background: var(--bg-main);
+            color: var(--text-dark);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            border: 2px solid var(--border-soft);
+            transition: 0.2s;
+        }
+
+        .btn-ad:hover {
+            background: var(--accent-peach);
+            color: #FFF;
+            border-color: var(--accent-peach);
+        }
+
+        .btn-ad.danger {
+            background: #FFF;
+            border-color: #EF4444;
+            color: #EF4444;
+        }
+
+        .btn-ad.danger:hover {
+            background: #EF4444;
+            color: #FFF;
+        }
         
-        .noti-btn { position: relative; cursor: pointer; color: var(--text-dark); display:flex; align-items:center; justify-content:center; padding: 8px; background: var(--bg-main); border-radius:50%; border: 2px solid var(--border-soft); transition:0.2s;}
-        .noti-btn:hover { background: var(--accent-mocha); border-color: var(--accent-mocha); color: #FFF;}
-        .noti-badge { position: absolute; top: -6px; right: -6px; background: #EF4444; color: #FFF; font-size: 0.7rem; width: 22px; height: 22px; display:flex; align-items:center; justify-content:center; border-radius: 50%; font-weight: 900; border: 2px solid #FFF;}
+        .noti-btn {
+            position: relative;
+            cursor: pointer;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            background: var(--bg-main);
+            border-radius: 50%;
+            border: 2px solid var(--border-soft);
+            transition: 0.2s;
+        }
 
-        .card-admin-overlay { position: absolute; top: 8px; left: 8px; z-index: 20; display: none; gap: 6px; flex-direction: column;}
-        body.is-admin .card-admin-overlay { display: flex; }
-        .btn-card-ad { background: #FFF; color: var(--text-dark); border: 2px solid var(--text-dark); padding: 6px 12px; font-size: 0.8rem; font-weight:800; border-radius: 50px; transition:0.2s;}
-        .btn-card-ad:hover { background: var(--accent-peach); color:#FFF; border-color:var(--accent-peach);}
+        .noti-btn:hover {
+            background: var(--accent-mocha);
+            border-color: var(--accent-mocha);
+            color: #FFF;
+        }
 
-        .admin-form-group { margin-bottom: 18px; }
-        .admin-form-group label { display: block; font-weight: 800; margin-bottom: 8px; font-size: 1rem; color: var(--text-dark);}
+        .noti-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #EF4444;
+            color: #FFF;
+            font-size: 0.7rem;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 900;
+            border: 2px solid #FFF;
+        }
+
+        .card-admin-overlay {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            z-index: 20;
+            display: none;
+            gap: 6px;
+            flex-direction: column;
+        }
+
+        body.is-admin .card-admin-overlay {
+            display: flex;
+        }
+
+        .btn-card-ad {
+            background: #FFF;
+            color: var(--text-dark);
+            border: 2px solid var(--text-dark);
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            border-radius: 50px;
+            transition: 0.2s;
+        }
+
+        .btn-card-ad:hover {
+            background: var(--accent-peach);
+            color: #FFF;
+            border-color: var(--accent-peach);
+        }
+
+        .admin-form-group {
+            margin-bottom: 18px;
+        }
+
+        .admin-form-group label {
+            display: block;
+            font-weight: 800;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
         
-        .rt-toolbar { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; background: var(--bg-main); padding: 10px; border-radius: 12px; border: 2px solid var(--border-soft);}
-        .rt-btn { background: #FFF; border: 2px solid var(--text-dark); border-radius: 8px; padding: 6px 12px; font-weight: 800; color: var(--text-dark); cursor: pointer; transition: 0.2s; font-family: var(--font-body); display:flex; align-items:center; justify-content:center; font-size:0.9rem;}
-        .rt-btn:hover { background: var(--accent-peach); color: #FFF; border-color: var(--accent-peach);}
-        .rt-editor { background: #FFF; min-height: 140px; padding: 15px; border: 2px solid var(--border-soft); border-radius: 12px; outline: none; overflow-y: auto; line-height: 1.6; font-size: 1rem; }
-        .rt-editor:focus { border-color: var(--accent-peach); }
+        .rt-toolbar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            background: var(--bg-main);
+            padding: 10px;
+            border-radius: 12px;
+            border: 2px solid var(--border-soft);
+        }
 
-        .tag-input-box { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap:wrap;}
-        .tag-input-box input { flex: 1; padding: 12px 18px; border-radius: 50px; border: 2px solid var(--border-soft); font-weight: 600; min-width:200px;}
-        .tag-input-box button { padding: 12px 24px; background: var(--text-dark); color: #FFF; font-weight: 800; border-radius: 50px; transition: 0.2s;}
-        .tag-input-box button:hover { background: var(--accent-peach); }
-        #ad-tags-wrapper, #ad-tags-up-wrapper { display: flex; flex-wrap: wrap; gap: 8px; }
-        .ad-mini-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--bg-main); color: var(--text-dark); border: 2px solid var(--border-soft); padding: 6px 12px; border-radius: 50px; font-size: 0.85rem; font-weight: 800;}
-        .ad-mini-tag span { cursor: pointer; color: #EF4444; font-weight: 900; font-size: 1rem; transition: 0.2s;}
-        .ad-mini-tag span:hover { transform: scale(1.2); }
+        .rt-btn {
+            background: #FFF;
+            border: 2px solid var(--text-dark);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-weight: 800;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: var(--font-body);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .rt-btn:hover {
+            background: var(--accent-peach);
+            color: #FFF;
+            border-color: var(--accent-peach);
+        }
+
+        .rt-editor {
+            background: #FFF;
+            min-height: 140px;
+            padding: 15px;
+            border: 2px solid var(--border-soft);
+            border-radius: 12px;
+            outline: none;
+            overflow-y: auto;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .rt-editor:focus {
+            border-color: var(--accent-peach);
+        }
+
+        .tag-input-box {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag-input-box input {
+            flex: 1;
+            padding: 12px 18px;
+            border-radius: 50px;
+            border: 2px solid var(--border-soft);
+            font-weight: 600;
+            min-width: 200px;
+        }
+
+        .tag-input-box button {
+            padding: 12px 24px;
+            background: var(--text-dark);
+            color: #FFF;
+            font-weight: 800;
+            border-radius: 50px;
+            transition: 0.2s;
+        }
+
+        .tag-input-box button:hover {
+            background: var(--accent-peach);
+        }
+
+        #ad-tags-wrapper, #ad-tags-up-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .ad-mini-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-main);
+            color: var(--text-dark);
+            border: 2px solid var(--border-soft);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .ad-mini-tag span {
+            cursor: pointer;
+            color: #EF4444;
+            font-weight: 900;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .ad-mini-tag span:hover {
+            transform: scale(1.2);
+        }
 
         /* ============================================================
-           CSS MOBILE (ĐÃ TRẢ LẠI WIDTH CHUẨN GỐC)
+           CSS MOBILE (ĐÃ TRẢ LẠI WIDTH CHUẨN GỐC 160PX)
            ============================================================ */
         @media (max-width: 600px) {
-            .header-section { margin-top: 100px; }
-            body.is-admin .header-section { margin-top: 160px; } 
-            
-            /* TRẢ LẠI GRID NHƯ BẢN GỐC CỦA BẠN (130px) */
-            .bot-grid, .up-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+            .header-section {
+                margin-top: 100px;
+            }
 
-            .cream-board { padding: 12px 15px 12px 40px; border-radius: 25px; }
-            .peeking-cat { width: 100px; margin-bottom: -10px; }
-            .bell-icon { width: 65px; top: -20px; left: -15px; }
-            .station-title { font-size: 1.5rem; letter-spacing: 1px; }
-            .search-input { padding: 12px 15px 12px 40px; }
-            .pill-tag { padding: 6px 12px; }
-            .btn-top { padding: 10px 18px; }
-            .up-progress-wrap { padding: 8px; }
-            .up-vote-btn { font-size:0.8rem; padding: 10px;}
-            .rt-toolbar { gap:5px; padding:8px;}
-            .rt-btn { padding:4px 8px; font-size:0.8rem;}
+            body.is-admin .header-section {
+                margin-top: 160px;
+            } 
+            
+            /* TRẢ LẠI GRID NHƯ BẢN GỐC (minmax(160px, 1fr)) */
+            .bot-grid, .up-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 15px;
+            }
+
+            .cream-board {
+                padding: 12px 15px 12px 40px;
+                border-radius: 25px;
+            }
+
+            .peeking-cat {
+                width: 100px;
+                margin-bottom: -10px;
+            }
+
+            .bell-icon {
+                width: 65px;
+                top: -20px;
+                left: -15px;
+            }
+
+            .station-title {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
+
+            .search-input {
+                padding: 12px 15px 12px 40px;
+            }
+
+            .pill-tag {
+                padding: 6px 12px;
+            }
+
+            .btn-top {
+                padding: 10px 18px;
+            }
+
+            .up-progress-wrap {
+                padding: 8px;
+            }
+
+            .up-vote-btn {
+                font-size: 0.8rem;
+                padding: 10px;
+            }
+
+            .rt-toolbar {
+                gap: 5px;
+                padding: 8px;
+            }
+
+            .rt-btn {
+                padding: 4px 8px;
+                font-size: 0.8rem;
+            }
 
             /* Modal Bottom Sheet */
-            .modal-overlay, .sub-modal-overlay, .admin-modal { align-items: flex-end; padding: 0; }
-            .modal-content, .sub-modal-content, .admin-modal-box {
-                border-radius: 24px 24px 0 0; border-bottom: none; border-left: none; border-right: none;
-                max-height: 85vh; animation: slideUp 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
+            .modal-overlay, .sub-modal-overlay, .admin-modal {
+                align-items: flex-end;
+                padding: 0;
             }
-            .m-header { padding: 14px 15px; }
-            .m-body, .idea-modal-body, #admin-form-body { padding: 15px; }
+
+            .modal-content, .sub-modal-content, .admin-modal-box {
+                border-radius: 24px 24px 0 0;
+                border-bottom: none;
+                border-left: none;
+                border-right: none;
+                max-height: 85vh;
+                animation: slideUp 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
+            }
+
+            .m-header {
+                padding: 14px 15px;
+            }
+
+            .m-body, .idea-modal-body, #admin-form-body {
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -438,8 +1677,14 @@
         </div>
 
         <div class="top-buttons">
-            <button class="btn-top" onclick="openSMModal()"><img src="ChatGPT_Image_21_56_27_31_thg_7__2026-removebg-preview.png" style="width:24px;height:24px;object-fit:contain;"> Thông tin chủ trọ</button>
-            <button class="btn-top" onclick="openUpcomingModal()"><svg class="svg-icon" viewBox="0 0 16 16" style="width:18px;height:18px;"><use href="#px-gift"></use></svg> Sắp Ra Mắt</button>
+            <button class="btn-top" onclick="openSMModal()">
+                <img src="ChatGPT_Image_21_56_27_31_thg_7__2026-removebg-preview.png" style="width:24px;height:24px;object-fit:contain;">
+                Thông tin chủ trọ
+            </button>
+            <button class="btn-top" onclick="openUpcomingModal()">
+                <svg class="svg-icon" viewBox="0 0 16 16" style="width:18px;height:18px;"><use href="#px-gift"></use></svg> 
+                Sắp Ra Mắt
+            </button>
         </div>
     </header>
 
@@ -510,7 +1755,7 @@
                 shortDesc: "Một quán trọ nhỏ, nơi những chú mèo lười biếng phơi nắng bên suối...",
                 bio: "Cảm ơn các bạn đã ghé thăm trang của tui...", 
                 avatar: "ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png",
-                facebook: {name: "", url: ""}
+                facebook: { name: "", url: "" }
             },
             staff: [], 
             upcomingBots: [] 
@@ -527,8 +1772,15 @@
         /* ============================================================
            TIỆN ÍCH CHUNG
            ============================================================ */
-        function removeAccents(str) { return str ? str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() : ''; }
-        function openLightbox(src, e) { e.stopPropagation(); document.getElementById("lightbox-img").src = src; document.getElementById("lightbox").style.display="flex"; }
+        function removeAccents(str) {
+            return str ? str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() : '';
+        }
+
+        function openLightbox(src, e) {
+            e.stopPropagation();
+            document.getElementById("lightbox-img").src = src;
+            document.getElementById("lightbox").style.display = "flex";
+        }
         
         function closeModal(force = false) { 
             if(force || event.target.id === 'main-modal') {
@@ -536,12 +1788,17 @@
                 document.body.style.overflow = "auto";
             }
         }
+
         function closeSubModal(force = false) { 
-            if(force || event.target.id === 'sub-modal') { document.getElementById("sub-modal").classList.remove("show"); }
+            if(force || event.target.id === 'sub-modal') {
+                document.getElementById("sub-modal").classList.remove("show");
+            }
         }
+
         function closeAdminModal(force = false) { 
             if(force || event.target.id === 'admin-modal') {
-                document.getElementById("admin-modal").classList.remove("show"); document.body.style.overflow = "auto";
+                document.getElementById("admin-modal").classList.remove("show");
+                document.body.style.overflow = "auto";
             }
         }
         
@@ -551,11 +1808,26 @@
                 reader.onload = (e) => { 
                     const img = new Image(); 
                     img.onload = () => { 
-                        const canvas = document.createElement('canvas'); let w = img.width, h = img.height; 
-                        if(w > maxSize || h > maxSize) { if(w > h) { h = Math.round((h * maxSize) / w); w = maxSize; } else { w = Math.round((w * maxSize) / h); h = maxSize; } } 
-                        canvas.width = w; canvas.height = h; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, w, h); resolve(canvas.toDataURL('image/jpeg', 0.85)); 
-                    }; img.src = e.target.result; 
-                }; reader.readAsDataURL(file); 
+                        const canvas = document.createElement('canvas');
+                        let w = img.width, h = img.height; 
+                        if(w > maxSize || h > maxSize) {
+                            if(w > h) {
+                                h = Math.round((h * maxSize) / w);
+                                w = maxSize;
+                            } else {
+                                w = Math.round((w * maxSize) / h);
+                                h = maxSize;
+                            }
+                        } 
+                        canvas.width = w;
+                        canvas.height = h;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, w, h);
+                        resolve(canvas.toDataURL('image/jpeg', 0.85)); 
+                    };
+                    img.src = e.target.result; 
+                };
+                reader.readAsDataURL(file); 
             }); 
         }
 
@@ -592,14 +1864,19 @@
 
                 renderUI();
                 checkNotifications();
-            } catch(e) { console.error("Lỗi lấy dữ liệu:", e); renderUI(); }
+            } catch(e) {
+                console.error("Lỗi lấy dữ liệu:", e);
+                renderUI();
+            }
         }
 
         async function saveConfig() {
             try {
                 await localforage.setItem("cat_config_v1", CONFIG);
                 await supa.from('station_config').upsert([{ id: 777, data: JSON.stringify(CONFIG) }]);
-            } catch(e) { console.error("Lỗi lưu DB:", e); }
+            } catch(e) {
+                console.error("Lỗi lưu DB:", e);
+            }
         }
 
         /* ============================================================
@@ -616,20 +1893,44 @@
             container.innerHTML = "";
 
             let uniqueTags = new Set();
-            CONFIG.staff.forEach(b => { if(!b.isHidden || isAdminMode) { if(b.tags && Array.isArray(b.tags)) { b.tags.forEach(t => { if(t.trim()) uniqueTags.add(t.trim().replace(/^#/, '')); }); } } });
-            CONFIG.upcomingBots.forEach(b => { if(!b.isHidden || isAdminMode) { if(b.tags && Array.isArray(b.tags)) { b.tags.forEach(t => { if(t.trim()) uniqueTags.add(t.trim().replace(/^#/, '')); }); } } });
+            
+            CONFIG.staff.forEach(b => {
+                if(!b.isHidden || isAdminMode) {
+                    if(b.tags && Array.isArray(b.tags)) {
+                        b.tags.forEach(t => {
+                            if(t.trim()) uniqueTags.add(t.trim().replace(/^#/, ''));
+                        });
+                    }
+                }
+            });
+            
+            CONFIG.upcomingBots.forEach(b => {
+                if(!b.isHidden || isAdminMode) {
+                    if(b.tags && Array.isArray(b.tags)) {
+                        b.tags.forEach(t => {
+                            if(t.trim()) uniqueTags.add(t.trim().replace(/^#/, ''));
+                        });
+                    }
+                }
+            });
 
             const allBtn = document.createElement("button");
             allBtn.className = `pill-tag ${activeRouteFilter === 'all' ? 'active' : ''}`;
             allBtn.textContent = "Tất cả";
-            allBtn.onclick = () => { activeRouteFilter = 'all'; renderUI(); };
+            allBtn.onclick = () => {
+                activeRouteFilter = 'all';
+                renderUI();
+            };
             container.appendChild(allBtn);
 
             Array.from(uniqueTags).sort().forEach(tag => {
                 const btn = document.createElement("button");
                 btn.className = `pill-tag ${activeRouteFilter === tag ? 'active' : ''}`;
                 btn.textContent = "#" + tag;
-                btn.onclick = () => { activeRouteFilter = tag; renderUI(); };
+                btn.onclick = () => {
+                    activeRouteFilter = tag;
+                    renderUI();
+                };
                 container.appendChild(btn);
             });
         }
@@ -642,17 +1943,20 @@
 
             let displayBots = CONFIG.staff.filter(b => {
                 if(b.isHidden && !isAdminMode) return false;
+                
                 let isMatchSearch = true;
                 if(q !== "") {
                     const matchName = removeAccents(b.name).includes(q);
                     const matchTags = (b.tags||[]).some(t => removeAccents(t).includes(q));
                     if(!matchName && !matchTags) isMatchSearch = false;
                 }
+
                 let isMatchTag = true;
                 if(activeRouteFilter !== 'all') {
                     const botCleanTags = (b.tags||[]).map(t => t.trim().replace(/^#/, ''));
                     if(!botCleanTags.includes(activeRouteFilter)) isMatchTag = false;
                 }
+
                 return isMatchSearch && isMatchTag;
             });
 
@@ -662,13 +1966,22 @@
             });
 
             if(displayBots.length === 0) {
-                grid.innerHTML = "<p style='color:var(--text-muted); width:100%; text-align:center; padding: 30px; font-weight:800; font-size:1.1rem;'><svg class='svg-icon' viewBox='0 0 16 16'><use href='#px-paw'></use></svg> Hiện không có phòng nào phù hợp.</p>"; return;
+                grid.innerHTML = "<p style='color:var(--text-muted); width:100%; text-align:center; padding: 30px; font-weight:800; font-size:1.1rem;'><svg class='svg-icon' viewBox='0 0 16 16'><use href='#px-paw'></use></svg> Hiện không có phòng nào phù hợp.</p>";
+                return;
             }
 
             displayBots.forEach(bot => {
                 const card = document.createElement("div");
                 card.className = "bot-card";
-                let adminOver = isAdminMode ? `<div class="card-admin-overlay"><button class="btn-card-ad" onclick="openAdminForm('bot', 'edit', '${bot.id}'); event.stopPropagation();">Sửa</button><button class="btn-card-ad" onclick="toggleHideBot('${bot.id}', event)">${bot.isHidden ? 'Đang Ẩn' : 'Hiện'}</button><button class="btn-card-ad" style="color:#EF4444; border-color:#EF4444;" onclick="deleteBot('${bot.id}', event)">Xóa</button></div>` : "";
+                
+                let adminOver = isAdminMode ? `
+                    <div class="card-admin-overlay">
+                        <button class="btn-card-ad" onclick="openAdminForm('bot', 'edit', '${bot.id}'); event.stopPropagation();">Sửa</button>
+                        <button class="btn-card-ad" onclick="toggleHideBot('${bot.id}', event)">${bot.isHidden ? 'Đang Ẩn' : 'Hiện'}</button>
+                        <button class="btn-card-ad" style="color:#EF4444; border-color:#EF4444;" onclick="deleteBot('${bot.id}', event)">Xóa</button>
+                    </div>
+                ` : "";
+
                 let tagsHtml = (bot.tags||[]).map(t => `<span class="b-tag">${t.startsWith('#')?t:'#'+t}</span>`).join('');
                 let rating = getAvgRating(bot);
                 let coverImg = bot.bgImage || bot.avatar || '';
@@ -679,6 +1992,7 @@
                         <img src="${coverImg}" loading="lazy">
                         <div class="b-rating"><svg class="svg-icon" viewBox="0 0 16 16" style="width:12px;height:12px;"><use href="#px-star-filled"></use></svg> ${rating}</div>
                     </div>
+                    
                     <div class="b-info">
                         <div class="b-header-info">
                             <img src="${bot.avatar || ''}" class="b-avatar-mini">
@@ -686,6 +2000,7 @@
                         </div>
                         <div class="b-tags">${tagsHtml}</div>
                         <div class="b-hook">"${bot.hook || '...'}"</div>
+                        
                         <div class="b-actions">
                             <button class="b-btn b-btn-fb" onclick="openFeedbackModal('${bot.id}'); event.stopPropagation();">💬 Góc Feedback (${bot.feedbacks.length})</button>
                             ${bot.link ? `<a href="${bot.link}" target="_blank" class="b-btn b-btn-link" onclick="event.stopPropagation();"><svg class="svg-icon" viewBox="0 0 16 16" style="width:12px;height:12px;color:#FFF"><use href="#px-key"></use></svg> Ghé Thăm Phòng</a>` : `<button class="b-btn b-btn-link" style="opacity:0.5; cursor:not-allowed;" onclick="event.stopPropagation();">ĐANG DỌN PHÒNG</button>`}
@@ -696,7 +2011,12 @@
             });
         }
 
-        document.getElementById("search-inp").addEventListener("input", e => { searchQuery = e.target.value.trim(); renderGrid(); renderUpcomingBotsFilter(); });
+        document.getElementById("search-inp").addEventListener("input", e => {
+            searchQuery = e.target.value.trim();
+            renderGrid();
+            renderUpcomingBotsFilter();
+        });
+
         document.getElementById("sort-select").addEventListener("change", renderGrid);
 
         /* ============================================================
@@ -708,7 +2028,9 @@
         window.openFeedbackModal = function(botId) {
             const bot = CONFIG.staff.find(b => b.id === botId);
             if(!bot) return;
-            tempFbImgs = []; currentStars = 0;
+            
+            tempFbImgs = [];
+            currentStars = 0;
             
             document.getElementById("modal-title").innerHTML = `💬 GÓC FEEDBACK: <span style="color:var(--accent-peach)">${bot.name.toUpperCase()}</span>`;
             const body = document.getElementById("modal-body");
@@ -736,7 +2058,6 @@
                         `;
                     }).join('');
 
-                    // Textarea tự động co giãn như chat Zalo
                     let replyInputHtml = `
                         <div class="reply-input-wrap">
                             <input type="text" id="rep-name-${fb.id}" class="reply-input reply-name-input" placeholder="Tên của bạn...">
@@ -783,7 +2104,9 @@
             }
 
             let formStarsHtml = "";
-            for(let i=1; i<=5; i++) { formStarsHtml += `<svg class="svg-icon star-svg star-item" data-val="${i}" viewBox="0 0 16 16"><use href="#px-star-empty"></use></svg>`; }
+            for(let i=1; i<=5; i++) {
+                formStarsHtml += `<svg class="svg-icon star-svg star-item" data-val="${i}" viewBox="0 0 16 16"><use href="#px-star-empty"></use></svg>`;
+            }
 
             body.innerHTML = `
                 <div class="fb-form">
@@ -791,8 +2114,12 @@
                     <div class="stars-select" id="star-wrap">${formStarsHtml}</div>
                     
                     <div class="fb-privacy-wrap">
-                        <label class="fb-privacy-label"><input type="radio" name="fb_privacy" value="public" checked> 🌐 Đăng công khai</label>
-                        <label class="fb-privacy-label"><input type="radio" name="fb_privacy" value="private"> 🔒 Gửi riêng Admin</label>
+                        <label class="fb-privacy-label">
+                            <input type="radio" name="fb_privacy" value="public" checked> 🌐 Đăng công khai
+                        </label>
+                        <label class="fb-privacy-label">
+                            <input type="radio" name="fb_privacy" value="private"> 🔒 Gửi riêng Admin
+                        </label>
                     </div>
 
                     <input type="text" id="fb-name" class="fb-input" placeholder="Tên của bạn (Mặc định: Lữ Khách)...">
@@ -812,8 +2139,13 @@
                 s.onclick = () => {
                     currentStars = parseInt(s.dataset.val);
                     starItems.forEach((st, stIdx) => {
-                        if(stIdx < currentStars) { st.innerHTML = '<use href="#px-star-filled"></use>'; st.classList.add('active'); } 
-                        else { st.innerHTML = '<use href="#px-star-empty"></use>'; st.classList.remove('active'); }
+                        if(stIdx < currentStars) {
+                            st.innerHTML = '<use href="#px-star-filled"></use>';
+                            st.classList.add('active');
+                        } else {
+                            st.innerHTML = '<use href="#px-star-empty"></use>';
+                            st.classList.remove('active');
+                        }
                     });
                 };
             });
@@ -822,29 +2154,58 @@
                 const prev = document.getElementById("fb-preview");
                 if(e.target.files.length + tempFbImgs.length > 3) return alert("Chỉ được gửi tối đa 3 ảnh!");
                 prev.innerHTML = "<span style='color:var(--text-dark); font-size:14px; font-weight:800;'>Đang xử lý ảnh...</span>";
-                for(let f of e.target.files) { tempFbImgs.push(await resizeImage(f, 1000)); }
-                prev.innerHTML = tempFbImgs.map((src, i) => `<div style="position:relative;"><img src="${src}"><button style="position:absolute;top:-6px;right:-6px;background:#EF4444;color:#fff;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:900;border:none;cursor:pointer;box-shadow:0 2px 4px rgba(0,0,0,0.2);" onclick="removeFbImg(${i}, '${botId}')">✕</button></div>`).join('');
+                
+                for(let f of e.target.files) {
+                    tempFbImgs.push(await resizeImage(f, 1000));
+                }
+                
+                prev.innerHTML = tempFbImgs.map((src, i) => `
+                    <div style="position:relative;">
+                        <img src="${src}">
+                        <button style="position:absolute;top:-6px;right:-6px;background:#EF4444;color:#fff;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:900;border:none;cursor:pointer;box-shadow:0 2px 4px rgba(0,0,0,0.2);" onclick="removeFbImg(${i}, '${botId}')">✕</button>
+                    </div>
+                `).join('');
             };
 
             document.getElementById("fb-submit-btn").onclick = async () => {
                 if(currentStars === 0) return alert("Vui lòng chấm điểm (Sao) cho phòng này nhé!");
+                
                 const text = document.getElementById("fb-text").value.trim();
                 const name = document.getElementById("fb-name").value.trim() || "Lữ Khách";
                 const isPriv = document.querySelector('input[name="fb_privacy"]:checked').value === 'private';
+                
                 const newFb = { id: "fb_"+Date.now(), name: name, stars: currentStars, text: text, imgs: [...tempFbImgs], date: Date.now(), replies: [], isPrivate: isPriv };
                 bot.feedbacks.push(newFb);
+
                 document.getElementById("fb-submit-btn").textContent = "ĐANG GỬI...";
                 await saveConfig();
-                if(isPriv) { alert("Đã gửi thư mật thành công! Lời nhắn của bạn đã được ẩn đi, chỉ có Chủ Trọ mới xem được."); }
-                renderUI(); openFeedbackModal(botId);
+                
+                if(isPriv) {
+                    alert("Đã gửi thư mật thành công! Lời nhắn của bạn đã được ẩn đi, chỉ có Chủ Trọ mới xem được.");
+                }
+                
+                renderUI();
+                openFeedbackModal(botId);
             };
 
-            if(isAdminMode) { body.querySelectorAll("input[id^='rep-name-']").forEach(inp => inp.value = "Chủ Trọ"); }
+            if(isAdminMode) {
+                body.querySelectorAll("input[id^='rep-name-']").forEach(inp => inp.value = "Chủ Trọ");
+            }
+
             document.getElementById("main-modal").classList.add("show");
             document.body.style.overflow = "hidden";
         };
 
-        window.removeFbImg = function(idx, botId) { tempFbImgs.splice(idx, 1); const prev = document.getElementById("fb-preview"); prev.innerHTML = tempFbImgs.map((src, i) => `<div style="position:relative;"><img src="${src}"><button style="position:absolute;top:-6px;right:-6px;background:#EF4444;color:#fff;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:900;border:none;cursor:pointer;box-shadow:0 2px 4px rgba(0,0,0,0.2);" onclick="removeFbImg(${i}, '${botId}')">✕</button></div>`).join(''); }
+        window.removeFbImg = function(idx, botId) {
+            tempFbImgs.splice(idx, 1);
+            const prev = document.getElementById("fb-preview");
+            prev.innerHTML = tempFbImgs.map((src, i) => `
+                <div style="position:relative;">
+                    <img src="${src}">
+                    <button style="position:absolute;top:-6px;right:-6px;background:#EF4444;color:#fff;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:900;border:none;cursor:pointer;box-shadow:0 2px 4px rgba(0,0,0,0.2);" onclick="removeFbImg(${i}, '${botId}')">✕</button>
+                </div>
+            `).join('');
+        };
 
         window.sendReply = async function(botId, fbId) {
             const nameInput = document.getElementById(`rep-name-${fbId}`);
@@ -854,30 +2215,54 @@
             const bot = CONFIG.staff.find(b => b.id === botId);
             const fb = bot.feedbacks.find(f => f.id === fbId);
             if(fb) {
-                fb.replies.push({ name: nameInput.value.trim() || "Khách", text: textInput.value.trim(), date: Date.now() });
+                fb.replies.push({
+                    name: nameInput.value.trim() || "Khách",
+                    text: textInput.value.trim(),
+                    date: Date.now()
+                });
                 await saveConfig();
                 openFeedbackModal(botId);
             }
         };
 
-        window.deleteFeedback = async function(botId, fbId) { if(!confirm("Xóa vĩnh viễn feedback này?")) return; const bot = CONFIG.staff.find(b => b.id === botId); bot.feedbacks = bot.feedbacks.filter(f => f.id !== fbId); await saveConfig(); renderUI(); openFeedbackModal(botId); };
-        window.deleteReply = async function(botId, fbId, rIdx) { if(!confirm("Xóa phản hồi này?")) return; const bot = CONFIG.staff.find(b => b.id === botId); const fb = bot.feedbacks.find(f => f.id === fbId); fb.replies.splice(rIdx, 1); await saveConfig(); openFeedbackModal(botId); };
+        window.deleteFeedback = async function(botId, fbId) {
+            if(!confirm("Xóa vĩnh viễn feedback này?")) return;
+            const bot = CONFIG.staff.find(b => b.id === botId);
+            bot.feedbacks = bot.feedbacks.filter(f => f.id !== fbId);
+            await saveConfig();
+            renderUI();
+            openFeedbackModal(botId);
+        };
+
+        window.deleteReply = async function(botId, fbId, rIdx) {
+            if(!confirm("Xóa phản hồi này?")) return;
+            const bot = CONFIG.staff.find(b => b.id === botId);
+            const fb = bot.feedbacks.find(f => f.id === fbId);
+            fb.replies.splice(rIdx, 1);
+            await saveConfig();
+            openFeedbackModal(botId);
+        };
 
         /* ============================================================
            MỞ MODAL: SẮP RA MẮT & CHỦ QUÁN
            ============================================================ */
-        
         window.openSMModal = function() {
             document.getElementById("modal-title").innerHTML = `<img src="ChatGPT_Image_21_56_27_31_thg_7__2026-removebg-preview.png" style="width:26px;height:26px;"> THÔNG TIN CHỦ TRỌ`;
-            let fbHtml = CONFIG.stationMaster.facebook && CONFIG.stationMaster.facebook.url ? `<div style="margin-top:20px; text-align:center;"><a href="${CONFIG.stationMaster.facebook.url}" target="_blank" style="display:inline-block; padding:12px 28px; background:var(--text-dark); color:#FFF; font-weight:800; border-radius:50px; box-shadow:0 4px 15px rgba(44, 62, 44, 0.2); font-family:var(--font-body); font-size:1rem;">Liên hệ Facebook Chủ Trọ</a></div>` : '';
+            
+            let fbHtml = CONFIG.stationMaster.facebook && CONFIG.stationMaster.facebook.url 
+                ? `<div style="margin-top:20px; text-align:center;"><a href="${CONFIG.stationMaster.facebook.url}" target="_blank" style="display:inline-block; padding:12px 28px; background:var(--text-dark); color:#FFF; font-weight:800; border-radius:50px; box-shadow:0 4px 15px rgba(44, 62, 44, 0.2); font-family:var(--font-body); font-size:1rem;">Liên hệ Facebook Chủ Trọ</a></div>` 
+                : '';
             
             document.getElementById("modal-body").innerHTML = `
                 <div style="text-align:center; margin-bottom:20px;">
                     ${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="width:130px; height:130px; border-radius:50%; object-fit:cover; margin:0 auto; border:4px solid var(--accent-peach); box-shadow:var(--shadow-soft);">` : ''}
                 </div>
-                <div class="bio-content">${CONFIG.stationMaster.bio}</div>
+                <div class="bio-content">
+                    ${CONFIG.stationMaster.bio}
+                </div>
                 ${fbHtml}
             `;
+            
             document.getElementById("main-modal").classList.add("show");
             document.body.style.overflow = "hidden";
         };
@@ -893,7 +2278,11 @@
             const bot = CONFIG.upcomingBots.find(b => b.id === id);
             if(!bot) return;
             document.getElementById("sub-modal-title").innerHTML = `💡 Ý TƯỞNG: ${bot.name}`;
-            document.getElementById("sub-modal-body").innerHTML = `<div class="idea-modal-text">${bot.idea || "Chưa có nội dung ý tưởng nào được ghi lại..."}</div>`;
+            document.getElementById("sub-modal-body").innerHTML = `
+                <div class="idea-modal-text">
+                    ${bot.idea || "Chưa có nội dung ý tưởng nào được ghi lại..."}
+                </div>
+            `;
             document.getElementById("sub-modal").classList.add("show");
         };
 
@@ -903,12 +2292,23 @@
 
             let displayBots = CONFIG.upcomingBots.filter(b => {
                 if(b.isHidden && !isAdminMode) return false;
+                
                 let isMatchSearch = true;
-                if(q !== "") { const matchName = removeAccents(b.name).includes(q); const matchTags = (b.tags||[]).some(t => removeAccents(t).includes(q)); if(!matchName && !matchTags) isMatchSearch = false; }
+                if(q !== "") {
+                    const matchName = removeAccents(b.name).includes(q);
+                    const matchTags = (b.tags||[]).some(t => removeAccents(t).includes(q));
+                    if(!matchName && !matchTags) isMatchSearch = false;
+                }
+
                 let isMatchTag = true;
-                if(activeRouteFilter !== 'all') { const botCleanTags = (b.tags||[]).map(t => t.trim().replace(/^#/, '')); if(!botCleanTags.includes(activeRouteFilter)) isMatchTag = false; }
+                if(activeRouteFilter !== 'all') {
+                    const botCleanTags = (b.tags||[]).map(t => t.trim().replace(/^#/, ''));
+                    if(!botCleanTags.includes(activeRouteFilter)) isMatchTag = false;
+                }
+
                 return isMatchSearch && isMatchTag;
             });
+
             displayBots.sort((a,b) => (b.progress - a.progress) || (b.votes - a.votes));
 
             if(displayBots.length === 0) {
@@ -916,7 +2316,14 @@
             } else {
                 let html = `<div class="up-grid">`;
                 displayBots.forEach(bot => {
-                    let adminOver = isAdminMode ? `<div class="card-admin-overlay"><button class="btn-card-ad" onclick="openAdminForm('up', 'edit', '${bot.id}')">Sửa</button><button class="btn-card-ad" onclick="toggleHideUp('${bot.id}')">${bot.isHidden?'Đang Ẩn':'Hiện'}</button><button class="btn-card-ad" style="color:#EF4444; border-color:#EF4444;" onclick="deleteUp('${bot.id}')">Xóa</button></div>` : '';
+                    let adminOver = isAdminMode ? `
+                        <div class="card-admin-overlay">
+                            <button class="btn-card-ad" onclick="openAdminForm('up', 'edit', '${bot.id}')">Sửa</button>
+                            <button class="btn-card-ad" onclick="toggleHideUp('${bot.id}')">${bot.isHidden?'Đang Ẩn':'Hiện'}</button>
+                            <button class="btn-card-ad" style="color:#EF4444; border-color:#EF4444;" onclick="deleteUp('${bot.id}')">Xóa</button>
+                        </div>
+                    ` : '';
+                    
                     let hasVoted = localStorage.getItem('vote_up_' + bot.id) === 'true';
                     let tagsHtml = (bot.tags||[]).map(t => `<span class="b-tag">${t.startsWith('#')?t:'#'+t}</span>`).join('');
                     
@@ -924,9 +2331,14 @@
                         <div class="up-card">
                             ${adminOver}
                             <div class="up-stamp">SẮP RA MẮT</div>
-                            <div class="up-avatar-wrap"><img src="${bot.avatar}" class="up-avatar"></div>
+                            
+                            <div class="up-avatar-wrap">
+                                <img src="${bot.avatar}" class="up-avatar">
+                            </div>
+                            
                             <div class="up-name">${bot.name}</div>
                             <div class="b-tags" style="justify-content:center; margin-bottom:10px;">${tagsHtml}</div>
+                            
                             <button class="b-btn b-btn-fb" style="margin-bottom:15px; width:auto; padding:8px 18px; border-radius:50px; font-size:0.85rem;" onclick="openIdeaModal('${bot.id}')">💡 Xem Ý Tưởng</button>
                             
                             <div class="up-progress-wrap">
@@ -949,7 +2361,12 @@
         window.voteUp = async function(id) {
             if(localStorage.getItem('vote_up_' + id) === 'true') return;
             let bot = CONFIG.upcomingBots.find(b => b.id === id);
-            if(bot) { bot.votes = (bot.votes || 0) + 1; localStorage.setItem('vote_up_' + id, 'true'); await saveConfig(); openUpcomingModal(); }
+            if(bot) {
+                bot.votes = (bot.votes || 0) + 1;
+                localStorage.setItem('vote_up_' + id, 'true');
+                await saveConfig();
+                openUpcomingModal();
+            }
         };
 
         /* ============================================================
@@ -957,44 +2374,130 @@
            ============================================================ */
         let lastTap = 0;
         document.getElementById("trigger-admin").addEventListener("click", (e) => {
-            const currentTime = new Date().getTime(); const tapLength = currentTime - lastTap;
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
             if (tapLength < 400 && tapLength > 0) {
-                if(!isAdminMode) { if(prompt("Mật mã Chủ Trọ:") === "bhnt2006") { isAdminMode = true; document.body.classList.add("is-admin"); renderUI(); checkNotifications(); } } 
-                else { if(confirm("Thoát chế độ Admin?")) exitAdmin(); }
+                if(!isAdminMode) {
+                    if(prompt("Mật mã Chủ Trọ:") === "bhnt2006") {
+                        isAdminMode = true;
+                        document.body.classList.add("is-admin");
+                        renderUI();
+                        checkNotifications();
+                    }
+                } else {
+                    if(confirm("Thoát chế độ Admin?")) exitAdmin();
+                }
                 e.preventDefault();
             }
             lastTap = currentTime;
         });
 
-        function exitAdmin() { isAdminMode = false; document.body.classList.remove("is-admin"); renderUI(); document.getElementById("noti-badge").style.display="none"; }
-        window.editShortDesc = async function() { let newDesc = prompt("Sửa dòng giới thiệu ngắn:", CONFIG.stationMaster.shortDesc); if(newDesc !== null) { CONFIG.stationMaster.shortDesc = newDesc.trim(); await saveConfig(); renderUI(); } }
-        window.toggleHideBot = async function(id, e) { e.stopPropagation(); let b = CONFIG.staff.find(x => x.id === id); if(b) { b.isHidden = !b.isHidden; await saveConfig(); renderUI(); } };
-        window.deleteBot = async function(id, e) { e.stopPropagation(); if(confirm("Xóa vĩnh viễn phòng này?")) { CONFIG.staff = CONFIG.staff.filter(x => x.id !== id); await saveConfig(); renderUI(); } };
-        window.toggleHideUp = async function(id) { let b = CONFIG.upcomingBots.find(x => x.id === id); if(b) { b.isHidden = !b.isHidden; await saveConfig(); openUpcomingModal(); } };
-        window.deleteUp = async function(id) { if(confirm("Xóa thẻ dự bị này?")) { CONFIG.upcomingBots = CONFIG.upcomingBots.filter(x => x.id !== id); await saveConfig(); openUpcomingModal(); } };
+        function exitAdmin() {
+            isAdminMode = false;
+            document.body.classList.remove("is-admin");
+            renderUI();
+            document.getElementById("noti-badge").style.display = "none";
+        }
 
-        let tempAdminImg = ""; let tempBgImg = ""; let tempTags = [];
+        window.editShortDesc = async function() {
+            let newDesc = prompt("Sửa dòng giới thiệu ngắn:", CONFIG.stationMaster.shortDesc);
+            if(newDesc !== null) {
+                CONFIG.stationMaster.shortDesc = newDesc.trim();
+                await saveConfig();
+                renderUI();
+            }
+        }
+
+        window.toggleHideBot = async function(id, e) {
+            e.stopPropagation();
+            let b = CONFIG.staff.find(x => x.id === id);
+            if(b) {
+                b.isHidden = !b.isHidden;
+                await saveConfig();
+                renderUI();
+            }
+        };
+
+        window.deleteBot = async function(id, e) {
+            e.stopPropagation();
+            if(confirm("Xóa vĩnh viễn phòng này?")) {
+                CONFIG.staff = CONFIG.staff.filter(x => x.id !== id);
+                await saveConfig();
+                renderUI();
+            }
+        };
+
+        window.toggleHideUp = async function(id) {
+            let b = CONFIG.upcomingBots.find(x => x.id === id);
+            if(b) {
+                b.isHidden = !b.isHidden;
+                await saveConfig();
+                openUpcomingModal();
+            }
+        };
+
+        window.deleteUp = async function(id) {
+            if(confirm("Xóa thẻ dự bị này?")) {
+                CONFIG.upcomingBots = CONFIG.upcomingBots.filter(x => x.id !== id);
+                await saveConfig();
+                openUpcomingModal();
+            }
+        };
+
+        let tempAdminImg = "";
+        let tempBgImg = "";
+        let tempTags = [];
 
         window.insertToggleHTML = function() { 
-            const id = 'det_' + Date.now(); const html = `&nbsp;<details class="capy-toggle"><summary>Tên nút đóng mở</summary><div class="toggle-content">Nội dung bên trong...</div></details><div id="${id}"><br></div>`; 
+            const id = 'det_' + Date.now();
+            const html = `&nbsp;<details class="capy-toggle"><summary>Tên nút đóng mở</summary><div class="toggle-content">Nội dung bên trong...</div></details><div id="${id}"><br></div>`; 
             document.execCommand('insertHTML', false, html); 
-            setTimeout(() => { const el = document.getElementById(id); if(el) { const range = document.createRange(); const sel = window.getSelection(); range.setStart(el, 0); range.collapse(true); sel.removeAllRanges(); sel.addRange(range); } }, 10);
+            
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if(el) {
+                    const range = document.createRange();
+                    const sel = window.getSelection();
+                    range.setStart(el, 0);
+                    range.collapse(true);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
+            }, 10);
         };
 
         window.forceNewLine = function() {
             const editor = document.getElementById('ad-bio');
-            if(editor) { const div = document.createElement('div'); div.innerHTML = '<br>'; editor.appendChild(div); const range = document.createRange(); const sel = window.getSelection(); range.setStart(div, 0); range.collapse(true); sel.removeAllRanges(); sel.addRange(range); editor.focus(); }
+            if(editor) {
+                const div = document.createElement('div');
+                div.innerHTML = '<br>';
+                editor.appendChild(div);
+                const range = document.createRange();
+                const sel = window.getSelection();
+                range.setStart(div, 0);
+                range.collapse(true);
+                sel.removeAllRanges();
+                sel.addRange(range);
+                editor.focus();
+            }
         };
 
         window.openAdminForm = function(type, action, id) {
             document.getElementById("admin-form-title").innerHTML = `<svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-paw"></use></svg> BẢNG ĐIỀU KHIỂN`;
             const body = document.getElementById("admin-form-body");
-            tempAdminImg = ""; tempBgImg = ""; tempTags = [];
+            tempAdminImg = "";
+            tempBgImg = "";
+            tempTags = [];
 
             if (type === 'sm') {
                 body.innerHTML = `
-                    <label class="file-upload-label" style="width:100%; text-align:center;"><input type="file" accept="image/*" id="ad-sm-img" style="display:none;"> 📸 ĐỔI ẢNH CHỦ TRỌ</label>
-                    <div id="ad-sm-prev" style="text-align:center; margin-bottom:15px;">${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="height:100px; border-radius:50%; border:3px solid var(--accent-peach);">` : ''}</div>
+                    <label class="file-upload-label" style="width:100%; text-align:center;">
+                        <input type="file" accept="image/*" id="ad-sm-img" style="display:none;"> 📸 ĐỔI ẢNH CHỦ TRỌ
+                    </label>
+                    <div id="ad-sm-prev" style="text-align:center; margin-bottom:15px;">
+                        ${CONFIG.stationMaster.avatar ? `<img src="${CONFIG.stationMaster.avatar}" style="height:100px; border-radius:50%; border:3px solid var(--accent-peach);">` : ''}
+                    </div>
+
                     <div class="admin-form-group">
                         <label>Tiểu sử Chủ Trọ (Hỗ trợ định dạng chữ)</label>
                         <div class="rt-toolbar">
@@ -1007,30 +2510,78 @@
                         </div>
                         <div id="ad-bio" class="rt-editor bio-content" contenteditable="true">${CONFIG.stationMaster.bio}</div>
                     </div>
-                    <div class="admin-form-group"><label>Tên hiển thị FB</label><input type="text" id="ad-fbname" class="fb-input" value="${CONFIG.stationMaster.facebook?.name || ''}"></div>
-                    <div class="admin-form-group"><label>Link FB</label><input type="text" id="ad-fburl" class="fb-input" value="${CONFIG.stationMaster.facebook?.url || ''}"></div>
+                    
+                    <div class="admin-form-group">
+                        <label>Tên hiển thị FB</label>
+                        <input type="text" id="ad-fbname" class="fb-input" value="${CONFIG.stationMaster.facebook?.name || ''}">
+                    </div>
+                    <div class="admin-form-group">
+                        <label>Link FB</label>
+                        <input type="text" id="ad-fburl" class="fb-input" value="${CONFIG.stationMaster.facebook?.url || ''}">
+                    </div>
+                    
                     <button class="fb-btn-submit" id="ad-save">LƯU LẠI THÔNG TIN</button>
                 `;
+
                 tempAdminImg = CONFIG.stationMaster.avatar || "ChatGPT_Image_21_48_57_31_thg_7__2026-removebg-preview.png";
-                document.getElementById("ad-sm-img").onchange = async (e) => { if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 600); document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:100px; border-radius:50%; border:3px solid var(--accent-peach);">`; } };
-                document.getElementById("ad-save").onclick = async () => { CONFIG.stationMaster.avatar = tempAdminImg; CONFIG.stationMaster.bio = document.getElementById("ad-bio").innerHTML; CONFIG.stationMaster.facebook = { name: document.getElementById("ad-fbname").value, url: document.getElementById("ad-fburl").value }; await saveConfig(); renderUI(); document.getElementById("admin-modal").classList.remove("show"); alert("Đã lưu Chủ Trọ!"); };
+                
+                document.getElementById("ad-sm-img").onchange = async (e) => {
+                    if(e.target.files.length > 0) {
+                        tempAdminImg = await resizeImage(e.target.files[0], 600);
+                        document.getElementById("ad-sm-prev").innerHTML = `<img src="${tempAdminImg}" style="height:100px; border-radius:50%; border:3px solid var(--accent-peach);">`;
+                    }
+                };
+
+                document.getElementById("ad-save").onclick = async () => {
+                    CONFIG.stationMaster.avatar = tempAdminImg;
+                    CONFIG.stationMaster.bio = document.getElementById("ad-bio").innerHTML;
+                    CONFIG.stationMaster.facebook = {
+                        name: document.getElementById("ad-fbname").value,
+                        url: document.getElementById("ad-fburl").value
+                    };
+                    await saveConfig();
+                    renderUI();
+                    document.getElementById("admin-modal").classList.remove("show");
+                    alert("Đã lưu Chủ Trọ!");
+                };
             }
             else if (type === 'bot') {
                 let d = { name: "", hook: "", link: "", tags: [] };
-                if (action === 'edit') { const b = CONFIG.staff.find(x => x.id === id); if(b) { d = b; tempAdminImg = b.avatar; tempBgImg = b.bgImage || b.avatar; tempTags = [...(b.tags||[])]; } }
+                if (action === 'edit') {
+                    const b = CONFIG.staff.find(x => x.id === id);
+                    if(b) {
+                        d = b;
+                        tempAdminImg = b.avatar;
+                        tempBgImg = b.bgImage || b.avatar;
+                        tempTags = [...(b.tags||[])];
+                    }
+                }
                 
                 body.innerHTML = `
-                    <div class="admin-form-group"><label>Tên Phòng (OC)</label><input type="text" id="ad-name" value="${d.name}" class="fb-input"></div>
+                    <div class="admin-form-group">
+                        <label>Tên Phòng (OC)</label>
+                        <input type="text" id="ad-name" value="${d.name}" class="fb-input">
+                    </div>
+                    
                     <div style="display:flex; gap:10px; margin-bottom:15px;">
                         <div style="flex:1;">
-                            <label class="file-upload-label" style="padding:8px; font-size:0.85rem;"><input type="file" accept="image/*" id="ad-img-bg" style="display:none;"> 📸 ẢNH BÌA (9:16)</label>
-                            <div id="ad-prev-bg" style="text-align:center;">${tempBgImg ? `<img src="${tempBgImg}" style="height:120px; width:70px; object-fit:cover; border-radius:8px; border:2px solid var(--accent-mocha);">` : ''}</div>
+                            <label class="file-upload-label" style="padding:8px; font-size:0.85rem;">
+                                <input type="file" accept="image/*" id="ad-img-bg" style="display:none;"> 📸 ẢNH BÌA LỚN (9:16)
+                            </label>
+                            <div id="ad-prev-bg" style="text-align:center;">
+                                ${tempBgImg ? `<img src="${tempBgImg}" style="height:120px; width:70px; object-fit:cover; border-radius:8px; border:2px solid var(--accent-mocha);">` : ''}
+                            </div>
                         </div>
                         <div style="flex:1;">
-                            <label class="file-upload-label" style="padding:8px; font-size:0.85rem;"><input type="file" accept="image/*" id="ad-img-ava" style="display:none;"> 📸 AVATAR NHỎ (1:1)</label>
-                            <div id="ad-prev-ava" style="text-align:center;">${tempAdminImg ? `<img src="${tempAdminImg}" style="height:70px; width:70px; object-fit:cover; border-radius:50%; margin:0 auto; border:2px solid var(--accent-mocha);">` : ''}</div>
+                            <label class="file-upload-label" style="padding:8px; font-size:0.85rem;">
+                                <input type="file" accept="image/*" id="ad-img-ava" style="display:none;"> 📸 AVATAR NHỎ (1:1)
+                            </label>
+                            <div id="ad-prev-ava" style="text-align:center;">
+                                ${tempAdminImg ? `<img src="${tempAdminImg}" style="height:70px; width:70px; object-fit:cover; border-radius:50%; margin:0 auto; border:2px solid var(--accent-mocha);">` : ''}
+                            </div>
                         </div>
                     </div>
+                    
                     <div class="admin-form-group">
                         <label>Tags Thể Loại</label>
                         <div class="tag-input-box">
@@ -1039,34 +2590,110 @@
                         </div>
                         <div id="ad-tags-wrapper"></div>
                     </div>
-                    <div class="admin-form-group"><label>Câu thoại mồi (Hook)</label><textarea id="ad-hook" class="fb-input" style="height:90px;">${d.hook}</textarea></div>
-                    <div class="admin-form-group"><label>Link Web Chi Tiết</label><input type="text" id="ad-link" class="fb-input" value="${d.link || ''}" placeholder="https://..."></div>
+
+                    <div class="admin-form-group">
+                        <label>Câu thoại mồi (Hook)</label>
+                        <textarea id="ad-hook" class="fb-input" style="height:90px;">${d.hook}</textarea>
+                    </div>
+                    <div class="admin-form-group">
+                        <label>Link Web Chi Tiết (Nhấn nút Ghé Phòng sẽ ra link này)</label>
+                        <input type="text" id="ad-link" class="fb-input" value="${d.link || ''}" placeholder="https://...">
+                    </div>
+                    
                     <button class="fb-btn-submit" id="ad-save">LƯU PHÒNG</button>
                 `;
-                renderAdminTags();
-                window.addAdminTag = function() { const inp = document.getElementById("ad-tag-input"); const val = inp.value.trim().replace(/^#/, ''); if(val) { tempTags.push(val); inp.value = ""; renderAdminTags(); } };
-                window.removeAdminTag = function(idx) { tempTags.splice(idx, 1); renderAdminTags(); };
-                function renderAdminTags() { document.getElementById("ad-tags-wrapper").innerHTML = tempTags.map((t, i) => `<div class="ad-mini-tag">#${t} <span onclick="removeAdminTag(${i})">✕</span></div>`).join(''); }
 
-                document.getElementById("ad-img-bg").onchange = async (e) => { if(e.target.files.length > 0) { document.getElementById("ad-prev-bg").innerHTML = "<span style='font-size:0.8rem;'>Đang xử lý...</span>"; tempBgImg = await resizeImage(e.target.files[0], 1000); document.getElementById("ad-prev-bg").innerHTML = `<img src="${tempBgImg}" style="height:120px; width:70px; object-fit:cover; border-radius:8px; border:2px solid var(--accent-mocha);">`; } };
-                document.getElementById("ad-img-ava").onchange = async (e) => { if(e.target.files.length > 0) { document.getElementById("ad-prev-ava").innerHTML = "<span style='font-size:0.8rem;'>Đang xử lý...</span>"; tempAdminImg = await resizeImage(e.target.files[0], 400); document.getElementById("ad-prev-ava").innerHTML = `<img src="${tempAdminImg}" style="height:70px; width:70px; object-fit:cover; border-radius:50%; margin:0 auto; border:2px solid var(--accent-mocha);">`; } };
+                renderAdminTags();
+
+                window.addAdminTag = function() {
+                    const inp = document.getElementById("ad-tag-input");
+                    const val = inp.value.trim().replace(/^#/, '');
+                    if(val) {
+                        tempTags.push(val);
+                        inp.value = "";
+                        renderAdminTags();
+                    }
+                };
+
+                window.removeAdminTag = function(idx) {
+                    tempTags.splice(idx, 1);
+                    renderAdminTags();
+                };
+
+                function renderAdminTags() {
+                    const wrap = document.getElementById("ad-tags-wrapper");
+                    wrap.innerHTML = tempTags.map((t, i) => `
+                        <div class="ad-mini-tag">#${t} <span onclick="removeAdminTag(${i})">✕</span></div>
+                    `).join('');
+                }
+
+                document.getElementById("ad-img-bg").onchange = async (e) => {
+                    if(e.target.files.length > 0) {
+                        document.getElementById("ad-prev-bg").innerHTML = "<span style='font-size:0.8rem;'>Đang xử lý...</span>";
+                        tempBgImg = await resizeImage(e.target.files[0], 1000);
+                        document.getElementById("ad-prev-bg").innerHTML = `<img src="${tempBgImg}" style="height:120px; width:70px; object-fit:cover; border-radius:8px; border:2px solid var(--accent-mocha);">`;
+                    }
+                };
+
+                document.getElementById("ad-img-ava").onchange = async (e) => {
+                    if(e.target.files.length > 0) {
+                        document.getElementById("ad-prev-ava").innerHTML = "<span style='font-size:0.8rem;'>Đang xử lý...</span>";
+                        tempAdminImg = await resizeImage(e.target.files[0], 400);
+                        document.getElementById("ad-prev-ava").innerHTML = `<img src="${tempAdminImg}" style="height:70px; width:70px; object-fit:cover; border-radius:50%; margin:0 auto; border:2px solid var(--accent-mocha);">`;
+                    }
+                };
 
                 document.getElementById("ad-save").onclick = async () => {
                     if(!tempAdminImg || !tempBgImg) return alert("Vui lòng tải đủ cả 2 ảnh!");
-                    let finalData = { name: document.getElementById("ad-name").value.trim(), bgImage: tempBgImg, avatar: tempAdminImg, tags: tempTags, hook: document.getElementById("ad-hook").value.trim(), link: document.getElementById("ad-link").value.trim() };
-                    if(action === 'add') { finalData.id = "b_"+Date.now(); finalData.createdAt = Date.now(); finalData.feedbacks = []; finalData.isHidden = false; CONFIG.staff.push(finalData); }
-                    else { Object.assign(CONFIG.staff.find(x => x.id === id), finalData); }
-                    document.getElementById("ad-save").textContent = "Đang lưu..."; await saveConfig(); renderUI(); document.getElementById("admin-modal").classList.remove("show");
+                    
+                    let finalData = {
+                        name: document.getElementById("ad-name").value.trim(),
+                        bgImage: tempBgImg,
+                        avatar: tempAdminImg,
+                        tags: tempTags,
+                        hook: document.getElementById("ad-hook").value.trim(),
+                        link: document.getElementById("ad-link").value.trim()
+                    };
+
+                    if(action === 'add') {
+                        finalData.id = "b_" + Date.now();
+                        finalData.createdAt = Date.now();
+                        finalData.feedbacks = [];
+                        finalData.isHidden = false;
+                        CONFIG.staff.push(finalData);
+                    } else {
+                        Object.assign(CONFIG.staff.find(x => x.id === id), finalData);
+                    }
+                    
+                    document.getElementById("ad-save").textContent = "Đang lưu...";
+                    await saveConfig();
+                    renderUI();
+                    document.getElementById("admin-modal").classList.remove("show");
                 };
             }
             else if (type === 'up') {
                 let d = { name: "", idea: "", progressNote: "", progress: 10, tags: [] };
-                if (action === 'edit') { const b = CONFIG.upcomingBots.find(x => x.id === id); if(b) { d = b; tempAdminImg = b.avatar; tempTags = [...(b.tags||[])]; } }
+                if (action === 'edit') {
+                    const b = CONFIG.upcomingBots.find(x => x.id === id);
+                    if(b) {
+                        d = b;
+                        tempAdminImg = b.avatar;
+                        tempTags = [...(b.tags||[])];
+                    }
+                }
                 
                 body.innerHTML = `
-                    <div class="admin-form-group"><label>Tên Dự Kiến</label><input type="text" id="ad-name" value="${d.name}" class="fb-input"></div>
-                    <label class="file-upload-label" style="width:100%; text-align:center;"><input type="file" accept="image/*" id="ad-img" style="display:none;"> 📸 TẢI ẢNH BÌA (VUÔNG)</label>
-                    <div id="ad-prev" style="text-align:center; margin-bottom:15px;">${tempAdminImg ? `<img src="${tempAdminImg}" style="height:90px; border-radius:50%; border:3px solid var(--accent-mocha);">` : ''}</div>
+                    <div class="admin-form-group">
+                        <label>Tên Dự Kiến</label>
+                        <input type="text" id="ad-name" value="${d.name}" class="fb-input">
+                    </div>
+                    
+                    <label class="file-upload-label" style="width:100%; text-align:center;">
+                        <input type="file" accept="image/*" id="ad-img" style="display:none;"> 📸 TẢI ẢNH BÌA (VUÔNG)
+                    </label>
+                    <div id="ad-prev" style="text-align:center; margin-bottom:15px;">
+                        ${tempAdminImg ? `<img src="${tempAdminImg}" style="height:90px; border-radius:50%; border:3px solid var(--accent-mocha);">` : ''}
+                    </div>
                     
                     <div class="admin-form-group">
                         <label>Tags Thể Loại</label>
@@ -1077,11 +2704,20 @@
                         <div id="ad-tags-wrapper"></div>
                     </div>
 
-                    <div class="admin-form-group"><label>Ý Tưởng</label><textarea id="ad-idea" class="fb-input" style="height:90px;">${d.idea}</textarea></div>
+                    <div class="admin-form-group">
+                        <label>Ý Tưởng</label>
+                        <textarea id="ad-idea" class="fb-input" style="height:90px;">${d.idea}</textarea>
+                    </div>
                     
                     <div style="display:flex; gap:10px; margin-bottom:10px; flex-wrap:wrap;">
-                        <div class="admin-form-group" style="flex:1;"><label>Tiến độ (%)</label><input type="number" id="ad-prog" value="${d.progress}" min="0" max="100" class="fb-input"></div>
-                        <div class="admin-form-group" style="flex:2; min-width:180px;"><label>Ghi chú tiến độ</label><input type="text" id="ad-note" value="${d.progressNote}" class="fb-input"></div>
+                        <div class="admin-form-group" style="flex:1;">
+                            <label>Tiến độ (%)</label>
+                            <input type="number" id="ad-prog" value="${d.progress}" min="0" max="100" class="fb-input">
+                        </div>
+                        <div class="admin-form-group" style="flex:2; min-width:180px;">
+                            <label>Ghi chú tiến độ</label>
+                            <input type="text" id="ad-note" value="${d.progressNote}" class="fb-input">
+                        </div>
                     </div>
                     
                     <button class="fb-btn-submit" id="ad-save">LƯU HỒ SƠ DỰ BỊ</button>
@@ -1089,18 +2725,59 @@
 
                 renderAdminTags();
 
-                window.addAdminTag = function() { const inp = document.getElementById("ad-tag-input"); const val = inp.value.trim().replace(/^#/, ''); if(val) { tempTags.push(val); inp.value = ""; renderAdminTags(); } };
-                window.removeAdminTag = function(idx) { tempTags.splice(idx, 1); renderAdminTags(); };
-                function renderAdminTags() { document.getElementById("ad-tags-wrapper").innerHTML = tempTags.map((t, i) => `<div class="ad-mini-tag">#${t} <span onclick="removeAdminTag(${i})">✕</span></div>`).join(''); }
+                window.addAdminTag = function() {
+                    const inp = document.getElementById("ad-tag-input");
+                    const val = inp.value.trim().replace(/^#/, '');
+                    if(val) {
+                        tempTags.push(val);
+                        inp.value = "";
+                        renderAdminTags();
+                    }
+                };
 
-                document.getElementById("ad-img").onchange = async (e) => { if(e.target.files.length > 0) { tempAdminImg = await resizeImage(e.target.files[0], 600); document.getElementById("ad-prev").innerHTML = `<img src="${tempAdminImg}" style="height:90px; border-radius:50%; border:3px solid var(--accent-mocha);">`; } };
+                window.removeAdminTag = function(idx) {
+                    tempTags.splice(idx, 1);
+                    renderAdminTags();
+                };
+
+                function renderAdminTags() {
+                    const wrap = document.getElementById("ad-tags-wrapper");
+                    wrap.innerHTML = tempTags.map((t, i) => `
+                        <div class="ad-mini-tag">#${t} <span onclick="removeAdminTag(${i})">✕</span></div>
+                    `).join('');
+                }
+
+                document.getElementById("ad-img").onchange = async (e) => {
+                    if(e.target.files.length > 0) {
+                        tempAdminImg = await resizeImage(e.target.files[0], 600);
+                        document.getElementById("ad-prev").innerHTML = `<img src="${tempAdminImg}" style="height:90px; border-radius:50%; border:3px solid var(--accent-mocha);">`;
+                    }
+                };
 
                 document.getElementById("ad-save").onclick = async () => {
                     if(!tempAdminImg) return alert("Nhớ úp ảnh cho bạn ấy nhé!");
-                    let finalData = { name: document.getElementById("ad-name").value.trim(), avatar: tempAdminImg, tags: tempTags, idea: document.getElementById("ad-idea").value.trim(), progressNote: document.getElementById("ad-note").value, progress: parseInt(document.getElementById("ad-prog").value) || 0 };
-                    if(action === 'add') { finalData.id = "u_"+Date.now(); finalData.votes = 0; finalData.isHidden = false; CONFIG.upcomingBots.push(finalData); }
-                    else { Object.assign(CONFIG.upcomingBots.find(x => x.id === id), finalData); }
-                    await saveConfig(); document.getElementById("admin-modal").classList.remove("show"); openUpcomingModal();
+                    
+                    let finalData = {
+                        name: document.getElementById("ad-name").value.trim(), 
+                        avatar: tempAdminImg,
+                        tags: tempTags,
+                        idea: document.getElementById("ad-idea").value.trim(), 
+                        progressNote: document.getElementById("ad-note").value, 
+                        progress: parseInt(document.getElementById("ad-prog").value) || 0
+                    };
+
+                    if(action === 'add') {
+                        finalData.id = "u_" + Date.now();
+                        finalData.votes = 0;
+                        finalData.isHidden = false;
+                        CONFIG.upcomingBots.push(finalData);
+                    } else {
+                        Object.assign(CONFIG.upcomingBots.find(x => x.id === id), finalData);
+                    }
+                    
+                    await saveConfig();
+                    document.getElementById("admin-modal").classList.remove("show");
+                    openUpcomingModal();
                 };
             }
             
@@ -1115,36 +2792,69 @@
             if(!isAdminMode) return;
             let lastRead = parseInt(localStorage.getItem("capy_admin_read") || "0");
             let unreadCount = 0;
+            
             CONFIG.staff.forEach(bot => {
                 (bot.feedbacks||[]).forEach(fb => { 
                     if(fb.date > lastRead) unreadCount++; 
-                    (fb.replies||[]).forEach(r => { if(r.date > lastRead) unreadCount++; });
+                    (fb.replies||[]).forEach(r => {
+                        if(r.date > lastRead) unreadCount++;
+                    });
                 });
             });
+
             const badge = document.getElementById("noti-badge");
-            if(unreadCount > 0) { badge.textContent = unreadCount > 9 ? "9+" : unreadCount; badge.style.display = "flex"; }
-            else { badge.style.display = "none"; }
+            if(unreadCount > 0) {
+                badge.textContent = unreadCount > 9 ? "9+" : unreadCount;
+                badge.style.display = "flex";
+            } else {
+                badge.style.display = "none";
+            }
         }
 
         window.openNotiModal = function() {
             document.getElementById("modal-title").innerHTML = `<svg class="svg-icon" viewBox="0 0 16 16"><use href="#px-bell"></use></svg> BẢNG THÔNG BÁO`;
             let lastRead = parseInt(localStorage.getItem("capy_admin_read") || "0");
-            let html = ""; let allNotis = [];
+            let html = "";
+            let allNotis = [];
             
             CONFIG.staff.forEach(bot => {
                 (bot.feedbacks||[]).forEach(fb => {
-                    allNotis.push({ type: 'fb', botId: bot.id, botName: bot.name, name: fb.name, date: fb.date, text: fb.text, isPrivate: fb.isPrivate });
-                    (fb.replies||[]).forEach(r => { if(r.name.toLowerCase() !== 'chủ trọ') { allNotis.push({ type: 'rep', botId: bot.id, botName: bot.name, name: r.name, fbName: fb.name, date: r.date, text: r.text, isPrivate: fb.isPrivate }); } });
+                    allNotis.push({
+                        type: 'fb',
+                        botId: bot.id,
+                        botName: bot.name,
+                        name: fb.name,
+                        date: fb.date,
+                        text: fb.text,
+                        isPrivate: fb.isPrivate
+                    });
+                    
+                    (fb.replies||[]).forEach(r => {
+                        if(r.name.toLowerCase() !== 'chủ trọ') {
+                            allNotis.push({
+                                type: 'rep',
+                                botId: bot.id,
+                                botName: bot.name,
+                                name: r.name,
+                                fbName: fb.name,
+                                date: r.date,
+                                text: r.text,
+                                isPrivate: fb.isPrivate
+                            });
+                        }
+                    });
                 });
             });
             
             allNotis.sort((a,b) => b.date - a.date);
 
-            if(allNotis.length === 0) { html = "<p style='color:var(--text-muted); text-align:center; font-weight:800; font-size:1.1rem; padding: 20px;'>Chưa có hoạt động nào từ hành khách.</p>"; }
-            else {
+            if(allNotis.length === 0) {
+                html = "<p style='color:var(--text-muted); text-align:center; font-weight:800; font-size:1.1rem; padding: 20px;'>Chưa có hoạt động nào từ hành khách.</p>";
+            } else {
                 html = allNotis.map(item => {
                     let isNew = item.date > lastRead ? `<span style="color:#FFF; background:#EF4444; font-weight:900; font-size:0.75rem; padding:3px 10px; border-radius:12px; margin-left:8px;">MỚI</span>` : "";
                     let privBadge = item.isPrivate ? `<span style="background:#EF4444; color:#FFF; font-size:0.7rem; padding:3px 8px; border-radius:8px; margin-right:8px;">🔒 Thư Mật</span>` : '';
+                    
                     let contentTitle = item.type === 'fb' 
                         ? `${privBadge}Khách <b style="color:var(--accent-peach);">${item.name}</b> review cho phòng <b style="color:var(--text-dark);">${item.botName}</b> ${isNew}`
                         : `${privBadge}Khách <b style="color:var(--accent-peach);">${item.name}</b> rep bình luận ở phòng <b style="color:var(--text-dark);">${item.botName}</b> ${isNew}`;
